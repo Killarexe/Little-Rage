@@ -19,4 +19,5 @@ func start(player):
 func _on_ContinueButton_pressed():
 	get_tree().paused = false
 	Global.unlockNextLevel()
+	Global.addCoins(5)
 	SceneTransition.change_scene("res://scenes/ui/MainMenu.tscn")
