@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/default.tres" type="DynamicFont" id=1]
+[ext_resource path="res://textures/skins/player.png" type="Texture" id=2]
+[ext_resource path="res://scripts/ui/SkinShop.gd" type="Script" id=3]
+
+[node name="SkinShop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.211765, 0.184314, 0.184314, 0.501961 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 950, 380 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 2 )
+
+[node name="Coins" type="Label" parent="."]
+margin_right = 448.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 1 )
+text = "Coins: "
+align = 1
+valign = 1
+
+[node name="Cost" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -192.0
+margin_top = -32.0
+margin_right = 192.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 1 )
+text = "Cost: "
+align = 1
+valign = 1
+
+[node name="Buttons" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Back" type="Button" parent="Buttons"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -100.0
+margin_right = 300.0
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
+
+[node name="LeftSelect" type="Button" parent="Buttons"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 340.0
+margin_top = -700.0
+margin_right = 640.0
+margin_bottom = -600.0
+custom_fonts/font = ExtResource( 1 )
+text = "<"
+
+[node name="RightSelect" type="Button" parent="Buttons"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 1280.0
+margin_top = -700.0
+margin_right = 1580.0
+margin_bottom = -600.0
+custom_fonts/font = ExtResource( 1 )
+text = ">"
+
+[node name="BuyButton" type="Button" parent="Buttons"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -230.0
+margin_top = 60.0
+margin_right = 230.0
+margin_bottom = 160.0
+custom_fonts/font = ExtResource( 1 )
+text = "Equiped"
+
+[connection signal="pressed" from="Buttons/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Buttons/LeftSelect" to="." method="_on_LeftSelect_pressed"]
+[connection signal="pressed" from="Buttons/RightSelect" to="." method="_on_RightSelect_pressed"]
+[connection signal="pressed" from="Buttons/BuyButton" to="." method="_on_BuyButton_pressed"]

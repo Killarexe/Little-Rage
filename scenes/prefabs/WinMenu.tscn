@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://fonts/default.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/ui/WinMenu.gd" type="Script" id=2]
+
+[node name="WinMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.501961 )
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = -425.0
+margin_right = -425.0
+margin_bottom = 64.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_fonts/font = ExtResource( 1 )
+text = "Level Complete!"
+align = 1
+valign = 1
+
+[node name="Results" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -132.5
+margin_right = 960.0
+margin_bottom = 132.5
+custom_fonts/font = ExtResource( 1 )
+text = "Deaths:
+Coins:
+
+Total Score:"
+valign = 1
+
+[node name="ContinueButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -275.0
+margin_top = -100.0
+margin_right = 275.0
+custom_fonts/font = ExtResource( 1 )
+text = "Continue"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_ContinueButton_pressed"]

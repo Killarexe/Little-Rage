@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/ui/Cursor.gd" type="Script" id=1]
+[ext_resource path="res://scenes/prefabs/Editor.tscn" type="PackedScene" id=2]
+
+[node name="LevelEditor" type="Node2D"]
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Cursor" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Cursor"]
+
+[node name="Editor" parent="." instance=ExtResource( 2 )]
+
+[node name="CameraContainer" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CameraContainer"]
