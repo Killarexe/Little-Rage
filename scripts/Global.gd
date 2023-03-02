@@ -115,6 +115,9 @@ func loadGame():
 		return
 	saveFile.open(saveFilePath, File.READ)
 	var data = saveFile.get_var()
+	if(data == null):
+		saveGame()
+		return
 	coins = get_save_data(data, "coins", 0)
 	unlocked_hats = get_save_data(data, "hats", [0])
 	unlockedSkins =get_save_data(data, "skins", [0])
