@@ -44,7 +44,7 @@ func _ready():
 		$GUI/RightButton.visible = false
 		$GUI/JumpButton.visible = false
 	$Camera2D.current = enable_camera
-	$Sprite.texture = Global.currentSkin[0]
+	$Sprite.texture = Global.skins[Global.currentSkin][0]
 
 func _process(delta):
 	if !enable_camera:

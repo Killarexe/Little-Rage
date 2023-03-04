@@ -184,7 +184,7 @@ __meta__ = {
 [node name="ShopButton" type="Button" parent="Buttons"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -70.0
+margin_top = -76.0
 margin_right = 268.0
 theme = ExtResource( 8 )
 text = "Shop"
@@ -195,7 +195,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -524.0
-margin_top = -70.0
+margin_top = -76.0
 theme = ExtResource( 8 )
 text = "Settings"
 
@@ -253,9 +253,6 @@ custom_fonts/font = ExtResource( 3 )
 text = "Little Rage"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Splash" type="Label" parent="CanvasLayer"]
 margin_left = 180.457
@@ -265,7 +262,7 @@ margin_bottom = 434.863
 grow_horizontal = 2
 grow_vertical = 2
 rect_rotation = -15.0
-rect_scale = Vector2( 0.574571, 0.574571 )
+rect_scale = Vector2( 0.507826, 0.507826 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_colors/font_color = Color( 1, 1, 0, 1 )
@@ -274,9 +271,6 @@ text = "Splash Text"
 align = 1
 valign = 1
 autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Splash"]
 anims/splash_animation = ExtResource( 2 )
@@ -309,7 +303,7 @@ valign = 1
 scale = Vector2( 1e-05, 1e-05 )
 offset = Vector2( 960, 540 )
 smoothing_enabled = true
-smoothing_speed = 3.0
+smoothing_speed = 4.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
 anims/RESET = SubResource( 36 )

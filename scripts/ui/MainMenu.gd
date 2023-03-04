@@ -6,7 +6,6 @@ var images = [load("res://textures/backgrounds/Image1.png"), load("res://texture
 onready var splash = $CanvasLayer/Splash
 
 func _ready():
-	Global.loadGame()
 	Global.play_music(1)
 	var random = RandomNumberGenerator.new()
 	random.randomize()
@@ -47,6 +46,7 @@ func show_shop(show: bool) -> void:
 	$Buttons/NextButton.visible = show
 	$Buttons/PreviousButton.visible = show
 	if(show):
+		selectedSkin = Global.currentSkin
 		updateSprite()
 
 func updateSprite():
@@ -56,10 +56,10 @@ func updateSprite():
 	$Buttons/BuyButton.text = "Buy"
 	if(Global.unlockedSkins.has(selectedSkin)):
 		$Buttons/BuyButton.text = "Equip"
-	if(Global.currentSkin == Global.skins[selectedSkin]):
+	if(Global.currentSkin == selectedSkin):
 		$Buttons/BuyButton.text = "Equiped"
 	
-	if(Global.skins[selectedSkin][1] > Global.coins && !Global.unlockedSkins.has(selectedSkin)) || Global.currentSkin == Global.skins[selectedSkin]:
+	if(Global.skins[selectedSkin][1] > Global.coins && !Global.unlockedSkins.has(selectedSkin)) || Global.currentSkin == selectedSkin:
 		$Buttons/BuyButton.disabled = true
 	else:
 		$Buttons/BuyButton.disabled = false
@@ -75,7 +75,8 @@ func _on_BuyButton_pressed():
 	if(!Global.unlockedSkins.has(selectedSkin)):
 		Global.unlockSkin(selectedSkin)
 	else:
-		Global.currentSkin = Global.skins[selectedSkin]
+		Global.currentSkin = selectedSkin
+		Global.saveGame()
 	updateSprite()
 
 func _on_PreviousButton_pressed():

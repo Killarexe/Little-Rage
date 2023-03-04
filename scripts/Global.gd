@@ -29,8 +29,8 @@ var levels: Array = [
 ]
 
 var coins: int = 0
-var currentLevel: int;
-var currentSkin = skins[0]
+var currentLevel: int
+var currentSkin: int = 0
 var ableToPause: bool = true
 var unlocked_hats: Array = [0]
 var unlockedSkins: Array = [0]
@@ -40,8 +40,7 @@ var editor_playing: bool = false
 const saveFilePath = "user://player_save.save"
 
 func _ready():
-	if OS.is_debug_build():
-		Global.currentSkin = Global.skins[7]
+	loadGame()
 
 func wait(sec: int, node: Node):
 	var t = Timer.new()
@@ -95,6 +94,7 @@ func saveGame():
 	var data ={
 		"coins": coins,
 		#"hats": unlocked_hats,
+		"current_skin": currentSkin,
 		"music_volume": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")),
 		"sfxs_volume": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFXS")),
 		"skins": unlockedSkins,
@@ -103,7 +103,7 @@ func saveGame():
 	saveFile.store_var(data)
 	saveFile.close()
 
-func get_save_data(data, name, default_value):
+func get_save_data(data: Dictionary, name: String, default_value):
 	if(data.has(name)):
 		return data[name]
 	return default_value
@@ -119,6 +119,7 @@ func loadGame():
 		saveGame()
 		return
 	coins = get_save_data(data, "coins", 0)
+	currentSkin = get_save_data(data, "current_skin", 0)
 	unlocked_hats = get_save_data(data, "hats", [0])
 	unlockedSkins =get_save_data(data, "skins", [0])
 	unlockedLevels = get_save_data(data, "levels", [0])
@@ -131,6 +132,8 @@ func loadGame():
 		get_save_data(data, "sfxs_volume", 0)
 	)
 	saveFile.close()
+	if OS.is_debug_build() && Global.currentSkin == 0:
+		Global.currentSkin = 7
 
 func resetGame():
 	var saveFile = File.new()
