@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/level/Player.gd" type="Script" id=1]
 [ext_resource path="res://textures/skins/player.png" type="Texture" id=2]
@@ -14,6 +14,12 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.9, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 8 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -73,39 +79,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RightButton" type="TextureButton" parent="GUI"]
+[node name="RightButton" type="TouchScreenButton" parent="GUI"]
 pause_mode = 2
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -200.0
-margin_top = -202.0
-margin_right = -160.0
-margin_bottom = -162.0
-rect_scale = Vector2( 5, 5 )
-texture_normal = ExtResource( 5 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+position = Vector2( 1700, 870 )
+scale = Vector2( 13, 13 )
+normal = ExtResource( 5 )
+shape = SubResource( 4 )
+passby_press = true
 
-[node name="LeftButton" type="TextureButton" parent="GUI"]
+[node name="LeftButton" type="TouchScreenButton" parent="GUI"]
 pause_mode = 2
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -500.0
-margin_top = -202.0
-margin_right = -460.0
-margin_bottom = -162.0
-rect_scale = Vector2( 5, 5 )
-texture_normal = ExtResource( 6 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+position = Vector2( 1475, 870 )
+scale = Vector2( 13, 13 )
+normal = ExtResource( 6 )
+shape = SubResource( 3 )
+passby_press = true
 
 [node name="JumpButton" type="TouchScreenButton" parent="GUI"]
 position = Vector2( 0, 870 )
