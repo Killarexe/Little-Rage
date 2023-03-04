@@ -12,9 +12,9 @@ var skins = {
 }
 
 var musics = {
-	0: load("res://sounds/musics/level_one.mp3"),
+	0: load("res://sounds/musics/level_select.mp3"),
 	1: load("res://sounds/musics/nofall.wav"),
-	2: load("res://sounds/musics/s.mp3"),
+	2: load("res://sounds/musics/level_one.mp3"),
 	3: load("res://sounds/musics/shop.mp3"),
 }
 
@@ -79,10 +79,10 @@ func unlockSkin(skin: int):
 		addCoins(-Global.skins[skin][1])
 	saveGame()
 
-func unlock_hat(hat: int):
+func unlock_hat(_hat: int):
 	pass
 
-func set_current_hat(hat: int):
+func set_current_hat(_hat: int):
 	pass
 
 func setCurrentSkin(skin):

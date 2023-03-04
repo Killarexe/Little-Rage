@@ -25,10 +25,12 @@ var is_invinsible: bool = false
 var enable_camera: bool = true
 var is_power: bool = false
 var motion: Vector2 = Vector2()
+var timer_milliseconds: int = 0
+var timer_minutes: int = 0
+var timer_seconds: int = 0
 var groundTimer: float = 0
 var jumpTimer: float = 0
 var deathCount: int = 0
-var timer: int = 0
 
 func _ready():
 	Global.play_music(2)
@@ -73,6 +75,11 @@ func playerController(delta):
 	groundTimer -= delta
 	
 	motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+	
+	if(Input.is_action_just_pressed("toggle_ui")):
+		Overlay.visible = !Overlay.visible
+		$GUI/DeathCount.visible = !$GUI/DeathCount.visible
+		$GUI/TimeCount.visible = !$GUI/TimeCount.visible
 	
 	if(Input.is_action_pressed("ui_left") or $GUI/LeftButton.is_pressed()):
 		motion.x -= ACCEL
@@ -143,3 +150,16 @@ func set_max_y(value: int):
 func _on_PauseButton_pressed():
 	playSFX(4)
 	$GUI/PauseMenu.set_paused(!$GUI/PauseMenu.is_paused)
+
+func update_timer():
+	if timer_milliseconds > 59:
+		timer_seconds += 1
+		timer_milliseconds = 0
+	if timer_seconds > 59:
+		timer_minutes += 1
+		timer_seconds = 0
+	$GUI/TimeCount.text = "Time: " + str(timer_minutes).pad_zeros(2) + ":" + str(timer_seconds).pad_zeros(2) + ":" +str(timer_milliseconds).pad_zeros(2)
+
+func _on_Timer_timeout():
+	timer_milliseconds += 1;
+	update_timer();

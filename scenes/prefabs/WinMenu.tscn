@@ -35,9 +35,9 @@ margin_top = -132.5
 margin_right = 960.0
 margin_bottom = 132.5
 custom_fonts/font = ExtResource( 1 )
-text = "Deaths:
+text = "Time:
 Coins:
-
+Deaths:
 Total Score:"
 valign = 1
 
