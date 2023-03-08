@@ -7,23 +7,22 @@ onready var splash = $CanvasLayer/Splash
 
 func _ready():
 	Global.play_music(1)
-	var random = RandomNumberGenerator.new()
-	random.randomize()
-	splash.text = splashes[random.randi_range(0, splashes.size()-1)]
-	if(random.randi_range(0, 100) >= 95):
-		$CanvasLayer/Title.text = "Little Game"
 	$CanvasLayer/Splash/AnimationPlayer.play("splash_animation")
 
 func _on_SinglePlayerButton_pressed():
+	Global.settings_clicked = 0
 	SceneTransition.change_scene("res://scenes/ui/LevelSelector.tscn")
 
 func _on_MultiPlayerButton_pressed():
+	Global.settings_clicked = 0
 	SceneTransition.change_scene("res://scenes/ui/MultiplayerTypeSelection.tscn")
 
 func _on_OptionsButton_pressed():
+	Global.settings_clicked = 0
 	SceneTransition.change_scene("res://scenes/ui/LevelEditor.tscn")
 
 func _on_QuitButton_pressed():
+	Global.settings_clicked = 0
 	if(Input.action_press("ui_left")):
 		SceneTransition.change_scene("res://scenes/instances/Server.tscn")
 		pass
@@ -65,6 +64,15 @@ func updateSprite():
 		$Buttons/BuyButton.disabled = false
 
 func _on_OptionButton_pressed():
+	Global.settings_clicked += 1
+	if Global.settings_clicked >= 5:
+		$CanvasLayer/Easter.visible = true
+		Global.play_music(4)
+		yield(get_tree().create_timer(13.5), "timeout")
+		Global.play_music(1)
+		$CanvasLayer/Easter.visible = false
+		Global.settings_clicked = 0
+		return
 	SceneTransition.change_scene("res://scenes/ui/Settings.tscn")
 
 func _on_QuitShopButton_pressed():

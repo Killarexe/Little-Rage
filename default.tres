@@ -75,7 +75,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 shadow_color = Color( 0, 0, 0, 0.67451 )
 shadow_size = 1
-shadow_offset = Vector2( 15, 15 )
+shadow_offset = Vector2( 5, 5 )
 
 [resource]
 resource_name = "Default"

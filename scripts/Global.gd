@@ -16,6 +16,7 @@ var musics = {
 	1: load("res://sounds/musics/nofall.wav"),
 	2: load("res://sounds/musics/level_one.mp3"),
 	3: load("res://sounds/musics/shop.mp3"),
+	4: load("res://sounds/musics/easter.mp3"),
 }
 
 var hats = {
@@ -36,6 +37,7 @@ var unlocked_hats: Array = [0]
 var unlockedSkins: Array = [0]
 var unlockedLevels: Array = [0]
 var editor_playing: bool = false
+var settings_clicked: int = 0
 
 const saveFilePath = "user://player_save.save"
 
