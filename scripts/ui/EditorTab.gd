@@ -1,8 +1,8 @@
 extends TabContainer
 
-onready var cursor = get_parent().get_parent().get_node("Cursor")
-var ui_position: Vector2 = Vector2(rect_global_position.x, rect_global_position.x)
-var size: Vector2 = Vector2(rect_size.x, rect_size.y)
+@onready var cursor = get_parent().get_parent().get_node("Cursor")
+var ui_position: Vector2 = Vector2(global_position.x, global_position.x)
+var tab_size: Vector2 = Vector2(size.x, size.y)
 var cursor_position: Vector2 = Vector2()
 
 func _process(delta):

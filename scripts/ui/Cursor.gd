@@ -4,9 +4,9 @@ var current_item
 var can_place: bool = true
 var is_panning: bool = true
 
-onready var level: Node2D = get_parent().get_node("Level")
-onready var camera_node: Node2D = get_parent().get_node("CameraContainer")
-onready var camera = camera_node.get_node("Camera2D")
+@onready var level: Node2D = get_parent().get_node("Level")
+@onready var camera_node: Node2D = get_parent().get_node("CameraContainer")
+@onready var camera = camera_node.get_node("Camera2D")
 
 func _ready():
 	camera.current = true
@@ -16,9 +16,9 @@ func _process(delta):
 		global_position = get_global_mouse_position()
 		if Input.is_action_just_pressed("mouse_right") and current_item != null:
 			current_item = null
-			$Sprite.texture = null
+			$Sprite2D.texture = null
 		if current_item != null and can_place and Input.is_action_just_pressed("mouse_left"):
-			var new_item = current_item.instance()
+			var new_item = current_item.instantiate()
 			level.add_child(new_item)
 			new_item.global_position = get_global_mouse_position()
 		move_camera()
@@ -37,9 +37,9 @@ func move_camera():
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed():
-			if event.button_index == BUTTON_WHEEL_UP:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				camera.zoom -= Vector2(0.1, 0.1)
-			elif event.button_index == BUTTON_WHEEL_DOWN:
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				camera.zoom += Vector2(0.1, 0.1)
 	if event is InputEventMouseMotion:
 		if is_panning:
@@ -47,6 +47,6 @@ func _unhandled_input(event):
 
 func show_sprite(show: bool):
 	if show:
-		$Sprite.show()
+		$Sprite2D.show()
 	else:
-		$Sprite.hide()
+		$Sprite2D.hide()

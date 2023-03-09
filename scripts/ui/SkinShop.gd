@@ -1,17 +1,17 @@
 extends Control
 
 var selectedSkin = 0
-onready var cost = $Cost
-onready var coins = $Coins
-onready var sprite = $Sprite
-onready var buyButton = $Buttons/BuyButton
+@onready var cost = $Cost
+@onready var coins = $Coins
+@onready var sprite = $Sprite2D
+@onready var buyButton = $Buttons/BuyButton
 
 func _ready():
 	updateSprite()
 	Global.play_music(3)
 
 func _on_Back_pressed():
-	SceneTransition.change_scene("res://scenes/ui/MainMenu.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/ui/MainMenu.tscn")
 
 func _on_LeftSelect_pressed():
 	if(selectedSkin != 0):

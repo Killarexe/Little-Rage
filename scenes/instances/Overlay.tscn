@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://textures/uis/vignette.png" type="Texture" id=1]
+[ext_resource path="res://textures/uis/vignette.png" type="Texture2D" id=1]
 
 [node name="Layer" type="CanvasLayer"]
 layer = 0

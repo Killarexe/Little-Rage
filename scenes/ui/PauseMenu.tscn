@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://fonts/default.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/default.tres" type="FontFile" id=1]
 [ext_resource path="res://scripts/ui/PauseMenu.gd" type="Script" id=2]
 [ext_resource path="res://default.tres" type="Theme" id=3]
 
 [node name="PauseMenu" type="Control"]
-pause_mode = 2
+process_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
@@ -23,11 +23,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -510.0
-margin_top = -540.0
-margin_right = -10.0
-margin_bottom = -476.0
-rect_scale = Vector2( 2, 2 )
+offset_left = -510.0
+offset_top = -540.0
+offset_right = -10.0
+offset_bottom = -476.0
+scale = Vector2( 2, 2 )
 custom_fonts/font = ExtResource( 1 )
 text = "Pause"
 align = 1
@@ -41,10 +41,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -134.0
-margin_top = -35.0
-margin_right = 134.0
-margin_bottom = 35.0
+offset_left = -134.0
+offset_top = -35.0
+offset_right = 134.0
+offset_bottom = 35.0
 theme = ExtResource( 3 )
 text = "Quit"
 __meta__ = {
@@ -69,10 +69,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -390.0
-margin_top = -146.0
-margin_right = 390.0
-margin_bottom = -76.0
+offset_left = -390.0
+offset_top = -146.0
+offset_right = 390.0
+offset_bottom = -76.0
 theme = ExtResource( 3 )
 text = "Back to Game"
 __meta__ = {

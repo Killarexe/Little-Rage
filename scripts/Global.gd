@@ -50,7 +50,7 @@ func wait(sec: int, node: Node):
 	t.set_one_shot(true)
 	node.add_child(t)
 	t.start()
-	yield(t, "timeout")
+	await t.timeout
 	t.queue_free()
 
 func play_music(id: int):
@@ -64,7 +64,7 @@ func instanceNodeAtPos(node: Object, parent: Object, pos: Vector2) -> Object:
 	return nodeInstance
 
 func instanceNode(node: Object, parent: Object) -> Object:
-	var nodeInstance = node.instance()
+	var nodeInstance = node.instantiate()
 	parent.add_child(nodeInstance)
 	return nodeInstance 
 
@@ -91,8 +91,7 @@ func setCurrentSkin(skin):
 		currentSkin = skins[skin]
 
 func saveGame():
-	var saveFile = File.new()
-	saveFile.open(saveFilePath, File.WRITE)
+	var saveFile: FileAccess = FileAccess.open(saveFilePath, FileAccess.WRITE)
 	var data ={
 		"coins": coins,
 		#"hats": unlocked_hats,
@@ -102,7 +101,7 @@ func saveGame():
 		"skins": unlockedSkins,
 		"levels": unlockedLevels
 	}
-	saveFile.store_var(data)
+	saveFile.store_string(JSON.stringify(data))
 	saveFile.close()
 
 func get_save_data(data: Dictionary, name: String, default_value):
@@ -111,14 +110,15 @@ func get_save_data(data: Dictionary, name: String, default_value):
 	return default_value
 
 func loadGame():
-	var saveFile = File.new()
-	if(!saveFile.file_exists(saveFilePath)):
+	if(!FileAccess.file_exists(saveFilePath)):
 		saveGame()
+		loadGame()
 		return
-	saveFile.open(saveFilePath, File.READ)
-	var data = saveFile.get_var()
+	var saveFile: FileAccess = FileAccess.open(saveFilePath, FileAccess.READ)
+	var data = JSON.parse_string(saveFile.get_as_text())
 	if(data == null):
 		saveGame()
+		loadGame()
 		return
 	coins = get_save_data(data, "coins", 0)
 	currentSkin = get_save_data(data, "current_skin", 0)
@@ -138,15 +138,14 @@ func loadGame():
 		Global.currentSkin = 7
 
 func resetGame():
-	var saveFile = File.new()
-	saveFile.open(saveFilePath, File.WRITE)
+	var saveFile: FileAccess = FileAccess.open(saveFilePath, FileAccess.WRITE)
 	var data ={
 		"coins": 0,
 		"hats": [0],
 		"skins": [0],
 		"levels": [0] 
 	}
-	saveFile.store_var(data)
+	saveFile.store_string(JSON.stringify(data))
 	saveFile.close()
 	loadGame()
 

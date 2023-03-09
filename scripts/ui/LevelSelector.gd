@@ -7,11 +7,11 @@ func _ready():
 	update_button()
 
 func _on_ExitButton_pressed():
-	SceneTransition.change_scene("res://scenes/ui/MainMenu.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/ui/MainMenu.tscn")
 
 func _on_LevelButton_pressed():
 	Global.currentLevel = selectedLevel
-	SceneTransition.change_scene("res://scenes/levels/Level" + str(selectedLevel) +".tscn")
+	SceneTransition.change_scene_to_file("res://scenes/levels/Level" + str(selectedLevel) +".tscn")
 
 func _on_LeftButton_pressed():
 	if selectedLevel <= 1:

@@ -1,6 +1,6 @@
 extends Control
 
-var is_paused = false setget set_paused
+var is_paused = false : set = set_paused
 
 func _ready():
 	set_paused(false)
@@ -16,7 +16,7 @@ func set_paused(value):
 
 func _on_QuitButton_pressed():
 	set_paused(false)
-	SceneTransition.change_scene("res://scenes/ui/MainMenu.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/ui/MainMenu.tscn")
 
 func _on_ResumeButton_pressed():
 	set_paused(false)

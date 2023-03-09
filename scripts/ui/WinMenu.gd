@@ -7,23 +7,23 @@ func start(player):
 	visible = true
 	for i in player.timer_milliseconds:
 		set_text(0, 0, i, 0, 0, 0)
-		yield(get_tree().create_timer(0.01), "timeout")
+		await get_tree().create_timer(0.01).timeout
 	for i in player.timer_seconds:
 		set_text(0, i, player.timer_milliseconds, 0, 0, 0)
-		yield(get_tree().create_timer(0.01), "timeout")
+		await get_tree().create_timer(0.01).timeout
 	for i in player.timer_minutes:
 		set_text(i, player.timer_seconds, player.timer_milliseconds, 0, 0, 0)
-		yield(get_tree().create_timer(0.01), "timeout")
-	yield(get_tree().create_timer(0.5), "timeout")
+		await get_tree().create_timer(0.01).timeout
+	await get_tree().create_timer(0.5).timeout
 	for i in 5:
 		set_text(player.timer_minutes, player.timer_seconds, player.timer_milliseconds, i, 0, 0)
-		yield(get_tree().create_timer(0.1), "timeout")
-	yield(get_tree().create_timer(0.5), "timeout")
+		await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.5).timeout
 	
 	for i in player.deathCount:
 		set_text(player.timer_minutes, player.timer_seconds, player.timer_milliseconds, 5, i, 0)
-		yield(get_tree().create_timer(0.1), "timeout")
-	yield(get_tree().create_timer(0.5), "timeout")
+		await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.5).timeout
 	set_text(player.timer_minutes, player.timer_seconds, player.timer_milliseconds, 5, player.deathCount, 0, true)
 
 func set_text(time_min: int, time_secs:int, time_milis: int, coins: int, deaths: int, score:int, show_zeros: bool = false):
@@ -43,4 +43,4 @@ func _on_ContinueButton_pressed():
 	get_tree().paused = false
 	Global.unlockNextLevel()
 	Global.addCoins(5)
-	SceneTransition.change_scene("res://scenes/ui/MainMenu.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/ui/MainMenu.tscn")

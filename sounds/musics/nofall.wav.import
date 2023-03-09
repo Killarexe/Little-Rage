@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/nofall.wav-9233e7947f52c13381fa6a40a75118b8.sample"
+type="AudioStreamWAV"
+uid="uid://dgqjsg2cvwglb"
+path="res://.godot/imported/nofall.wav-9233e7947f52c13381fa6a40a75118b8.sample"
 
 [deps]
 
 source_file="res://sounds/musics/nofall.wav"
-dest_files=[ "res://.import/nofall.wav-9233e7947f52c13381fa6a40a75118b8.sample" ]
+dest_files=["res://.godot/imported/nofall.wav-9233e7947f52c13381fa6a40a75118b8.sample"]
 
 [params]
 

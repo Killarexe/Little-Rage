@@ -2,12 +2,12 @@
 
 [sub_resource type="Gradient" id=1]
 interpolation_mode = 2
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+colors = PackedColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=2]
+[sub_resource type="GradientTexture2D" id=2]
 gradient = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticleProcessMaterial" id=3]
 lifetime_randomness = 1.0
 emission_shape = 1
 emission_sphere_radius = 1.0
@@ -24,7 +24,7 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 color_ramp = SubResource( 2 )
 
-[node name="PoofParticle" type="Particles2D"]
+[node name="PoofParticle" type="GPUParticles2D"]
 amount = 32
 one_shot = true
 explosiveness = 1.0

@@ -1,38 +1,34 @@
 extends Control
 
-export(Array, String) var splashes = []
-var images = [load("res://textures/backgrounds/Image1.png"), load("res://textures/backgrounds/Image2.png"), load("res://textures/backgrounds/Image3.png")]
-
-onready var splash = $CanvasLayer/Splash
+@export var splashes = [] # (Array, String)
+@onready var splash = $CanvasLayer/Splash
 
 func _ready():
 	Global.play_music(1)
-	$CanvasLayer/Splash/AnimationPlayer.play("splash_animation")
 
 func _on_SinglePlayerButton_pressed():
 	Global.settings_clicked = 0
-	SceneTransition.change_scene("res://scenes/ui/LevelSelector.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/ui/LevelSelector.tscn")
 
 func _on_MultiPlayerButton_pressed():
 	Global.settings_clicked = 0
-	SceneTransition.change_scene("res://scenes/ui/MultiplayerTypeSelection.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/ui/MultiplayerTypeSelection.tscn")
 
 func _on_OptionsButton_pressed():
 	Global.settings_clicked = 0
-	SceneTransition.change_scene("res://scenes/ui/LevelEditor.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/ui/LevelEditor.tscn")
 
 func _on_QuitButton_pressed():
 	Global.settings_clicked = 0
-	if(Input.action_press("ui_left")):
-		SceneTransition.change_scene("res://scenes/instances/Server.tscn")
+	if(Input.is_action_pressed("ui_left")):
+		SceneTransition.change_scene_to_file("res://scenes/instances/Server.tscn")
 		pass
 	get_tree().quit()
 
 func _on_ShopButton_pressed():
-	#SceneTransition.change_scene("res://scenes/ui/SkinShop.tscn")
-	$Camera2D.current = true
+	$Camera2D.enabled = true
 	$Camera2D/AnimationPlayer.play("zoom")
-	yield($Camera2D/AnimationPlayer, "animation_finished")
+	await $Camera2D/AnimationPlayer.animation_finished
 	show_shop(true)
 
 var selectedSkin: int = 0
@@ -50,7 +46,7 @@ func show_shop(show: bool) -> void:
 
 func updateSprite():
 	$CanvasLayer/Coins.text = "Coins: " + str(Global.coins)
-	$TitleLevel.get_node("Player/Sprite").texture = Global.skins[selectedSkin][0]
+	$TitleLevel.get_node("Player/Sprite2D").texture = Global.skins[selectedSkin][0]
 	$CanvasLayer/Cost.text = "Cost: " + str(Global.skins[selectedSkin][1]) + " coins"
 	$Buttons/BuyButton.text = "Buy"
 	if(Global.unlockedSkins.has(selectedSkin)):
@@ -68,12 +64,12 @@ func _on_OptionButton_pressed():
 	if Global.settings_clicked >= 5:
 		$CanvasLayer/Easter.visible = true
 		Global.play_music(4)
-		yield(get_tree().create_timer(13.5), "timeout")
+		await get_tree().create_timer(13.5).timeout
 		Global.play_music(1)
 		$CanvasLayer/Easter.visible = false
 		Global.settings_clicked = 0
 		return
-	SceneTransition.change_scene("res://scenes/ui/Settings.tscn")
+	SceneTransition.change_scene_to_file("res://scenes/ui/Settings.tscn")
 
 func _on_QuitShopButton_pressed():
 	$Camera2D/AnimationPlayer.play_backwards("zoom")

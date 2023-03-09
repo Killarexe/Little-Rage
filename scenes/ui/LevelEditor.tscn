@@ -10,7 +10,7 @@
 [node name="Cursor" type="Node2D" parent="."]
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="Cursor"]
+[node name="Sprite2D" type="Sprite2D" parent="Cursor"]
 
 [node name="Editor" parent="." instance=ExtResource( 2 )]
 

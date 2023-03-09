@@ -1,3 +1,15 @@
 res://default_env.tres
-res://scenes/levels/TestLevel.tscn
+res://scenes/prefabs/PrefabLevel.tscn
+res://default.tres
+res://textures/Tilesets.tres
+res://animations/clouds.tres
 res://scenes/ui/MainMenu.tscn
+res://animations/splash_animation.tres
+res://fonts/default.tres
+res://scripts/ui/MainMenu.gd
+res://scripts/Global.gd
+res://scripts/level/Player.gd
+res://scenes/prefabs/Player.tscn
+res://scenes/prefabs/WinMenu.tscn
+res://scenes/instances/SceneTransition.tscn
+res://scripts/ui/LevelSelector.gd

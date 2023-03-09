@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 const MAX_FALL_SPEED: float = 500.0
 const GROUND_TIME: float = 0.2
@@ -17,9 +17,9 @@ var SFXS = [
 	load("res://sounds/sfx/select.wav"),
 ]
 
-onready var audio = $AudioStreamPlayer2D
+@onready var audio = $AudioStreamPlayer2D
 
-var max_y: int = 512 setget set_max_y
+var max_y: int = 512 : set = set_max_y
 var spawnPoint: Vector2 = Vector2()
 var is_invinsible: bool = false
 var enable_camera: bool = true
@@ -43,8 +43,8 @@ func _ready():
 		$GUI/LeftButton.visible = false
 		$GUI/RightButton.visible = false
 		$GUI/JumpButton.visible = false
-	$Camera2D.current = enable_camera
-	$Sprite.texture = Global.skins[Global.currentSkin][0]
+	$Camera2D.enabled = enable_camera
+	$Sprite2D.texture = Global.skins[Global.currentSkin][0]
 
 func _process(delta):
 	if !enable_camera:
@@ -53,16 +53,8 @@ func _process(delta):
 		die()
 	if(global_position.y >= max_y - max_y / 2):
 		if enable_camera:
-			$Camera2D.current = false
+			$Camera2D.enabled = false
 	$GUI/DeathCount.text = "Death Count: " + str(deathCount)
-	for i in get_slide_count():
-		var collision = get_slide_collision(i)
-		if(collision.collider.name == "Finish"):
-			finishLevel()
-			break
-		if(collision.collider.name == "Deadly"):
-			die()
-			break
 
 func _physics_process(delta):
 	motion.y += G
@@ -78,22 +70,22 @@ func playerController(delta):
 	
 	if(Input.is_action_just_pressed("toggle_ui")):
 		Overlay.visible = !Overlay.visible
-		$GUI/DeathCount.visible = !$GUI/DeathCount.visible
-		$GUI/TimeCount.visible = !$GUI/TimeCount.visible
+		$GUI/DeathCount.visible = Overlay.visible
+		$GUI/TimeCount.visible = Overlay.visible
 	
-	if(Input.is_action_pressed("ui_left") or $GUI/LeftButton.is_pressed()):
+	if(Input.is_action_pressed("left") or $GUI/LeftButton.is_pressed()):
 		motion.x -= ACCEL
-		$Sprite.flip_h = true
-	elif(Input.is_action_pressed("ui_right") or $GUI/RightButton.is_pressed()):
+		$Sprite2D.flip_h = true
+	elif(Input.is_action_pressed("right") or $GUI/RightButton.is_pressed()):
 		motion.x += ACCEL
-		$Sprite.flip_h = false
+		$Sprite2D.flip_h = false
 	else:
-		motion.x = lerp(motion.x, 0, 0.2)
+		motion.x = lerpf(motion.x, 0, 0.2)
 	
-	if((Input.is_action_pressed("ui_up") or $GUI/JumpButton.is_pressed())):
+	if((Input.is_action_pressed("jump") or $GUI/JumpButton.is_pressed())):
 		jumpTimer = JUMP_TIME
 		
-	if(jumpTimer > 0 and !(Input.is_action_pressed("ui_up") or $GUI/JumpButton.is_pressed())):
+	if(jumpTimer > 0 and !(Input.is_action_pressed("jump") or $GUI/JumpButton.is_pressed())):
 		jumpTimer = 0
 		if(motion.y < 0):
 			motion.y = motion.y * 0.5
@@ -104,7 +96,7 @@ func playerController(delta):
 	if(is_on_floor()):
 		if groundTimer < 0:
 			if enable_camera:
-				$Camera2D.current = true
+				$Camera2D.enabled = true
 			is_invinsible = false
 			Global.instanceNodeAtPos(load("res://scenes/prefabs/JumpParticle.tscn"), get_parent(), global_position + Vector2(0, 16))
 		groundTimer = GROUND_TIME
@@ -118,7 +110,10 @@ func playerController(delta):
 		jumpTimer = 0
 		groundTimer = 0
 	
-	motion = move_and_slide(motion, UP)
+	set_velocity(motion)
+	set_up_direction(UP)
+	move_and_slide()
+	motion = velocity
 
 func finishLevel():
 	playSFX(3)

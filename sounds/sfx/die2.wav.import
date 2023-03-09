@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/die2.wav-30600f70f68f0b5bb63bbd93bee3b39d.sample"
+type="AudioStreamWAV"
+uid="uid://2wq16hddcnhu"
+path="res://.godot/imported/die2.wav-30600f70f68f0b5bb63bbd93bee3b39d.sample"
 
 [deps]
 
 source_file="res://sounds/sfx/die2.wav"
-dest_files=[ "res://.import/die2.wav-30600f70f68f0b5bb63bbd93bee3b39d.sample" ]
+dest_files=["res://.godot/imported/die2.wav-30600f70f68f0b5bb63bbd93bee3b39d.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0
