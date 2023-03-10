@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/ui/SceneTransition.gd" id="1"]
 
-[sub_resource type="Animation" id="1"]
-resource_name = "RESET"
-length = 0.01
+[sub_resource type="Animation" id="Animation_2we2a"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -18,7 +17,7 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="2"]
+[sub_resource type="Animation" id="Animation_qohiq"]
 resource_name = "dissolve"
 length = 0.5
 tracks/0/type = "value"
@@ -34,15 +33,16 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1dy0j"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62ilt"]
 _data = {
-"RESET": SubResource("1"),
-"dissolve": SubResource("2")
+"RESET": SubResource("Animation_2we2a"),
+"dissolve": SubResource("Animation_qohiq")
 }
 
 [node name="SceneTransition" type="CanvasLayer"]
-process_mode = 2
+process_mode = 3
 layer = 2
+follow_viewport_enabled = true
 script = ExtResource("1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -50,10 +50,13 @@ modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0.027451, 0.607843, 0.690196, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
-"": SubResource("AnimationLibrary_1dy0j")
+"": SubResource("AnimationLibrary_62ilt")
 }

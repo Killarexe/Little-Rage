@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 var selectedLevel: int = 1
 

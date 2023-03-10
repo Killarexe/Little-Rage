@@ -1,10 +1,12 @@
 extends Control
 
-@export var splashes = [] # (Array, String)
+@export var splashes: Array = [] # (Array, String)
 @onready var splash = $CanvasLayer/Splash
 
 func _ready():
 	Global.play_music(1)
+	$CanvasLayer/Splash/AnimationPlayer.play("splash_animation")
+	$CanvasLayer/Splash.text = splashes[randi_range(0, splashes.size() - 1)]
 
 func _on_SinglePlayerButton_pressed():
 	Global.settings_clicked = 0
@@ -41,6 +43,8 @@ func show_shop(show: bool) -> void:
 	$Buttons/NextButton.visible = show
 	$Buttons/PreviousButton.visible = show
 	if(show):
+		$TitleLevel.get_node("Player").global_position.x = 205
+		$TitleLevel.get_node("Player").global_position.y = 916
 		selectedSkin = Global.currentSkin
 		updateSprite()
 
@@ -73,6 +77,7 @@ func _on_OptionButton_pressed():
 
 func _on_QuitShopButton_pressed():
 	$Camera2D/AnimationPlayer.play_backwards("zoom")
+	await $Camera2D/AnimationPlayer.animation_finished
 	show_shop(false)
 
 func _on_BuyButton_pressed():

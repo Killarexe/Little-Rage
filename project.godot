@@ -26,8 +26,8 @@ buses/default_bus_layout="res://sounds/audio_bus_layout.tres"
 
 Global="*res://scripts/Global.gd"
 MusicPlayer="*res://scenes/instances/MusicPlayer.tscn"
-SceneTransition="*res://scenes/instances/SceneTransition.tscn"
 Overlay="*res://scenes/instances/Overlay.tscn"
+SceneTransition="*res://scenes/instances/SceneTransition.tscn"
 
 [debug]
 
