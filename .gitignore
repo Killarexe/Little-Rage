@@ -2,4 +2,4 @@ build/
 .git/
 .import/
 *.keystore
-
+.godot

@@ -1,5 +1,12 @@
 extends Node
 
+const ON_TILE: Vector2i = Vector2i(0, 5)
+const OFF_TILE: Vector2i = Vector2i(0, 6)
+const RED_FULL_TILE: Vector2i = Vector2i(1, 5)
+const RED_EMPTY_TILE: Vector2i = Vector2i(1, 6)
+const BLUE_FULL_TILE: Vector2i = Vector2i(1, 7)
+const BLUE_EMPTY_TILE: Vector2i = Vector2i(1, 8)
+
 var skins = {
 	0:[load("res://textures/skins/player.png"), 0], 
 	1:[load("res://textures/skins/playergb.png"), 20],
@@ -29,10 +36,12 @@ var levels: Array = [
 	2
 ]
 
+
 var coins: int = 0
 var currentLevel: int
 var currentSkin: int = 0
 var ableToPause: bool = true
+var levels_timers: Array = []
 var unlocked_hats: Array = [0]
 var unlockedSkins: Array = [0]
 var unlockedLevels: Array = [0]

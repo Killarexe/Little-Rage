@@ -36,7 +36,6 @@ func _ready():
 	Global.play_music(2)
 	Global.ablePause()
 	spawnPoint = global_position
-	$GUI/LoseMenu.visible = false
 	$GUI/WinMenu.visible = false
 	if(OS.get_name() != "Android"):
 		$GUI/PauseButton.visible = false
@@ -53,8 +52,31 @@ func _process(delta):
 		die()
 	if(global_position.y >= max_y - max_y / 2):
 		if enable_camera:
-			$Camera2D.enabled = false
+			$Camera2D.position.y = -global_position.y + (max_y - max_y / 2)
+	
 	$GUI/DeathCount.text = "Death Count: " + str(deathCount)
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var node = collision.get_collider()
+		if node.name == "Map":
+			var player_cell_position = floor(global_position / 16)
+			var player_ground_position = player_cell_position + Vector2(0, 1)
+			var player_front_position = floor((global_position + Vector2(8, 0)) / 16)
+			var player_top_position = floor((global_position - Vector2(0, 31)) / 16)
+			if get_parent().get_tile_data("is_danger", player_ground_position) == true:
+				die()
+			elif get_parent().get_tile_data("is_door", player_ground_position) == true:
+				finishLevel()
+			if get_parent().get_tile_data("is_door", player_front_position) == true:
+				finishLevel()
+			if get_parent().get_tile_id(player_top_position) == Global.ON_TILE:
+				get_parent().replace_tile_by(Global.ON_TILE, Global.OFF_TILE)
+				get_parent().replace_tile_by(Global.BLUE_EMPTY_TILE, Global.BLUE_FULL_TILE)
+				get_parent().replace_tile_by(Global.RED_FULL_TILE, Global.RED_EMPTY_TILE)
+			elif get_parent().get_tile_id(player_top_position) == Global.OFF_TILE:
+				get_parent().replace_tile_by(Global.OFF_TILE, Global.ON_TILE)
+				get_parent().replace_tile_by(Global.RED_EMPTY_TILE, Global.RED_FULL_TILE)
+				get_parent().replace_tile_by(Global.BLUE_FULL_TILE, Global.BLUE_EMPTY_TILE)
 
 func _physics_process(delta):
 	motion.y += G
@@ -96,7 +118,7 @@ func playerController(delta):
 	if(is_on_floor()):
 		if groundTimer < 0:
 			if enable_camera:
-				$Camera2D.enabled = true
+				$Camera2D.position.y = 0
 			is_invinsible = false
 			Global.instanceNodeAtPos(load("res://scenes/prefabs/JumpParticle.tscn"), get_parent(), global_position + Vector2(0, 16))
 		groundTimer = GROUND_TIME

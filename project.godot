@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="LittleRage"
+config/name="Little Rage"
 run/main_scene="res://scenes/ui/MainMenu.tscn"
 config/features=PackedStringArray("4.0")
 boot_splash/bg_color=Color(0, 0.929412, 1, 1)
@@ -182,6 +182,7 @@ file_logging/enable_file_logging=true
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.027451, 0.607843, 0.690196, 1)
 environment/defaults/default_environment="res://default_env.tres"
 textures/canvas_textures/default_texture_filter=0

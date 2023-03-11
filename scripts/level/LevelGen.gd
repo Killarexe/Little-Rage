@@ -8,7 +8,7 @@ func _ready():
 	generateMap()
 
 func generateMap():
-	var noise = OpenSimplexNoise.new()
+	var noise = FastNoiseLite.new()
 	noise.seed = randi()
 	noise.octaves = 4
 	noise.period = 20.0

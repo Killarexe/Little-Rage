@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgdwp0e7cn0rb"]
+[gd_scene load_steps=6 format=3 uid="uid://dnqclj8b271fd"]
 
-[ext_resource type="Script" path="res://scripts/level/Level.gd" id="4"]
-[ext_resource type="TileSet" uid="uid://dcovkjpnowgl0" path="res://textures/Tilesets.tres" id="5"]
+[ext_resource type="Script" path="res://scripts/level/Level.gd" id="1_4ok87"]
+[ext_resource type="TileSet" uid="uid://dcovkjpnowgl0" path="res://textures/Tilesets.tres" id="2_rbqrb"]
 
 [sub_resource type="Animation" id="Animation_6o1du"]
 resource_name = "RESET"
@@ -41,11 +41,11 @@ _data = {
 "clouds": SubResource("Animation_nttcm")
 }
 
-[node name="PrefabLevel" type="Node2D"]
-script = ExtResource("4")
+[node name="Level6" type="Node2D"]
+script = ExtResource("1_4ok87")
 
 [node name="Map" type="TileMap" parent="."]
-tile_set = ExtResource("5")
+tile_set = ExtResource("2_rbqrb")
 format = 2
 layer_0/name = "Background"
 layer_0/z_index = -1
@@ -72,7 +72,7 @@ layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array()
 
 [node name="Clouds" type="TileMap" parent="."]
-tile_set = ExtResource("5")
+tile_set = ExtResource("2_rbqrb")
 format = 2
 layer_0/name = "Clouds"
 layer_0/z_index = -2

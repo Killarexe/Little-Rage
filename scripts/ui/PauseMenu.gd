@@ -6,7 +6,7 @@ func _ready():
 	set_paused(false)
 
 func _unhandled_input(event):
-	if(event.is_action_pressed("ui_end") && Global.ableToPause):
+	if(event.is_action_pressed("pause") && Global.ableToPause):
 		self.is_paused = !is_paused
 
 func set_paused(value):
