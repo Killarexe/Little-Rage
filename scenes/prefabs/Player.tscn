@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/level/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://ct7asn2gaf03k" path="res://textures/skins/player.png" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/ui/PauseMenu.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bt8ovcxrwq832" path="res://scenes/ui/PauseMenu.tscn" id="3"]
 [ext_resource type="Texture2D" uid="uid://cmhgpoqfmqr74" path="res://textures/uis/pause.png" id="4"]
 [ext_resource type="Texture2D" uid="uid://cx3f83u0o6e0r" path="res://textures/uis/right.png" id="6_rs64t"]
 [ext_resource type="Texture2D" uid="uid://bgp7ryii753ys" path="res://textures/uis/left.png" id="7_u6isg"]
@@ -45,10 +45,6 @@ position_smoothing_enabled = true
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="GUI" instance=ExtResource("3")]
-layout_mode = 3
-anchors_preset = 15
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="DeathCount" type="Label" parent="GUI"]
 offset_right = 896.0
@@ -69,7 +65,6 @@ wait_time = 0.01
 autostart = true
 
 [node name="PauseButton" type="TextureButton" parent="GUI"]
-process_mode = 2
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -78,9 +73,9 @@ offset_right = -80.0
 offset_bottom = 40.0
 scale = Vector2(3, 3)
 texture_normal = ExtResource("4")
+stretch_mode = 0
 
 [node name="RightButton" type="TouchScreenButton" parent="GUI"]
-process_mode = 2
 position = Vector2(216, 870)
 scale = Vector2(13, 13)
 texture_normal = ExtResource("6_rs64t")
@@ -88,7 +83,6 @@ shape = SubResource("4")
 passby_press = true
 
 [node name="LeftButton" type="TouchScreenButton" parent="GUI"]
-process_mode = 2
 position = Vector2(0, 870)
 scale = Vector2(13, 13)
 texture_normal = ExtResource("7_u6isg")

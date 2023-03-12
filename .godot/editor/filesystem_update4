@@ -1,9 +1,4 @@
 res://default_env.tres
-res://scenes/levels/Level2.tscn
+res://scenes/prefabs/Player.tscn
 res://textures/Tilesets.tres
 res://default.tres
-res://scripts/Global.gd
-res://scripts/level/Level.gd
-res://scripts/level/Player.gd
-res://scenes/ui/MainMenu.tscn
-res://scenes/levels/Level3.tscn
