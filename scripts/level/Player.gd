@@ -19,6 +19,7 @@ var SFXS = [
 
 @onready var audio = $AudioStreamPlayer2D
 
+var prev_tile_id: Vector2i = Vector2i(-1, -1)
 var max_y: int = 512 : set = set_max_y
 var spawnPoint: Vector2 = Vector2()
 var is_invinsible: bool = false
@@ -60,23 +61,29 @@ func _process(delta):
 		var node = collision.get_collider()
 		if node.name == "Map":
 			var player_cell_position = floor(global_position / 16)
-			var player_ground_position = player_cell_position + Vector2(0, 1)
-			var player_front_position = floor((global_position + Vector2(8, 0)) / 16)
-			var player_top_position = floor((global_position - Vector2(0, 31)) / 16)
-			if get_parent().get_tile_data("is_danger", player_ground_position) == true:
+			var player_ground_full_position = floor((global_position + Vector2(0, 31)) / 16)
+			var is_danger: Variant = get_parent().get_tile_data("is_danger", player_cell_position + Vector2(0, 1))
+			var is_door: Variant = get_parent().get_tile_data("is_door", player_cell_position + Vector2(0, 1)) || get_parent().get_tile_data("is_door", floor((global_position + Vector2(8, 0)) / 16)) || get_parent().get_tile_data("is_door", floor((global_position + Vector2(-8, 0)) / 16))
+			var tile_ground: Vector2i = get_parent().get_tile_id(player_ground_full_position)
+			
+			if is_danger:
 				die()
-			elif get_parent().get_tile_data("is_door", player_ground_position) == true:
+			elif is_door:
 				finishLevel()
-			if get_parent().get_tile_data("is_door", player_front_position) == true:
-				finishLevel()
-			if get_parent().get_tile_id(player_top_position) == Global.ON_TILE:
+			
+			if tile_ground == Global.CHECKPOINT_OFF_TILE:
+				get_parent().replace_tile_by(Global.CHECKPOINT_ON_TILE, Global.CHECKPOINT_OFF_TILE)
+				get_parent().change_tile(player_ground_full_position, Global.CHECKPOINT_ON_TILE)
+				spawnPoint = (player_cell_position * 16) + Vector2(8, 0)
+			elif tile_ground == Global.ON_TILE && prev_tile_id != Global.OFF_TILE && prev_tile_id != Global.ON_TILE:
 				get_parent().replace_tile_by(Global.ON_TILE, Global.OFF_TILE)
 				get_parent().replace_tile_by(Global.BLUE_EMPTY_TILE, Global.BLUE_FULL_TILE)
 				get_parent().replace_tile_by(Global.RED_FULL_TILE, Global.RED_EMPTY_TILE)
-			elif get_parent().get_tile_id(player_top_position) == Global.OFF_TILE:
+			elif tile_ground == Global.OFF_TILE && prev_tile_id != Global.OFF_TILE && prev_tile_id != Global.ON_TILE:
 				get_parent().replace_tile_by(Global.OFF_TILE, Global.ON_TILE)
 				get_parent().replace_tile_by(Global.RED_EMPTY_TILE, Global.RED_FULL_TILE)
 				get_parent().replace_tile_by(Global.BLUE_FULL_TILE, Global.BLUE_EMPTY_TILE)
+			prev_tile_id = tile_ground
 
 func _physics_process(delta):
 	motion.y += G

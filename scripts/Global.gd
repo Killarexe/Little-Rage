@@ -6,6 +6,8 @@ const RED_FULL_TILE: Vector2i = Vector2i(1, 5)
 const RED_EMPTY_TILE: Vector2i = Vector2i(1, 6)
 const BLUE_FULL_TILE: Vector2i = Vector2i(1, 7)
 const BLUE_EMPTY_TILE: Vector2i = Vector2i(1, 8)
+const CHECKPOINT_ON_TILE: Vector2i = Vector2i(2, 3)
+const CHECKPOINT_OFF_TILE: Vector2i = Vector2i(4, 3)
 
 var skins = {
 	0:[load("res://textures/skins/player.png"), 0], 
@@ -36,11 +38,11 @@ var levels: Array = [
 	2
 ]
 
-
 var coins: int = 0
 var currentLevel: int
 var currentSkin: int = 0
 var ableToPause: bool = true
+var level_times: Array = []
 var levels_timers: Array = []
 var unlocked_hats: Array = [0]
 var unlockedSkins: Array = [0]
@@ -103,7 +105,8 @@ func saveGame():
 	var saveFile: FileAccess = FileAccess.open(saveFilePath, FileAccess.WRITE)
 	var data ={
 		"coins": coins,
-		#"hats": unlocked_hats,
+		"hats": unlocked_hats,
+		"level_times": level_times,
 		"current_skin": currentSkin,
 		"music_volume": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")),
 		"sfxs_volume": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFXS")),
@@ -132,7 +135,8 @@ func loadGame():
 	coins = get_save_data(data, "coins", 0)
 	currentSkin = get_save_data(data, "current_skin", 0)
 	unlocked_hats = get_save_data(data, "hats", [0])
-	unlockedSkins =get_save_data(data, "skins", [0])
+	unlockedSkins = get_save_data(data, "skins", [0])
+	level_times = get_save_data(data, "level_times", [])
 	unlockedLevels = get_save_data(data, "levels", [0])
 	AudioServer.set_bus_volume_db(
 		AudioServer.get_bus_index("Music"),

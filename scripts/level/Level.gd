@@ -21,6 +21,9 @@ func get_tile_data(name: String, tile_pos: Vector2) -> Variant:
 func get_tile_id(cell_pos: Vector2i) -> Vector2i:
 	return $Map.get_cell_atlas_coords(2, cell_pos)
 
+func change_tile(tile_pos: Vector2i, tile_id: Vector2i):
+	$Map.set_cell(2, tile_pos, 1, tile_id, 0)
+
 func replace_tile_by(old_tile_id: Vector2i, new_tile_id: Vector2i):
 	for cell_pos in $Map.get_used_cells_by_id(2, -1, old_tile_id):
-		$Map.set_cell(2, cell_pos, 1, new_tile_id, 0)
+		change_tile(cell_pos, new_tile_id)
