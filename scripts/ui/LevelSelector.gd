@@ -11,7 +11,7 @@ func _on_LevelButton_pressed():
 	SceneTransition.change_scene_to_file("res://scenes/levels/Level" + str(LevelManager.currentLevel + 1) +".tscn")
 
 func _on_LeftButton_pressed():
-	if LevelManager.currentLevel <= 1:
+	if LevelManager.currentLevel <= 0:
 		$Levels/LeftButton.disabled = true
 	else:
 		$Levels/RightButton.disabled = false
@@ -27,6 +27,7 @@ func _on_RightButton_pressed():
 		update_button()
 
 func update_button():
-	$Levels/LevelButton.text = "Level " + str(LevelManager.currentLevel)
+	$Levels/LevelButton.text = "Level " + str(LevelManager.currentLevel + 1)
+	$BestTime.text = "Best Time: " + LevelManager.get_level_best_time_str(LevelManager.currentLevel)
 	if LevelManager.currentLevel <= LevelManager.LEVELS.size():
 		$Levels/LevelButton.disabled = !LevelManager.is_level_unlocked(LevelManager.currentLevel)

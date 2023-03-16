@@ -72,6 +72,19 @@ offset_right = 268.0
 theme = ExtResource("3")
 text = "Exit"
 
+[node name="BestTime" type="Label" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3")
+text = "Best Time: 00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Levels/LevelButton" to="." method="_on_LevelButton_pressed"]
 [connection signal="pressed" from="Levels/LeftButton" to="." method="_on_LeftButton_pressed"]
 [connection signal="pressed" from="Levels/RightButton" to="." method="_on_RightButton_pressed"]
