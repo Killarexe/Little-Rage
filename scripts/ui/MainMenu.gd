@@ -4,7 +4,7 @@ extends Control
 @onready var splash = $CanvasLayer/Splash
 
 func _ready():
-	Global.play_music(1)
+	MusicPlayer.play_music(1)
 	$CanvasLayer/Splash/AnimationPlayer.play("splash_animation")
 	$CanvasLayer/Splash.text = splashes[randi_range(0, splashes.size() - 1)]
 
@@ -45,20 +45,20 @@ func show_shop(show: bool) -> void:
 	if(show):
 		$TitleLevel.get_node("Player").global_position.x = 205
 		$TitleLevel.get_node("Player").global_position.y = 916
-		selectedSkin = Global.currentSkin
+		selectedSkin = SkinManager.current_skin
 		updateSprite()
 
 func updateSprite():
 	$CanvasLayer/Coins.text = "Coins: " + str(Global.coins)
-	$TitleLevel.get_node("Player/Sprite2D").texture = Global.skins[selectedSkin][0]
-	$CanvasLayer/Cost.text = "Cost: " + str(Global.skins[selectedSkin][1]) + " coins"
+	$TitleLevel.get_node("Player/Sprite2D").texture = SkinManager.get_skin_texture(selectedSkin)
+	$CanvasLayer/Cost.text = "Cost: " + str(SkinManager.get_skin_cost(selectedSkin)) + " coins"
 	$Buttons/BuyButton.text = "Buy"
-	if(Global.unlockedSkins.has(selectedSkin)):
+	if(SkinManager.is_skin_unlocked(selectedSkin)):
 		$Buttons/BuyButton.text = "Equip"
-	if(Global.currentSkin == selectedSkin):
+	if(SkinManager.current_skin == selectedSkin):
 		$Buttons/BuyButton.text = "Equiped"
 	
-	if(Global.skins[selectedSkin][1] > Global.coins && !Global.unlockedSkins.has(selectedSkin)) || Global.currentSkin == selectedSkin:
+	if(SkinManager.get_skin_cost(selectedSkin) > Global.coins && !SkinManager.is_skin_unlocked(selectedSkin)) || SkinManager.current_skin == selectedSkin:
 		$Buttons/BuyButton.disabled = true
 	else:
 		$Buttons/BuyButton.disabled = false
@@ -81,20 +81,20 @@ func _on_QuitShopButton_pressed():
 	show_shop(false)
 
 func _on_BuyButton_pressed():
-	if(!Global.unlockedSkins.has(selectedSkin)):
-		Global.unlockSkin(selectedSkin)
+	if(!SkinManager.is_skin_unlocked(selectedSkin)):
+		SkinManager.unlock_skin(selectedSkin)
 	else:
-		Global.currentSkin = selectedSkin
+		SkinManager.current_skin = selectedSkin
 		Global.saveGame()
 	updateSprite()
 
 func _on_PreviousButton_pressed():
 	if OS.is_debug_build():
-		if(selectedSkin != Global.skins.size() - 1):
+		if(selectedSkin != SkinManager.SKINS.size() - 1):
 			selectedSkin += 1
 			updateSprite()
 	else:
-		if(selectedSkin != Global.skins.size() - 3):
+		if(selectedSkin != SkinManager.SKINS.size() - 3):
 			selectedSkin += 1
 			updateSprite()
 

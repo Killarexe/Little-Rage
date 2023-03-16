@@ -1,15 +1,14 @@
 extends Node2D
 
 func _ready():
-	var player = load("res://scenes/prefabs/Player.tscn")
-	Global.instanceNodeAtPos(player, self, Vector2(0, 0))
+	var playerNode = Global.instanceNodeAtPos(load("res://scenes/prefabs/Player.tscn"), self, Vector2(0, 0))
 	$Clouds/AnimationPlayer.play("clouds")
 	if(name == "TitleLevel"):
-		get_node("Player").set_max_y(2048)
-		get_node("Player").global_position.x = 205
-		get_node("Player").global_position.y = 850
-		get_node("Player").enable_camera = false
-		get_node("Player").get_node("Camera2D").queue_free()
+		playerNode.set_max_y(2048)
+		playerNode.global_position.x = 205
+		playerNode.global_position.y = 850
+		playerNode.enable_camera = false
+		playerNode.get_node("Camera2D").queue_free()
 		Global.unablePause()
 
 func get_tile_data(name: String, tile_pos: Vector2) -> Variant:
@@ -17,6 +16,9 @@ func get_tile_data(name: String, tile_pos: Vector2) -> Variant:
 	if data != null:
 		return data.get_custom_data(name)
 	return null
+
+func get_all_tile_data(tile_pos: Vector2) -> TileData:
+	return $Map.get_cell_tile_data(2, tile_pos)
 
 func get_tile_id(cell_pos: Vector2i) -> Vector2i:
 	return $Map.get_cell_atlas_coords(2, cell_pos)

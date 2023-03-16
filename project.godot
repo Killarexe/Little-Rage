@@ -28,6 +28,9 @@ Global="*res://scripts/Global.gd"
 MusicPlayer="*res://scenes/instances/MusicPlayer.tscn"
 Overlay="*res://scenes/instances/Overlay.tscn"
 SceneTransition="*res://scenes/instances/SceneTransition.tscn"
+SkinManager="*res://scripts/level/player/SkinManager.gd"
+LevelManager="*res://scripts/level/player/LevelManager.gd"
+HatManager="*res://scripts/level/player/HatManager.gd"
 
 [debug]
 

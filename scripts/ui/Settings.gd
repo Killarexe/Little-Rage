@@ -15,6 +15,7 @@ func _on_SFXBar_value_changed(value) -> void:
 
 func _on_ResetButton_pressed() -> void:
 	Global.resetGame()
+	Global.saveGame()
 
 func _on_QuitButton_pressed() -> void:
 	SceneTransition.change_scene_to_file("res://scenes/ui/MainMenu.tscn")
