@@ -3,13 +3,7 @@ extends Node2D
 func _ready():
 	var playerNode = Global.instanceNodeAtPos(load("res://scenes/prefabs/Player.tscn"), self, Vector2(0, 0))
 	$Clouds/AnimationPlayer.play("clouds")
-	if(name == "TitleLevel"):
-		playerNode.set_max_y(2048)
-		playerNode.global_position.x = 205
-		playerNode.global_position.y = 850
-		playerNode.enable_camera = false
-		playerNode.get_node("Camera2D").queue_free()
-		Global.unablePause()
+	playerNode.start(name == "TitleLevel")
 
 func get_tile_data(name: String, tile_pos: Vector2) -> Variant:
 	var data: TileData = $Map.get_cell_tile_data(2, tile_pos)

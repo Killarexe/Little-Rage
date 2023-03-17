@@ -1,6 +1,6 @@
 extends Node
 
-var LEVELS = {
+const LEVELS_DEFAULT = {
 	0: [99, 99, 99, true],
 	1: [99, 99, 99, false],
 	2: [99, 99, 99, false],
@@ -8,6 +8,8 @@ var LEVELS = {
 	4: [99, 99, 99, false],
 	5: [99, 99, 99, false],
 }
+
+var LEVELS = LEVELS_DEFAULT
 
 var currentLevel: int = 0
 

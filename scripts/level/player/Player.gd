@@ -22,9 +22,13 @@ var groundTimer: float = 0
 var jumpTimer: float = 0
 var deathCount: int = 0
 
-func _ready():
+func start(title: bool):
+	enable_camera = !title
 	MusicPlayer.play_music(2)
-	Global.ablePause()
+	if !title:
+		Global.ablePause()
+	else:
+		Global.unablePause()
 	spawnPoint = global_position
 	$GUI/WinMenu.visible = false
 	if(OS.get_name() != "Android"):
@@ -34,6 +38,23 @@ func _ready():
 		$GUI/JumpButton.visible = false
 	$Camera2D.enabled = enable_camera
 	$Sprite2D.texture = SkinManager.get_current_skin_texture()
+	if !title:
+		get_tree().paused = true
+		$GUI/StartTimer.text = "3"
+		$GUI/StartTimer/AnimationPlayer.play("count")
+		await $GUI/StartTimer/AnimationPlayer.animation_finished
+		$GUI/StartTimer.text = "2"
+		$GUI/StartTimer/AnimationPlayer.play("count")
+		await $GUI/StartTimer/AnimationPlayer.animation_finished
+		$GUI/StartTimer.text = "1"
+		$GUI/StartTimer/AnimationPlayer.play("count")
+		await $GUI/StartTimer/AnimationPlayer.animation_finished
+		get_tree().paused = false
+	else:
+		set_max_y(2048)
+		spawnPoint = Vector2(205, 850)
+		global_position = spawnPoint
+		$Camera2D.queue_free()
 
 func _process(delta):
 	if !enable_camera:

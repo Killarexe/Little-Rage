@@ -1,6 +1,6 @@
 extends Node
 
-var SKINS = {
+const SKINS_DEFAULT = {
 	0:["res://textures/skins/player.png", 0, true], 
 	1:["res://textures/skins/playergb.png", 20, false],
 	2:["res://textures/skins/playerlava.png", 20, false],
@@ -10,6 +10,8 @@ var SKINS = {
 	6:["res://textures/skins/playerniark.png", 0, false],
 	7:["res://textures/skins/playerexe.png", 0, false]
 }
+
+var SKINS = SKINS_DEFAULT
 
 var current_skin: int = 0
 

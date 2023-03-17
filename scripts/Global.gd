@@ -91,9 +91,9 @@ func resetGame():
 	var data ={
 		"coins": 0,
 		"current_skin": 0,
-		"hats": HatManager.HATS,
-		"skins": SkinManager.SKINS,
-		"levels": LevelManager.LEVELS,
+		"hats": HatManager.HATS_DEFAULT,
+		"skins": SkinManager.SKINS_DEFAULT,
+		"levels": LevelManager.LEVELS_DEFAULT,
 		"music_volume": 0,
 		"sfxs_volume": 0
 	}
