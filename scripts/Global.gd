@@ -2,12 +2,35 @@ extends Node
 
 const ON_TILE: Vector2i = Vector2i(0, 5)
 const OFF_TILE: Vector2i = Vector2i(0, 6)
+
 const RED_FULL_TILE: Vector2i = Vector2i(1, 5)
 const RED_EMPTY_TILE: Vector2i = Vector2i(1, 6)
+
 const BLUE_FULL_TILE: Vector2i = Vector2i(1, 7)
 const BLUE_EMPTY_TILE: Vector2i = Vector2i(1, 8)
+
 const CHECKPOINT_ON_TILE: Vector2i = Vector2i(2, 3)
 const CHECKPOINT_OFF_TILE: Vector2i = Vector2i(4, 3)
+
+const BLUE_SPIKE_TILE_DOWN_ON: Vector2i = Vector2i(2, 9)
+const BLUE_SPIKE_TILE_DOWN_OFF: Vector2i = Vector2i(4, 9)
+const RED_SPIKE_TILE_DOWN_ON: Vector2i = Vector2i(6, 9)
+const RED_SPIKE_TILE_DOWN_OFF: Vector2i = Vector2i(8, 9)
+
+const BLUE_SPIKE_TILE_UP_ON: Vector2i = Vector2i(2, 8)
+const BLUE_SPIKE_TILE_UP_OFF: Vector2i = Vector2i(4, 8)
+const RED_SPIKE_TILE_UP_ON: Vector2i = Vector2i(6, 8)
+const RED_SPIKE_TILE_UP_OFF: Vector2i = Vector2i(8, 8)
+
+const BLUE_SPIKE_TILE_LEFT_ON: Vector2i = Vector2i(3, 8)
+const BLUE_SPIKE_TILE_LEFT_OFF: Vector2i = Vector2i(5, 8)
+const RED_SPIKE_TILE_LEFT_ON: Vector2i = Vector2i(7, 8)
+const RED_SPIKE_TILE_LEFT_OFF: Vector2i = Vector2i(9, 8)
+
+const BLUE_SPIKE_TILE_RIGHT_ON: Vector2i = Vector2i(3, 9)
+const BLUE_SPIKE_TILE_RIGHT_OFF: Vector2i = Vector2i(5, 9)
+const RED_SPIKE_TILE_RIGHT_ON: Vector2i = Vector2i(7, 9)
+const RED_SPIKE_TILE_RIGHT_OFF: Vector2i = Vector2i(9, 9)
 
 var coins: int = 0
 var currentLevel: int
@@ -53,9 +76,9 @@ func saveGame():
 	saveFile.store_string(JSON.stringify(data))
 	saveFile.close()
 
-func get_save_data(data: Dictionary, name: String, default_value):
-	if(data.has(name)):
-		return data[name]
+func get_save_var(data: Dictionary, parameter_name: String, default_value: Variant) -> Variant:
+	if(data.has(parameter_name)):
+		return data[parameter_name]
 	return default_value
 
 func loadGame():
@@ -69,18 +92,18 @@ func loadGame():
 		saveGame()
 		loadGame()
 		return
-	coins = get_save_data(data, "coins", 0)
-	SkinManager.current_skin = get_save_data(data, "current_skin", 0)
-	HatManager.HATS = get_save_data(data, "hats", HatManager.HATS)
-	SkinManager.SKINS = get_save_data(data, "skins", SkinManager.SKINS)
-	LevelManager.LEVELS = get_save_data(data, "levels", LevelManager.LEVELS)
+	coins = get_save_var(data, "coins", 0)
+	SkinManager.current_skin = get_save_var(data, "current_skin", 0)
+	HatManager.HATS = get_save_var(data, "hats", HatManager.HATS)
+	SkinManager.SKINS = get_save_var(data, "skins", SkinManager.SKINS)
+	LevelManager.LEVELS = get_save_var(data, "levels", LevelManager.LEVELS)
 	AudioServer.set_bus_volume_db(
 		AudioServer.get_bus_index("Music"),
-		get_save_data(data, "music_volume", 0)
+		get_save_var(data, "music_volume", 0)
 	)
 	AudioServer.set_bus_volume_db(
 		AudioServer.get_bus_index("SFXS"),
-		get_save_data(data, "sfxs_volume", 0)
+		get_save_var(data, "sfxs_volume", 0)
 	)
 	saveFile.close()
 	if OS.is_debug_build() && SkinManager.current_skin == 0:

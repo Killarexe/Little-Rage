@@ -1,5 +1,10 @@
 extends Node
 
+@onready var best_time_text = $BestTime
+@onready var left_button = $Levels/LeftButton
+@onready var right_button = $Levels/RightButton
+@onready var level_button = $Levels/LevelButton
+
 func _ready():
 	MusicPlayer.play_music(0)
 	update_button()
@@ -12,22 +17,22 @@ func _on_LevelButton_pressed():
 
 func _on_LeftButton_pressed():
 	if LevelManager.currentLevel <= 0:
-		$Levels/LeftButton.disabled = true
+		left_button.disabled = true
 	else:
-		$Levels/RightButton.disabled = false
+		right_button.disabled = false
 		LevelManager.currentLevel -= 1
 		update_button()
 
 func _on_RightButton_pressed():
 	if LevelManager.currentLevel + 1 >= LevelManager.LEVELS.size():
-		$Levels/RightButton.disabled = true
+		right_button.disabled = true
 	else:
-		$Levels/LeftButton.disabled = false
+		left_button.disabled = false
 		LevelManager.currentLevel += 1
 		update_button()
 
 func update_button():
-	$Levels/LevelButton.text = "Level " + str(LevelManager.currentLevel + 1)
-	$BestTime.text = "Best Time: " + LevelManager.get_level_best_time_str(LevelManager.currentLevel)
+	level_button.text = "Level " + str(LevelManager.currentLevel + 1)
+	best_time_text.text = "Best Time: " + LevelManager.get_level_best_time_str(LevelManager.currentLevel)
 	if LevelManager.currentLevel <= LevelManager.LEVELS.size():
-		$Levels/LevelButton.disabled = !LevelManager.is_level_unlocked(LevelManager.currentLevel)
+		level_button.disabled = !LevelManager.is_level_unlocked(LevelManager.currentLevel)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b1nrxst7tou78"]
+[gd_scene load_steps=21 format=3 uid="uid://b1nrxst7tou78"]
 
 [ext_resource type="Script" path="res://scripts/level/player/Player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://ct7asn2gaf03k" path="res://textures/skins/player.png" id="2"]
@@ -15,6 +15,8 @@
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(15.5, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3jrd"]
 
 [sub_resource type="RectangleShape2D" id="4"]
 size = Vector2(16, 16)
@@ -128,32 +130,35 @@ script = ExtResource("5_cmt0q")
 wait_time = 0.01
 autostart = true
 
-[node name="PauseButton" type="TextureButton" parent="GUI"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -120.0
-offset_right = -80.0
+[node name="AndroidButtons" type="Control" parent="GUI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(3, 3)
-texture_normal = ExtResource("4")
-stretch_mode = 0
 
-[node name="RightButton" type="TouchScreenButton" parent="GUI"]
+[node name="PauseButton" type="TouchScreenButton" parent="GUI/AndroidButtons"]
+position = Vector2(1792, 0)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("4")
+shape = SubResource("RectangleShape2D_d3jrd")
+passby_press = true
+
+[node name="RightButton" type="TouchScreenButton" parent="GUI/AndroidButtons"]
 position = Vector2(216, 870)
 scale = Vector2(13, 13)
 texture_normal = ExtResource("6_rs64t")
 shape = SubResource("4")
 passby_press = true
 
-[node name="LeftButton" type="TouchScreenButton" parent="GUI"]
+[node name="LeftButton" type="TouchScreenButton" parent="GUI/AndroidButtons"]
 position = Vector2(0, 870)
 scale = Vector2(13, 13)
 texture_normal = ExtResource("7_u6isg")
 shape = SubResource("3")
 passby_press = true
 
-[node name="JumpButton" type="TouchScreenButton" parent="GUI"]
+[node name="JumpButton" type="TouchScreenButton" parent="GUI/AndroidButtons"]
 position = Vector2(1700, 870)
 scale = Vector2(13, 13)
 texture_normal = ExtResource("8_vno88")
@@ -185,4 +190,4 @@ bus = &"SFXS"
 script = ExtResource("11_vowjl")
 
 [connection signal="timeout" from="GUI/TimeCount/Timer" to="GUI/TimeCount" method="_on_timer_timeout"]
-[connection signal="pressed" from="GUI/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="GUI/AndroidButtons/PauseButton" to="." method="_on_PauseButton_pressed"]

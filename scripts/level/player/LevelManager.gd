@@ -1,12 +1,12 @@
 extends Node
 
 const LEVELS_DEFAULT = {
-	0: [99, 99, 99, true],
-	1: [99, 99, 99, false],
-	2: [99, 99, 99, false],
-	3: [99, 99, 99, false],
-	4: [99, 99, 99, false],
-	5: [99, 99, 99, false],
+	0: [99, 99, 99, 5, true],
+	1: [99, 99, 99, 7, false],
+	2: [99, 99, 99, 10, false],
+	3: [99, 99, 99, 12, false],
+	4: [99, 99, 99, 15, false],
+	5: [99, 99, 99, 17, false],
 }
 
 var LEVELS = LEVELS_DEFAULT
@@ -14,7 +14,7 @@ var LEVELS = LEVELS_DEFAULT
 var currentLevel: int = 0
 
 func is_level_unlocked(id: int) -> bool:
-	return LEVELS[str(id)][3]
+	return LEVELS[str(id)][4]
 
 func get_level_best_time(id: int) -> int:
 	var level: Array = LEVELS[str(id)]
@@ -41,5 +41,12 @@ func set_level_best_time(mins: int, secs: int, millis: int) -> void:
 
 func unlock_next_level() -> void:
 	var id: int = currentLevel + 1
-	if id <= LEVELS.size():
-		LEVELS[str(id)][3] = true
+	if id <= LEVELS.size() && !LEVELS[str(id)][4]:
+		LEVELS[str(id)][4] = true
+
+func get_number_of_coins(id: int) -> int:
+	var sub: int = 0
+	for i in LEVELS:
+		if LEVELS[str(i)][4]:
+			sub += 1
+	return max(0, LEVELS[str(id)][3] - sub)

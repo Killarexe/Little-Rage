@@ -43,7 +43,7 @@ window/size/viewport_height=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/per_pixel_transparency/allowed=true
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -181,6 +181,10 @@ pause={
 [logging]
 
 file_logging/enable_file_logging=true
+
+[memory]
+
+limits/message_queue/max_size_kb=2048
 
 [rendering]
 

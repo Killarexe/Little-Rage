@@ -1,27 +1,30 @@
 extends Control
 
+@onready var result_text = $Results
+
 var timer_mins: int = 0
 var timer_secs: int = 0
 var timer_millis: int = 0
+var coins: int = 0
+var score: int = 0
+var deaths: int = 0
 var best_time: bool = false
-
-func _ready():
-	pass
+var show_zeros: bool = false
 
 func start(player, timer):
 	visible = true
-	timer_mins = timer.timer_minutes
-	timer_secs = timer.timer_seconds
-	timer_millis = timer.timer_milliseconds
 	
-	for i in timer_millis:
-		set_text(0, 0, i, 0, 0, 0)
+	for i in timer.timer_milliseconds:
+		timer_millis = i
+		update_text()
 		await get_tree().create_timer(0.01).timeout
-	for i in timer_secs:
-		set_text(0, i, timer_millis, 0, 0, 0)
+	for i in timer.timer_seconds:
+		timer_secs = i
+		update_text()
 		await get_tree().create_timer(0.01).timeout
-	for i in timer_mins:
-		set_text(i, timer_secs, timer_millis, 0, 0, 0)
+	for i in timer.timer_minutes:
+		timer_mins = i
+		update_text()
 		await get_tree().create_timer(0.01).timeout
 	await get_tree().create_timer(0.5).timeout
 	
@@ -30,19 +33,23 @@ func start(player, timer):
 		LevelManager.set_level_best_time(timer_mins, timer_secs, timer_secs)
 		best_time = true
 	
-	for i in 5:
-		set_text(timer_mins, timer_secs, timer_millis, i, 0, 0)
+	var num_coins: int = LevelManager.get_number_of_coins(LevelManager.currentLevel)
+	for i in num_coins:
+		coins = i
+		update_text()
 		await get_tree().create_timer(0.1).timeout
 	await get_tree().create_timer(0.5).timeout
 	
 	for i in player.deathCount:
-		set_text(timer_mins, timer_secs, timer_millis, 5, i, 0)
+		deaths = i
+		update_text()
 		await get_tree().create_timer(0.1).timeout
 	await get_tree().create_timer(0.5).timeout
-	set_text(timer_mins, timer_secs, timer_millis, 5, player.deathCount, 0, true)
+	show_zeros = true
+	update_text()
 
-func set_text(time_min: int, time_secs:int, time_milis: int, coins: int, deaths: int, score:int, show_zeros: bool = false):
-	var time_str: String = "Time: " + str(time_min).pad_zeros(2) + ":" + str(time_secs).pad_zeros(2) + ":" + str(time_milis).pad_zeros(2)
+func update_text():
+	var time_str: String = "Time: " + str(timer_mins).pad_zeros(2) + ":" + str(timer_secs).pad_zeros(2) + ":" + str(timer_millis).pad_zeros(2)
 	var coins_str: String = "\nCoins: "
 	var deaths_str: String = "\nDeaths: "
 	var score_str: String = "\nTotal Score: "
@@ -54,10 +61,10 @@ func set_text(time_min: int, time_secs:int, time_milis: int, coins: int, deaths:
 		deaths_str += str(deaths)
 	if score > 0 || show_zeros:
 		score_str += str(score)
-	$Results.text = time_str + coins_str + deaths_str + score_str
+	result_text.text = time_str + coins_str + deaths_str + score_str
 
 func _on_ContinueButton_pressed():
 	get_tree().paused = false
 	LevelManager.unlock_next_level()
-	Global.addCoins(5)
+	Global.addCoins(LevelManager.get_number_of_coins(LevelManager.currentLevel))
 	SceneTransition.change_scene_to_file("res://scenes/ui/MainMenu.tscn")

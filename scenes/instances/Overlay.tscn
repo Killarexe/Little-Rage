@@ -1,9 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://cd2osaeoxcktt"]
 
-[ext_resource type="Texture2D" uid="uid://bjlm2webjkkfy" path="res://textures/uis/vignette.png" id="1"]
+[ext_resource type="Script" path="res://scripts/ui/Overlay.gd" id="1_mbarm"]
 
-[node name="Layer" type="CanvasLayer"]
+[node name="Overlay" type="CanvasLayer"]
 layer = 0
+script = ExtResource("1_mbarm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.501961)
@@ -11,5 +12,4 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-texture = ExtResource("1")
 expand_mode = 1

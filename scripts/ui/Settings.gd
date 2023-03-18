@@ -1,8 +1,11 @@
 extends Control
 
+@onready var music_bar = $Uis/Control/MusicBar
+@onready var sfx_bar = $Uis/Control/SFXBar
+
 func _ready() -> void:
-	$Uis/Control/MusicBar.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
-	$Uis/Control/SFXBar.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFXS"))
+	music_bar.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music"))
+	sfx_bar.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFXS"))
 	Global.saveGame()
 
 func _on_MusicBar_value_changed(value) -> void:

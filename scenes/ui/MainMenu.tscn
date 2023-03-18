@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://7qaevw385hch"]
+[gd_scene load_steps=15 format=3 uid="uid://7qaevw385hch"]
 
 [ext_resource type="Script" path="res://scripts/ui/MainMenu.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/level/Level.gd" id="2_5ahae"]
 [ext_resource type="TileSet" uid="uid://dcovkjpnowgl0" path="res://textures/Tilesets.tres" id="3_yqfi1"]
 [ext_resource type="Theme" uid="uid://pfjjbicdjjbw" path="res://default.tres" id="8"]
 [ext_resource type="Texture2D" uid="uid://biadbjy7od47x" path="res://textures/uis/easter.png" id="9"]
-[ext_resource type="Texture2D" uid="uid://cwogeqa0fq21u" path="res://textures/uis/little_rage_logo.png" id="10"]
 
 [sub_resource type="Animation" id="Animation_6o1du"]
 resource_name = "RESET"
@@ -273,8 +272,15 @@ offset_top = -76.0
 theme = ExtResource("8")
 text = "Settings"
 
-[node name="BuyButton" type="Button" parent="Buttons"]
+[node name="ShopButtons" type="Control" parent="Buttons"]
 visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BuyButton" type="Button" parent="Buttons/ShopButtons"]
+layout_mode = 0
 offset_left = 175.0
 offset_top = 945.0
 offset_right = 675.0
@@ -283,8 +289,8 @@ scale = Vector2(0.12, 0.12)
 theme = ExtResource("8")
 text = "Buy"
 
-[node name="NextButton" type="Button" parent="Buttons"]
-visible = false
+[node name="NextButton" type="Button" parent="Buttons/ShopButtons"]
+layout_mode = 0
 offset_left = 90.0
 offset_top = 910.0
 offset_right = 590.0
@@ -293,8 +299,8 @@ scale = Vector2(0.12, 0.12)
 theme = ExtResource("8")
 text = "<"
 
-[node name="PreviousButton" type="Button" parent="Buttons"]
-visible = false
+[node name="PreviousButton" type="Button" parent="Buttons/ShopButtons"]
+layout_mode = 0
 offset_left = 270.0
 offset_top = 910.0
 offset_right = 770.0
@@ -303,8 +309,8 @@ scale = Vector2(0.12, 0.12)
 theme = ExtResource("8")
 text = ">"
 
-[node name="QuitShopButton" type="Button" parent="Buttons"]
-visible = false
+[node name="QuitShopButton" type="Button" parent="Buttons/ShopButtons"]
+layout_mode = 0
 offset_left = 90.0
 offset_top = 978.5
 offset_right = 358.0
@@ -323,7 +329,6 @@ anchor_right = 0.5
 offset_left = -659.0
 offset_right = 659.0
 offset_bottom = 508.0
-texture = ExtResource("10")
 stretch_mode = 5
 
 [node name="Splash" type="Label" parent="CanvasLayer"]
@@ -392,7 +397,7 @@ libraries = {
 [connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="Buttons/ShopButton" to="." method="_on_ShopButton_pressed"]
 [connection signal="pressed" from="Buttons/OptionButton" to="." method="_on_OptionButton_pressed"]
-[connection signal="pressed" from="Buttons/BuyButton" to="." method="_on_BuyButton_pressed"]
-[connection signal="pressed" from="Buttons/NextButton" to="." method="_on_NextButton_pressed"]
-[connection signal="pressed" from="Buttons/PreviousButton" to="." method="_on_PreviousButton_pressed"]
-[connection signal="pressed" from="Buttons/QuitShopButton" to="." method="_on_QuitShopButton_pressed"]
+[connection signal="pressed" from="Buttons/ShopButtons/BuyButton" to="." method="_on_BuyButton_pressed"]
+[connection signal="pressed" from="Buttons/ShopButtons/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="Buttons/ShopButtons/PreviousButton" to="." method="_on_PreviousButton_pressed"]
+[connection signal="pressed" from="Buttons/ShopButtons/QuitShopButton" to="." method="_on_QuitShopButton_pressed"]

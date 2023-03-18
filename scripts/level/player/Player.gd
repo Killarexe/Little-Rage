@@ -9,7 +9,21 @@ const ACCEL: float = 7.5
 const UP: Vector2 = Vector2(0, -1)
 const G: float = 20.0
 
+@onready var gui = $GUI
+@onready var skin = $Sprite2D
+@onready var camera = $Camera2D
+@onready var win_menu = $GUI/WinMenu
+@onready var pause_menu = $GUI/PauseMenu
 @onready var audio = $AudioStreamPlayer2D
+@onready var start_timer = $GUI/StartTimer
+@onready var time_count_label = $GUI/TimeCount
+@onready var death_count_label = $GUI/DeathCount
+@onready var android_buttons = $GUI/AndroidButtons
+@onready var jump_button = $GUI/AndroidButtons/JumpButton
+@onready var left_button = $GUI/AndroidButtons/LeftButton
+@onready var right_button = $GUI/AndroidButtons/RightButton
+@onready var pause_button = $GUI/AndroidButtons/PauseButton
+@onready var start_timer_animation = $GUI/StartTimer/AnimationPlayer
 
 var prev_tile_id: Vector2i = Vector2i(-1, -1)
 var max_y: int = 512 : set = set_max_y
@@ -30,42 +44,40 @@ func start(title: bool):
 	else:
 		Global.unablePause()
 	spawnPoint = global_position
-	$GUI/WinMenu.visible = false
-	if(OS.get_name() != "Android"):
-		$GUI/PauseButton.visible = false
-		$GUI/LeftButton.visible = false
-		$GUI/RightButton.visible = false
-		$GUI/JumpButton.visible = false
-	$Camera2D.enabled = enable_camera
-	$Sprite2D.texture = SkinManager.get_current_skin_texture()
+	win_menu.visible = false
+	android_buttons.visible = OS.get_name() == "Android"
+	camera.enabled = enable_camera
+	skin.texture = SkinManager.get_current_skin_texture()
 	if !title:
 		get_tree().paused = true
-		$GUI/StartTimer.text = "3"
-		$GUI/StartTimer/AnimationPlayer.play("count")
-		await $GUI/StartTimer/AnimationPlayer.animation_finished
-		$GUI/StartTimer.text = "2"
-		$GUI/StartTimer/AnimationPlayer.play("count")
-		await $GUI/StartTimer/AnimationPlayer.animation_finished
-		$GUI/StartTimer.text = "1"
-		$GUI/StartTimer/AnimationPlayer.play("count")
-		await $GUI/StartTimer/AnimationPlayer.animation_finished
+		start_timer.text = "3"
+		start_timer_animation.play("count")
+		await start_timer_animation.animation_finished
+		start_timer.text = "2"
+		start_timer_animation.play("count")
+		await start_timer_animation.animation_finished
+		start_timer.text = "1"
+		start_timer_animation.play("count")
+		await start_timer_animation.animation_finished
 		get_tree().paused = false
 	else:
 		set_max_y(2048)
 		spawnPoint = Vector2(205, 850)
 		global_position = spawnPoint
-		$Camera2D.queue_free()
+		camera.queue_free()
 
-func _process(delta):
+func _process(_delta):
 	if !enable_camera:
-		$GUI.visible = false
+		gui.visible = false
 	if(global_position.y >= max_y):
 		die()
 	if(global_position.y >= max_y - max_y / 2):
 		if enable_camera:
-			$Camera2D.position.y = -global_position.y + (max_y - max_y / 2)
+			camera.position.y = -global_position.y + (max_y - max_y / 2)
 	
-	$GUI/DeathCount.text = "Death Count: " + str(deathCount)
+	death_count_label.text = "Death Count: " + str(deathCount)
+	
+	#TODO: Do a better collision system
 	for i in get_slide_collision_count():
 		if get_slide_collision(i).get_collider().name == "Map":
 			var player_cell_position = floor(global_position / 16)
@@ -88,13 +100,9 @@ func _process(delta):
 				get_parent().change_tile(player_ground_full_position, Global.CHECKPOINT_ON_TILE)
 				spawnPoint = (player_cell_position * 16) + Vector2(8, 0)
 			elif tile_ground == Global.ON_TILE && prev_tile_id != Global.OFF_TILE && prev_tile_id != Global.ON_TILE:
-				get_parent().replace_tile_by(Global.ON_TILE, Global.OFF_TILE)
-				get_parent().replace_tile_by(Global.BLUE_EMPTY_TILE, Global.BLUE_FULL_TILE)
-				get_parent().replace_tile_by(Global.RED_FULL_TILE, Global.RED_EMPTY_TILE)
+				get_parent().turn_tiles(false)
 			elif tile_ground == Global.OFF_TILE && prev_tile_id != Global.OFF_TILE && prev_tile_id != Global.ON_TILE:
-				get_parent().replace_tile_by(Global.OFF_TILE, Global.ON_TILE)
-				get_parent().replace_tile_by(Global.RED_EMPTY_TILE, Global.RED_FULL_TILE)
-				get_parent().replace_tile_by(Global.BLUE_FULL_TILE, Global.BLUE_EMPTY_TILE)
+				get_parent().turn_tiles(true)
 			prev_tile_id = tile_ground
 
 func _physics_process(delta):
@@ -111,22 +119,22 @@ func playerController(delta):
 	
 	if(Input.is_action_just_pressed("toggle_ui")):
 		Overlay.visible = !Overlay.visible
-		$GUI/DeathCount.visible = Overlay.visible
-		$GUI/TimeCount.visible = Overlay.visible
+		death_count_label.visible = Overlay.visible
+		time_count_label.visible = Overlay.visible
 	
-	if(Input.is_action_pressed("left") or $GUI/LeftButton.is_pressed()):
+	if(Input.is_action_pressed("left") or left_button.is_pressed()):
 		motion.x -= ACCEL
-		$Sprite2D.flip_h = true
-	elif(Input.is_action_pressed("right") or $GUI/RightButton.is_pressed()):
+		skin.flip_h = true
+	elif(Input.is_action_pressed("right") or right_button.is_pressed()):
 		motion.x += ACCEL
-		$Sprite2D.flip_h = false
+		skin.flip_h = false
 	else:
 		motion.x = lerpf(motion.x, 0, 0.2)
 	
-	if((Input.is_action_pressed("jump") or $GUI/JumpButton.is_pressed())):
+	if((Input.is_action_pressed("jump") or jump_button.is_pressed())):
 		jumpTimer = JUMP_TIME
 		
-	if(jumpTimer > 0 and !(Input.is_action_pressed("jump") or $GUI/JumpButton.is_pressed())):
+	if(jumpTimer > 0 and !(Input.is_action_pressed("jump") or jump_button.is_pressed())):
 		jumpTimer = 0
 		if(motion.y < 0):
 			motion.y = motion.y * 0.5
@@ -137,7 +145,7 @@ func playerController(delta):
 	if(is_on_floor()):
 		if groundTimer < 0:
 			if enable_camera:
-				$Camera2D.position.y = 0
+				camera.position.y = 0
 			is_invinsible = false
 			Global.instanceNodeAtPos(load("res://scenes/prefabs/JumpParticle.tscn"), get_parent(), global_position + Vector2(0, 16))
 		groundTimer = GROUND_TIME
@@ -158,10 +166,10 @@ func playerController(delta):
 
 func finishLevel():
 	audio.playSFX(3)
-	$GUI/PauseMenu.set_paused(false)
+	pause_menu.set_paused(false)
 	Global.unablePause()
 	get_tree().paused = true
-	$GUI/WinMenu.start(self, $GUI/TimeCount)
+	win_menu.start(self, time_count_label)
 
 func die():
 	if is_invinsible:
@@ -178,4 +186,4 @@ func set_max_y(value: int):
 
 func _on_PauseButton_pressed():
 	audio.playSFX(4)
-	$GUI/PauseMenu.set_paused(!$GUI/PauseMenu.is_paused)
+	pause_menu.set_paused(!pause_menu.is_paused)
