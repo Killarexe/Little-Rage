@@ -49,6 +49,7 @@ func start(title: bool):
 	camera.enabled = enable_camera
 	skin.texture = SkinManager.get_current_skin_texture()
 	if !title:
+		Global.unablePause()
 		get_tree().paused = true
 		start_timer.text = "3"
 		start_timer_animation.play("count")
@@ -60,6 +61,7 @@ func start(title: bool):
 		start_timer_animation.play("count")
 		await start_timer_animation.animation_finished
 		get_tree().paused = false
+		Global.ablePause()
 	else:
 		set_max_y(2048)
 		spawnPoint = Vector2(205, 850)

@@ -4,6 +4,7 @@ extends Node
 @onready var left_button = $Levels/LeftButton
 @onready var right_button = $Levels/RightButton
 @onready var level_button = $Levels/LevelButton
+@onready var level_button_text = $Levels/LevelButton/Label
 
 func _ready():
 	MusicPlayer.play_music(0)
@@ -32,7 +33,10 @@ func _on_RightButton_pressed():
 		update_button()
 
 func update_button():
-	level_button.text = "Level " + str(LevelManager.currentLevel + 1)
+	level_button.texture_normal = load("res://textures/uis/level_icons/level" + str(LevelManager.currentLevel + 1) + ".png")
+	level_button_text.text = "Level " + str(LevelManager.currentLevel + 1)
 	best_time_text.text = "Best Time: " + LevelManager.get_level_best_time_str(LevelManager.currentLevel)
 	if LevelManager.currentLevel <= LevelManager.LEVELS.size():
 		level_button.disabled = !LevelManager.is_level_unlocked(LevelManager.currentLevel)
+		if level_button.disabled:
+			level_button.texture_normal = load("res://textures/uis/level_icons/level0.png")
