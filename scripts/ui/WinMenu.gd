@@ -30,7 +30,7 @@ func start(player, timer):
 	
 	var time = int(str(timer_mins) + str(timer_secs) + str(timer_millis))
 	if LevelManager.get_level_best_time(LevelManager.currentLevel) >= time:
-		LevelManager.set_level_best_time(timer_mins, timer_secs, timer_secs)
+		LevelManager.set_level_best_time(timer_mins, timer_secs, timer_millis)
 		best_time = true
 	
 	var num_coins: int = LevelManager.get_number_of_coins(LevelManager.currentLevel)

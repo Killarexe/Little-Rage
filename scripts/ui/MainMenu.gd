@@ -15,6 +15,8 @@ extends Control
 @onready var player_skin = $TitleLevel.get_node("Player/Sprite2D")
 @onready var previous_button = $Buttons/ShopButtons/PreviousButton
 @onready var splash_animation_player = $CanvasLayer/Splash/AnimationPlayer
+var shop_button_pressed: int = 0
+var selectedSkin: int = 0
 
 func _ready():
 	MusicPlayer.play_music(1)
@@ -46,8 +48,9 @@ func _on_ShopButton_pressed():
 	camera_animation_player.play("zoom")
 	await camera_animation_player.animation_finished
 	show_shop(true)
-
-var selectedSkin: int = 0
+	shop_button_pressed += 1
+	if shop_button_pressed >= 10:
+		SkinManager.unhide_skin(6)
 
 func show_shop(showing: bool) -> void:
 	coins_label.visible = showing
@@ -103,16 +106,21 @@ func _on_BuyButton_pressed():
 	updateSprite()
 
 func _on_PreviousButton_pressed():
-	if OS.is_debug_build():
-		if(selectedSkin != SkinManager.SKINS.size() - 1):
-			selectedSkin += 1
-			updateSprite()
-	else:
-		if(selectedSkin != SkinManager.SKINS.size() - 3):
-			selectedSkin += 1
-			updateSprite()
+	for i in range(1, SkinManager.SKINS_DEFAULT.size()):
+		if selectedSkin + i < SkinManager.SKINS_DEFAULT.size():
+			if !SkinManager.is_hidden(selectedSkin + i):
+				selectedSkin += i
+				updateSprite()
+				break;
+		else:
+			break
 
 func _on_NextButton_pressed():
-	if(selectedSkin != 0):
-		selectedSkin -= 1
-		updateSprite()
+	for i in range(1, SkinManager.SKINS_DEFAULT.size()):
+		if selectedSkin - i >= 0:
+			if !SkinManager.is_hidden(selectedSkin - i):
+				selectedSkin -= i
+				updateSprite()
+				break;
+		else:
+			break

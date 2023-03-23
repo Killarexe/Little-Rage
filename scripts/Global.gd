@@ -70,8 +70,8 @@ func saveGame():
 		"current_skin": SkinManager.current_skin,
 		"music_volume": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Music")),
 		"sfxs_volume": AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFXS")),
-		"skins": SkinManager.SKINS,
-		"levels": LevelManager.LEVELS
+		"skins": SkinManager.SKINS_SAVE,
+		"levels": LevelManager.SAVE_LEVELS
 	}
 	saveFile.store_string(JSON.stringify(data))
 	saveFile.close()
@@ -83,20 +83,24 @@ func get_save_var(data: Dictionary, parameter_name: String, default_value: Varia
 
 func loadGame():
 	if(!FileAccess.file_exists(saveFilePath)):
-		saveGame()
+		resetGame()
 		loadGame()
 		return
 	var saveFile: FileAccess = FileAccess.open(saveFilePath, FileAccess.READ)
 	var data = JSON.parse_string(saveFile.get_as_text())
 	if(data == null):
-		saveGame()
+		resetGame()
 		loadGame()
 		return
 	coins = get_save_var(data, "coins", 0)
 	SkinManager.current_skin = get_save_var(data, "current_skin", 0)
 	HatManager.HATS = get_save_var(data, "hats", HatManager.HATS)
-	SkinManager.SKINS = get_save_var(data, "skins", SkinManager.SKINS)
-	LevelManager.LEVELS = get_save_var(data, "levels", LevelManager.LEVELS)
+	SkinManager.SKINS_SAVE = get_save_var(data, "skins", SkinManager.SKINS_DEFAULT)
+	LevelManager.SAVE_LEVELS = get_save_var(data, "levels", LevelManager.LEVELS_DEFAULT)
+	print(LevelManager.SAVE_LEVELS)
+	SkinManager.merge_save_default()
+	LevelManager.merge_save_default()
+	print(LevelManager.SAVE_LEVELS)
 	AudioServer.set_bus_volume_db(
 		AudioServer.get_bus_index("Music"),
 		get_save_var(data, "music_volume", 0)
