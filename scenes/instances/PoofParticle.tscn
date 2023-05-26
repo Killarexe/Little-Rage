@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyfqei8ac0s4p"]
+
+[sub_resource type="Gradient" id="1"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="2"]
+gradient = SubResource("1")
+
+[sub_resource type="ParticleProcessMaterial" id="3"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(10, 10, 10)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("2")
+
+[node name="PoofParticle" type="GPUParticles2D"]
+amount = 32
+process_material = SubResource("3")
+one_shot = true
+explosiveness = 1.0

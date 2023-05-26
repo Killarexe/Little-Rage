@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://bruwtum1c48go"]
+
+[ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_588rf"]
+[ext_resource type="Script" path="res://scripts/uis/PauseMenu.gd" id="1_jwiah"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2vivb"]
+font_size = 64
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_jwiah")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25, 0.25, 0.25, 0.501961)
+
+[node name="Pause" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.5
+offset_right = 23.5
+offset_bottom = 26.0
+grow_horizontal = 2
+theme = ExtResource("1_588rf")
+text = "Pause"
+label_settings = SubResource("LabelSettings_2vivb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -4.0
+offset_right = 256.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="BackToGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_588rf")
+text = "ui.back_to_the_game"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_588rf")
+text = "ui.quit"
+
+[connection signal="pressed" from="VBoxContainer/BackToGameButton" to="." method="_on_back_to_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

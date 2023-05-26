@@ -1,0 +1,170 @@
+[gd_scene load_steps=9 format=3 uid="uid://btth5y287sdm0"]
+
+[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/DefaultLevel.tscn" id="1_dbihm"]
+[ext_resource type="Script" path="res://scripts/uis/LevelEditor.gd" id="1_pdpng"]
+[ext_resource type="Texture2D" uid="uid://buw3bxnswai6i" path="res://assets/textures/ui/pause.png" id="2_kolu2"]
+[ext_resource type="Texture2D" uid="uid://k4siyrr0ptjm" path="res://assets/textures/ui/save.png" id="3_av76s"]
+[ext_resource type="Script" path="res://scripts/uis/DisableEditingCursor.gd" id="4_23hv3"]
+[ext_resource type="Texture2D" uid="uid://bnq26jdctplio" path="res://assets/textures/ui/open.png" id="4_go505"]
+[ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="7_18qsw"]
+[ext_resource type="Script" path="res://scripts/uis/LevelSettingsMenu.gd" id="7_f4puj"]
+
+[node name="LevelEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pdpng")
+
+[node name="DefaultLevel" parent="." instance=ExtResource("1_dbihm")]
+mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Tiles" type="ItemList" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 160.0
+grow_vertical = 2
+icon_mode = 0
+icon_scale = 4.0
+script = ExtResource("4_23hv3")
+editor = NodePath("../..")
+
+[node name="SaveFileDialog" type="FileDialog" parent="CanvasLayer"]
+position = Vector2i(20, 40)
+size = Vector2i(1240, 670)
+ok_button_text = "Save"
+dialog_text = "ui.save"
+access = 1
+filters = PackedStringArray("*.tres ; Godot Resource File")
+show_hidden_files = true
+
+[node name="LoadFileDialog" type="FileDialog" parent="CanvasLayer"]
+title = "Open a File"
+position = Vector2i(20, 40)
+size = Vector2i(1240, 670)
+ok_button_text = "Open"
+dialog_text = "ui.save"
+file_mode = 0
+access = 1
+filters = PackedStringArray("*.tres ; Godot Resource File")
+show_hidden_files = true
+
+[node name="PlayButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_bottom = 80.0
+grow_horizontal = 0
+texture_normal = ExtResource("2_kolu2")
+stretch_mode = 0
+script = ExtResource("4_23hv3")
+editor = NodePath("../..")
+
+[node name="SaveButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("3_av76s")
+stretch_mode = 0
+script = ExtResource("4_23hv3")
+editor = NodePath("../..")
+
+[node name="LoadButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -80.0
+offset_right = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("4_go505")
+stretch_mode = 0
+script = ExtResource("4_23hv3")
+editor = NodePath("../..")
+
+[node name="LevelSettingsMenu" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_f4puj")
+editor = NodePath("../..")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/LevelSettingsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5, 0.5, 0.5, 0.501961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelSettingsMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -16.0
+offset_right = 160.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_18qsw")
+alignment = 1
+
+[node name="LevelDescription" type="TextEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+theme = ExtResource("7_18qsw")
+placeholder_text = "ui.level_description"
+
+[node name="LevelName" type="LineEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_18qsw")
+placeholder_text = "ui.level_name"
+
+[node name="LevelDifficulty" type="OptionButton" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("7_18qsw")
+alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
+offset_left = 1000.0
+offset_top = 640.0
+offset_right = 1080.0
+offset_bottom = 720.0
+texture_normal = ExtResource("3_av76s")
+stretch_mode = 0
+script = ExtResource("4_23hv3")
+editor = NodePath("../..")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+
+[connection signal="empty_clicked" from="CanvasLayer/Tiles" to="." method="_on_tiles_empty_clicked"]
+[connection signal="item_selected" from="CanvasLayer/Tiles" to="." method="_on_tiles_item_selected"]
+[connection signal="confirmed" from="CanvasLayer/SaveFileDialog" to="." method="_on_save_file_dialog_confirmed"]
+[connection signal="file_selected" from="CanvasLayer/LoadFileDialog" to="." method="_on_load_file_dialog_file_selected"]
+[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SettingsButton" to="CanvasLayer/LevelSettingsMenu" method="_on_settings_button_pressed"]

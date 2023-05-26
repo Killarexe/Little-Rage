@@ -1,0 +1,36 @@
+id,en,fr
+ui.title,Little Rage,Little Rage
+ui.singleplayer,Singleplayer,Solo
+ui.multiplayer,Multiplayer,Multijoueur
+ui.multiplayer.local,Local,Locale
+ui.multiplayer.online,Online,En ligne
+ui.level_selection,Level Seclection,Sélection de niveau
+ui.pause,Pause,Pause
+ui.back_to_the_game,Back to the Game,Retour au Jeu
+ui.quit,Quit,Quitter
+ui.settings,Settings,Paramètres
+ui.shop,Shop,Magasin
+ui.buy,Buy,Acheter
+ui.coins,Coins,Pièces
+ui.select,Select,Séléctioner
+ui.selected,Selected,Séléctionée
+ui.skins,Skins,Skins
+ui.hats,Hats,Chapeaux
+ui.settings.music_volume,Music Volume,Volume de Musique
+ui.settings.sound_effect_volume,Sound Effect Volume,Volume d’éffect de son
+ui.settings.reset_save,Reset Save,Effacer la Sauvegarde
+ui.default_splash_text,Splash Text,Texte
+ui.play,Play,Jouer
+ui.level_editor,Level Editor,Editeur de Niveau
+ui.save_level,Save Level,Sauvegarder le Niveau
+ui.load_level,Load Level,Charger un Niveau
+ui.close,Close,Fermer
+ui.back,Back,Retour
+ui.level.name,Level Name,Nom du Niveau
+ui.level.difficulty,Level Difficulty,Difficulté du Niveau
+ui.level.description,Level Description,Description du Niveau
+ui.beginer_friendly,Beginer Friendly,Tuto
+ui.level.difficulty.easy,Easy,Facile
+ui.level.difficulty.normal,Normal,Normale
+ui.level.difficulty.hard,Hard,Dur
+ui.level.difficulty.extreme,EXTREME,EXTREME

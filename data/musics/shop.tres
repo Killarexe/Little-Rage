@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Music" load_steps=2 format=3 uid="uid://svsh83xl08ph"]
+
+[ext_resource type="Script" path="res://scripts/sound/Music.gd" id="1_ann7h"]
+
+[resource]
+script = ExtResource("1_ann7h")
+type = 1
+id = ""

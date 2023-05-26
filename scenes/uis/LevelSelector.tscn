@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi2ylttoym0l5"]
+
+[ext_resource type="Script" path="res://scripts/uis/LevelSelector.gd" id="1_fqa51"]
+[ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="2_oyb7t"]
+
+[node name="LevelSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fqa51")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -24.0
+offset_right = 60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_oyb7t")
+text = "ui.play"
+
+[node name="BackButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_oyb7t")
+text = "ui.back"
+
+[node name="LevelList" type="ItemList" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 320.0
+grow_vertical = 2
+theme = ExtResource("2_oyb7t")
+max_text_lines = 5
+
+[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="item_selected" from="CanvasLayer/LevelList" to="." method="_on_level_list_item_selected"]

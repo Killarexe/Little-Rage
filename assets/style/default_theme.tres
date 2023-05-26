@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://becgxgj56yfdh"]
+
+[ext_resource type="FontFile" uid="uid://bxxfsfwp420vt" path="res://assets/style/fonts/default.ttf" id="1_acdc6"]
+
+[resource]
+default_font = ExtResource("1_acdc6")
+VBoxContainer/constants/separation = 16
