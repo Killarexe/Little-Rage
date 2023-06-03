@@ -124,7 +124,7 @@ position_smoothing_enabled = true
 libraries = {
 "": SubResource("AnimationLibrary_bvw5b")
 }
-blend_times = [&"land", &"RESET", 1.0, &"jump", &"RESET", 1.0, &"jump", &"land", 1.0, &"jump", &"jump", 1.0]
+blend_times = [&"jump", &"RESET", 1.0, &"jump", &"jump", 1.0, &"jump", &"land", 1.0, &"land", &"RESET", 1.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0

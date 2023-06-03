@@ -135,12 +135,12 @@ alignment = 1
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("7_18qsw")
-placeholder_text = "ui.level_description"
+placeholder_text = "ui.level.description"
 
 [node name="LevelName" type="LineEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("7_18qsw")
-placeholder_text = "ui.level_name"
+placeholder_text = "ui.level.name"
 
 [node name="LevelDifficulty" type="OptionButton" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
 layout_mode = 2

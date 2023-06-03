@@ -17,11 +17,11 @@ func setup():
 		emit_signal("mouse_exited")
 
 func _ready():
-	level_diffculty_select.add_item("ui.beginer_friendly")
-	level_diffculty_select.add_item("ui.easy")
-	level_diffculty_select.add_item("ui.normal")
-	level_diffculty_select.add_item("ui.hard")
-	level_diffculty_select.add_item("ui.extreme")
+	level_diffculty_select.add_item("ui.level.difficulty.beginer_friendly")
+	level_diffculty_select.add_item("ui.level.difficulty.easy")
+	level_diffculty_select.add_item("ui.level.difficulty.normal")
+	level_diffculty_select.add_item("ui.level.difficulty.hard")
+	level_diffculty_select.add_item("ui.level.difficulty.extreme")
 	level_diffculty_select.select(2)
 	setup()
 

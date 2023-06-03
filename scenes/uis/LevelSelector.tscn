@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi2ylttoym0l5"]
+[gd_scene load_steps=4 format=3 uid="uid://bi2ylttoym0l5"]
 
 [ext_resource type="Script" path="res://scripts/uis/LevelSelector.gd" id="1_fqa51"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="2_oyb7t"]
+[ext_resource type="LabelSettings" uid="uid://cd8gvl774mr2v" path="res://assets/style/label_settings/medium_label.tres" id="3_nmy32"]
 
 [node name="LevelSelector" type="Control"]
 layout_mode = 3
@@ -13,6 +14,29 @@ grow_vertical = 2
 script = ExtResource("1_fqa51")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 320.0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="LevelName" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_oyb7t")
+text = "ui.level.name"
+label_settings = ExtResource("3_nmy32")
+
+[node name="LevelDescription" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_oyb7t")
+text = "ui.level.description"
+label_settings = ExtResource("3_nmy32")
+
+[node name="LevelDifficulty" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_oyb7t")
+text = "ui.level.difficulty"
+label_settings = ExtResource("3_nmy32")
 
 [node name="PlayButton" type="Button" parent="CanvasLayer"]
 anchors_preset = 7

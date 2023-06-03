@@ -29,7 +29,7 @@ ui.back,Back,Retour
 ui.level.name,Level Name,Nom du Niveau
 ui.level.difficulty,Level Difficulty,Difficulté du Niveau
 ui.level.description,Level Description,Description du Niveau
-ui.beginer_friendly,Beginer Friendly,Tuto
+ui.level.difficulty.beginer_friendly,Beginer Friendly,Débutant
 ui.level.difficulty.easy,Easy,Facile
 ui.level.difficulty.normal,Normal,Normale
 ui.level.difficulty.hard,Hard,Dur
