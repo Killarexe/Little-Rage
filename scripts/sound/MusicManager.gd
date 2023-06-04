@@ -4,6 +4,8 @@ const MUSIC_DIR_PATH: String = "res://data/musics"
 
 var musics: Array[Music] = []
 
+var volume: float = 100.0
+
 func _ready():
 	bus = "Music"
 	var resources: Array[ResourceElement] = DataLoader.new().load_data_in_dir(MUSIC_DIR_PATH, "music")

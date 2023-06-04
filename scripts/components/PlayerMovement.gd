@@ -4,6 +4,9 @@ class_name PlayerMovement
 @export var skin: PlayerSkinSprite
 @export var animation_player: AnimationPlayer
 
+signal on_win
+signal on_death
+
 const MAX_FALL_SPEED: float = 500.0
 const GROUND_TIME: float = 0.2
 const JUMP_FORCE: float = 350.0
@@ -95,7 +98,8 @@ func _physics_process(delta):
 	motion = velocity
 
 func die():
+	on_death.emit()
 	global_position = spawn_point
 
 func finish_level():
-	print("Level finished!")
+	on_win.emit()

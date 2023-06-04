@@ -1,7 +1,66 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://becgxgj56yfdh"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://becgxgj56yfdh"]
 
 [ext_resource type="FontFile" uid="uid://bxxfsfwp420vt" path="res://assets/style/fonts/default.ttf" id="1_acdc6"]
+[ext_resource type="Texture2D" uid="uid://ct5qcjb44pgbc" path="res://assets/textures/ui/slider/grabber.png" id="1_c5ag8"]
+[ext_resource type="Texture2D" uid="uid://bx7ki3vi62o7y" path="res://assets/textures/ui/slider/grabber_disabled.png" id="2_ykj1c"]
+[ext_resource type="Texture2D" uid="uid://bx5dpl1tfv7et" path="res://assets/textures/ui/slider/grabber_highlight.png" id="3_pcam4"]
+
+[sub_resource type="Image" id="Image_b31mw"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 4
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_4ahxf"]
+image = SubResource("Image_b31mw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lss7y"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2ejb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufqt8"]
+content_margin_left = 4.0
+content_margin_top = 16.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
 
 [resource]
 default_font = ExtResource("1_acdc6")
+HSlider/constants/grabber_offset = 0
+HSlider/icons/grabber = ExtResource("1_c5ag8")
+HSlider/icons/grabber_disabled = ExtResource("2_ykj1c")
+HSlider/icons/grabber_highlight = ExtResource("3_pcam4")
+HSlider/icons/tick = SubResource("ImageTexture_4ahxf")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_lss7y")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_f2ejb")
+HSlider/styles/slider = SubResource("StyleBoxFlat_ufqt8")
 VBoxContainer/constants/separation = 16

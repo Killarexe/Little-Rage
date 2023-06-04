@@ -71,13 +71,12 @@ func on_mouse_exited():
 func _on_save_file_dialog_confirmed():
 	var level: Level = Level.new()
 	var tmp_array: PackedStringArray = save_dialog.current_path.split("/")
-	var level_name: String = tmp_array[tmp_array.size() - 1]
-	if !level_settings.level_name.is_empty():
-		level_name = level_settings.level_name
+	var level_name: String = level_settings.level_name
 	level_map.mode = LevelPlayer.Mode.PLAY
 	var packed_scene: PackedScene = PackedScene.new()
 	packed_scene.pack(level_map)
 	level_map.mode = LevelPlayer.Mode.EDIT
+	print(level_name)
 	level.id = level_name.to_lower().replace(" ", "_")
 	level.name = level_name
 	level.mode = Level.Mode.RACE

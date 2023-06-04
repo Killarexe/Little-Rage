@@ -27,3 +27,23 @@ func _ready():
 
 func _on_settings_button_pressed():
 	setup()
+
+
+func _on_level_description_text_changed():
+	description = level_description_edit.text
+
+func _on_level_name_text_changed(new_text):
+	level_name = new_text
+
+func _on_level_difficulty_item_selected(index):
+	match index:
+		0:
+			difficulty = Level.Difficulty.BEGINER_FRIENDLY
+		1:
+			difficulty = Level.Difficulty.EASY
+		2:
+			difficulty = Level.Difficulty.NORMAL
+		3:
+			difficulty = Level.Difficulty.HARD
+		4:
+			difficulty = Level.Difficulty.EXTREME 
