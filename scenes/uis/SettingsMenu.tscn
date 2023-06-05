@@ -103,4 +103,6 @@ grow_vertical = 0
 theme = ExtResource("4_tdetm")
 text = "ui.back"
 
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer/MusicVolume/Slider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/VBoxContainer/SoundEffectVolume/Slider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]

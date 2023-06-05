@@ -6,10 +6,10 @@ func _ready():
 	$CanvasLayer/Logo/AnimationPlayer.play("logo_move")
 
 func _on_editor_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/uis/LevelEditor.tscn")
+	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")
 
 func _on_settings_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/uis/SettingsMenu.tscn")
+	SceneManager.change_scene("res://scenes/uis/SettingsMenu.tscn")
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/uis/LevelSelector.tscn")
+	SceneManager.change_scene("res://scenes/uis/LevelSelector.tscn")

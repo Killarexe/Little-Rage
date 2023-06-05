@@ -25,6 +25,8 @@ LevelManager="*res://scripts/level/LevelManager.gd"
 MusicManager="*res://scripts/sound/MusicManager.gd"
 PlayerSkinManager="*res://scripts/level/player/PlayerSkinManager.gd"
 PlayerHatManager="*res://scripts/level/player/PlayerHatManager.gd"
+SceneManager="*res://scenes/globals/SceneManager.tscn"
+DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 
 [display]
 
@@ -37,6 +39,10 @@ window/stretch/mode="viewport"
 [editor]
 
 movie_writer/movie_file="/home/killarexe/Bureau/Projets/Godot/LittleRage/builds/movies/movie.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/discord-sdk-gd/plugin.cfg")
 
 [input]
 

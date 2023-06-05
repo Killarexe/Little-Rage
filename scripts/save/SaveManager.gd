@@ -19,6 +19,8 @@ func save():
 	var data: Dictionary = DEFAULT_SAVE.duplicate()
 	
 	data["coins"] = Global.coins
+	data["music_volume"] = MusicManager.music_volume
+	data["sound_effects_volume"] = MusicManager.sound_effect_volume
 	
 	save_file.store_string(JSON.stringify(data))
 	save_file.close()
@@ -40,3 +42,5 @@ func load_save():
 	var data: Dictionary = JSON.parse_string(save_file.get_as_text())
 	if data:
 		Global.coins = get_or_create_value(data, "coins")
+		MusicManager.set_music_volume(get_or_create_value(data, "music_volume"))
+		MusicManager.sound_effect_volume = get_or_create_value(data, "sound_effects_volume")

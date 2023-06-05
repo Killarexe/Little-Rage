@@ -51,7 +51,7 @@ func is_editing() -> bool:
 	return level_map.mode == LevelPlayer.Mode.EDIT
 
 func _draw():
-	if can_place:
+	if can_place && selected_tile < 0:
 		var offset: Vector2i = tile_set.get_source(1).get_tile_id(selected_tile)
 		draw_texture_rect_region(atlas, Rect2(tile_pos * 16, Vector2(16, 16)), Rect2(16 * offset.x, 16 * offset.y, 16, 16))
 	#TODO: Player spawn draw
@@ -92,6 +92,7 @@ func _on_load_file_dialog_file_selected(path):
 	var level: Resource = ResourceLoader.load(path)
 	if level is Level:
 		level_map.queue_free()
+		level_settings.set_settings(level)
 		level_map = Global.instanceNode(level.scene, self)
 		level_map.set_mode(LevelPlayer.Mode.EDIT)
 

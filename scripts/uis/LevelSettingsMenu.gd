@@ -25,9 +25,16 @@ func _ready():
 	level_diffculty_select.select(2)
 	setup()
 
+func set_settings(level: Level):
+	level_name = level.name
+	description = level.description
+	difficulty = level.difficulty
+	level_name_edit.text = level_name
+	level_description_edit.text = description
+	level_diffculty_select.select(int(difficulty))
+
 func _on_settings_button_pressed():
 	setup()
-
 
 func _on_level_description_text_changed():
 	description = level_description_edit.text

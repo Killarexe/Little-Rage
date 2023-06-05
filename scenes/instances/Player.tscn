@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bkwmpwrjnhece"]
+[gd_scene load_steps=12 format=3 uid="uid://bkwmpwrjnhece"]
 
 [ext_resource type="Script" path="res://scripts/components/PlayerMovement.gd" id="1_l7flj"]
 [ext_resource type="Script" path="res://scripts/level/player/SoundEffectPlayer.gd" id="2_alfuh"]
 [ext_resource type="PackedScene" uid="uid://1qv3udmr8sxh" path="res://scenes/instances/PlayerSkin.tscn" id="3_tlygq"]
 [ext_resource type="Texture2D" uid="uid://c8kxkf324k7v" path="res://assets/textures/level_backgrounds/suface_blur.png" id="4_1alsf"]
 [ext_resource type="PackedScene" uid="uid://bruwtum1c48go" path="res://scenes/instances/PauseMenu.tscn" id="5_iaj63"]
+[ext_resource type="PackedScene" uid="uid://c027b4usebimx" path="res://scenes/instances/WinMenu.tscn" id="6_6ee8y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ve1"]
 size = Vector2(16, 32)
@@ -142,3 +143,5 @@ texture = ExtResource("4_1alsf")
 offset = Vector2(636, 0)
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_iaj63")]
+
+[node name="WinMenu" parent="." instance=ExtResource("6_6ee8y")]

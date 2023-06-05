@@ -6,5 +6,13 @@ enum Type{
 	MENU
 }
 
-@export var stream: AudioStream = AudioStream.new()
+@export var streams: Array[AudioStream] = []
 @export var type: Type = Type.MENU
+
+func get_stream_from_index(index: int) -> AudioStream:
+	if index < streams.size():
+		return streams[index]
+	return streams[0]
+
+func get_stream() -> AudioStream:
+	return get_stream_from_index(randi_range(0, streams.size() - 1))

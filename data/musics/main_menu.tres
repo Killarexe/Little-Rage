@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Music" load_steps=3 format=3 uid="uid://4k1gtukny5en"]
+[gd_resource type="Resource" script_class="Music" load_steps=4 format=3 uid="uid://4k1gtukny5en"]
 
 [ext_resource type="Script" path="res://scripts/sound/Music.gd" id="1_i7xfv"]
 [ext_resource type="AudioStream" uid="uid://cai2ppfnpgp" path="res://assets/musics/smk_title_bit.wav" id="2_6c8up"]
+[ext_resource type="AudioStream" uid="uid://bqlfpaxgd5p6i" path="res://assets/musics/smk_curcuit.wav" id="3_3rxiy"]
 
 [resource]
 script = ExtResource("1_i7xfv")
-stream = ExtResource("2_6c8up")
+streams = Array[AudioStream]([ExtResource("2_6c8up"), ExtResource("3_3rxiy")])
 type = 1
 id = "main_menu"
