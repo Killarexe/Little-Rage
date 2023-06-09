@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name PlayerMovement
 
 @export var skin: PlayerSkinSprite
-@export var animation_player: AnimationPlayer
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 signal on_win
 signal on_death
@@ -25,6 +25,7 @@ var jump_particle: Resource = load("res://scenes/instances/JumpParticle.tscn")
 
 func _ready():
 	spawn_point = global_position
+	animation_tree.active = true
 
 func _physics_process(delta):
 	if global_position.y >= 512:
@@ -36,8 +37,10 @@ func _physics_process(delta):
 	ground_timer -= delta
 	
 	motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
-	skin.scale.x = lerpf(skin.scale.x, abs(velocity.x) / MAX_SPEED / 8 + 1, 0.2)
-	skin.scale.y = lerpf(skin.scale.y, abs(motion.y) / MAX_FALL_SPEED / 3 + 1, 0.2)
+	animation_tree["parameters/conditions/is_idle"] = velocity.x == 0
+	animation_tree["parameters/conditions/is_moving"] = !animation_tree["parameters/conditions/is_idle"]
+	scale.x = lerpf(scale.x, abs(velocity.x) / MAX_SPEED / 8 + 1, 0.2)
+	scale.y = lerpf(scale.y, abs(motion.y) / MAX_FALL_SPEED / 3 + 1, 0.2)
 	if Input.is_action_pressed("left"):
 		skin.flip_h = true
 		motion.x -= ACCEL
@@ -56,16 +59,13 @@ func _physics_process(delta):
 			motion.y = motion.y * 0.5
 	
 	if is_on_floor():
+		animation_tree["parameters/conditions/is_landing"] = ground_timer < 0
 		if ground_timer < 0:
 			is_invinsible = false
-			animation_player.stop()
-			animation_player.play("land")
 			Global.instanceNodeAtPos(jump_particle, get_parent(), global_position + Vector2(0, 16))
 		ground_timer = GROUND_TIME
-	
+	animation_tree["parameters/conditions/is_jumping"] = (jump_timer > 0) && (ground_timer > 0)
 	if (jump_timer > 0) && (ground_timer > 0):
-		animation_player.stop()
-		animation_player.play("jump")
 		Global.instanceNodeAtPos(jump_particle, get_parent(), global_position + Vector2(0, 16))
 		motion.y = -JUMP_FORCE
 		jump_timer = 0

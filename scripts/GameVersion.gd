@@ -5,9 +5,9 @@ var upper: int = 0
 var middle: int = 0
 var down: int = 0
 
-static func from(upper: int, middle: int, down: int) -> GameVersion:
+static func from(upper_: int, middle_: int, down_: int) -> GameVersion:
 	var version = GameVersion.new()
-	version.upper = upper
-	version.middle = middle
-	version.down = down 
+	version.upper = upper_
+	version.middle = middle_
+	version.down = down_
 	return version

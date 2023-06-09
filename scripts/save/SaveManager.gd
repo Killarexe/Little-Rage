@@ -9,7 +9,8 @@ const DEFAULT_SAVE: Dictionary = {
 	"level_times": {},
 	"music_volume": 100.0,
 	"sound_effects_volume": 100.0,
-	"coins": 0
+	"coins": 0,
+	"lang": "en"
 }
 
 func save():
@@ -21,6 +22,7 @@ func save():
 	data["coins"] = Global.coins
 	data["music_volume"] = MusicManager.music_volume
 	data["sound_effects_volume"] = MusicManager.sound_effect_volume
+	data["lang"] = TranslationServer.get_locale()
 	
 	save_file.store_string(JSON.stringify(data))
 	save_file.close()
@@ -41,6 +43,7 @@ func load_save():
 	var save_file: FileAccess = FileAccess.open(SAVE_FILE, FileAccess.READ)
 	var data: Dictionary = JSON.parse_string(save_file.get_as_text())
 	if data:
+		TranslationServer.set_locale(get_or_create_value(data, "lang"))
 		Global.coins = get_or_create_value(data, "coins")
 		MusicManager.set_music_volume(get_or_create_value(data, "music_volume"))
 		MusicManager.sound_effect_volume = get_or_create_value(data, "sound_effects_volume")

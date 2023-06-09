@@ -109,3 +109,6 @@ func _on_save_button_pressed():
 
 func _on_load_button_pressed():
 	load_dialog.show()
+
+func _on_quit_button_pressed():
+	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")

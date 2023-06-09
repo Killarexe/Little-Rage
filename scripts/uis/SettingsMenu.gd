@@ -6,7 +6,7 @@ func _ready():
 	$CanvasLayer/VBoxContainer/SoundEffectVolume/Slider.set_value_no_signal(MusicManager.sound_effect_volume)
 
 func _on_back_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/uis/MainMenu.tscn")
+	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
 
 func _on_sfx_slider_value_changed(value):
 	MusicManager.sound_effect_volume = value

@@ -18,9 +18,9 @@ func _on_level_list_item_selected(index):
 	play_button.disabled = false
 	level_index = index
 	var level: Level = LevelManager.levels[index]
-	level_name.text = TranslationServer.translate("ui.level.name") +  " : " + level.name
-	level_description.text = TranslationServer.translate("ui.level.description") + " :\n" + level.description
-	level_difficulty.text = TranslationServer.translate("ui.level.difficulty") + " : " + TranslationServer.translate(Level.difficulty_to_str(level.difficulty))
+	level_name.text = TranslationServer.translate("ui.level.name") +  " : " + level.name + "\n"
+	level_description.text = TranslationServer.translate("ui.level.description") + " :\n" + level.description + "\n"
+	level_difficulty.text = TranslationServer.translate("ui.level.difficulty") + " :\n" + TranslationServer.translate(Level.difficulty_to_str(level.difficulty)) + "\n"
 
 func _on_play_button_pressed():
 	print(LevelManager.levels[level_index].scene.instantiate().mode)

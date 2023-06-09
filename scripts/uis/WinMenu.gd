@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 class_name WinMenu
 
 enum Mode{
@@ -20,18 +20,21 @@ func _ready():
 func on_player_win():
 	open(Mode.SINGLEPLAYER)
 
-func open(mode: Mode):
+func open(mode_: Mode):
 	MusicManager.play_music("level_win")
-	match mode:
+	get_tree().paused = true
+	Global.can_pause = false
+	match mode_:
 		Mode.SINGLEPLAYER:
 			singleplayer.visible = true
 		Mode.MULTIPLAYER:
 			multiplayer_control.visible = true
 
 func exit():
+	Global.can_pause = true
 	match mode:
 		Mode.SINGLEPLAYER:
-			pass
+			SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
 		Mode.MULTIPLAYER:
 			#Return to lobby
 			pass

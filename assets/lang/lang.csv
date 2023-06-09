@@ -6,7 +6,7 @@ ui.multiplayer.local,Local,Locale
 ui.multiplayer.online,Online,En ligne
 ui.level_selection,Level Seclection,Sélection de niveau
 ui.pause,Pause,Pause
-ui.back_to_the_game,Back to the Game,Retour au Jeu
+ui.back_to_game,Back to Game,Retour au Jeu
 ui.quit,Quit,Quitter
 ui.settings,Settings,Paramètres
 ui.shop,Shop,Magasin
@@ -34,3 +34,7 @@ ui.level.difficulty.easy,Easy,Facile
 ui.level.difficulty.normal,Normal,Normale
 ui.level.difficulty.hard,Hard,Dur
 ui.level.difficulty.extreme,EXTREME,EXTREME
+ui.back_to_menu,Back To Menu,Retour au Menu
+ui.level.complete,Level Complete,Niveau Terminée
+ui.level.win,You Win,Tu as gagnée
+ui.level.loose,You Loose,Perdu

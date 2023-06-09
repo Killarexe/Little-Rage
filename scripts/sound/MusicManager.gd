@@ -9,6 +9,7 @@ var sound_effect_volume: float = 100.0
 
 func _ready():
 	bus = "Music"
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	var resources: Array[ResourceElement] = DataLoader.new().load_data_in_dir(MUSIC_DIR_PATH, "music")
 	for resource in resources:
 		if resource is Music:

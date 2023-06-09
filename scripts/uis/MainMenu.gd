@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	get_tree().paused = false
 	MusicManager.play_music("main_menu")
 	$Camera2D/AnimationPlayer.play("scroll")
 	$CanvasLayer/Logo/AnimationPlayer.play("logo_move")
@@ -13,3 +14,6 @@ func _on_settings_button_pressed():
 
 func _on_play_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/LevelSelector.tscn")
+
+func _on_multiplayer_button_pressed():
+	SceneManager.change_scene("res://scenes/uis/MultiplayerSelection.tscn")

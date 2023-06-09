@@ -14,8 +14,15 @@ enum Difficulty{
 	EXTREME
 }
 
-static func mode_to_str(mode: Mode) -> String:
-	match mode:
+@export var scene: PackedScene = PackedScene.new()
+@export var name: String = ""
+@export var description: String = ""
+@export var mode: Mode = Mode.RACE
+@export var difficulty: Difficulty = Difficulty.NORMAL
+@export var is_hidden: bool = false
+
+static func mode_to_str(mode_: Mode) -> String:
+	match mode_:
 		Mode.RACE:
 			return "ui.level.mode.race"
 		Mode.BATTLE:
@@ -35,10 +42,3 @@ static func difficulty_to_str(diffuculty: Difficulty) -> String:
 		Difficulty.EXTREME:
 			return "ui.level.difficulty.extreme"
 	return "ui.unknown"
-
-@export var scene: PackedScene = PackedScene.new()
-@export var name: String = ""
-@export var description: String = ""
-@export var mode: Mode = Mode.RACE
-@export var difficulty: Difficulty = Difficulty.NORMAL
-@export var is_hidden: bool = false
