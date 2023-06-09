@@ -23,8 +23,10 @@ func _on_level_list_item_selected(index):
 	level_difficulty.text = TranslationServer.translate("ui.level.difficulty") + " :\n" + TranslationServer.translate(Level.difficulty_to_str(level.difficulty)) + "\n"
 
 func _on_play_button_pressed():
-	print(LevelManager.levels[level_index].scene.instantiate().mode)
-	get_tree().change_scene_to_packed(LevelManager.levels[level_index].scene)
+	var level: Level = LevelManager.levels[level_index]
+	DiscordRPCManager.update_rpc("Playing level '" + level.name + "'", "basicicon", "Playing level '" + level.name + "'",)
+	print(level.scene.instantiate().mode)
+	get_tree().change_scene_to_packed(level.scene)
 
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/uis/MainMenu.tscn")

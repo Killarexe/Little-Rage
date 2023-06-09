@@ -48,7 +48,7 @@ alignment = 1
 [node name="BackToGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_588rf")
-text = "ui.back_to_the_game"
+text = "ui.back_to_game"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

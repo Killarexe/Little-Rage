@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cals3vw0vj1j7"]
+[gd_scene load_steps=11 format=3 uid="uid://cals3vw0vj1j7"]
 
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_fjp12"]
 [ext_resource type="Script" path="res://scripts/uis/MainMenu.gd" id="1_ucjxi"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cto6ho6cpiuyw" path="res://assets/textures/ui/little_rage_logo.png" id="3_4yirm"]
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/DefaultLevel.tscn" id="4_tof8e"]
 [ext_resource type="Animation" uid="uid://b52wj1p1e1ckf" path="res://assets/animations/logo_move.res" id="6_6jai1"]
-[ext_resource type="Script" path="res://addons/discord-sdk-gd/nodes/debug.gd" id="7_2unr6"]
 
 [sub_resource type="Animation" id="Animation_u5ewi"]
 length = 0.001
@@ -85,15 +84,12 @@ mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DiscordSDKDebug" type="Node" parent="CanvasLayer"]
-script = ExtResource("7_2unr6")
-
 [node name="Logo" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 320.0
-offset_right = 960.0
+offset_left = -320.0
+offset_right = 320.0
 offset_bottom = 360.0
 grow_horizontal = 2
 texture = ExtResource("3_4yirm")
@@ -124,11 +120,6 @@ layout_mode = 2
 theme = ExtResource("1_fjp12")
 text = "ui.singleplayer"
 
-[node name="SettingsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("1_fjp12")
-text = "ui.settings"
-
 [node name="MultiplayerButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_fjp12")
@@ -139,7 +130,18 @@ layout_mode = 2
 theme = ExtResource("1_fjp12")
 text = "ui.level_editor"
 
+[node name="SettingsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fjp12")
+text = "ui.settings"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fjp12")
+text = "ui.quit"
+
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/EditorButton" to="." method="_on_editor_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

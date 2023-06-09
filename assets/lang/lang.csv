@@ -38,3 +38,4 @@ ui.back_to_menu,Back To Menu,Retour au Menu
 ui.level.complete,Level Complete,Niveau Terminée
 ui.level.win,You Win,Tu as gagnée
 ui.level.loose,You Loose,Perdu
+ui.settings.language,Language,Language

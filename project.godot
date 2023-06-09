@@ -27,7 +27,7 @@ PlayerSkinManager="*res://scripts/level/player/PlayerSkinManager.gd"
 PlayerHatManager="*res://scripts/level/player/PlayerHatManager.gd"
 SceneManager="*res://scenes/globals/SceneManager.tscn"
 DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
-DiscordRpcManager="*res://scripts/DiscordRPCManager.gd"
+DiscordRPCManager="*res://scripts/DiscordRPCManager.gd"
 Overlay="*res://scenes/globals/Overlay.tscn"
 
 [display]

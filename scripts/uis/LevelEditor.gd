@@ -17,6 +17,7 @@ var can_place: bool = false
 var selected_tile: int = -1
 
 func _ready():
+	DiscordRPCManager.update_rpc("In Editor", "basicicon", "In Editor")
 	var tileset_source: TileSetSource = tile_set.get_source(1)
 	for tile in tileset_source.get_tiles_count():
 		var atlas_coord: Vector2i = tileset_source.get_tile_id(tile) * Vector2i(16, 16)

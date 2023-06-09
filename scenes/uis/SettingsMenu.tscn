@@ -93,6 +93,23 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 theme = ExtResource("4_tdetm")
 
+[node name="Language" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 2
+
+[node name="Text" type="Label" parent="CanvasLayer/VBoxContainer/Language"]
+layout_mode = 2
+theme = ExtResource("4_tdetm")
+text = "ui.settings.language"
+label_settings = ExtResource("6_a5c82")
+
+[node name="MenuButton" type="OptionButton" parent="CanvasLayer/VBoxContainer/Language"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+theme = ExtResource("4_tdetm")
+icon_alignment = 1
+expand_icon = true
+
 [node name="BackButton" type="Button" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
@@ -105,4 +122,5 @@ text = "ui.back"
 
 [connection signal="value_changed" from="CanvasLayer/VBoxContainer/MusicVolume/Slider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/VBoxContainer/SoundEffectVolume/Slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="item_selected" from="CanvasLayer/VBoxContainer/Language/MenuButton" to="." method="_on_menu_button_item_selected"]
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
