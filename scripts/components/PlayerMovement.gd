@@ -21,14 +21,16 @@ var ground_timer: float = 0
 var is_invinsible: bool = false
 var motion: Vector2 = Vector2()
 var spawn_point: Vector2 = Vector2()
+var y_limit: int = Level.DEFAULT_Y_LIMIT
 var jump_particle: Resource = load("res://scenes/instances/JumpParticle.tscn")
 
 func _ready():
 	spawn_point = global_position
 	animation_tree.active = true
+	y_limit = LevelManager.get_current_level().y_limit
 
 func _physics_process(delta):
-	if global_position.y >= 512:
+	if global_position.y >= y_limit:
 		die()
 	motion.y += G
 	if(motion.y > MAX_FALL_SPEED):

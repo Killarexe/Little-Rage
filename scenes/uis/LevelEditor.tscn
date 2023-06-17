@@ -165,6 +165,13 @@ layout_mode = 2
 theme = ExtResource("7_18qsw")
 alignment = 1
 
+[node name="YLimit" type="SpinBox" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
+layout_mode = 2
+min_value = 128.0
+max_value = 512.0
+value = 128.0
+prefix = "ui.level.y_limit"
+
 [node name="SettingsButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
 offset_left = 1000.0
 offset_top = 640.0
@@ -191,4 +198,5 @@ zoom = Vector2(1.5, 1.5)
 [connection signal="text_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDescription" to="CanvasLayer/LevelSettingsMenu" method="_on_level_description_text_changed"]
 [connection signal="text_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelName" to="CanvasLayer/LevelSettingsMenu" method="_on_level_name_text_changed"]
 [connection signal="item_selected" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDifficulty" to="CanvasLayer/LevelSettingsMenu" method="_on_level_difficulty_item_selected"]
+[connection signal="value_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/YLimit" to="CanvasLayer/LevelSettingsMenu" method="_on_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/SettingsButton" to="CanvasLayer/LevelSettingsMenu" method="_on_settings_button_pressed"]

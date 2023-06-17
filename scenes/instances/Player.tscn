@@ -100,7 +100,7 @@ states/PlayerAnimationsland/node = SubResource("AnimationNodeAnimation_4noqw")
 states/PlayerAnimationsland/position = Vector2(694, 293)
 states/Start/position = Vector2(182, 293)
 transitions = ["PlayerAnimationsidle", "PlayerAnimationsjump", SubResource("AnimationNodeStateMachineTransition_w6gmk"), "PlayerAnimationsjump", "PlayerAnimationsland", SubResource("AnimationNodeStateMachineTransition_sbdkm"), "PlayerAnimationsland", "PlayerAnimationsidle", SubResource("AnimationNodeStateMachineTransition_g1ju6"), "Start", "PlayerAnimationsidle", SubResource("AnimationNodeStateMachineTransition_ywm55"), "PlayerAnimationsidle", "PlayerAnimationsRESET", SubResource("AnimationNodeStateMachineTransition_icb6y"), "PlayerAnimationsRESET", "PlayerAnimationsidle", SubResource("AnimationNodeStateMachineTransition_jugc6"), "PlayerAnimationsRESET", "PlayerAnimationsjump", SubResource("AnimationNodeStateMachineTransition_t871q"), "PlayerAnimationsRESET", "PlayerAnimationsland", SubResource("AnimationNodeStateMachineTransition_whx3i")]
-graph_offset = Vector2(55, 197.643)
+graph_offset = Vector2(43, 114.643)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_8hbvw"]
 
@@ -128,7 +128,7 @@ libraries = {
 "": SubResource("AnimationLibrary_pm6cf"),
 "PlayerAnimations": ExtResource("4_jqgtb")
 }
-blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_vqbm5")

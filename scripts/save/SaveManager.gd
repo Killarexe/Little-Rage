@@ -9,6 +9,7 @@ const DEFAULT_SAVE: Dictionary = {
 	"level_times": {},
 	"music_volume": 100.0,
 	"sound_effects_volume": 100.0,
+	"discord_rpc": true,
 	"coins": 0,
 	"lang": "en"
 }
@@ -23,6 +24,7 @@ func save():
 	data["music_volume"] = MusicManager.music_volume
 	data["sound_effects_volume"] = MusicManager.sound_effect_volume
 	data["lang"] = TranslationServer.get_locale()
+	data["discord_rpc"] = DiscordRPCManager.enable_discord_rpc
 	
 	save_file.store_string(JSON.stringify(data))
 	save_file.close()
@@ -47,3 +49,4 @@ func load_save():
 		Global.coins = get_or_create_value(data, "coins")
 		MusicManager.set_music_volume(get_or_create_value(data, "music_volume"))
 		MusicManager.sound_effect_volume = get_or_create_value(data, "sound_effects_volume")
+		DiscordRPCManager.enable_discord_rpc = get_or_create_value(data, "discord_rpc")

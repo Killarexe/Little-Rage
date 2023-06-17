@@ -14,5 +14,8 @@ func load_data_in_dir(dir_path: String, type: String) -> Array[ResourceElement]:
 		elif file.ends_with(".tres"):
 			var resource: Resource = ResourceLoader.load(dir_path + "/" + file, type)
 			if resource is ResourceElement:
-				result.append(resource)
+				if result.map(func(res): if res.id == resource.id: return res).size() > 0:
+					print("Resource element confilct: Two %s with the same id '%s'" % type, resource.id)
+				else:
+					result.append(resource)
 	return result

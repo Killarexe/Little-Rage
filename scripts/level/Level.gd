@@ -14,12 +14,19 @@ enum Difficulty{
 	EXTREME
 }
 
-@export var scene: PackedScene = PackedScene.new()
+const DEFAULT_NAME: String = "MyLevel"
+const DEFAULT_Y_LIMIT: int = 512
+const DEFAULT_MODE: Mode = Mode.RACE
+const DEFAULT_DESCRIPTION: String = "Hello, world!"
+const DEFAULT_DIFFICULTY: Difficulty = Difficulty.NORMAL
+
 @export var name: String = ""
-@export var description: String = ""
-@export var mode: Mode = Mode.RACE
-@export var difficulty: Difficulty = Difficulty.NORMAL
+@export var y_limit: int = DEFAULT_Y_LIMIT
+@export var mode: Mode = DEFAULT_MODE
 @export var is_hidden: bool = false
+@export var description: String = ""
+@export var scene: PackedScene = PackedScene.new()
+@export var difficulty: Difficulty = DEFAULT_DIFFICULTY
 
 static func mode_to_str(mode_: Mode) -> String:
 	match mode_:

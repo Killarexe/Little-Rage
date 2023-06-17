@@ -1,4 +1,5 @@
 extends ResourceElement
+class_name PlayerSoundEffect
 
 enum Type{
 	JUMP,

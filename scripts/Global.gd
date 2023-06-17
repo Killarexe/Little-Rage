@@ -20,5 +20,9 @@ func instanceNode(node: Object, parent: Object) -> Object:
 	parent.add_child(nodeInstance)
 	return nodeInstance 
 
+func reset_save():
+	save.create_save()
+	save.load_save()
+
 func save_game():
 	save.save()
