@@ -3,6 +3,7 @@ class_name PlayerMovement
 
 @export var skin: PlayerSkinSprite
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var sound_effect_manager: SoundEffectPlayer = $SoundEffectPlayer
 
 signal on_win
 signal on_death
@@ -27,6 +28,7 @@ var jump_particle: Resource = load("res://scenes/instances/JumpParticle.tscn")
 func _ready():
 	spawn_point = global_position
 	animation_tree.active = true
+	print(LevelManager.get_current_level())
 	y_limit = LevelManager.get_current_level().y_limit
 
 func _physics_process(delta):
@@ -68,6 +70,7 @@ func _physics_process(delta):
 		ground_timer = GROUND_TIME
 	animation_tree["parameters/conditions/is_jumping"] = (jump_timer > 0) && (ground_timer > 0)
 	if (jump_timer > 0) && (ground_timer > 0):
+		sound_effect_manager.play_sfx("classic_jump")
 		Global.instanceNodeAtPos(jump_particle, get_parent(), global_position + Vector2(0, 16))
 		motion.y = -JUMP_FORCE
 		jump_timer = 0
@@ -100,6 +103,7 @@ func _physics_process(delta):
 	motion = velocity
 
 func die():
+	sound_effect_manager.play_rand_sfx(PlayerSoundEffect.Type.DIE)
 	on_death.emit()
 	global_position = spawn_point
 

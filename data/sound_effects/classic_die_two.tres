@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerSoundEffect" load_steps=3 format=3 uid="uid://dvvafdttu5q41"]
+
+[ext_resource type="Script" path="res://scripts/level/player/PlayerSoundEffect.gd" id="1_in8kb"]
+[ext_resource type="AudioStream" uid="uid://cwi8k3p8gk03p" path="res://assets/sound_effects/die2.wav" id="2_d7p3t"]
+
+[resource]
+script = ExtResource("1_in8kb")
+stream = ExtResource("2_d7p3t")
+type = 2
+pitch_max_offset = 0.5
+id = "classic_die_two"

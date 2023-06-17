@@ -38,9 +38,11 @@ func _unhandled_input(event):
 func _process(_delta):
 	mouse_pos = camera.get_global_mouse_position()
 	is_panning = Input.is_action_pressed("middle_click")
+	if Input.is_action_just_pressed("pause"):
+		selected_tile = -1
 	if selected_tile < 0:
 		can_place = false
-	if can_place:
+	if can_place && !level_settings.visible:
 		tile_pos = floor(mouse_pos / 16)
 		if Input.is_action_pressed("left_click"):
 			level_map.change_tile_and_update(tile_pos, tile_set.get_source(1).get_tile_id(selected_tile))
@@ -83,6 +85,7 @@ func _on_save_file_dialog_confirmed():
 	level.is_hidden = false
 	level.description = level_settings.description
 	level.difficulty = level_settings.difficulty
+	level.y_limit = level_settings.y_limit
 	level.scene = packed_scene
 	if !save_dialog.current_path.ends_with(".tres"):
 		save_dialog.current_path += ".tres"

@@ -5,6 +5,7 @@ enum Type{
 	JUMP,
 	KNOCKBACK,
 	DIE,
+	LAND
 }
 
 @export var stream: AudioStream = AudioStream.new()

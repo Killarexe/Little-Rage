@@ -2,6 +2,7 @@ class_name DataLoader
 
 func load_data_in_dir(dir_path: String, type: String) -> Array[ResourceElement]:
 	var result: Array[ResourceElement] = []
+	var id_array: Array[String] = []
 	var dir: DirAccess = DirAccess.open(dir_path)
 	if !dir:
 		print("Failed to read dir '%s'" % dir_path)
@@ -14,8 +15,9 @@ func load_data_in_dir(dir_path: String, type: String) -> Array[ResourceElement]:
 		elif file.ends_with(".tres"):
 			var resource: Resource = ResourceLoader.load(dir_path + "/" + file, type)
 			if resource is ResourceElement:
-				if result.map(func(res): if res.id == resource.id: return res).size() > 0:
-					print("Resource element confilct: Two %s with the same id '%s'" % type, resource.id)
+				if id_array.has(resource.id):
+					print("Resource element confilct: Two " + type + " with the same id '" + resource.id + "'")
 				else:
+					id_array.append(resource.id)
 					result.append(resource)
 	return result

@@ -13,10 +13,6 @@ var difficulty: Level.Difficulty = Level.DEFAULT_DIFFICULTY
 
 func setup():
 	visible = !visible
-	if visible:
-		emit_signal("mouse_entered")
-	else:
-		emit_signal("mouse_exited")
 
 func _ready():
 	level_diffculty_select.add_item("ui.level.difficulty.beginer_friendly")

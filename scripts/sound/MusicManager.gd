@@ -28,6 +28,9 @@ func get_music(music_id: String) -> Music:
 
 func play_rand_music(type: Music.Type):
 	var musics_type: Array[Music] = musics.duplicate().map(func(m): if m.type == type: return m)
+	if musics_type.size() <= 0:
+		print("Failed to play random music typed: " + str(type))
+		return
 	var index: int = randi_range(0, musics_type.size() - 1)
 	stop()
 	stream = musics_type[index].get_stream()

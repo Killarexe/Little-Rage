@@ -1,4 +1,5 @@
 extends AudioStreamPlayer2D
+class_name SoundEffectPlayer
 
 const SFX_DIR_PATH: String = "res://data/sound_effects"
 
@@ -26,17 +27,22 @@ func get_sfx(sfx_id: String) -> PlayerSoundEffect:
 	return null
 
 func play_rand_sfx(type: PlayerSoundEffect.Type):
-	var sfxs_type: Array[PlayerSoundEffect] = sfxs.map(func(m): if m.type == type: return m)
+	var sfxs_type: Array = sfxs.map(func(m): if m.type == type: return m)
+	if sfxs_type[0] == null:
+		print("Failed to play random sfx typed: " + str(type))
+		return
 	var index: int = randi_range(0, sfxs_type.size() - 1)
 	stop()
-	stream = sfxs_type[index].get_stream()
+	pitch_scale = randf()*1+sfxs_type[index].pitch_max_offset
+	stream = sfxs_type[index].stream
 	play()
 
 func play_sfx(sfx_id: String):
 	var sfx: PlayerSoundEffect = get_sfx(sfx_id)
 	if sfx != null:
 		stop()
-		stream = sfx.get_stream()
+		pitch_scale = randf()*1+sfx.pitch_max_offset
+		stream = sfx.stream
 		play()
 	else:
 		print("Failed to play sfx: '" + sfx_id + "'")
