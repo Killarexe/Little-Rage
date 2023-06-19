@@ -14,6 +14,7 @@ var mouse_pos: Vector2 = Vector2()
 var tile_pos: Vector2 = Vector2()
 var is_panning: bool = false
 var can_place: bool = false
+var not_saved: bool = false
 var selected_tile: int = -1
 
 func _ready():
@@ -42,13 +43,19 @@ func _process(_delta):
 		selected_tile = -1
 	if selected_tile < 0:
 		can_place = false
-	if can_place && !level_settings.visible:
+	if can_place:
 		tile_pos = floor(mouse_pos / 16)
 		if Input.is_action_pressed("left_click"):
+			not_saved = true
 			level_map.change_tile_and_update(tile_pos, tile_set.get_source(1).get_tile_id(selected_tile))
 		elif Input.is_action_pressed("right_click"):
 			level_map.remove_tile_and_update(tile_pos)
+			not_saved = true
 	queue_redraw()
+
+func checked_if_not_saved() -> void:
+	if not_saved:
+		$CanvasLayer/SaveConfirmationDialog.popup_centered()
 
 func is_editing() -> bool:
 	return level_map.mode == LevelPlayer.Mode.EDIT
@@ -73,23 +80,28 @@ func on_mouse_exited():
 
 func _on_save_file_dialog_confirmed():
 	var level: Level = Level.new()
-	var level_name: String = level_settings.level_name
-	level_map.mode = LevelPlayer.Mode.PLAY
 	var packed_scene: PackedScene = PackedScene.new()
+	var level_name: String = level_settings.level_name
+	
+	level_map.mode = LevelPlayer.Mode.PLAY
+	
 	packed_scene.pack(level_map)
-	level_map.mode = LevelPlayer.Mode.EDIT
-	print(level_name)
-	level.id = level_name.to_lower().replace(" ", "_")
+	
 	level.name = level_name
-	level.mode = Level.Mode.RACE
 	level.is_hidden = false
-	level.description = level_settings.description
-	level.difficulty = level_settings.difficulty
-	level.y_limit = level_settings.y_limit
 	level.scene = packed_scene
+	level.mode = Level.Mode.RACE
+	level.y_limit = level_settings.y_limit
+	level.difficulty = level_settings.difficulty
+	level.description = level_settings.description
+	level.id = level_name.to_lower().replace(" ", "_")
+	
 	if !save_dialog.current_path.ends_with(".tres"):
 		save_dialog.current_path += ".tres"
 	ResourceSaver.save(level, save_dialog.current_path)
+	
+	level_map.mode = LevelPlayer.Mode.EDIT
+	
 	LevelManager.load_levels()
 
 func _on_load_file_dialog_file_selected(path):
@@ -109,10 +121,16 @@ func _on_play_button_pressed():
 		level_map.set_mode(LevelPlayer.Mode.EDIT)
 
 func _on_save_button_pressed():
-	save_dialog.show()
+	checked_if_not_saved()
+	save_dialog.popup_centered()
 
 func _on_load_button_pressed():
-	load_dialog.show()
+	checked_if_not_saved()
+	load_dialog.popup_centered()
 
 func _on_quit_button_pressed():
+	checked_if_not_saved()
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
+
+func _on_level_settings_menu_on_settings_changed():
+	not_saved = true

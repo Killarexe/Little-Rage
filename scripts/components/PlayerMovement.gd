@@ -28,8 +28,9 @@ var jump_particle: Resource = load("res://scenes/instances/JumpParticle.tscn")
 func _ready():
 	spawn_point = global_position
 	animation_tree.active = true
-	print(LevelManager.get_current_level())
-	y_limit = LevelManager.get_current_level().y_limit
+	var current_level: Level = LevelManager.get_current_level()
+	if current_level != null:
+		y_limit = LevelManager.get_current_level().y_limit
 
 func _physics_process(delta):
 	if global_position.y >= y_limit:

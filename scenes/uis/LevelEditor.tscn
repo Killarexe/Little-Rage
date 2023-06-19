@@ -35,6 +35,13 @@ icon_scale = 4.0
 script = ExtResource("4_23hv3")
 editor = NodePath("../..")
 
+[node name="SaveConfirmationDialog" type="ConfirmationDialog" parent="CanvasLayer"]
+title = "ui.save_level"
+size = Vector2i(222, 100)
+ok_button_text = "ui.save"
+dialog_text = "ui.level_editor.save_option"
+cancel_button_text = "ui.dont_save"
+
 [node name="SaveFileDialog" type="FileDialog" parent="CanvasLayer"]
 position = Vector2i(20, 40)
 size = Vector2i(1240, 670)
@@ -114,6 +121,16 @@ stretch_mode = 0
 script = ExtResource("4_23hv3")
 editor = NodePath("../..")
 
+[node name="SettingsButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
+offset_left = 1000.0
+offset_top = 640.0
+offset_right = 1080.0
+offset_bottom = 720.0
+texture_normal = ExtResource("9_2llvw")
+stretch_mode = 0
+script = ExtResource("4_23hv3")
+editor = NodePath("../..")
+
 [node name="LevelSettingsMenu" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
 layout_mode = 3
 anchors_preset = 15
@@ -168,19 +185,18 @@ alignment = 1
 [node name="YLimit" type="SpinBox" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
 layout_mode = 2
 min_value = 128.0
-max_value = 512.0
+max_value = 1024.0
 value = 128.0
 prefix = "ui.level.y_limit"
 
-[node name="SettingsButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
-offset_left = 1000.0
+[node name="BackButton" type="TextureButton" parent="CanvasLayer/LevelSettingsMenu"]
+layout_mode = 0
+offset_left = 910.0
 offset_top = 640.0
-offset_right = 1080.0
+offset_right = 990.0
 offset_bottom = 720.0
-texture_normal = ExtResource("9_2llvw")
-stretch_mode = 0
-script = ExtResource("4_23hv3")
-editor = NodePath("../..")
+texture_normal = ExtResource("7_l3wyl")
+stretch_mode = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
@@ -193,10 +209,12 @@ zoom = Vector2(1.5, 1.5)
 [connection signal="pressed" from="CanvasLayer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SettingsButton" to="CanvasLayer/LevelSettingsMenu" method="_on_settings_button_pressed"]
 [connection signal="mouse_entered" from="CanvasLayer/LevelSettingsMenu" to="." method="on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/LevelSettingsMenu" to="." method="on_mouse_exited"]
+[connection signal="on_settings_changed" from="CanvasLayer/LevelSettingsMenu" to="." method="_on_level_settings_menu_on_settings_changed"]
 [connection signal="text_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDescription" to="CanvasLayer/LevelSettingsMenu" method="_on_level_description_text_changed"]
 [connection signal="text_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelName" to="CanvasLayer/LevelSettingsMenu" method="_on_level_name_text_changed"]
 [connection signal="item_selected" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDifficulty" to="CanvasLayer/LevelSettingsMenu" method="_on_level_difficulty_item_selected"]
 [connection signal="value_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/YLimit" to="CanvasLayer/LevelSettingsMenu" method="_on_slider_value_changed"]
-[connection signal="pressed" from="CanvasLayer/SettingsButton" to="CanvasLayer/LevelSettingsMenu" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSettingsMenu/BackButton" to="CanvasLayer/LevelSettingsMenu" method="_on_back_button_pressed"]

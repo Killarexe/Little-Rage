@@ -1,6 +1,8 @@
 extends DisableEditingCursor
 class_name LevelSettingsMenu
 
+signal on_settings_changed
+
 @onready var level_name_edit: LineEdit = $VBoxContainer/LevelName
 @onready var level_description_edit: TextEdit = $VBoxContainer/LevelDescription
 @onready var level_diffculty_select: OptionButton = $VBoxContainer/LevelDifficulty
@@ -11,9 +13,6 @@ var level_name: String = Level.DEFAULT_NAME
 var description: String = Level.DEFAULT_DESCRIPTION
 var difficulty: Level.Difficulty = Level.DEFAULT_DIFFICULTY
 
-func setup():
-	visible = !visible
-
 func _ready():
 	level_diffculty_select.add_item("ui.level.difficulty.beginer_friendly")
 	level_diffculty_select.add_item("ui.level.difficulty.easy")
@@ -22,24 +21,28 @@ func _ready():
 	level_diffculty_select.add_item("ui.level.difficulty.extreme")
 	level_y_limit.set_value_no_signal(y_limit)
 	level_diffculty_select.select(2)
-	setup()
+	visible = false
 
 func set_settings(level: Level):
 	level_name = level.name
-	description = level.description
+	y_limit = level.y_limit
 	difficulty = level.difficulty
+	description = level.description
 	level_name_edit.text = level_name
 	level_description_edit.text = description
 	level_diffculty_select.select(int(difficulty))
+	level_y_limit.set_value_no_signal(level.y_limit)
 
 func _on_settings_button_pressed():
-	setup()
+	visible = true
 
 func _on_level_description_text_changed():
 	description = level_description_edit.text
+	emit_signal("on_settings_changed")
 
 func _on_level_name_text_changed(new_text):
 	level_name = new_text
+	emit_signal("on_settings_changed")
 
 func _on_level_difficulty_item_selected(index):
 	match index:
@@ -52,7 +55,12 @@ func _on_level_difficulty_item_selected(index):
 		3:
 			difficulty = Level.Difficulty.HARD
 		4:
-			difficulty = Level.Difficulty.EXTREME 
+			difficulty = Level.Difficulty.EXTREME
+	emit_signal("on_settings_changed")
 
 func _on_slider_value_changed(value):
 	y_limit = value
+	emit_signal("on_settings_changed")
+
+func _on_back_button_pressed():
+	visible = false
