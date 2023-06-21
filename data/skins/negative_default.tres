@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerSkin" load_steps=3 format=3 uid="uid://d08hqgq254pc3"]
+
+[ext_resource type="Script" path="res://scripts/level/player/PlayerSkin.gd" id="1_12ewh"]
+[ext_resource type="Texture2D" uid="uid://cncn2os1byxc7" path="res://assets/textures/player/skins/playernegative.png" id="2_kl64p"]
+
+[resource]
+script = ExtResource("1_12ewh")
+texture = ExtResource("2_kl64p")
+cost = 20
+is_hidden = false
+id = "negative_default"
