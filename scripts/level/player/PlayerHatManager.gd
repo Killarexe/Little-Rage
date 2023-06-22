@@ -13,7 +13,7 @@ func _ready():
 		if resource is PlayerHat:
 			hats.append(resource)
 
-func get_current_hat_texture() -> Image:
+func get_current_hat_texture() -> CompressedTexture2D:
 	return get_hat(current_hat).texture
 
 func get_hat(hat_id: String) -> PlayerHat:

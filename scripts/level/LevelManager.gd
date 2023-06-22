@@ -17,6 +17,8 @@ func load_levels():
 		if resource is Level:
 			default_levels.append(resource.id)
 			levels.append(resource)
+	if !DirAccess.dir_exists_absolute(LevelManager.EXTERNAL_LEVELS_DIR):
+		!DirAccess.make_dir_absolute(LevelManager.EXTERNAL_LEVELS_DIR)
 	var external_resources: Array[ResourceElement] = DataLoader.new().load_data_in_dir(EXTERNAL_LEVELS_DIR, "level")
 	for resource in external_resources:
 		if resource is Level:

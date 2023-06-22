@@ -89,6 +89,7 @@ func _physics_process(delta):
 			var cell: TileData = collider.get_cell_tile_data(0, pos)
 			if cell != null:
 				var type = cell.get_custom_data("type")
+				#TODO: All types
 				if type != null && type is int:
 					match type:
 						2:

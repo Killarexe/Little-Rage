@@ -40,3 +40,6 @@ ui.level.win,You Win,Tu as gagnée
 ui.level.loose,You Loose,Perdu
 ui.settings.language,Language,Language
 ui.settings.discord_rpc,Discord Itegration,Itegration Discord
+ui.dont_save,Don’t Save,Ne pas Enregistrer
+ui.save,Save,Enregistrer
+ui.update,A new update is avaliable!,Une nouvelle mise à jour est disponible!

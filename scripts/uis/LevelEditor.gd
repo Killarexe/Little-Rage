@@ -7,6 +7,7 @@ class_name LevelEditor
 @onready var load_dialog: FileDialog = $CanvasLayer/LoadFileDialog
 @onready var save_dialog: FileDialog = $CanvasLayer/SaveFileDialog
 @onready var level_settings: LevelSettingsMenu = $CanvasLayer/LevelSettingsMenu
+@onready var save_confirmation_dialog: ConfirmationDialog = $CanvasLayer/SaveConfirmationDialog
 
 var atlas: CompressedTexture2D = load("res://assets/textures/tileset.png")
 var tile_set: TileSet = load("res://assets/Tileset.tres")
@@ -53,9 +54,11 @@ func _process(_delta):
 			not_saved = true
 	queue_redraw()
 
-func checked_if_not_saved() -> void:
+func checked_if_not_saved() -> StringName:
 	if not_saved:
-		$CanvasLayer/SaveConfirmationDialog.popup_centered()
+		save_confirmation_dialog.popup_centered()
+		return await save_confirmation_dialog.custom_action
+	return ""
 
 func is_editing() -> bool:
 	return level_map.mode == LevelPlayer.Mode.EDIT
@@ -79,6 +82,7 @@ func on_mouse_exited():
 	can_place = true
 
 func _on_save_file_dialog_confirmed():
+	save_dialog.current_path = LevelManager.EXTERNAL_LEVELS_DIR
 	var level: Level = Level.new()
 	var packed_scene: PackedScene = PackedScene.new()
 	var level_name: String = level_settings.level_name
@@ -121,16 +125,23 @@ func _on_play_button_pressed():
 		level_map.set_mode(LevelPlayer.Mode.EDIT)
 
 func _on_save_button_pressed():
-	checked_if_not_saved()
 	save_dialog.popup_centered()
 
 func _on_load_button_pressed():
-	checked_if_not_saved()
-	load_dialog.popup_centered()
+	if await checked_if_not_saved() == "cancel":
+		load_dialog.popup_centered()
+	else:
+		_on_save_button_pressed()
+		await save_dialog.confirmed
+		load_dialog.popup_centered()
 
 func _on_quit_button_pressed():
-	checked_if_not_saved()
-	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
+	if await checked_if_not_saved() == "cancel":
+		SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
+	else:
+		_on_save_button_pressed()
+		await save_dialog.confirmed
+		SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
 
 func _on_level_settings_menu_on_settings_changed():
 	not_saved = true

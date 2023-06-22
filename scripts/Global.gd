@@ -5,7 +5,6 @@ var GAME_VERSION: GameVersion = GameVersion.from(0, 4, 0)
 
 var save: SaveManager = SaveManager.new()
 var can_pause: bool = true
-var coins: int = 0
 
 func _ready():
 	save.load_save()
