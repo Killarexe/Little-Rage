@@ -19,8 +19,8 @@ func _ready():
 	level_diffculty_select.add_item("ui.level.difficulty.normal")
 	level_diffculty_select.add_item("ui.level.difficulty.hard")
 	level_diffculty_select.add_item("ui.level.difficulty.extreme")
-	level_y_limit.set_value_no_signal(y_limit)
 	level_diffculty_select.select(2)
+	level_y_limit.value = y_limit
 	visible = false
 
 func set_settings(level: Level):

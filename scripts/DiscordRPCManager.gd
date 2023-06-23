@@ -15,7 +15,6 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	if !enable_discord_rpc:
 		return
-	discord_sdk.debug()
 	discord_sdk.app_id = 807516321830666292
 	discord_sdk.details = "A Small Simple 2D Platformer made by Killar.exe"
 	discord_sdk.large_image = "icon"
@@ -25,4 +24,5 @@ func _ready():
 		print("Can't run Discord RPC: No Discord found...")
 		return
 	print("Running Discord RPC...")
+	discord_sdk.debug()
 	update_rpc("Playing...", "basicicon", "Playing...")

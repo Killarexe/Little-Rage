@@ -26,3 +26,5 @@ func _on_quit_button_pressed():
 	Global.save_game()
 	get_tree().quit()
 
+func _on_update_checker_on_update_checked(flag: GameVersion.GameVersionFlag):
+	$CanvasLayer/UpdateLabel.visible = flag == GameVersion.GameVersionFlag.HIGHER

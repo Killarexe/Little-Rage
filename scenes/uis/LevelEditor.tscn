@@ -38,7 +38,7 @@ editor = NodePath("../..")
 
 [node name="SaveConfirmationDialog" type="ConfirmationDialog" parent="CanvasLayer"]
 title = "ui.save_level"
-size = Vector2i(222, 100)
+size = Vector2i(320, 192)
 ok_button_text = "ui.save"
 dialog_text = "ui.level_editor.save_option"
 cancel_button_text = "ui.dont_save"

@@ -43,3 +43,4 @@ ui.settings.discord_rpc,Discord Itegration,Itegration Discord
 ui.dont_save,Don’t Save,Ne pas Enregistrer
 ui.save,Save,Enregistrer
 ui.update,A new update is avaliable!,Une nouvelle mise à jour est disponible!
+ui.level_editor.save_option,Do you want to save before ?,Voulez vous enregistrer avant ?

@@ -42,7 +42,7 @@ func _process(_delta):
 	is_panning = Input.is_action_pressed("middle_click")
 	if Input.is_action_just_pressed("pause"):
 		selected_tile = -1
-	if selected_tile < 0:
+	if selected_tile < 0 || level_settings.visible:
 		can_place = false
 	if can_place:
 		tile_pos = floor(mouse_pos / 16)
