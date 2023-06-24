@@ -39,3 +39,20 @@ func is_skin_hidden(skin_id: String) -> bool:
 
 func is_skin_unlocked(skin_id: String) -> bool:
 	return unlocked_skins.has(skin_id)
+
+func pick_random() -> String:
+	if skins.size() <= 0:
+		return "default"
+	var overall_chance: int = 0
+	for skin in skins:
+		if !skin.is_hidden:
+			overall_chance += skin.chance
+	var random_number = randi() % overall_chance
+	var offset: int = 0
+	for skin in skins:
+		if !skin.is_hidden:
+			if random_number < skin.chance + offset:
+				return skin.id
+			else:
+				offset += skin.chance
+	return "default"

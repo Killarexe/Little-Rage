@@ -39,3 +39,20 @@ func is_hat_hidden(hat_id: String) -> bool:
 
 func is_hat_unlocked(hat_id: String) -> bool:
 	return unlocked_hats.has(hat_id)
+
+func pick_random() -> String:
+	if hats.size() <= 0:
+		return ""
+	var overall_chance: int = 0
+	for hat in hats:
+		if !hat.is_hidden:
+			overall_chance += hat.chance
+	var random_number = randi() % overall_chance
+	var offset: int = 0
+	for hat in hats:
+		if !hat.is_hidden:
+			if random_number < hat.chance + offset:
+				return hat.id
+			else:
+				offset += hat.chance
+	return ""

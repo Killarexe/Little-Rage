@@ -10,6 +10,7 @@ const DEFAULT_SAVE: Dictionary = {
 	"music_volume": 100.0,
 	"sound_effects_volume": 100.0,
 	"discord_rpc": true,
+	"has_loot_box": false,
 	"lang": "en"
 }
 
