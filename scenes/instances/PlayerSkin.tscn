@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://1qv3udmr8sxh"]
+[gd_scene load_steps=3 format=3 uid="uid://1qv3udmr8sxh"]
 
 [ext_resource type="Script" path="res://scripts/components/PlayerSkinSprite.gd" id="1_1ffn5"]
+[ext_resource type="Script" path="res://scripts/components/PlayerHatSprite.gd" id="2_b7bam"]
 
 [node name="Skin" type="Sprite2D"]
 script = ExtResource("1_1ffn5")
+
+[node name="PlayerHatSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+script = ExtResource("2_b7bam")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -2

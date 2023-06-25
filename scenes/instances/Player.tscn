@@ -104,11 +104,10 @@ graph_offset = Vector2(43, 114.643)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_8hbvw"]
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("skin")]
+[node name="Player" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_l7flj")
-skin = NodePath("Skin")
 
 [node name="SoundEffectPlayer" type="AudioStreamPlayer2D" parent="."]
 bus = &"Sound Effects"
@@ -158,3 +157,9 @@ offset = Vector2(636, 0)
 
 [node name="WinMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_6ee8y")]
 player = NodePath("..")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name PlayerMovement
 
-@export var skin: PlayerSkinSprite
+@onready var skin: PlayerSkinSprite = $Skin
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var sound_effect_manager: SoundEffectPlayer = $SoundEffectPlayer
 
@@ -111,3 +111,6 @@ func die():
 
 func finish_level():
 	on_win.emit()
+
+func _on_timer_timeout():
+	pass

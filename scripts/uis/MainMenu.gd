@@ -6,6 +6,7 @@ func _ready():
 	MusicManager.play_music("main_menu")
 	$Camera2D/AnimationPlayer.play("scroll")
 	$CanvasLayer/Logo/AnimationPlayer.play("logo_move")
+	$CanvasLayer/SplashText/AnimationPlayer.play("zoom")
 
 func _on_editor_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")
