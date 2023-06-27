@@ -1,11 +1,12 @@
 extends CharacterBody2D
 class_name PlayerMovement
 
+@onready var timer: PlayerTimer = $Timer
 @onready var skin: PlayerSkinSprite = $Skin
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var sound_effect_manager: SoundEffectPlayer = $SoundEffectPlayer
 
-signal on_win
+signal on_win(time: Array[int])
 signal on_death
 
 const MAX_FALL_SPEED: float = 500.0
@@ -110,7 +111,4 @@ func die():
 	global_position = spawn_point
 
 func finish_level():
-	on_win.emit()
-
-func _on_timer_timeout():
-	pass
+	on_win.emit(timer.get_time())

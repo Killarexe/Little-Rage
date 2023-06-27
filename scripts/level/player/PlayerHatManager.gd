@@ -40,6 +40,9 @@ func is_hat_hidden(hat_id: String) -> bool:
 func is_hat_unlocked(hat_id: String) -> bool:
 	return unlocked_hats.has(hat_id)
 
+func has_a_hat() -> bool:
+	return !current_hat.is_empty()
+
 func pick_random() -> String:
 	if hats.size() <= 0:
 		return ""

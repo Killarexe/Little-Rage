@@ -7,6 +7,7 @@ func _ready():
 	$CanvasLayer/VBoxContainer/MusicVolume/Slider.set_value_no_signal(MusicManager.music_volume)
 	$CanvasLayer/VBoxContainer/SoundEffectVolume/Slider.set_value_no_signal(MusicManager.sound_effect_volume)
 	$CanvasLayer/VBoxContainer/DiscordRPC.set_pressed_no_signal(DiscordRPCManager.enable_discord_rpc)
+	$CanvasLayer/SoundTrackButton.visible = randf() <= 0.05
 	for i in TranslationServer.get_loaded_locales().size():
 		var language: String = TranslationServer.get_loaded_locales()[i]
 		language_menu.add_icon_item(
@@ -40,3 +41,6 @@ func _on_reset_buttton_pressed():
 func _on_confirmation_dialog_confirmed():
 	Global.reset_save()
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
+
+func _on_sound_track_button_pressed():
+	SceneManager.change_scene("res://scenes/uis/SoundTrackMenu.tscn")

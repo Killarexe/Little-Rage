@@ -5,6 +5,7 @@ const EXTERNAL_LEVELS_DIR: String = "user://levels"
 
 var levels: Array[Level] = []
 var current_level: String = ""
+var levels_best_times: Dictionary = {}
 var default_levels: Array[String] = []
 
 func _ready():
@@ -23,6 +24,24 @@ func load_levels():
 	for resource in external_resources:
 		if resource is Level:
 			levels.append(resource) 
+
+func get_level_best_time(level_id: String) -> Array[int]:
+	return levels_best_times.get(level_id, [0, 0, 0])
+
+func is_best_time(time: Array[int]) -> bool:
+	var current_time: Array[int] = get_level_best_time(current_level)
+	if current_time == [0, 0, 0]:
+		return true
+	if current_time[0] > time[0]:
+		return false
+	if current_time[1] > time[1]:
+		return false
+	if current_time[2] > time[2]:
+		return false
+	return true
+
+func set_level_best_time(time: Array[int]):
+	levels_best_times[current_level] = time
 
 func is_default_level(level_id: String) -> bool:
 	return default_levels.has(level_id)

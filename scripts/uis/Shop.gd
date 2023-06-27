@@ -2,8 +2,9 @@ extends Control
 
 @onready var skins_selection: ItemList = $SkinsSelection
 @onready var hats_selection: ItemList = $HatsSelection
+@onready var loot_box_button: Button = $LootBoxButton
 @export var player_skin: PlayerSkinSprite
-#@export var player_hat: PlayerHatSprite
+@export var player_hat: PlayerHatSprite
 
 var skin_ids: Array[String] = []
 var hat_ids: Array[String] = []
@@ -11,6 +12,7 @@ var hat_ids: Array[String] = []
 func _ready():
 	create_skin_items()
 	create_hat_items()
+	loot_box_button.disabled = !Global.loot_boxes.has_loot_box()
 
 func create_skin_items():
 	for skin in PlayerSkinManager.skins:
@@ -38,6 +40,12 @@ func _on_skins_selection_item_selected(index: int):
 	Global.save_game()
 
 func _on_hats_selection_item_selected(index: int):
-	PlayerSkinManager.current_hat = hat_ids[index]
-	#player_hat.update_hat()
+	PlayerHatManager.current_hat = hat_ids[index]
+	player_hat.update_hat()
 	Global.save_game()
+
+func _on_loot_box_button_pressed():
+	Global.loot_boxes.use_loot_box()
+
+func _on_quit_button_pressed():
+	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")

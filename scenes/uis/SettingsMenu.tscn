@@ -141,6 +141,20 @@ grow_vertical = 0
 theme = ExtResource("4_tdetm")
 text = "ui.back"
 
+[node name="SoundTrackButton" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(512, 72)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -72.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("4_tdetm")
+text = "ui.settings.sound_track"
+
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
 [connection signal="value_changed" from="CanvasLayer/VBoxContainer/MusicVolume/Slider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/VBoxContainer/SoundEffectVolume/Slider" to="." method="_on_sfx_slider_value_changed"]
@@ -148,3 +162,4 @@ text = "ui.back"
 [connection signal="toggled" from="CanvasLayer/VBoxContainer/DiscordRPC" to="." method="_on_discord_rpc_toggled"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ResetButtton" to="." method="_on_reset_buttton_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SoundTrackButton" to="." method="_on_sound_track_button_pressed"]

@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="Music" load_steps=2 format=3 uid="uid://svsh83xl08ph"]
+[gd_resource type="Resource" script_class="Music" load_steps=3 format=3 uid="uid://svsh83xl08ph"]
 
 [ext_resource type="Script" path="res://scripts/sound/Music.gd" id="1_ann7h"]
+[ext_resource type="AudioStream" uid="uid://bx8wtw3m1nlfb" path="res://assets/musics/trial.wav" id="2_jseuw"]
 
 [resource]
 script = ExtResource("1_ann7h")
+streams = Array[AudioStream]([ExtResource("2_jseuw")])
 type = 1
-id = ""
+id = "shop"

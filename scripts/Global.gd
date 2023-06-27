@@ -3,6 +3,7 @@ extends Node
 const GAME_NAME: String = "Little Rage"
 var GAME_VERSION: GameVersion = GameVersion.from(0, 4, 0)
 
+var loot_boxes: LootBoxesManager = LootBoxesManager.new()
 var save: SaveManager = SaveManager.new()
 var can_pause: bool = true
 
