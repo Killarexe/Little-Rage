@@ -25,11 +25,11 @@ func load_levels():
 		if resource is Level:
 			levels.append(resource) 
 
-func get_level_best_time(level_id: String) -> Array[int]:
+func get_level_best_time(level_id: String) -> Array:
 	return levels_best_times.get(level_id, [0, 0, 0])
 
 func is_best_time(time: Array[int]) -> bool:
-	var current_time: Array[int] = get_level_best_time(current_level)
+	var current_time: Array = get_level_best_time(current_level)
 	if current_time == [0, 0, 0]:
 		return true
 	if current_time[0] > time[0]:

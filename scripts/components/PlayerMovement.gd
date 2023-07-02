@@ -111,4 +111,5 @@ func die():
 	global_position = spawn_point
 
 func finish_level():
-	on_win.emit(timer.get_time())
+	if !LevelManager.current_level.is_empty():
+		on_win.emit(timer.get_time())

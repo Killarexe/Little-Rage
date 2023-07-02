@@ -27,4 +27,5 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 func _on_update_checker_on_update_checked(flag: GameVersion.GameVersionFlag):
-	$CanvasLayer/UpdateLabel.visible = flag == GameVersion.GameVersionFlag.HIGHER
+	if flag == GameVersion.GameVersionFlag.HIGHER:
+		PopUpFrame.pop_translated("ui.update")

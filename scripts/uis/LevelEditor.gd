@@ -19,6 +19,7 @@ var not_saved: bool = false
 var selected_tile: int = -1
 
 func _ready():
+	Input.use_accumulated_input = false
 	DiscordRPCManager.update_rpc("In Editor", "basicicon", "In Editor")
 	var tileset_source: TileSetSource = tile_set.get_source(1)
 	for tile in tileset_source.get_tiles_count():
@@ -35,7 +36,7 @@ func _unhandled_input(event):
 				camera.zoom -= Vector2(0.1, 0.1)
 	if event is InputEventMouseMotion:
 		if is_panning:
-			camera.global_position -= event.relative * camera.zoom * 1
+			camera.global_position -= event.relative * camera.zoom * 0.25
 
 func _process(_delta):
 	mouse_pos = camera.get_global_mouse_position()
@@ -47,8 +48,8 @@ func _process(_delta):
 	if can_place:
 		tile_pos = floor(mouse_pos / 16)
 		if Input.is_action_pressed("left_click"):
-			not_saved = true
 			level_map.change_tile_and_update(tile_pos, tile_set.get_source(1).get_tile_id(selected_tile))
+			not_saved = true
 		elif Input.is_action_pressed("right_click"):
 			level_map.remove_tile_and_update(tile_pos)
 			not_saved = true
@@ -107,6 +108,7 @@ func _on_save_file_dialog_confirmed():
 	level_map.mode = LevelPlayer.Mode.EDIT
 	
 	LevelManager.load_levels()
+	PopUpFrame.pop(TranslationServer.translate("ui.editor.saved") % save_dialog.current_path)
 
 func _on_load_file_dialog_file_selected(path):
 	var level: Resource = ResourceLoader.load(path)
@@ -115,13 +117,18 @@ func _on_load_file_dialog_file_selected(path):
 		level_settings.set_settings(level)
 		level_map = Global.instanceNode(level.scene, self)
 		level_map.set_mode(LevelPlayer.Mode.EDIT)
+		PopUpFrame.pop(TranslationServer.translate("ui.editor.loaded") % level.id)
+	else:
+		PopUpFrame.pop(TranslationServer.translate("ui.editor.false_load") % path)
 
 func _on_play_button_pressed():
 	if is_editing():
 		camera.enabled = false
+		Global.can_pause = false
 		level_map.set_mode(LevelPlayer.Mode.PLAY)
 	else:
 		camera.enabled = true
+		Global.can_pause = true
 		level_map.set_mode(LevelPlayer.Mode.EDIT)
 
 func _on_save_button_pressed():
@@ -136,6 +143,7 @@ func _on_load_button_pressed():
 		load_dialog.popup_centered()
 
 func _on_quit_button_pressed():
+	Input.use_accumulated_input = true
 	if await checked_if_not_saved() == "cancel":
 		SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
 	else:

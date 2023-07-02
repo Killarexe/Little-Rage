@@ -27,10 +27,8 @@ func get_sfx(sfx_id: String) -> PlayerSoundEffect:
 	return null
 
 func play_rand_sfx(type: PlayerSoundEffect.Type):
-	var sfxs_type: Array = sfxs.map(func(m): if m.type == type: return m)
-	if sfxs_type[0] == null:
-		print("Failed to play random sfx typed: " + str(type))
-		return
+	var size: int = 0
+	var sfxs_type: Array = sfxs.filter(func(m): if m.type == type: return m)
 	var index: int = randi_range(0, sfxs_type.size() - 1)
 	stop()
 	pitch_scale = randf()*1+sfxs_type[index].pitch_max_offset

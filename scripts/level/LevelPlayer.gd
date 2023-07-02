@@ -23,6 +23,17 @@ func filter_used_grass_cells() -> Array[Vector2i]:
 			used_grass_cells.append(cell)
 	return used_grass_cells
 
+#Color: true = red, false = blue
+func switch_colors(color: bool):
+	if color:
+		pass
+	else:
+		pass
+
+func replace_tile_by(original_tile_id: Vector2i, new_tile_id: Vector2i):
+	for cell in get_used_cells_by_id(0, 1, original_tile_id, 0):
+		set_cell(0, Vector2(cell.x, cell.y), 1, new_tile_id, 0)
+
 func change_tile_and_update(tile_pos: Vector2i, tile_id: Vector2i):
 	set_cell(0, tile_pos, 1, tile_id, 0)
 	set_cells_terrain_connect(0, filter_used_grass_cells(), 0, 0, false)

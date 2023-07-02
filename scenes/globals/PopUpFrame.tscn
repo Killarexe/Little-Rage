@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://dasrthfrxja5q"]
+
+[ext_resource type="Script" path="res://scripts/uis/PopUpFrame.gd" id="1_s16mh"]
+[ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="2_7kg61"]
+[ext_resource type="LabelSettings" uid="uid://deaqu53istr0t" path="res://assets/style/label_settings/small_label.tres" id="3_vmsie"]
+
+[sub_resource type="Animation" id="Animation_6ym64"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -240)]
+}
+
+[sub_resource type="Animation" id="Animation_vvido"]
+resource_name = "pop"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 4, 5),
+"transitions": PackedFloat32Array(0.318471, 1, 3.14, 1),
+"update": 0,
+"values": [Vector2(0, -240), Vector2(0, 0), Vector2(0, 0), Vector2(0, -240)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cy7q1"]
+_data = {
+"RESET": SubResource("Animation_6ym64"),
+"pop": SubResource("Animation_vvido")
+}
+
+[node name="PopUpFrame" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_s16mh")
+
+[node name="Frame" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(320, 180)
+offset_top = -240.0
+offset_right = 320.0
+offset_bottom = -60.0
+color = Color(0, 0, 0, 0.752941)
+
+[node name="Icon" type="TextureRect" parent="Frame"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="Text" type="Label" parent="Frame"]
+layout_mode = 1
+offset_top = 58.0
+offset_right = 320.0
+offset_bottom = 180.0
+theme = ExtResource("2_7kg61")
+label_settings = ExtResource("3_vmsie")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Frame"]
+libraries = {
+"": SubResource("AnimationLibrary_cy7q1")
+}
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="Frame"]
+
+[connection signal="animation_finished" from="Frame/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

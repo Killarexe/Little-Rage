@@ -40,7 +40,10 @@ ui.level.win,You Win,Tu as gagnée
 ui.level.loose,You Loose,Perdu
 ui.settings.language,Language,Language
 ui.settings.discord_rpc,Discord Itegration,Itegration Discord
-ui.dont_save,Don’t Save,Ne pas Enregistrer
-ui.save,Save,Enregistrer
+ui.editor.dont_save,Don’t Save,Ne pas Enregistrer
+ui.editor.save,Save,Enregistrer
 ui.update,A new update is avaliable!,Une nouvelle mise à jour est disponible!
 ui.level_editor.save_option,Do you want to save before ?,Voulez vous enregistrer avant ?
+ui.editor.saved,Saved into file: ‘%s’ ,Enregistrer sous le fichier: ‘%s’
+ui.editor.loaded,Loaded level: ‘%s’,Chargée le niveau: ‘%s’
+ui.editor.false_load,Failed to load level from path: ‘%s’,Échec de chargement de niveau: ’%s’ 

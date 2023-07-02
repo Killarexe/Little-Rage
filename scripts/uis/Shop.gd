@@ -13,6 +13,7 @@ func _ready():
 	create_skin_items()
 	create_hat_items()
 	loot_box_button.disabled = !Global.loot_boxes.has_loot_box()
+	MusicManager.play_music("shop")
 
 func create_skin_items():
 	for skin in PlayerSkinManager.skins:
