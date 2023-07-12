@@ -24,6 +24,7 @@ func open(mode_: Mode, time: Array[int]):
 	MusicManager.play_music("level_win")
 	get_tree().paused = true
 	Global.can_pause = false
+	Global.loot_boxes.add_loot_box(1.0/time.max())
 	match mode_:
 		Mode.SINGLEPLAYER:
 			singleplayer.visible = true

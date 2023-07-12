@@ -19,6 +19,8 @@ script = ExtResource("1_fqa51")
 offset_left = 320.0
 offset_right = 1280.0
 offset_bottom = 720.0
+size_flags_horizontal = 0
+theme_override_constants/separation = 180
 
 [node name="LevelName" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
@@ -31,6 +33,24 @@ layout_mode = 2
 theme = ExtResource("2_oyb7t")
 text = "ui.level.description"
 label_settings = ExtResource("3_nmy32")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/VBoxContainer/LevelDescription"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 40.0
+offset_right = 799.0
+offset_bottom = 212.0
+color = Color(0, 0, 0, 0.501961)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer/LevelDescription/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_oyb7t")
+text = "ui.none"
 
 [node name="LevelDifficulty" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
