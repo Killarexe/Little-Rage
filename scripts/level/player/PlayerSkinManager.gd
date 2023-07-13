@@ -23,7 +23,7 @@ func get_skin(skin_id: String) -> PlayerSkin:
 	return null
 
 func unlock_skin(skin_id: String):
-	if get_skin(skin_id) != null:
+	if get_skin(skin_id) != null && !is_skin_unlocked(skin_id):
 		unlocked_skins.append(skin_id)
 		Global.save_game()
 
@@ -41,8 +41,6 @@ func is_skin_unlocked(skin_id: String) -> bool:
 	return unlocked_skins.has(skin_id)
 
 func pick_random() -> String:
-	if skins.size() <= 0:
-		return "default"
 	var overall_chance: int = 0
 	for skin in skins:
 		if !skin.is_hidden:
@@ -55,4 +53,4 @@ func pick_random() -> String:
 				return skin.id
 			else:
 				offset += skin.chance
-	return "default"
+	return pick_random()

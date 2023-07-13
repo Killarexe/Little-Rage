@@ -7,7 +7,7 @@
 script = ExtResource("1_1ffn5")
 
 [node name="PlayerHatSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -24)
 script = ExtResource("2_b7bam")
 
 [node name="ColorRect" type="ColorRect" parent="."]

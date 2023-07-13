@@ -2,8 +2,8 @@ extends Node
 
 const HATS_DIR_PATH: String = "res://data/hats"
 
-var current_hat: String = ""
-var unlocked_hats: Array = []
+var current_hat: String = "no_hat"
+var unlocked_hats: Array = ["no_hat"]
 var unhidden_hats: Array = []
 var hats: Array[PlayerHat]
 
@@ -23,7 +23,7 @@ func get_hat(hat_id: String) -> PlayerHat:
 	return null
 
 func unlock_hat(hat_id: String):
-	if get_hat(hat_id) != null:
+	if get_hat(hat_id) != null && !is_hat_unlocked(hat_id):
 		unlocked_hats.append(hat_id)
 		Global.save_game()
 
@@ -44,8 +44,6 @@ func has_a_hat() -> bool:
 	return !current_hat.is_empty()
 
 func pick_random() -> String:
-	if hats.size() <= 0:
-		return ""
 	var overall_chance: int = 0
 	for hat in hats:
 		if !hat.is_hidden:
@@ -54,8 +52,8 @@ func pick_random() -> String:
 	var offset: int = 0
 	for hat in hats:
 		if !hat.is_hidden:
-			if random_number < hat.chance + offset:
+			if random_number < hat.chance + offset && hat.id != "no_hat":
 				return hat.id
 			else:
 				offset += hat.chance
-	return ""
+	return pick_random()

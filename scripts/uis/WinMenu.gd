@@ -24,7 +24,10 @@ func open(mode_: Mode, time: Array[int]):
 	MusicManager.play_music("level_win")
 	get_tree().paused = true
 	Global.can_pause = false
-	Global.loot_boxes.add_loot_box(1.0/time.max())
+	var time_sum: int = 0
+	for i in time:
+		time_sum += i
+	Global.loot_boxes.add_loot_box(time_sum/3*99)
 	match mode_:
 		Mode.SINGLEPLAYER:
 			singleplayer.visible = true
@@ -40,7 +43,7 @@ func exit():
 	match mode:
 		Mode.SINGLEPLAYER:
 			Global.save_game()
-			SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
+			SceneManager.change_scene("res://scenes/uis/LevelSelector.tscn")
 		Mode.MULTIPLAYER:
 			#Return to lobby
 			pass

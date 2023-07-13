@@ -1,5 +1,6 @@
 extends Control
 
+@onready var loot_box_shower: LootBoxShower = $LootBoxShower
 @onready var skins_selection: ItemList = $SkinsSelection
 @onready var hats_selection: ItemList = $HatsSelection
 @onready var loot_box_button: Button = $LootBoxButton
@@ -24,10 +25,6 @@ func create_skin_items():
 				skins_selection.select(skin_ids.size() - 1)
 
 func create_hat_items():
-	hat_ids.append("")
-	hats_selection.add_item("ui.shop.no_hat")
-	if PlayerHatManager.current_hat.is_empty():
-		skins_selection.select(0)
 	for hat in PlayerHatManager.hats:
 		if PlayerHatManager.is_hat_unlocked(hat.id):
 			hat_ids.append(hat.id)
@@ -46,7 +43,8 @@ func _on_hats_selection_item_selected(index: int):
 	Global.save_game()
 
 func _on_loot_box_button_pressed():
-	Global.loot_boxes.use_loot_box()
+	loot_box_button.disabled = !Global.loot_boxes.has_loot_box()
+	loot_box_shower.unlock_random_cosmetic()
 
 func _on_quit_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")

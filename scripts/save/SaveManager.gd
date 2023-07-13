@@ -2,7 +2,7 @@ class_name SaveManager
 
 const SAVE_FILE: String = "user://save.json"
 const DEFAULT_SAVE: Dictionary = {
-	"unlocked_hats": [],
+	"unlocked_hats": ["no_hat"],
 	"unlocked_skins": ["default"],
 	"unhidden_hats": [],
 	"unhidden_skins": [],

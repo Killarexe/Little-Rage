@@ -1,9 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://w7xl15e613uy"]
+[gd_scene load_steps=9 format=3 uid="uid://w7xl15e613uy"]
 
 [ext_resource type="Script" path="res://scripts/components/PlayerHatSprite.gd" id="2_3wuup"]
 [ext_resource type="Script" path="res://scripts/components/PlayerSkinSprite.gd" id="2_8x77w"]
 [ext_resource type="Script" path="res://scripts/uis/Shop.gd" id="2_msqjy"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="4_gdtw6"]
+[ext_resource type="Script" path="res://scripts/uis/LootBoxShower.gd" id="5_jwiu6"]
+
+[sub_resource type="Animation" id="Animation_1b831"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_f80lk"]
+resource_name = "pop_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(5.5, 5.5), Vector2(5, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g4h84"]
+_data = {
+"RESET": SubResource("Animation_1b831"),
+"pop_up": SubResource("Animation_f80lk")
+}
 
 [node name="ShopMenu" type="Control"]
 layout_mode = 3
@@ -19,7 +56,7 @@ position = Vector2(8, 16)
 script = ExtResource("2_8x77w")
 
 [node name="PlayerHatSprite" type="Sprite2D" parent="PlayerSkinSprite"]
-position = Vector2(0, -8)
+position = Vector2(0, -24)
 script = ExtResource("2_3wuup")
 
 [node name="ColorRect" type="ColorRect" parent="PlayerSkinSprite"]
@@ -106,8 +143,46 @@ grow_vertical = 0
 theme = ExtResource("4_gdtw6")
 text = "ui.back"
 
+[node name="LootBoxShower" type="ColorRect" parent="CanvasLayer/Shop"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.501961)
+script = ExtResource("5_jwiu6")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Shop/LootBoxShower"]
+position = Vector2(640, 360)
+scale = Vector2(1e-05, 1e-05)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Shop/LootBoxShower/Sprite2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_g4h84")
+}
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/Shop/LootBoxShower"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -64.0
+offset_right = 128.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_gdtw6")
+text = "ui.close"
+
 [connection signal="item_selected" from="CanvasLayer/Shop/SkinsSelection" to="CanvasLayer/Shop" method="_on_skins_selection_item_selected"]
 [connection signal="empty_clicked" from="CanvasLayer/Shop/HatsSelection" to="CanvasLayer/Shop" method="_on_hats_selection_empty_clicked"]
 [connection signal="item_selected" from="CanvasLayer/Shop/HatsSelection" to="CanvasLayer/Shop" method="_on_hats_selection_item_selected"]
 [connection signal="pressed" from="CanvasLayer/Shop/LootBoxButton" to="CanvasLayer/Shop" method="_on_loot_box_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Shop/QuitButton" to="CanvasLayer/Shop" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Shop/LootBoxShower/CloseButton" to="CanvasLayer/Shop/LootBoxShower" method="_on_close_button_pressed"]

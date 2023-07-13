@@ -24,5 +24,4 @@ func _ready():
 		print("Can't run Discord RPC: No Discord found...")
 		return
 	print("Running Discord RPC...")
-	discord_sdk.debug()
 	update_rpc("Playing...", "basicicon", "Playing...")

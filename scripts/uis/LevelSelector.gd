@@ -11,6 +11,7 @@ extends Control
 var level_index: int = -1
 
 func _ready():
+	get_tree().paused = false
 	play_button.disabled = true
 	for level in LevelManager.levels:
 		level_list.add_item(level.name)
