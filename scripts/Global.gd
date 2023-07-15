@@ -10,6 +10,11 @@ var can_pause: bool = true
 func _ready():
 	save.load_save()
 
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST || what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		save_game()
+		get_tree().quit()
+
 func instanceNodeAtPos(node: Object, parent: Object, pos: Vector2) -> Object:
 	var nodeInstance = instanceNode(node, parent)
 	nodeInstance.global_position = pos

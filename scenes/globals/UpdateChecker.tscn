@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bytju11mooiov"]
+
+[ext_resource type="Script" path="res://scripts/components/UpdateChecker.gd" id="1_sqcil"]
+
+[node name="UpdateChecker" type="HTTPRequest"]
+script = ExtResource("1_sqcil")
+
+[node name="@Timer@27476" type="Timer" parent="."]
+one_shot = true

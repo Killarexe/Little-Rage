@@ -1,6 +1,38 @@
 extends TileMap
 class_name LevelPlayer
 
+const ON_TILE: Vector2i = Vector2i(0, 5)
+const OFF_TILE: Vector2i = Vector2i(0, 6)
+
+const RED_FULL_TILE: Vector2i = Vector2i(1, 5)
+const RED_EMPTY_TILE: Vector2i = Vector2i(1, 6)
+
+const BLUE_FULL_TILE: Vector2i = Vector2i(1, 7)
+const BLUE_EMPTY_TILE: Vector2i = Vector2i(1, 8)
+
+const CHECKPOINT_ON_TILE: Vector2i = Vector2i(2, 3)
+const CHECKPOINT_OFF_TILE: Vector2i = Vector2i(4, 3)
+
+const BLUE_SPIKE_TILE_DOWN_ON: Vector2i = Vector2i(2, 9)
+const BLUE_SPIKE_TILE_DOWN_OFF: Vector2i = Vector2i(4, 9)
+const RED_SPIKE_TILE_DOWN_ON: Vector2i = Vector2i(6, 9)
+const RED_SPIKE_TILE_DOWN_OFF: Vector2i = Vector2i(8, 9)
+
+const BLUE_SPIKE_TILE_UP_ON: Vector2i = Vector2i(2, 8)
+const BLUE_SPIKE_TILE_UP_OFF: Vector2i = Vector2i(4, 8)
+const RED_SPIKE_TILE_UP_ON: Vector2i = Vector2i(6, 8)
+const RED_SPIKE_TILE_UP_OFF: Vector2i = Vector2i(8, 8)
+
+const BLUE_SPIKE_TILE_LEFT_ON: Vector2i = Vector2i(3, 8)
+const BLUE_SPIKE_TILE_LEFT_OFF: Vector2i = Vector2i(5, 8)
+const RED_SPIKE_TILE_LEFT_ON: Vector2i = Vector2i(7, 8)
+const RED_SPIKE_TILE_LEFT_OFF: Vector2i = Vector2i(9, 8)
+
+const BLUE_SPIKE_TILE_RIGHT_ON: Vector2i = Vector2i(3, 9)
+const BLUE_SPIKE_TILE_RIGHT_OFF: Vector2i = Vector2i(5, 9)
+const RED_SPIKE_TILE_RIGHT_ON: Vector2i = Vector2i(7, 9)
+const RED_SPIKE_TILE_RIGHT_OFF: Vector2i = Vector2i(9, 9)
+
 enum Mode{
 	PLAY,
 	EDIT
@@ -19,7 +51,7 @@ func filter_used_grass_cells() -> Array[Vector2i]:
 	var used_grass_cells: Array[Vector2i] = [];
 	for cell in get_used_cells(0):
 		var type: Vector2i = get_cell_atlas_coords(0, cell)
-		if type.x >=0 && type.x <= 9 && type.y >= 0 && type.y <= 2:
+		if type.x >= 0 && type.x <= 9 && type.y >= 0 && type.y <= 2:
 			used_grass_cells.append(cell)
 	return used_grass_cells
 
@@ -29,6 +61,10 @@ func switch_colors(color: bool):
 		pass
 	else:
 		pass
+
+func set_spawnpoint(cell_pos: Vector2):
+	replace_tile_by(ON_TILE, OFF_TILE)
+	set_cell(0, cell_pos, 1, ON_TILE, 0)
 
 func replace_tile_by(original_tile_id: Vector2i, new_tile_id: Vector2i):
 	for cell in get_used_cells_by_id(0, 1, original_tile_id, 0):

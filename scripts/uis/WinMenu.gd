@@ -27,7 +27,7 @@ func open(mode_: Mode, time: Array[int]):
 	var time_sum: int = 0
 	for i in time:
 		time_sum += i
-	Global.loot_boxes.add_loot_box(time_sum/3*99)
+	Global.loot_boxes.add_loot_box(int(time_sum / 3 * 99))
 	match mode_:
 		Mode.SINGLEPLAYER:
 			singleplayer.visible = true

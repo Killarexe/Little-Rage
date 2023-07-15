@@ -102,6 +102,7 @@ grow_vertical = 2
 theme = ExtResource("4_gdtw6")
 icon_mode = 0
 icon_scale = 3.0
+fixed_icon_size = Vector2i(32, 64)
 
 [node name="HatsSelection" type="ItemList" parent="CanvasLayer/Shop"]
 custom_minimum_size = Vector2(256, 0)
@@ -113,6 +114,7 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("4_gdtw6")
+fixed_icon_size = Vector2i(64, 64)
 
 [node name="LootBoxButton" type="Button" parent="CanvasLayer/Shop"]
 custom_minimum_size = Vector2(375, 32)

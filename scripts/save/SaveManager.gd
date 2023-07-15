@@ -39,6 +39,7 @@ func save():
 	save_file.close()
 
 func create_save():
+	print("Reset save")
 	var save_file: FileAccess = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
 	save_file.store_string(JSON.stringify(DEFAULT_SAVE))
 	save_file.close()

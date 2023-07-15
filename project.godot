@@ -30,6 +30,7 @@ Overlay="*res://scenes/globals/Overlay.tscn"
 PopUpFrame="*res://scenes/globals/PopUpFrame.tscn"
 DiscordRPCManager="*res://scripts/DiscordRPCManager.gd"
 DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
+UpdateChecker="*res://scenes/globals/UpdateChecker.tscn"
 
 [display]
 

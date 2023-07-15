@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://cals3vw0vj1j7"]
+[gd_scene load_steps=16 format=3 uid="uid://cals3vw0vj1j7"]
 
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_fjp12"]
 [ext_resource type="Script" path="res://scripts/uis/MainMenu.gd" id="1_ucjxi"]
-[ext_resource type="Script" path="res://scripts/components/UpdateChecker.gd" id="2_i567c"]
 [ext_resource type="Animation" uid="uid://cx04at5pdf11i" path="res://assets/animations/camera_scroll.res" id="2_rkel8"]
 [ext_resource type="Texture2D" uid="uid://cto6ho6cpiuyw" path="res://assets/textures/ui/little_rage_logo.png" id="3_4yirm"]
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/DefaultLevel.tscn" id="4_tof8e"]
@@ -99,9 +98,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ucjxi")
-
-[node name="UpdateChecker" type="HTTPRequest" parent="."]
-script = ExtResource("2_i567c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -227,7 +223,6 @@ layout_mode = 2
 theme = ExtResource("1_fjp12")
 text = "ui.shop"
 
-[connection signal="on_update_checked" from="UpdateChecker" to="." method="_on_update_checker_on_update_checked"]
 [connection signal="pressed" from="CanvasLayer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/SingleplayerButton" to="." method="_on_play_button_pressed"]

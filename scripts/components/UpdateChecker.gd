@@ -11,7 +11,8 @@ func on_receive(_result, response_code, _headers, body):
 		var version_name: String = JSON.parse_string(body.get_string_from_utf8())["name"]
 		var version: GameVersion = GameVersion.from_string(version_name)
 		var version_flag: GameVersion.GameVersionFlag = Global.GAME_VERSION.compare(version)
-		emit_signal("on_update_checked", version_flag)
+		if version_flag == GameVersion.GameVersionFlag.HIGHER:
+			PopUpFrame.pop_translated("ui.update", load("res://assets/textures/ui/update.png"))
 	else:
 		print("Failed to get latest version: Response code: %d" % response_code)
 	request_completed.disconnect(on_receive)

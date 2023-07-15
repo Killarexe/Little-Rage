@@ -92,17 +92,19 @@ func _physics_process(delta):
 				var type = cell.get_custom_data("type")
 				#TODO: All types
 				if type != null && type is int:
+					var level: LevelPlayer = get_parent()
 					match type:
 						2:
-							pass
+							spawn_point = global_position
+							level.set_spawnpoint(pos)
 						3:
 							die()
 						4:
 							finish_level()
 						5:
-							pass
+							level.switch_color(true)
 						6:
-							pass
+							level.switch_color(false)
 	motion = velocity
 
 func die():

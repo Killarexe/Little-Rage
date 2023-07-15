@@ -108,7 +108,7 @@ func _on_save_file_dialog_confirmed():
 	level_map.mode = LevelPlayer.Mode.EDIT
 	
 	LevelManager.load_levels()
-	PopUpFrame.pop(TranslationServer.translate("ui.editor.saved") % save_dialog.current_path)
+	PopUpFrame.pop(TranslationServer.translate("ui.editor.saved") % save_dialog.current_path, load("res://assets/textures/ui/save.png"))
 
 func _on_load_file_dialog_file_selected(path):
 	var level: Resource = ResourceLoader.load(path)
@@ -117,9 +117,9 @@ func _on_load_file_dialog_file_selected(path):
 		level_settings.set_settings(level)
 		level_map = Global.instanceNode(level.scene, self)
 		level_map.set_mode(LevelPlayer.Mode.EDIT)
-		PopUpFrame.pop(TranslationServer.translate("ui.editor.loaded") % level.id)
+		PopUpFrame.pop(TranslationServer.translate("ui.editor.loaded") % level.id, load('res://assets/textures/ui/open.png'))
 	else:
-		PopUpFrame.pop(TranslationServer.translate("ui.editor.false_load") % path)
+		PopUpFrame.pop(TranslationServer.translate("ui.editor.false_load") % path, load("res://assets/textures/ui/quit.png"))
 
 func _on_play_button_pressed():
 	if is_editing():
