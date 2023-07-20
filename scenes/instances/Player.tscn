@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bkwmpwrjnhece"]
+[gd_scene load_steps=12 format=3 uid="uid://bkwmpwrjnhece"]
 
 [ext_resource type="Script" path="res://scripts/components/PlayerMovement.gd" id="1_l7flj"]
 [ext_resource type="Script" path="res://scripts/level/player/SoundEffectPlayer.gd" id="2_alfuh"]
@@ -44,65 +44,6 @@ _data = {
 "RESET": SubResource("Animation_10f12")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n8655"]
-animation = &"PlayerAnimations/RESET"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w753u"]
-animation = &"PlayerAnimations/idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gubq7"]
-animation = &"PlayerAnimations/jump"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4noqw"]
-animation = &"PlayerAnimations/land"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w6gmk"]
-advance_mode = 2
-advance_condition = &"is_jumping"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sbdkm"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"is_landing"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g1ju6"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"is_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ywm55"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_icb6y"]
-advance_mode = 2
-advance_condition = &"is_moving"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jugc6"]
-advance_mode = 2
-advance_condition = &"is_idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t871q"]
-advance_mode = 2
-advance_condition = &"is_jumping"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_whx3i"]
-advance_mode = 2
-advance_condition = &"is_landing"
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vqbm5"]
-states/End/position = Vector2(943, 293)
-states/PlayerAnimationsRESET/node = SubResource("AnimationNodeAnimation_n8655")
-states/PlayerAnimationsRESET/position = Vector2(544, 372.643)
-states/PlayerAnimationsidle/node = SubResource("AnimationNodeAnimation_w753u")
-states/PlayerAnimationsidle/position = Vector2(398, 293)
-states/PlayerAnimationsjump/node = SubResource("AnimationNodeAnimation_gubq7")
-states/PlayerAnimationsjump/position = Vector2(544, 203)
-states/PlayerAnimationsland/node = SubResource("AnimationNodeAnimation_4noqw")
-states/PlayerAnimationsland/position = Vector2(694, 293)
-states/Start/position = Vector2(182, 293)
-transitions = ["PlayerAnimationsidle", "PlayerAnimationsjump", SubResource("AnimationNodeStateMachineTransition_w6gmk"), "PlayerAnimationsjump", "PlayerAnimationsland", SubResource("AnimationNodeStateMachineTransition_sbdkm"), "PlayerAnimationsland", "PlayerAnimationsidle", SubResource("AnimationNodeStateMachineTransition_g1ju6"), "Start", "PlayerAnimationsidle", SubResource("AnimationNodeStateMachineTransition_ywm55"), "PlayerAnimationsidle", "PlayerAnimationsRESET", SubResource("AnimationNodeStateMachineTransition_icb6y"), "PlayerAnimationsRESET", "PlayerAnimationsidle", SubResource("AnimationNodeStateMachineTransition_jugc6"), "PlayerAnimationsRESET", "PlayerAnimationsjump", SubResource("AnimationNodeStateMachineTransition_t871q"), "PlayerAnimationsRESET", "PlayerAnimationsland", SubResource("AnimationNodeStateMachineTransition_whx3i")]
-graph_offset = Vector2(43, 114.643)
-
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 15
@@ -126,15 +67,7 @@ libraries = {
 "": SubResource("AnimationLibrary_pm6cf"),
 "PlayerAnimations": ExtResource("4_jqgtb")
 }
-blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_vqbm5")
-anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/is_idle = false
-parameters/conditions/is_jumping = false
-parameters/conditions/is_landing = false
-parameters/conditions/is_moving = false
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0

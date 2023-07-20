@@ -3,7 +3,6 @@ extends Control
 @onready var level_list: ItemList = $CanvasLayer/LevelList
 @onready var play_button: Button = $CanvasLayer/PlayButton
 
-@onready var level_name: Label = $CanvasLayer/VBoxContainer/LevelName
 @onready var level_difficulty: Label = $CanvasLayer/VBoxContainer/LevelDifficulty
 @onready var level_description_label: Label = $CanvasLayer/VBoxContainer/LevelDescription
 @onready var level_desciprtion: RichTextLabel = $CanvasLayer/VBoxContainer/LevelDescription/ColorRect/RichTextLabel
@@ -21,9 +20,8 @@ func _on_level_list_item_selected(index):
 	level_index = index
 	var level: Level = LevelManager.levels[index]
 	level_desciprtion.text = level.description
-	level_name.text = TranslationServer.translate("ui.level.name") +  " : " + level.name + "\n"
 	level_description_label.text = TranslationServer.translate("ui.level.description") + " :"
-	level_difficulty.text = TranslationServer.translate("ui.level.difficulty") + " :\n" + TranslationServer.translate(Level.difficulty_to_str(level.difficulty)) + "\n"
+	level_difficulty.text = TranslationServer.translate("ui.level.difficulty") + ":\n    " + TranslationServer.translate(Level.difficulty_to_str(level.difficulty)) + "\n"
 
 func _on_play_button_pressed():
 	var level: Level = LevelManager.levels[level_index]

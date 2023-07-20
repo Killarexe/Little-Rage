@@ -42,6 +42,7 @@ func is_best_time(time: Array[int]) -> bool:
 
 func set_level_best_time(time: Array[int]):
 	levels_best_times[current_level] = time
+	Global.save_game()
 
 func is_default_level(level_id: String) -> bool:
 	return default_levels.has(level_id)

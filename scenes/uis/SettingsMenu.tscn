@@ -33,8 +33,8 @@ layer_0/tile_data = PackedInt32Array(720979, 65537, 2, 655443, 65537, 1, 589907,
 mode = 1
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
-initial_position = 2
 title = "ui.settings.reset_save"
+initial_position = 2
 size = Vector2i(249, 100)
 dialog_text = "ui.settings.reset_save.confirm"
 
@@ -111,7 +111,7 @@ text = "ui.settings.language"
 label_settings = ExtResource("6_a5c82")
 
 [node name="MenuButton" type="OptionButton" parent="CanvasLayer/VBoxContainer/Language"]
-custom_minimum_size = Vector2(256, 0)
+custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 theme = ExtResource("4_tdetm")
 icon_alignment = 1
@@ -132,6 +132,7 @@ theme = ExtResource("4_tdetm")
 text = "ui.settings.reset_save"
 
 [node name="BackButton" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(128, 48)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

@@ -27,7 +27,7 @@ ui.load_level,Load Level,Charger un Niveau
 ui.close,Close,Fermer
 ui.back,Back,Retour
 ui.level.name,Level Name,Nom du Niveau
-ui.level.difficulty,Level Difficulty,Difficulté du Niveau
+ui.level.difficulty,Level Difficulty,Difficulté
 ui.level.description,Level Description,Description du Niveau
 ui.level.difficulty.beginer_friendly,Beginer Friendly,Débutant
 ui.level.difficulty.easy,Easy,Facile
@@ -47,3 +47,5 @@ ui.level_editor.save_option,Do you want to save before ?,Voulez vous enregistre
 ui.editor.saved,Saved into file: ‘%s’ ,Enregistrer sous le fichier: ‘%s’
 ui.editor.loaded,Loaded level: ‘%s’,Chargée le niveau: ‘%s’
 ui.editor.false_load,Failed to load level from path: ‘%s’,Échec de chargement de niveau: ’%s’ 
+ui.settings.sound_track,Soundtacks,Sons Du Jeu
+ui.settings.reset_save.confirm,Are you sure?\nAll your progression will be deleted…,Êtes-vous sure?\nToute votre progression vont être supprimer...

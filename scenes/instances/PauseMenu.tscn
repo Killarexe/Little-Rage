@@ -46,11 +46,13 @@ theme_override_constants/separation = 64
 alignment = 1
 
 [node name="BackToGameButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme = ExtResource("1_588rf")
 text = "ui.back_to_game"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = ExtResource("1_588rf")
 text = "ui.quit"

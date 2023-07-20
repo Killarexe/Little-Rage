@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerSkin" load_steps=3 format=3 uid="uid://bwv8vtxqp4u8h"]
+
+[ext_resource type="Script" path="res://scripts/level/player/PlayerSkin.gd" id="1_0mhk1"]
+[ext_resource type="Texture2D" uid="uid://cbtpjwb7ft5tk" path="res://assets/textures/player/skins/playerwater.png" id="2_8ww2p"]
+
+[resource]
+script = ExtResource("1_0mhk1")
+texture = ExtResource("2_8ww2p")
+chance = 1
+is_hidden = false
+id = "water"

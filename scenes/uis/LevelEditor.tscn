@@ -39,9 +39,9 @@ editor = NodePath("../..")
 [node name="SaveConfirmationDialog" type="ConfirmationDialog" parent="CanvasLayer"]
 title = "ui.save_level"
 size = Vector2i(320, 192)
-ok_button_text = "ui.save"
+ok_button_text = "ui.editor.save"
 dialog_text = "ui.level_editor.save_option"
-cancel_button_text = "ui.dont_save"
+cancel_button_text = "ui.editor.dont_save"
 script = ExtResource("4_86kle")
 
 [node name="SaveFileDialog" type="FileDialog" parent="CanvasLayer"]

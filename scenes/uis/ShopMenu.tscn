@@ -53,6 +53,7 @@ grow_vertical = 2
 [node name="PlayerSkinSprite" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(8, 16)
+scale = Vector2(1.5, 1.5)
 script = ExtResource("2_8x77w")
 
 [node name="PlayerHatSprite" type="Sprite2D" parent="PlayerSkinSprite"]

@@ -20,13 +20,7 @@ offset_left = 320.0
 offset_right = 1280.0
 offset_bottom = 720.0
 size_flags_horizontal = 0
-theme_override_constants/separation = 180
-
-[node name="LevelName" type="Label" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_oyb7t")
-text = "ui.level.name"
-label_settings = ExtResource("3_nmy32")
+theme_override_constants/separation = 256
 
 [node name="LevelDescription" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
@@ -59,6 +53,7 @@ text = "ui.level.difficulty"
 label_settings = ExtResource("3_nmy32")
 
 [node name="PlayButton" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(256, 64)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -73,6 +68,7 @@ theme = ExtResource("2_oyb7t")
 text = "ui.play"
 
 [node name="BackButton" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(128, 48)
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
