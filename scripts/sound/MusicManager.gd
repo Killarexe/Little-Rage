@@ -17,7 +17,7 @@ func _ready():
 
 func set_music_volume(value: float):
 	music_volume = value
-	volume_db = min(max(music_volume - 50, -30), 0)
+	volume_db = music_volume / 4 - 25
 	Global.save_game()
 
 func get_music(music_id: String) -> Music:

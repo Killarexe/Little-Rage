@@ -10,6 +10,7 @@ extends Control
 var level_index: int = -1
 
 func _ready():
+	MusicManager.play_music("level_selection")
 	get_tree().paused = false
 	play_button.disabled = true
 	for level in LevelManager.levels:
@@ -20,7 +21,7 @@ func _on_level_list_item_selected(index):
 	level_index = index
 	var level: Level = LevelManager.levels[index]
 	level_desciprtion.text = level.description
-	level_description_label.text = TranslationServer.translate("ui.level.description") + " :"
+	level_description_label.text =  TranslationServer.translate("ui.level.description") + " :"
 	level_difficulty.text = TranslationServer.translate("ui.level.difficulty") + ":\n    " + TranslationServer.translate(Level.difficulty_to_str(level.difficulty)) + "\n"
 
 func _on_play_button_pressed():

@@ -3,6 +3,7 @@ extends Control
 @onready var language_menu: OptionButton = $CanvasLayer/VBoxContainer/Language/MenuButton
 
 func _ready():
+	MusicManager.play_music("settings")
 	$Camera2D/AnimationPlayer.play("camera_scroll")
 	$CanvasLayer/VBoxContainer/MusicVolume/Slider.set_value_no_signal(MusicManager.music_volume)
 	$CanvasLayer/VBoxContainer/SoundEffectVolume/Slider.set_value_no_signal(MusicManager.sound_effect_volume)

@@ -97,6 +97,7 @@ func _on_save_file_dialog_confirmed():
 	level.scene = packed_scene
 	level.mode = Level.Mode.RACE
 	level.y_limit = level_settings.y_limit
+	level.level_theme = Level.LevelTheme.PLAINS
 	level.difficulty = level_settings.difficulty
 	level.description = level_settings.description
 	level.id = level_name.to_lower().replace(" ", "_")

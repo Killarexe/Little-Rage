@@ -41,11 +41,17 @@ enum Mode{
 @export var mode: Mode = Mode.PLAY
 @export var start_pos: Vector2 = Vector2()
 
-var player: Resource = load("res://scenes/instances/Player.tscn")
+var player_prefab: Resource = load("res://scenes/instances/Player.tscn")
 
 func _ready():
 	if mode == Mode.PLAY:
-		Global.instanceNodeAtPos(player, self, start_pos)
+		spawn_player()
+
+func spawn_player():
+	var player = Global.instanceNodeAtPos(player_prefab, self, start_pos)
+	player.connect("on_switch_color", switch_colors)
+	player.connect("on_setting_spawnpoint", set_spawnpoint)
+	MusicManager.play_music("level_plains")
 
 func filter_used_grass_cells() -> Array[Vector2i]:
 	var used_grass_cells: Array[Vector2i] = [];
@@ -58,13 +64,37 @@ func filter_used_grass_cells() -> Array[Vector2i]:
 #Color: true = red, false = blue
 func switch_colors(color: bool):
 	if color:
-		pass
+		replace_tile_by(ON_TILE, OFF_TILE)
+		
+		replace_tile_by(RED_FULL_TILE, RED_EMPTY_TILE)
+		replace_tile_by(RED_SPIKE_TILE_DOWN_ON, RED_SPIKE_TILE_DOWN_OFF)
+		replace_tile_by(RED_SPIKE_TILE_UP_ON, RED_SPIKE_TILE_UP_OFF)
+		replace_tile_by(RED_SPIKE_TILE_LEFT_ON, RED_SPIKE_TILE_LEFT_OFF)
+		replace_tile_by(RED_SPIKE_TILE_RIGHT_ON, RED_SPIKE_TILE_RIGHT_OFF)
+		
+		replace_tile_by(BLUE_EMPTY_TILE, BLUE_FULL_TILE)
+		replace_tile_by(BLUE_SPIKE_TILE_DOWN_OFF, BLUE_SPIKE_TILE_DOWN_ON)
+		replace_tile_by(BLUE_SPIKE_TILE_UP_OFF, BLUE_SPIKE_TILE_UP_ON)
+		replace_tile_by(BLUE_SPIKE_TILE_LEFT_OFF, BLUE_SPIKE_TILE_LEFT_ON)
+		replace_tile_by(BLUE_SPIKE_TILE_RIGHT_OFF, BLUE_SPIKE_TILE_RIGHT_ON)
 	else:
-		pass
+		replace_tile_by(OFF_TILE, ON_TILE)
+		
+		replace_tile_by(BLUE_FULL_TILE, BLUE_EMPTY_TILE)
+		replace_tile_by(BLUE_SPIKE_TILE_DOWN_ON, BLUE_SPIKE_TILE_DOWN_OFF)
+		replace_tile_by(BLUE_SPIKE_TILE_UP_ON, BLUE_SPIKE_TILE_UP_OFF)
+		replace_tile_by(BLUE_SPIKE_TILE_LEFT_ON, BLUE_SPIKE_TILE_LEFT_OFF)
+		replace_tile_by(BLUE_SPIKE_TILE_RIGHT_ON, BLUE_SPIKE_TILE_RIGHT_OFF)
+		
+		replace_tile_by(RED_EMPTY_TILE, RED_FULL_TILE)
+		replace_tile_by(RED_SPIKE_TILE_DOWN_OFF, RED_SPIKE_TILE_DOWN_ON)
+		replace_tile_by(RED_SPIKE_TILE_UP_OFF, RED_SPIKE_TILE_UP_ON)
+		replace_tile_by(RED_SPIKE_TILE_LEFT_OFF, RED_SPIKE_TILE_LEFT_ON)
+		replace_tile_by(RED_SPIKE_TILE_RIGHT_OFF, RED_SPIKE_TILE_RIGHT_ON)
 
 func set_spawnpoint(cell_pos: Vector2):
-	replace_tile_by(ON_TILE, OFF_TILE)
-	set_cell(0, cell_pos, 1, ON_TILE, 0)
+	replace_tile_by(CHECKPOINT_ON_TILE, CHECKPOINT_OFF_TILE)
+	set_cell(0, cell_pos, 1, CHECKPOINT_ON_TILE, 0)
 
 func replace_tile_by(original_tile_id: Vector2i, new_tile_id: Vector2i):
 	for cell in get_used_cells_by_id(0, 1, original_tile_id, 0):
@@ -81,7 +111,7 @@ func remove_tile_and_update(tile_pos: Vector2i):
 func set_mode(new_mode: Mode):
 	mode = new_mode
 	if mode == Mode.PLAY:
-		Global.instanceNodeAtPos(player, self, start_pos)
+		spawn_player()
 	else:
 		for child in get_children():
 			child.queue_free()

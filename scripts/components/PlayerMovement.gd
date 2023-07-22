@@ -6,6 +6,8 @@ class_name PlayerMovement
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var sound_effect_manager: SoundEffectPlayer = $SoundEffectPlayer
 
+signal on_setting_spawnpoint(pos: Vector2)
+signal on_switch_color(color: bool)
 signal on_win(time: Array[int])
 signal on_death
 
@@ -22,6 +24,7 @@ var jump_timer: float = 0
 var ground_timer: float = 0
 var is_invinsible: bool = false
 var motion: Vector2 = Vector2()
+var previous_tile_type: int = 0
 var spawn_point: Vector2 = Vector2()
 var y_limit: int = Level.DEFAULT_Y_LIMIT
 var jump_particle: Resource = load("res://scenes/instances/JumpParticle.tscn")
@@ -43,8 +46,8 @@ func _physics_process(delta):
 	ground_timer -= delta
 	
 	motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
-	skin.global_skew = lerpf(skin.global_skew, velocity.x / 1000, 0.2)
-	scale.y = lerpf(scale.y, abs(motion.y) / MAX_FALL_SPEED / 3 + 1, 0.2)
+	skin.global_skew = lerpf(skin.global_skew, velocity.x / 2000, 0.2)
+	skin.scale.y = lerpf(skin.scale.y, abs(motion.y) / MAX_FALL_SPEED / 4 + 1, 0.2)
 	if Input.is_action_pressed("left"):
 		skin.flip_h = true
 		motion.x -= ACCEL
@@ -64,8 +67,9 @@ func _physics_process(delta):
 	
 	if is_on_floor():
 		if ground_timer < 0:
-			animation.play("PlayerAnimations/land")
 			Global.instanceNodeAtPos(jump_particle, get_parent(), global_position + Vector2(0, 16))
+			animation.stop()
+			animation.play("PlayerAnimations/land")
 		if abs(velocity.x) >= MAX_SPEED:
 			Global.instanceNodeAtPos(step_particle, get_parent(), global_position + Vector2(0, 16))
 		ground_timer = GROUND_TIME
@@ -91,19 +95,21 @@ func _physics_process(delta):
 				var type = cell.get_custom_data("type")
 				#TODO: All types
 				if type != null && type is int:
-					var level: LevelPlayer = get_parent()
 					match type:
 						2:
 							spawn_point = global_position
-							level.set_spawnpoint(pos)
+							on_setting_spawnpoint.emit(pos)
 						3:
 							die()
 						4:
 							finish_level()
 						5:
-							level.switch_color(true)
+							if previous_tile_type != type && previous_tile_type != 6:
+								on_switch_color.emit(true)
 						6:
-							level.switch_color(false)
+							if previous_tile_type != type && previous_tile_type != 5:
+								on_switch_color.emit(false)
+					previous_tile_type = type
 	motion = velocity
 
 func die():
