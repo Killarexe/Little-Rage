@@ -9,6 +9,7 @@ enum Mode{
 @export var player: PlayerMovement
 @onready var singleplayer: Control = $Singleplayer
 @onready var multiplayer_control: Control = $Mutiplayer
+@onready var time_label: TimeLabel = $Singleplayer/VBoxContainer/TimeLabel
 
 var mode: Mode = Mode.SINGLEPLAYER
 
@@ -17,11 +18,11 @@ func _ready():
 	multiplayer_control.visible = false
 	player.on_win.connect(on_player_win)
 
-func on_player_win(time: Array[int]):
-	open(Mode.SINGLEPLAYER, time)
+func on_player_win(time: Array[int], death_count: int):
+	open(Mode.SINGLEPLAYER, time, death_count)
 
-func open(mode_: Mode, time: Array[int]):
-	MusicManager.play_music("level_win")
+func open(mode_: Mode, time: Array[int], death_count: int):
+	MusicManager.stop()
 	get_tree().paused = true
 	Global.can_pause = false
 	var time_sum: int = 0
@@ -31,10 +32,10 @@ func open(mode_: Mode, time: Array[int]):
 	match mode_:
 		Mode.SINGLEPLAYER:
 			singleplayer.visible = true
-			$Singleplayer/TimeLabel.text = str(time)
-			if LevelManager.is_best_time(time):
+			var is_best_time: bool = LevelManager.is_best_time(time)
+			time_label.start(time, death_count, is_best_time)
+			if is_best_time:
 				LevelManager.set_level_best_time(time)
-				$Singleplayer/TimeLabel.text += " Best Time!"
 		Mode.MULTIPLAYER:
 			multiplayer_control.visible = true
 

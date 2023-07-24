@@ -6,7 +6,7 @@ func _ready():
 	$Camera2D/AnimationPlayer.play("scroll")
 	$CanvasLayer/Logo/AnimationPlayer.play("logo_move")
 	DiscordRPCManager.update_rpc("In Main Menu", "basicicon", "In Main Menu")
-
+ 
 func _on_editor_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")
 

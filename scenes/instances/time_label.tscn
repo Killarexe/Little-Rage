@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5ls5sjfr4mir"]
+
+[ext_resource type="Script" path="res://scripts/uis/TimeLabel.gd" id="1_hodr6"]
+[ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_tx37u"]
+[ext_resource type="LabelSettings" uid="uid://cd8gvl774mr2v" path="res://assets/style/label_settings/medium_label.tres" id="2_713xv"]
+
+[node name="TimeLabel" type="Label"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tx37u")
+label_settings = ExtResource("2_713xv")
+script = ExtResource("1_hodr6")

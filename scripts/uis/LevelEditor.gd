@@ -89,7 +89,6 @@ func _on_save_file_dialog_confirmed():
 	var level_name: String = level_settings.level_name
 	
 	level_map.mode = LevelPlayer.Mode.PLAY
-	
 	packed_scene.pack(level_map)
 	
 	level.name = level_name
