@@ -6,9 +6,11 @@ var GAME_VERSION: GameVersion = GameVersion.from(0, 4, 0)
 var loot_boxes: LootBoxesManager = LootBoxesManager.new()
 var save: SaveManager = SaveManager.new()
 var can_pause: bool = true
+var is_mobile: bool = false
 
 func _ready():
 	save.load_save()
+	is_mobile = OS.get_name() == "Android" || OS.get_name() == "iOS"
 
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST || what == NOTIFICATION_WM_GO_BACK_REQUEST:

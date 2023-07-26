@@ -5,6 +5,7 @@ func _ready():
 	MusicManager.play_music("main_menu")
 	$Camera2D/AnimationPlayer.play("scroll")
 	$CanvasLayer/Logo/AnimationPlayer.play("logo_move")
+	$CanvasLayer/VBoxContainer/EditorButton.disabled = Global.is_mobile
 	DiscordRPCManager.update_rpc("In Main Menu", "basicicon", "In Main Menu")
  
 func _on_editor_button_pressed():

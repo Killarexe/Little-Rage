@@ -30,7 +30,7 @@ func set_settings(level: Level):
 	description = level.description
 	level_name_edit.text = level_name
 	level_description_edit.text = description
-	level_diffculty_select.select(int(difficulty))
+	level_diffculty_select.selected = int(difficulty)
 	level_y_limit.set_value_no_signal(level.y_limit)
 
 func _on_settings_button_pressed():

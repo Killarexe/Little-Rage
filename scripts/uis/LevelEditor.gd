@@ -27,22 +27,13 @@ func _ready():
 		var region: Rect2i = Rect2i(atlas_coord, Vector2i(16, 16))
 		tiles.add_icon_item(ImageTexture.create_from_image(atlas.get_image().get_region(region)))
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				camera.zoom += Vector2(0.1, 0.1)
-			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				camera.zoom -= Vector2(0.1, 0.1)
-	if event is InputEventMouseMotion:
-		if is_panning:
-			camera.global_position -= event.relative * camera.zoom * 0.25
-
 func _process(_delta):
-	mouse_pos = camera.get_global_mouse_position()
-	is_panning = Input.is_action_pressed("middle_click")
-	if Input.is_action_just_pressed("pause"):
-		selected_tile = -1
+	if Global.is_mobile:
+		pass
+	else:
+		mouse_pos = camera.get_global_mouse_position()
+		if Input.is_action_just_pressed("pause"):
+			selected_tile = -1
 	if selected_tile < 0 || level_settings.visible:
 		can_place = false
 	if can_place:
@@ -65,7 +56,7 @@ func is_editing() -> bool:
 	return level_map.mode == LevelPlayer.Mode.EDIT
 
 func _draw():
-	if can_place && selected_tile >= 0:
+	if can_place && selected_tile >= 0 && !Global.is_mobile:
 		var offset: Vector2i = tile_set.get_source(1).get_tile_id(selected_tile)
 		draw_texture_rect_region(atlas, Rect2(tile_pos * 16, Vector2(16, 16)), Rect2(16 * offset.x, 16 * offset.y, 16, 16))
 	#TODO: Player spawn draw
