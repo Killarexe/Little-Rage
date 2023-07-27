@@ -11,39 +11,25 @@ class_name LevelEditor
 
 var atlas: CompressedTexture2D = load("res://assets/textures/tileset.png")
 var tile_set: TileSet = load("res://assets/Tileset.tres")
-var mouse_pos: Vector2 = Vector2()
-var tile_pos: Vector2 = Vector2()
 var is_panning: bool = false
 var can_place: bool = false
 var not_saved: bool = false
 var selected_tile: int = -1
 
 func _ready():
+	can_place = Global.is_mobile
 	Input.use_accumulated_input = false
-	DiscordRPCManager.update_rpc("In Editor", "basicicon", "In Editor")
 	var tileset_source: TileSetSource = tile_set.get_source(1)
 	for tile in tileset_source.get_tiles_count():
 		var atlas_coord: Vector2i = tileset_source.get_tile_id(tile) * Vector2i(16, 16)
 		var region: Rect2i = Rect2i(atlas_coord, Vector2i(16, 16))
 		tiles.add_icon_item(ImageTexture.create_from_image(atlas.get_image().get_region(region)))
+	DiscordRPCManager.update_rpc("In Editor", "basicicon", "In Editor")
 
 func _process(_delta):
-	if Global.is_mobile:
-		pass
-	else:
-		mouse_pos = camera.get_global_mouse_position()
+	if !Global.is_mobile:
 		if Input.is_action_just_pressed("pause"):
 			selected_tile = -1
-	if selected_tile < 0 || level_settings.visible:
-		can_place = false
-	if can_place:
-		tile_pos = floor(mouse_pos / 16)
-		if Input.is_action_pressed("left_click"):
-			level_map.change_tile_and_update(tile_pos, tile_set.get_source(1).get_tile_id(selected_tile))
-			not_saved = true
-		elif Input.is_action_pressed("right_click"):
-			level_map.remove_tile_and_update(tile_pos)
-			not_saved = true
 	queue_redraw()
 
 func checked_if_not_saved() -> StringName:
@@ -57,6 +43,7 @@ func is_editing() -> bool:
 
 func _draw():
 	if can_place && selected_tile >= 0 && !Global.is_mobile:
+		var tile_pos: Vector2 = floor(camera.get_global_mouse_position() / 16)
 		var offset: Vector2i = tile_set.get_source(1).get_tile_id(selected_tile)
 		draw_texture_rect_region(atlas, Rect2(tile_pos * 16, Vector2(16, 16)), Rect2(16 * offset.x, 16 * offset.y, 16, 16))
 	#TODO: Player spawn draw
@@ -68,10 +55,12 @@ func _on_tiles_empty_clicked(_at_position, _mouse_button_index):
 	selected_tile = -1
 
 func on_mouse_entered():
-	can_place = false
+	if !Global.is_mobile:
+		can_place = false
 
 func on_mouse_exited():
-	can_place = true
+	if !Global.is_mobile:
+		can_place = true
 
 func _on_save_file_dialog_confirmed():
 	save_dialog.current_path = LevelManager.EXTERNAL_LEVELS_DIR
@@ -144,3 +133,15 @@ func _on_quit_button_pressed():
 
 func _on_level_settings_menu_on_settings_changed():
 	not_saved = true
+
+func _on_camera_2d_on_clicked(clicked_position: Vector2, placeing: bool):
+	if selected_tile < 0 || level_settings.visible:
+		can_place = false
+	if can_place:
+		var tile_pos: Vector2 = floor(clicked_position / 16)
+		if placeing:
+			level_map.change_tile_and_update(tile_pos, tile_set.get_source(1).get_tile_id(selected_tile))
+			not_saved = true
+		else:
+			level_map.remove_tile_and_update(tile_pos)
+			not_saved = true

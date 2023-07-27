@@ -31,6 +31,7 @@ func start(timer: Array[int], death_count: int, is_best_time: bool):
 	await get_tree().create_timer(0.5).timeout
 	show_zeros = true
 	best_time = is_best_time
+	deaths = death_count
 	update_text()
 
 func update_text():

@@ -4,7 +4,7 @@ var enable_discord_rpc: bool = true
 
 #TODO: Tranlated states...
 func update_rpc(state: String, small_image: String, small_image_text: String):
-	if !discord_sdk.get_is_discord_working() || !enable_discord_rpc:
+	if !discord_sdk.get_is_discord_working() || !enable_discord_rpc || Global.is_mobile:
 		return
 	discord_sdk.state = state
 	discord_sdk.small_image = small_image
@@ -13,7 +13,7 @@ func update_rpc(state: String, small_image: String, small_image_text: String):
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	if !enable_discord_rpc:
+	if !enable_discord_rpc || Global.is_mobile:
 		return
 	discord_sdk.app_id = 807516321830666292
 	discord_sdk.details = "A Small Simple 2D Platformer made by Killar.exe"

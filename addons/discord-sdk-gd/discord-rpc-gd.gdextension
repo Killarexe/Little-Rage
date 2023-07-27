@@ -15,6 +15,12 @@ linux.debug.arm64 = "bin/linux/libdiscord_game_sdk_binding_debug.so"
 linux.release.arm64 = "bin/linux/libdiscord_game_sdk_binding.so"
 linux.debug.rv64 = "bin/linux/libdiscord_game_sdk_binding_debug.so"
 linux.release.rv64 = "bin/linux/libdiscord_game_sdk_binding.so"
+android.debug.x86_64 = "bin/linux/libdiscord_game_sdk_binding_debug.so"
+android.release.x86_64 = "bin/linux/libdiscord_game_sdk_binding.so"
+android.debug.arm64 = "bin/linux/libdiscord_game_sdk_binding_debug.so"
+android.release.arm64 = "bin/linux/libdiscord_game_sdk_binding.so"
+android.debug.rv64 = "bin/linux/libdiscord_game_sdk_binding_debug.so"
+android.release.rv64 = "bin/linux/libdiscord_game_sdk_binding.so"
 
 [dependencies]
 
@@ -28,3 +34,9 @@ linux.debug.arm64 = { "bin/linux/libdiscord_game_sdk.so": "" }
 linux.release.arm64 = { "bin/linux/libdiscord_game_sdk.so": "" }
 linux.debug.rv64 = { "bin/linux/libdiscord_game_sdk.so": "" }
 linux.release.rv64 = { "bin/linux/libdiscord_game_sdk.so": "" }
+android.debug.x86_64 = { "bin/linux/libdiscord_game_sdk.so": "" }
+android.release.x86_64 = { "bin/linux/libdiscord_game_sdk.so": "" }
+android.debug.arm64 = { "bin/linux/libdiscord_game_sdk.so": "" }
+android.release.arm64 = { "bin/linux/libdiscord_game_sdk.so": "" }
+android.debug.rv64 = { "bin/linux/libdiscord_game_sdk.so": "" }
+android.release.rv64 = { "bin/linux/libdiscord_game_sdk.so": "" }

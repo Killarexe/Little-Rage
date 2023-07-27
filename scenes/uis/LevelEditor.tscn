@@ -77,6 +77,20 @@ stretch_mode = 0
 script = ExtResource("4_23hv3")
 editor = NodePath("../..")
 
+[node name="EraserButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 360.0
+offset_bottom = 440.0
+grow_horizontal = 0
+toggle_mode = true
+texture_normal = ExtResource("2_kolu2")
+stretch_mode = 0
+script = ExtResource("4_23hv3")
+editor = NodePath("../..")
+
 [node name="SaveButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
 anchors_preset = 3
 anchor_left = 1.0
@@ -212,6 +226,7 @@ can_pan = true
 [connection signal="confirmed" from="CanvasLayer/SaveFileDialog" to="." method="_on_save_file_dialog_confirmed"]
 [connection signal="file_selected" from="CanvasLayer/LoadFileDialog" to="." method="_on_load_file_dialog_file_selected"]
 [connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="toggled" from="CanvasLayer/EraserButton" to="Camera2D" method="_on_eraser_button_toggled"]
 [connection signal="pressed" from="CanvasLayer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
@@ -224,3 +239,4 @@ can_pan = true
 [connection signal="item_selected" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDifficulty" to="CanvasLayer/LevelSettingsMenu" method="_on_level_difficulty_item_selected"]
 [connection signal="value_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/YLimit" to="CanvasLayer/LevelSettingsMenu" method="_on_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/LevelSettingsMenu/BackButton" to="CanvasLayer/LevelSettingsMenu" method="_on_back_button_pressed"]
+[connection signal="on_clicked" from="Camera2D" to="." method="_on_camera_2d_on_clicked"]

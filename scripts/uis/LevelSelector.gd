@@ -27,8 +27,8 @@ func _on_level_list_item_selected(index):
 func _on_play_button_pressed():
 	var level: Level = LevelManager.levels[level_index]
 	LevelManager.current_level = level.id
-	DiscordRPCManager.update_rpc("Playing level '" + level.name + "'", "basicicon", "Playing level '" + level.name + "'",)
 	SceneManager.change_packed(level.scene)
+	DiscordRPCManager.update_rpc("Playing level '" + level.name + "'", "basicicon", "Playing level '" + level.name + "'",)
 
 func _on_back_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
