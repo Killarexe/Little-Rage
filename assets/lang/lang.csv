@@ -49,3 +49,6 @@ ui.editor.loaded,Loaded level: ‘%s’,Chargée le niveau: ‘%s’
 ui.editor.false_load,Failed to load level from path: ‘%s’,Échec de chargement de niveau: ’%s’ 
 ui.settings.sound_track,Soundtacks,Sons Du Jeu
 ui.settings.reset_save.confirm,Are you sure?\nAll your progression will be deleted…,Êtes-vous sure?\nToute votre progression vont être supprimer...
+ui.time,Time,Temps
+ui.deaths,Deaths,Morts
+ui.level.best_time,Best Time,Temps Record

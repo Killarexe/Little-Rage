@@ -52,6 +52,12 @@ theme = ExtResource("2_oyb7t")
 text = "ui.level.difficulty"
 label_settings = ExtResource("3_nmy32")
 
+[node name="LevelBestTime" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_oyb7t")
+text = "ui.level.best_time"
+label_settings = ExtResource("3_nmy32")
+
 [node name="PlayButton" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(256, 64)
 anchors_preset = 7

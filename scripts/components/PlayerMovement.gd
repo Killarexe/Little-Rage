@@ -9,7 +9,7 @@ class_name PlayerMovement
 signal on_setting_spawnpoint(pos: Vector2)
 signal on_switch_color(color: bool)
 signal on_win(time: Array[int], death_count: int)
-signal on_death
+signal on_death(death_count: int)
 
 const MAX_FALL_SPEED: float = 500.0
 const GROUND_TIME: float = 0.2
@@ -115,8 +115,8 @@ func _physics_process(delta):
 
 func die():
 	sound_effect_manager.play_rand_sfx(PlayerSoundEffect.Type.DIE)
-	on_death.emit()
 	death_count += 1
+	on_death.emit(death_count)
 	global_position = spawn_point
 
 func finish_level():

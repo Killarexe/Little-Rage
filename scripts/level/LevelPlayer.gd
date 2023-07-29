@@ -42,16 +42,17 @@ enum Mode{
 @export var start_pos: Vector2 = Vector2()
 
 var player_prefab: Resource = load("res://scenes/instances/Player.tscn")
+var countdown_prefab: Resource = load("res://scenes/instances/countdown.tscn")
 
 func _ready():
 	if mode == Mode.PLAY:
 		spawn_player()
+		Global.instanceNode(countdown_prefab, self)
 
 func spawn_player():
 	var player = Global.instanceNodeAtPos(player_prefab, self, start_pos)
 	player.connect("on_switch_color", switch_colors)
 	player.connect("on_setting_spawnpoint", set_spawnpoint)
-	MusicManager.play_music("level_plains")
 
 func filter_used_grass_cells() -> Array[Vector2i]:
 	var used_grass_cells: Array[Vector2i] = [];
