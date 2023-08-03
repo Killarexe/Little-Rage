@@ -34,17 +34,14 @@ func get_level_best_time_as_str(level_id: String) -> String:
 func get_level_best_time(level_id: String) -> Array:
 	return levels_best_times.get(level_id, [0, 0, 0])
 
-func is_best_time(time: Array[int]) -> bool:
-	var current_time: Array = get_level_best_time(current_level)
-	if current_time == [0, 0, 0]:
+func time_to_int(time: Array) -> int:
+	return int(str(time[0]).pad_zeros(2) + str(time[1]).pad_zeros(2) + str(time[2]).pad_zeros(2))
+
+func is_best_time(current_time: Array[int]) -> bool:
+	var best_time: Array = get_level_best_time(current_level)
+	if best_time == [0, 0, 0]:
 		return true
-	if current_time[0] < time[0]:
-		return false
-	if current_time[1] < time[1]:
-		return false
-	if current_time[2] < time[2]:
-		return false
-	return true
+	return time_to_int(best_time) > time_to_int(current_time)
 
 func set_level_best_time(time: Array[int]):
 	levels_best_times[current_level] = time

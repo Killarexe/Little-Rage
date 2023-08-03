@@ -103,7 +103,8 @@ func _physics_process(delta):
 						3:
 							die()
 						4:
-							finish_level()
+							if previous_tile_type != type:
+								finish_level()
 						5:
 							if previous_tile_type != type && previous_tile_type != 6:
 								on_switch_color.emit(true)

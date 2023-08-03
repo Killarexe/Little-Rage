@@ -4,7 +4,7 @@ var loot_box_count: int = 0
 
 #chance: 0 - 1
 func add_loot_box(chance: float):
-	if randf() >= chance:
+	if randf() <= chance:
 		loot_box_count += 1
 		Global.save_game()
 		PopUpFrame.pop_translated("ui.popup.new_loot_box")

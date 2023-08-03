@@ -28,7 +28,6 @@ func open(mode_: Mode, time: Array[int], death_count: int):
 	var time_sum: int = 0
 	for i in time:
 		time_sum += i
-	Global.loot_boxes.add_loot_box(int(time_sum / 3.0 * 99.0))
 	match mode_:
 		Mode.SINGLEPLAYER:
 			singleplayer.visible = true
@@ -36,6 +35,9 @@ func open(mode_: Mode, time: Array[int], death_count: int):
 			time_label.start(time, death_count, is_best_time)
 			if is_best_time:
 				LevelManager.set_level_best_time(time)
+				Global.loot_boxes.add_loot_box(1)
+			else:
+				Global.loot_boxes.add_loot_box(int(1.0 / time_sum / 3.0 * 99.0))
 		Mode.MULTIPLAYER:
 			multiplayer_control.visible = true
 

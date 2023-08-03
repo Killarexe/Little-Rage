@@ -51,11 +51,10 @@ func load_save():
 	if !FileAccess.file_exists(SAVE_FILE):
 		create_save()
 	var save_file: FileAccess = FileAccess.open(SAVE_FILE, FileAccess.READ)
-	var data: Dictionary = JSON.parse_string(save_file.get_as_text())
-	if data:
+	var data = JSON.parse_string(save_file.get_as_text())
+	if data is Dictionary:
 		TranslationServer.set_locale(get_or_default(data, "lang"))
 		PlayerHatManager.current_hat = get_or_default(data, "current_hat")
-		MusicManager.set_music_volume(get_or_default(data, "music_volume"))
 		LevelManager.levels_best_times = get_or_default(data, "level_times")
 		PlayerSkinManager.current_skin = get_or_default(data, "current_skin")
 		PlayerHatManager.unhidden_hats = get_or_default(data, "unhidden_hats")
@@ -65,3 +64,6 @@ func load_save():
 		PlayerSkinManager.unhidden_skins = get_or_default(data, "unhidden_skins")
 		DiscordRPCManager.enable_discord_rpc = get_or_default(data, "discord_rpc")
 		MusicManager.sound_effect_volume = get_or_default(data, "sound_effects_volume")
+		MusicManager.set_music_volume(get_or_default(data, "music_volume"))
+	else:
+		create_save()
