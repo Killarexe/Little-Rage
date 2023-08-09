@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerSoundEffect" load_steps=3 format=3 uid="uid://bi1hoo7vpiuq8"]
 
-[ext_resource type="Script" path="res://scripts/level/player/PlayerSoundEffect.gd" id="1_n0dn8"]
+[ext_resource type="Script" path="res://scripts/level/player/sound_effect/PlayerSoundEffect.gd" id="1_n0dn8"]
 [ext_resource type="AudioStream" uid="uid://bd2pu0fryf5ks" path="res://assets/sound_effects/die.wav" id="2_7qq1u"]
 
 [resource]

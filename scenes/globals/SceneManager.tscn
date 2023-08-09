@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://75hf13y7om1u"]
 
-[ext_resource type="Script" path="res://scripts/SceneManager.gd" id="1_gwd2n"]
+[ext_resource type="Script" path="res://scripts/uis/SceneManager.gd" id="1_gwd2n"]
 [ext_resource type="AnimationLibrary" uid="uid://db3jmjoj0bqxh" path="res://assets/animations/scene_transitions/Transitions.res" id="3_ra8ms"]
 
 [sub_resource type="Animation" id="Animation_f3xcs"]

@@ -41,8 +41,8 @@ enum Mode{
 @export var mode: Mode = Mode.PLAY
 @export var start_pos: Vector2 = Vector2()
 
-var player_prefab: Resource = load("res://scenes/instances/Player.tscn")
-var countdown_prefab: Resource = load("res://scenes/instances/countdown.tscn")
+var player_prefab: Resource = load("res://scenes/instances/level/player/Player.tscn")
+var countdown_prefab: Resource = load("res://scenes/instances/level/player/uis/countdown.tscn")
 
 func _ready():
 	if mode == Mode.PLAY:

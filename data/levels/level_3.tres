@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://ber5gqtp58qld"]
+
+[ext_resource type="PackedScene" uid="uid://cov26ksvh7t3n" path="res://scenes/levels/Level3.tscn" id="1_0vhjg"]
+[ext_resource type="Script" path="res://scripts/level/Level.gd" id="2_v8ycs"]
+
+[resource]
+script = ExtResource("2_v8ycs")
+name = "Level 3"
+is_hidden = false
+description = "The first simple Level"
+mode = 0
+y_limit = 512
+scene = ExtResource("1_0vhjg")
+level_theme = 0
+difficulty = 0
+id = "level_3"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EditorTile" load_steps=2 format=3 uid="uid://46j4sfqap18"]
+
+[ext_resource type="Script" path="res://scripts/uis/level_editor/tiles/EditorTile.gd" id="1_4fl8m"]
+
+[resource]
+script = ExtResource("1_4fl8m")
+tile_dictionary = {
+Vector2i(0, 0): Vector2i(2, 9)
+}
+id = "blue_spike"

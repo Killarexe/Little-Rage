@@ -30,9 +30,9 @@ const DEFAULT_DIFFICULTY: Difficulty = Difficulty.NORMAL
 
 @export var name: String = ""
 @export var is_hidden: bool = false
-@export var description: String = ""
+@export_multiline var description: String = ""
 @export var mode: Mode = DEFAULT_MODE
-@export var y_limit: int = DEFAULT_Y_LIMIT
+@export_range(512, 1024) var y_limit: int = DEFAULT_Y_LIMIT
 @export var scene: PackedScene = PackedScene.new()
 @export var level_theme: LevelTheme = LevelTheme.PLAINS
 @export var difficulty: Difficulty = DEFAULT_DIFFICULTY

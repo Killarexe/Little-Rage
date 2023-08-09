@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Music" load_steps=3 format=3 uid="uid://ckb7irfwdkn2e"]
 
-[ext_resource type="Script" path="res://scripts/sound/Music.gd" id="1_bm48h"]
+[ext_resource type="Script" path="res://scripts/music/Music.gd" id="1_bm48h"]
 [ext_resource type="AudioStream" uid="uid://bkq7v66abtsik" path="res://assets/musics/level_win_easter.wav" id="2_tv3r8"]
 
 [resource]

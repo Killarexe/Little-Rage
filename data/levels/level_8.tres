@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://c8rx0sa7df72f"]
+
+[ext_resource type="PackedScene" uid="uid://c0g8slx4o72ky" path="res://scenes/levels/Level1.tscn" id="1_ku0cj"]
+[ext_resource type="Script" path="res://scripts/level/Level.gd" id="2_6yx3g"]
+
+[resource]
+script = ExtResource("2_6yx3g")
+name = "Level 8"
+is_hidden = false
+description = "The first simple Level"
+mode = 0
+y_limit = 512
+scene = ExtResource("1_ku0cj")
+level_theme = 0
+difficulty = 2
+id = "level_8"

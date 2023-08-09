@@ -52,3 +52,7 @@ ui.settings.reset_save.confirm,Are you sure?\nAll your progression will be delet
 ui.time,Time,Temps
 ui.deaths,Deaths,Morts
 ui.level.best_time,Best Time,Temps Record
+ui.popup.new_loot_box,You recived a new Loot Box!,Vous avez reçu une nouvelle Loot Box !
+ui.shop.open_loot_box,Open Loot Box : %s left,Ouvrir une Loot Box : %s restant 
+ui.create_level,New Level,Nouveau Niveau
+ui.edit_level,Edit,Editer

@@ -1,17 +1,17 @@
 [gd_scene load_steps=13 format=3 uid="uid://btth5y287sdm0"]
 
-[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/DefaultLevel.tscn" id="1_dbihm"]
-[ext_resource type="Script" path="res://scripts/uis/LevelEditor.gd" id="1_pdpng"]
+[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/level/DefaultLevel.tscn" id="1_dbihm"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditor.gd" id="1_iig2t"]
 [ext_resource type="Texture2D" uid="uid://buw3bxnswai6i" path="res://assets/textures/ui/pause.png" id="2_kolu2"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/tiles/TilesList.gd" id="3_87txn"]
 [ext_resource type="Texture2D" uid="uid://k4siyrr0ptjm" path="res://assets/textures/ui/save.png" id="3_av76s"]
-[ext_resource type="Script" path="res://scripts/uis/DisableEditingCursor.gd" id="4_23hv3"]
-[ext_resource type="Script" path="res://scripts/uis/SaveConfirmationDialog.gd" id="4_86kle"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/SaveConfirmationDialog.gd" id="4_ddc04"]
 [ext_resource type="Texture2D" uid="uid://bnq26jdctplio" path="res://assets/textures/ui/open.png" id="4_go505"]
-[ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="7_18qsw"]
-[ext_resource type="Script" path="res://scripts/uis/LevelSettingsMenu.gd" id="7_f4puj"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/DisableEditingCursor.gd" id="6_uokvo"]
 [ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/quit.png" id="7_l3wyl"]
 [ext_resource type="Texture2D" uid="uid://dknlajug6w68u" path="res://assets/textures/ui/settings.png" id="9_2llvw"]
-[ext_resource type="Script" path="res://scripts/uis/EditorCameraControler.gd" id="12_8mpvp"]
+[ext_resource type="PackedScene" uid="uid://o458ah6nqt0b" path="res://scenes/uis/LevelSettingsMenu.tscn" id="10_ncilj"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/EditorCameraControler.gd" id="12_ws2l4"]
 
 [node name="LevelEditor" type="Control"]
 layout_mode = 3
@@ -20,22 +20,31 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pdpng")
+script = ExtResource("1_iig2t")
 
 [node name="DefaultLevel" parent="." instance=ExtResource("1_dbihm")]
 mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Tiles" type="ItemList" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
+[node name="Tiles" type="ItemList" parent="CanvasLayer"]
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 160.0
 grow_vertical = 2
 icon_mode = 0
 icon_scale = 4.0
-script = ExtResource("4_23hv3")
-editor = NodePath("../..")
+script = ExtResource("3_87txn")
+
+[node name="DisableEditingCursor" type="Control" parent="CanvasLayer/Tiles" node_paths=PackedStringArray("editor")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_uokvo")
+editor = NodePath("../../..")
 
 [node name="SaveConfirmationDialog" type="ConfirmationDialog" parent="CanvasLayer"]
 title = "ui.save_level"
@@ -43,7 +52,7 @@ size = Vector2i(320, 192)
 ok_button_text = "ui.editor.save"
 dialog_text = "ui.level_editor.save_option"
 cancel_button_text = "ui.editor.dont_save"
-script = ExtResource("4_86kle")
+script = ExtResource("4_ddc04")
 
 [node name="SaveFileDialog" type="FileDialog" parent="CanvasLayer"]
 position = Vector2i(20, 40)
@@ -74,7 +83,7 @@ offset_bottom = 80.0
 grow_horizontal = 0
 texture_normal = ExtResource("2_kolu2")
 stretch_mode = 0
-script = ExtResource("4_23hv3")
+script = ExtResource("6_uokvo")
 editor = NodePath("../..")
 
 [node name="EraserButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
@@ -88,7 +97,7 @@ grow_horizontal = 0
 toggle_mode = true
 texture_normal = ExtResource("2_kolu2")
 stretch_mode = 0
-script = ExtResource("4_23hv3")
+script = ExtResource("6_uokvo")
 editor = NodePath("../..")
 
 [node name="SaveButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
@@ -103,7 +112,7 @@ grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("3_av76s")
 stretch_mode = 0
-script = ExtResource("4_23hv3")
+script = ExtResource("6_uokvo")
 editor = NodePath("../..")
 
 [node name="LoadButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
@@ -119,7 +128,7 @@ grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("4_go505")
 stretch_mode = 0
-script = ExtResource("4_23hv3")
+script = ExtResource("6_uokvo")
 editor = NodePath("../..")
 
 [node name="QuitButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
@@ -135,7 +144,7 @@ grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("7_l3wyl")
 stretch_mode = 0
-script = ExtResource("4_23hv3")
+script = ExtResource("6_uokvo")
 editor = NodePath("../..")
 
 [node name="SettingsButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
@@ -145,79 +154,15 @@ offset_right = 1080.0
 offset_bottom = 720.0
 texture_normal = ExtResource("9_2llvw")
 stretch_mode = 0
-script = ExtResource("4_23hv3")
+script = ExtResource("6_uokvo")
 editor = NodePath("../..")
 
-[node name="LevelSettingsMenu" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_f4puj")
-editor = NodePath("../..")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/LevelSettingsMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.5, 0.5, 0.5, 0.501961)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelSettingsMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -16.0
-offset_right = 160.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("7_18qsw")
-alignment = 1
-
-[node name="LevelDescription" type="TextEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
-custom_minimum_size = Vector2(0, 128)
-layout_mode = 2
-theme = ExtResource("7_18qsw")
-placeholder_text = "ui.level.description"
-
-[node name="LevelName" type="LineEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("7_18qsw")
-placeholder_text = "ui.level.name"
-
-[node name="LevelDifficulty" type="OptionButton" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("7_18qsw")
-alignment = 1
-
-[node name="YLimit" type="SpinBox" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
-layout_mode = 2
-min_value = 128.0
-max_value = 1024.0
-value = 128.0
-prefix = "ui.level.y_limit"
-
-[node name="BackButton" type="TextureButton" parent="CanvasLayer/LevelSettingsMenu"]
-layout_mode = 0
-offset_left = 910.0
-offset_top = 640.0
-offset_right = 990.0
-offset_bottom = 720.0
-texture_normal = ExtResource("7_l3wyl")
-stretch_mode = 5
+[node name="LevelSettingsMenu" parent="CanvasLayer" instance=ExtResource("10_ncilj")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
-script = ExtResource("12_8mpvp")
+script = ExtResource("12_ws2l4")
 can_zoom = true
 can_pan = true
 
@@ -230,13 +175,5 @@ can_pan = true
 [connection signal="pressed" from="CanvasLayer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/SettingsButton" to="CanvasLayer/LevelSettingsMenu" method="_on_settings_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/LevelSettingsMenu" to="." method="on_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/LevelSettingsMenu" to="." method="on_mouse_exited"]
 [connection signal="on_settings_changed" from="CanvasLayer/LevelSettingsMenu" to="." method="_on_level_settings_menu_on_settings_changed"]
-[connection signal="text_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDescription" to="CanvasLayer/LevelSettingsMenu" method="_on_level_description_text_changed"]
-[connection signal="text_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelName" to="CanvasLayer/LevelSettingsMenu" method="_on_level_name_text_changed"]
-[connection signal="item_selected" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDifficulty" to="CanvasLayer/LevelSettingsMenu" method="_on_level_difficulty_item_selected"]
-[connection signal="value_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/YLimit" to="CanvasLayer/LevelSettingsMenu" method="_on_slider_value_changed"]
-[connection signal="pressed" from="CanvasLayer/LevelSettingsMenu/BackButton" to="CanvasLayer/LevelSettingsMenu" method="_on_back_button_pressed"]
 [connection signal="on_clicked" from="Camera2D" to="." method="_on_camera_2d_on_clicked"]

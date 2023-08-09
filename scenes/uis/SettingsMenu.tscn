@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://d2prkhp6tmh5f"]
+[gd_scene load_steps=9 format=3 uid="uid://d2prkhp6tmh5f"]
 
-[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/DefaultLevel.tscn" id="1_m3sge"]
+[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/level/DefaultLevel.tscn" id="1_m3sge"]
 [ext_resource type="Animation" uid="uid://cx04at5pdf11i" path="res://assets/animations/camera_scroll.res" id="1_nbals"]
 [ext_resource type="Script" path="res://scripts/uis/SettingsMenu.gd" id="1_y0ggs"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="4_tdetm"]
 [ext_resource type="LabelSettings" uid="uid://6bd6ywcaci6c" path="res://assets/style/label_settings/big_label.tres" id="5_th61l"]
 [ext_resource type="LabelSettings" uid="uid://cd8gvl774mr2v" path="res://assets/style/label_settings/medium_label.tres" id="6_a5c82"]
+[ext_resource type="Script" path="res://scripts/uis/MobileVisiblity.gd" id="7_u0f2h"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0jn6v"]
 _data = {
@@ -103,6 +104,8 @@ theme = ExtResource("4_tdetm")
 [node name="Language" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(1280, 0)
 layout_mode = 2
+script = ExtResource("7_u0f2h")
+visible_on_mobile = false
 
 [node name="Text" type="Label" parent="CanvasLayer/VBoxContainer/Language"]
 layout_mode = 2
@@ -118,6 +121,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="DiscordRPC" type="CheckButton" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("4_tdetm")

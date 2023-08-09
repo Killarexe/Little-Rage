@@ -1,0 +1,139 @@
+[gd_scene load_steps=18 format=3 uid="uid://bkwmpwrjnhece"]
+
+[ext_resource type="Script" path="res://scripts/level/player/PlayerMovement.gd" id="1_l7flj"]
+[ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="2_alfuh"]
+[ext_resource type="PackedScene" uid="uid://1qv3udmr8sxh" path="res://scenes/instances/level/player/PlayerSkin.tscn" id="3_tlygq"]
+[ext_resource type="Texture2D" uid="uid://c8kxkf324k7v" path="res://assets/textures/level_backgrounds/suface_blur.png" id="4_1alsf"]
+[ext_resource type="AnimationLibrary" uid="uid://lq7ufb3fx0yh" path="res://assets/animations/PlayerAnimations.res" id="4_jqgtb"]
+[ext_resource type="PackedScene" uid="uid://bruwtum1c48go" path="res://scenes/uis/PauseMenu.tscn" id="5_iaj63"]
+[ext_resource type="PackedScene" uid="uid://c027b4usebimx" path="res://scenes/uis/WinMenu.tscn" id="6_6ee8y"]
+[ext_resource type="Script" path="res://scripts/uis/MobileVisiblity.gd" id="6_njdel"]
+[ext_resource type="Texture2D" uid="uid://dxd7u5xffvp21" path="res://assets/textures/ui/left.png" id="6_p1hc3"]
+[ext_resource type="Texture2D" uid="uid://bcvu2cbuyoknu" path="res://assets/textures/ui/right.png" id="7_baypg"]
+[ext_resource type="Script" path="res://scripts/level/player/PlayerTimer.gd" id="8_3kxck"]
+[ext_resource type="Texture2D" uid="uid://cv22lwoysa8ap" path="res://assets/textures/ui/jump.png" id="8_5eel8"]
+[ext_resource type="Texture2D" uid="uid://buw3bxnswai6i" path="res://assets/textures/ui/pause.png" id="9_vwqws"]
+[ext_resource type="PackedScene" uid="uid://t7l5lywub7jg" path="res://scenes/instances/level/player/uis/PlayerStatus.tscn" id="13_p0n42"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ve1"]
+size = Vector2(16, 32)
+
+[sub_resource type="Animation" id="Animation_10f12"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pm6cf"]
+_data = {
+"RESET": SubResource("Animation_10f12")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource("1_l7flj")
+
+[node name="SoundEffectPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"Sound Effects"
+script = ExtResource("2_alfuh")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h7ve1")
+
+[node name="Skin" parent="." instance=ExtResource("3_tlygq")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pm6cf"),
+"PlayerAnimations": ExtResource("4_jqgtb")
+}
+blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+scroll_base_offset = Vector2(0, 512)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
+motion_mirroring = Vector2(636, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_1alsf")
+offset = Vector2(636, 0)
+
+[node name="MobileControl" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("6_njdel")
+
+[node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/MobileControl"]
+position = Vector2(0, 592)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("6_p1hc3")
+action = "left"
+
+[node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/MobileControl"]
+position = Vector2(153.6, 592)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("7_baypg")
+action = "right"
+
+[node name="JumpButton" type="TouchScreenButton" parent="CanvasLayer/MobileControl"]
+position = Vector2(1152, 592)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("8_5eel8")
+action = "jump"
+
+[node name="PauseButton" type="TouchScreenButton" parent="CanvasLayer/MobileControl"]
+position = Vector2(1152, 0)
+scale = Vector2(8, 8)
+texture_normal = ExtResource("9_vwqws")
+action = "pause"
+
+[node name="PlayerStatus" parent="." node_paths=PackedStringArray("player", "timer") instance=ExtResource("13_p0n42")]
+player = NodePath("..")
+timer = NodePath("../Timer")
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_iaj63")]
+
+[node name="WinMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_6ee8y")]
+player = NodePath("..")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+script = ExtResource("8_3kxck")
