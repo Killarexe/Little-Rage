@@ -10,6 +10,7 @@ signal on_setting_spawnpoint(pos: Vector2)
 signal on_switch_color(color: bool)
 signal on_win(time: Array[int], death_count: int)
 signal on_death(death_count: int)
+signal on_collide_tile(tile_type: int, pos: Vector2)
 
 const MAX_FALL_SPEED: float = 500.0
 const GROUND_TIME: float = 0.2
@@ -37,7 +38,18 @@ func _ready():
 	if current_level != null:
 		y_limit = LevelManager.get_current_level().y_limit
 
-func _physics_process(delta):
+func _physics_process(delta: float):
+	check_speed_and_timers(delta)
+	skin_distortion()
+	check_input()
+	handle_jump()
+	set_velocity(motion)
+	set_up_direction(UP)
+	move_and_slide()
+	manage_collisions()
+	motion = velocity
+
+func check_speed_and_timers(delta: float):
 	if global_position.y >= y_limit:
 		die()
 	motion.y += G
@@ -45,10 +57,13 @@ func _physics_process(delta):
 		motion.y = MAX_SPEED
 	jump_timer -= delta
 	ground_timer -= delta
-	
 	motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+
+func skin_distortion():
 	skin.global_skew = lerpf(skin.global_skew, velocity.x / 2000, 0.2)
 	skin.scale.y = lerpf(skin.scale.y, abs(motion.y) / MAX_FALL_SPEED / 4 + 1, 0.2)
+
+func check_input():
 	if Input.is_action_pressed("left"):
 		skin.flip_h = true
 		motion.x -= ACCEL
@@ -60,12 +75,13 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("jump"):
 		jump_timer = JUMP_TIME
-		
+	
 	if jump_timer > 0 && !Input.is_action_pressed("jump"):
 		jump_timer = 0
 		if(motion.y < 0):
 			motion.y = motion.y * 0.5
-	
+
+func handle_jump():
 	if is_on_floor():
 		if ground_timer < 0:
 			Global.instanceNodeAtPos(jump_particle, get_parent(), global_position + Vector2(0, 16))
@@ -81,11 +97,8 @@ func _physics_process(delta):
 		motion.y = -JUMP_FORCE
 		jump_timer = 0
 		ground_timer = 0
-	
-	set_velocity(motion)
-	set_up_direction(UP)
-	move_and_slide()
-	
+
+func manage_collisions():
 	for i in get_slide_collision_count():
 		var collision: KinematicCollision2D = get_slide_collision(i)
 		var collider: Object = collision.get_collider()
@@ -94,25 +107,8 @@ func _physics_process(delta):
 			var cell: TileData = collider.get_cell_tile_data(0, pos)
 			if cell != null:
 				var type = cell.get_custom_data("type")
-				#TODO: All types
 				if type != null && type is int:
-					match type:
-						2:
-							spawn_point = global_position
-							on_setting_spawnpoint.emit(pos)
-						3:
-							die()
-						4:
-							if previous_tile_type != type:
-								finish_level()
-						5:
-							if previous_tile_type != type && previous_tile_type != 6:
-								on_switch_color.emit(true)
-						6:
-							if previous_tile_type != type && previous_tile_type != 5:
-								on_switch_color.emit(false)
-					previous_tile_type = type
-	motion = velocity
+					on_collide_tile.emit(type, pos)
 
 func die():
 	sound_effect_manager.play_rand_sfx(PlayerSoundEffect.Type.DIE)

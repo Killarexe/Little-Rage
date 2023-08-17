@@ -61,13 +61,13 @@ func handle_drag(event: InputEventScreenDrag):
 	elif touch_points.size() == 2:
 		var touch_point_positions = touch_points.values()
 		var current_distance: float = touch_point_positions[0].distance_to(touch_point_positions[1])
-		var current_angle: float = get_angle(touch_point_positions[0], touch_point_positions[1])
+		var touch_current_angle: float = get_angle(touch_point_positions[0], touch_point_positions[1])
 		var zoom_factor: float = start_distance / current_distance 
 		if can_zoom:
 			set_zoom_with_limit(start_zoom / zoom_factor)
 		if can_rotate:
-			rotation -= (current_angle - start_angle) * rotate_speed
-			start_angle = current_angle
+			rotation -= (touch_current_angle - start_angle) * rotate_speed
+			start_angle = touch_current_angle
 
 func handle_mouse_zoom(event: InputEventMouseButton):
 	if event.is_pressed() && can_zoom:

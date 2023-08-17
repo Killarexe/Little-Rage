@@ -4,6 +4,7 @@ extends Control
 
 @onready var play_button: Button = $CanvasLayer/PlayButton
 @onready var edit_level_button: Button = $CanvasLayer/EditButton
+@onready var level_create_button: Button = $CanvasLayer/CreateButton
 
 @onready var level_difficulty: Label = $CanvasLayer/VBoxContainer/LevelDifficulty
 @onready var level_description_label: Label = $CanvasLayer/VBoxContainer/LevelDescription
@@ -13,20 +14,25 @@ extends Control
 @onready var level_settings_menu: LevelSettingsMenu = $CanvasLayer/LevelSettingsMenu
 
 var level_index: int = -1
+var levels: Array[int] = []
 
 func _ready():
 	MusicManager.play_music("level_selection")
 	get_tree().paused = false
 	play_button.disabled = true
+	var index: int = 0
 	for level in LevelManager.levels:
-		level_list.add_item(level.name)
+		if !level.is_hidden:
+			level_list.add_item(level.name)
+			levels.append(index)
+		index += 1
 	level_list.select(0)
 	_on_level_list_item_selected(0)
 
 func _on_level_list_item_selected(index):
 	play_button.disabled = false
-	level_index = index
-	var level: Level = LevelManager.levels[index]
+	level_index = levels[index]
+	var level: Level = LevelManager.levels[level_index]
 	edit_level_button.disabled = LevelManager.is_default_level(level.id)
 	level_desciprtion.text = level.description
 	level_description_label.text =  TranslationServer.translate("ui.level.description") + ": "
@@ -45,9 +51,30 @@ func _on_back_button_pressed():
 
 func _on_create_button_pressed():
 	if level_settings_menu.visible:
-		pass
+		level_create_button.text = TranslationServer.translate("ui.create_level")
+		level_settings_menu.visible = false
 	else:
+		level_create_button.text = TranslationServer.translate("ui.back")
 		level_settings_menu.visible = true
 
 func _on_edit_button_pressed():
-	pass
+	LevelManager.current_level = LevelManager.levels[level_index].id
+	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")
+
+func _on_create_level_button_pressed():
+	var level: Level = Level.new()
+	var packed_scene: PackedScene = load("res://scenes/instances/level/DefaultLevel.tscn")
+	var level_name: String = level_settings_menu.level_name
+	level.name = level_name
+	level.is_hidden = false
+	level.scene = packed_scene
+	level.mode = Level.Mode.RACE
+	level.y_limit = level_settings_menu.y_limit
+	level.level_theme = Level.LevelTheme.PLAINS
+	level.difficulty = level_settings_menu.difficulty
+	level.description = level_settings_menu.description
+	level.id = level_name.to_lower().replace(" ", "_")
+	ResourceSaver.save(level, LevelManager.EXTERNAL_LEVELS_DIR + "/" + level.id + ".tres")
+	LevelManager.load_levels()
+	LevelManager.current_level = level.id
+	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")

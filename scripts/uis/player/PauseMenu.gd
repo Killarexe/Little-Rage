@@ -12,7 +12,7 @@ func _on_back_to_game_button_pressed():
 
 func _on_quit_button_pressed():
 	get_tree().paused = false
-	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
+	SceneManager.change_scene("res://scenes/uis/LevelSelector.tscn")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause") && Global.can_pause:

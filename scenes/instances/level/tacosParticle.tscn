@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqtbxechhhw47"]
+
+[ext_resource type="Texture2D" uid="uid://cv5jvtidjxyfp" path="res://assets/textures/ui/tacos.png" id="1_iihhn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dur1k"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(1280, 1, 1)
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 25.0
+initial_velocity_max = 50.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = -25.0
+angle_max = 25.0
+scale_max = 7.0
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_dur1k")
+texture = ExtResource("1_iihhn")
+lifetime = 15.0

@@ -3,8 +3,8 @@ class_name EditorTile
 
 @export var tile_dictionary: Dictionary
 
-func new(tile_dictionary: Dictionary):
-	self.tile_dictionary = tile_dictionary
+func new(_tile_dictionary: Dictionary):
+	self.tile_dictionary = _tile_dictionary
 
 func on_place(level_map: LevelPlayer, tile_pos: Vector2i):
 	for position in tile_dictionary.keys():

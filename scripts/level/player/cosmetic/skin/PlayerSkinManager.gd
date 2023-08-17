@@ -32,6 +32,8 @@ func unhide_skin(skin_id: String):
 	if skin != null:
 		if skin.is_hidden && !unhidden_skins.has(skin_id):
 			unlocked_skins.append(skin_id)
+			unlock_skin(skin_id)
+			PopUpFrame.pop_translated("ui.popup.unlocked_skin" % TranslationServer.translate("skin." + skin_id))
 			Global.save_game()
 
 func is_skin_hidden(skin_id: String) -> bool:

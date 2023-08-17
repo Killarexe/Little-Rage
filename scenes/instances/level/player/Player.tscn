@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bkwmpwrjnhece"]
+[gd_scene load_steps=19 format=3 uid="uid://bkwmpwrjnhece"]
 
 [ext_resource type="Script" path="res://scripts/level/player/PlayerMovement.gd" id="1_l7flj"]
 [ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="2_alfuh"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cv22lwoysa8ap" path="res://assets/textures/ui/jump.png" id="8_5eel8"]
 [ext_resource type="Texture2D" uid="uid://buw3bxnswai6i" path="res://assets/textures/ui/pause.png" id="9_vwqws"]
 [ext_resource type="PackedScene" uid="uid://t7l5lywub7jg" path="res://scenes/instances/level/player/uis/PlayerStatus.tscn" id="13_p0n42"]
+[ext_resource type="Script" path="res://scripts/level/player/PlayerCollider.gd" id="15_pys0j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ve1"]
 size = Vector2(16, 32)
@@ -59,8 +60,10 @@ script = ExtResource("1_l7flj")
 bus = &"Sound Effects"
 script = ExtResource("2_alfuh")
 
-[node name="Collider" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="." node_paths=PackedStringArray("player")]
 shape = SubResource("RectangleShape2D_h7ve1")
+script = ExtResource("15_pys0j")
+player = NodePath("..")
 
 [node name="Skin" parent="." instance=ExtResource("3_tlygq")]
 
@@ -73,7 +76,7 @@ libraries = {
 "": SubResource("AnimationLibrary_pm6cf"),
 "PlayerAnimations": ExtResource("4_jqgtb")
 }
-blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0

@@ -114,5 +114,6 @@ func set_mode(new_mode: Mode):
 	if mode == Mode.PLAY:
 		spawn_player()
 	else:
+		get_tree().paused = false
 		for child in get_children():
 			child.queue_free()

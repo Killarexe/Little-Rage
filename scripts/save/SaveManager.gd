@@ -13,6 +13,7 @@ const DEFAULT_SAVE: Dictionary = {
 	"sound_effects_volume": 100.0,
 	"discord_rpc": true,
 	"loot_box_count": 0,
+	"window_size": 5,
 	"lang": "en"
 }
 
@@ -22,6 +23,7 @@ func save():
 	var save_file: FileAccess = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
 	var data: Dictionary = DEFAULT_SAVE.duplicate()
 	
+	data["window_size"] = Global.window_size
 	data["lang"] = TranslationServer.get_locale()
 	data["music_volume"] = MusicManager.music_volume
 	data["current_hat"] = PlayerHatManager.current_hat
@@ -39,7 +41,6 @@ func save():
 	save_file.close()
 
 func create_save():
-	print("Reset save")
 	var save_file: FileAccess = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
 	save_file.store_string(JSON.stringify(DEFAULT_SAVE))
 	save_file.close()
@@ -53,6 +54,7 @@ func load_save():
 	var save_file: FileAccess = FileAccess.open(SAVE_FILE, FileAccess.READ)
 	var data = JSON.parse_string(save_file.get_as_text())
 	if data is Dictionary:
+		Global.window_size = get_or_default(data, "window_size")
 		TranslationServer.set_locale(get_or_default(data, "lang"))
 		PlayerHatManager.current_hat = get_or_default(data, "current_hat")
 		LevelManager.levels_best_times = get_or_default(data, "level_times")

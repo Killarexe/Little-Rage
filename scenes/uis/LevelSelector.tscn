@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="2_oyb7t"]
 [ext_resource type="LabelSettings" uid="uid://cd8gvl774mr2v" path="res://assets/style/label_settings/medium_label.tres" id="3_nmy32"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/LevelSettingsMenu.gd" id="4_veq7r"]
-[ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/quit.png" id="5_8ik8s"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/YLimitSilider.gd" id="5_j6eoi"]
 
 [node name="LevelSelector" type="Control"]
 layout_mode = 3
@@ -115,11 +115,11 @@ theme = ExtResource("2_oyb7t")
 max_text_lines = 5
 
 [node name="LevelSettingsMenu" type="Control" parent="CanvasLayer"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 319.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_veq7r")
@@ -149,16 +149,16 @@ grow_vertical = 2
 theme = ExtResource("2_oyb7t")
 alignment = 1
 
+[node name="LevelName" type="LineEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_oyb7t")
+placeholder_text = "ui.level.name"
+
 [node name="LevelDescription" type="TextEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("2_oyb7t")
 placeholder_text = "ui.level.description"
-
-[node name="LevelName" type="LineEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_oyb7t")
-placeholder_text = "ui.level.name"
 
 [node name="LevelDifficulty" type="OptionButton" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
 layout_mode = 2
@@ -171,15 +171,17 @@ min_value = 128.0
 max_value = 1024.0
 value = 128.0
 prefix = "ui.level.y_limit"
+script = ExtResource("5_j6eoi")
 
-[node name="BackButton" type="TextureButton" parent="CanvasLayer/LevelSettingsMenu"]
+[node name="CreateLevelButton" type="Button" parent="CanvasLayer/LevelSettingsMenu"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 0
-offset_left = 1199.0
-offset_top = 635.0
-offset_right = 1279.0
-offset_bottom = 715.0
-texture_normal = ExtResource("5_8ik8s")
-stretch_mode = 5
+offset_left = 26.0
+offset_top = 617.0
+offset_right = 274.0
+offset_bottom = 665.0
+theme = ExtResource("2_oyb7t")
+text = "ui.create_level"
 
 [node name="CreateButton" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(128, 48)
@@ -200,9 +202,9 @@ text = "ui.create_level"
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/EditButton" to="." method="_on_edit_button_pressed"]
 [connection signal="item_selected" from="CanvasLayer/LevelList" to="." method="_on_level_list_item_selected"]
-[connection signal="text_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDescription" to="CanvasLayer/LevelSettingsMenu" method="_on_level_description_text_changed" flags=18]
 [connection signal="text_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelName" to="CanvasLayer/LevelSettingsMenu" method="_on_level_name_text_changed" flags=18]
+[connection signal="text_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDescription" to="CanvasLayer/LevelSettingsMenu" method="_on_level_description_text_changed" flags=18]
 [connection signal="item_selected" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDifficulty" to="CanvasLayer/LevelSettingsMenu" method="_on_level_difficulty_item_selected" flags=18]
 [connection signal="value_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/YLimit" to="CanvasLayer/LevelSettingsMenu" method="_on_slider_value_changed" flags=18]
-[connection signal="pressed" from="CanvasLayer/LevelSettingsMenu/BackButton" to="CanvasLayer/LevelSettingsMenu" method="_on_back_button_pressed" flags=18]
+[connection signal="pressed" from="CanvasLayer/LevelSettingsMenu/CreateLevelButton" to="." method="_on_create_level_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/CreateButton" to="." method="_on_create_button_pressed"]

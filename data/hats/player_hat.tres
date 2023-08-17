@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerHat" load_steps=3 format=3 uid="uid://6sa20q13tx3c"]
+
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHat.gd" id="1_1oqoh"]
+[ext_resource type="Texture2D" uid="uid://cn67bkhftls3s" path="res://assets/textures/player/hats/playerhat.png" id="2_48pjn"]
+
+[resource]
+script = ExtResource("1_1oqoh")
+name = "hat.player"
+chance = 1
+is_hidden = false
+texture = ExtResource("2_48pjn")

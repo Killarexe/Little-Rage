@@ -56,3 +56,23 @@ ui.popup.new_loot_box,You recived a new Loot Box!,Vous avez reçu une nouvelle L
 ui.shop.open_loot_box,Open Loot Box : %s left,Ouvrir une Loot Box : %s restant 
 ui.create_level,New Level,Nouveau Niveau
 ui.edit_level,Edit,Editer
+hat.none,None,Rien
+hat.fez,Fez,Fez
+hat.simple,Simple Hat,Simple Chapeau
+skin.default,Default,Default
+skin.game_boy,Game Boy,Game Boy
+skin.negative,Negate Default,Default Inversée
+skin.rgb,RGB,RGB
+skin.steve,Steve,Steve
+skin.killarexe,Killar.exe,Killar.exe
+skin.niark,Niark,Niark
+ui.popup.unlocked_skin,You’ve unlocked a skin: ’%s’,Tu as débloquée un skin: ’%s’
+ui.level.y_limit,Y Limit:,Limite Y:
+hat.jojo,Jojo Hat,Chapeau de Jojo
+hat.banana,Banana Hat,Banane
+hat.crown,Crown,Couronne
+hat.mexican,Mexican Hat,Sombrero
+hat.player,Player Hat,Chapeau Joueur
+hat.slime,Slime Hat,Chapeau Slime
+skin.mexican_player,Mexican Player,Joueur Mexicain
+skin.skeleton,Skeletion,Squelette

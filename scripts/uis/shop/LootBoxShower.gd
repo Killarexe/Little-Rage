@@ -1,11 +1,14 @@
 extends ColorRect
 class_name LootBoxShower
 
+@onready var label: Label = $Label
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation: AnimationPlayer = $Sprite2D/AnimationPlayer
 
 func unlock_random_cosmetic():
-	sprite.texture = Global.loot_boxes.use_loot_box()
+	var cosmetic: CosmeticElement = Global.loot_boxes.use_loot_box()
+	label.text = TranslationServer.translate("ui.popup.unlocked_cosmetic") % TranslationServer.translate(cosmetic.name)
+	sprite.texture = cosmetic.texture
 	visible = true
 	animation.play("pop_up")
 

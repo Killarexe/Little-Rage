@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btth5y287sdm0"]
+[gd_scene load_steps=12 format=3 uid="uid://btth5y287sdm0"]
 
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/level/DefaultLevel.tscn" id="1_dbihm"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditor.gd" id="1_iig2t"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scripts/uis/level_editor/tiles/TilesList.gd" id="3_87txn"]
 [ext_resource type="Texture2D" uid="uid://k4siyrr0ptjm" path="res://assets/textures/ui/save.png" id="3_av76s"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/SaveConfirmationDialog.gd" id="4_ddc04"]
-[ext_resource type="Texture2D" uid="uid://bnq26jdctplio" path="res://assets/textures/ui/open.png" id="4_go505"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/DisableEditingCursor.gd" id="6_uokvo"]
 [ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/quit.png" id="7_l3wyl"]
 [ext_resource type="Texture2D" uid="uid://dknlajug6w68u" path="res://assets/textures/ui/settings.png" id="9_2llvw"]
@@ -22,8 +21,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iig2t")
 
-[node name="DefaultLevel" parent="." instance=ExtResource("1_dbihm")]
-mode = 1
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+script = ExtResource("12_ws2l4")
+can_zoom = true
+can_pan = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -43,6 +45,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("6_uokvo")
 editor = NodePath("../../..")
 
@@ -53,26 +56,6 @@ ok_button_text = "ui.editor.save"
 dialog_text = "ui.level_editor.save_option"
 cancel_button_text = "ui.editor.dont_save"
 script = ExtResource("4_ddc04")
-
-[node name="SaveFileDialog" type="FileDialog" parent="CanvasLayer"]
-position = Vector2i(20, 40)
-size = Vector2i(1240, 670)
-ok_button_text = "Save"
-dialog_text = "ui.save"
-access = 1
-filters = PackedStringArray("*.tres ; Godot Resource File")
-show_hidden_files = true
-
-[node name="LoadFileDialog" type="FileDialog" parent="CanvasLayer"]
-title = "Open a File"
-position = Vector2i(20, 40)
-size = Vector2i(1240, 670)
-ok_button_text = "Ouvrir"
-dialog_text = "ui.save"
-file_mode = 0
-access = 1
-filters = PackedStringArray("*.tres ; Godot Resource File")
-show_hidden_files = true
 
 [node name="PlayButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
 anchors_preset = 1
@@ -91,8 +74,8 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -80.0
-offset_top = 360.0
-offset_bottom = 440.0
+offset_top = 303.0
+offset_bottom = 383.0
 grow_horizontal = 0
 toggle_mode = true
 texture_normal = ExtResource("2_kolu2")
@@ -106,27 +89,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -80.0
+offset_left = -325.0
+offset_top = -716.0
+offset_right = -245.0
+offset_bottom = -636.0
 grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("3_av76s")
-stretch_mode = 0
-script = ExtResource("6_uokvo")
-editor = NodePath("../..")
-
-[node name="LoadButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -180.0
-offset_top = -80.0
-offset_right = -100.0
-grow_horizontal = 0
-grow_vertical = 0
-texture_normal = ExtResource("4_go505")
 stretch_mode = 0
 script = ExtResource("6_uokvo")
 editor = NodePath("../..")
@@ -137,9 +106,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -370.0
+offset_left = -80.0
 offset_top = -80.0
-offset_right = -290.0
 grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("7_l3wyl")
@@ -148,32 +116,25 @@ script = ExtResource("6_uokvo")
 editor = NodePath("../..")
 
 [node name="SettingsButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
-offset_left = 1000.0
-offset_top = 640.0
-offset_right = 1080.0
-offset_bottom = 720.0
+offset_left = 1074.0
+offset_right = 1164.0
+offset_bottom = 90.0
 texture_normal = ExtResource("9_2llvw")
 stretch_mode = 0
 script = ExtResource("6_uokvo")
 editor = NodePath("../..")
 
 [node name="LevelSettingsMenu" parent="CanvasLayer" instance=ExtResource("10_ncilj")]
-visible = false
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
-script = ExtResource("12_ws2l4")
-can_zoom = true
-can_pan = true
+[node name="DefaultLevel" parent="." instance=ExtResource("1_dbihm")]
+mode = 1
 
+[connection signal="on_clicked" from="Camera2D" to="." method="_on_camera_2d_on_clicked"]
 [connection signal="empty_clicked" from="CanvasLayer/Tiles" to="." method="_on_tiles_empty_clicked"]
 [connection signal="item_selected" from="CanvasLayer/Tiles" to="." method="_on_tiles_item_selected"]
-[connection signal="confirmed" from="CanvasLayer/SaveFileDialog" to="." method="_on_save_file_dialog_confirmed"]
-[connection signal="file_selected" from="CanvasLayer/LoadFileDialog" to="." method="_on_load_file_dialog_file_selected"]
 [connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="toggled" from="CanvasLayer/EraserButton" to="Camera2D" method="_on_eraser_button_toggled"]
 [connection signal="pressed" from="CanvasLayer/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/LoadButton" to="." method="_on_load_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SettingsButton" to="CanvasLayer/LevelSettingsMenu" method="_on_settings_button_pressed"]
 [connection signal="on_settings_changed" from="CanvasLayer/LevelSettingsMenu" to="." method="_on_level_settings_menu_on_settings_changed"]
-[connection signal="on_clicked" from="Camera2D" to="." method="_on_camera_2d_on_clicked"]

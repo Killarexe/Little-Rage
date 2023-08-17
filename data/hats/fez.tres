@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_gjc6d")
-texture = ExtResource("2_y18os")
+name = "hat.fez"
 chance = 1
 is_hidden = false
-id = "fez"
+texture = ExtResource("2_y18os")

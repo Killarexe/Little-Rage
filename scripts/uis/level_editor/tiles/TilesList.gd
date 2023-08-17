@@ -12,8 +12,8 @@ func _ready():
 
 func create_list(atlas: CompressedTexture2D):
 	for tile in editor_tiles:
-		for position in tile.tile_dictionary.keys():
-				var tile_id: Vector2i = tile.tile_dictionary.get(position)
+		for tile_position in tile.tile_dictionary.keys():
+				var tile_id: Vector2i = tile.tile_dictionary.get(tile_position)
 				var atlas_coord: Vector2i = tile_id * Vector2i(16, 16)
 				var region: Rect2i = Rect2i(atlas_coord, Vector2i(16, 16))
 				add_icon_item(ImageTexture.create_from_image(atlas.get_image().get_region(region)))

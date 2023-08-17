@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_12ewh")
-texture = ExtResource("2_kl64p")
-cost = 20
+name = "skin.negative"
+chance = 1
 is_hidden = false
-id = "negative_default"
+texture = ExtResource("2_kl64p")

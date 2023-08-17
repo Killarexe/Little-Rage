@@ -23,6 +23,8 @@ func on_player_win(time: Array[int], death_count: int):
 
 func open(mode_: Mode, time: Array[int], death_count: int):
 	MusicManager.stop()
+	if PlayerSkinManager.current_skin == "mexican_player" && PlayerHatManager.current_hat == "mexican_hat":
+		mexican_mode()
 	get_tree().paused = true
 	Global.can_pause = false
 	var time_sum: int = 0
@@ -40,6 +42,10 @@ func open(mode_: Mode, time: Array[int], death_count: int):
 				Global.loot_boxes.add_loot_box(1.0 / time_sum / 3.0 * 99.0)
 		Mode.MULTIPLAYER:
 			multiplayer_control.visible = true
+
+func mexican_mode():
+	MusicManager.play_music("mexican_music")
+	Global.instanceNodeAtPos(load("res://scenes/instances/level/tacosParticle.tscn"), self, Vector2(0, -20))
 
 func exit():
 	Global.can_pause = true

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci0p37ottv00"]
+
+[ext_resource type="Script" path="res://scripts/particle/SelfDestroyParticle.gd" id="1_kewwu"]
+
+[sub_resource type="Curve" id="Curve_mdn0e"]
+max_value = 200.0
+_data = [Vector2(0, 200), 0.0, 0.0, 0, 0, Vector2(0.492537, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_043su"]
+curve = SubResource("Curve_mdn0e")
+
+[sub_resource type="Gradient" id="Gradient_sy5k0"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.535294, 0.852941)
+colors = PackedColorArray(1, 0.34902, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ltv3s"]
+gradient = SubResource("Gradient_sy5k0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rxr2y"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+direction = Vector3(0, -4, 0)
+spread = 20.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_min = 40.0
+initial_velocity_max = 80.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_ltv3s")
+hue_variation_min = -0.25
+hue_variation_max = 0.25
+anim_speed_curve = SubResource("CurveTexture_043su")
+
+[node name="DefaultCheckpointParticle" type="GPUParticles2D"]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_rxr2y")
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.5
+explosiveness = 0.75
+visibility_rect = Rect2(-200, -200, 400, 400)
+script = ExtResource("1_kewwu")

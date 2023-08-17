@@ -22,7 +22,7 @@ func create_skin_items():
 	for skin in PlayerSkinManager.skins:
 		if PlayerSkinManager.is_skin_unlocked(skin.id):
 			skin_ids.append(skin.id)
-			skins_selection.add_item(skin.id, skin.texture)
+			skins_selection.add_item(TranslationServer.translate(skin.name), skin.texture)
 			if PlayerSkinManager.current_skin == skin.id:
 				skins_selection.select(skins_selection.item_count - 1)
 
@@ -32,7 +32,7 @@ func create_hat_items():
 	for hat in PlayerHatManager.hats:
 		if PlayerHatManager.is_hat_unlocked(hat.id):
 			hat_ids.append(hat.id)
-			hats_selection.add_item(hat.id, hat.texture)
+			hats_selection.add_item(TranslationServer.translate(hat.name), hat.texture)
 			if PlayerHatManager.current_hat == hat.id:
 				hats_selection.select(hats_selection.item_count - 1)
 

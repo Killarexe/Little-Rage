@@ -21,6 +21,8 @@ func _ready():
 	level_diffculty_select.add_item("ui.level.difficulty.extreme")
 	level_diffculty_select.select(2)
 	level_y_limit.value = y_limit
+	level_name_edit.text = level_name
+	level_description_edit.text = description
 	visible = false
 
 func set_settings(level: Level):

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_pv1y4")
-texture = ExtResource("2_hm2a3")
+name = "skin.steve"
 chance = 1
-is_hidden = false
-id = "steve"
+is_hidden = true
+texture = ExtResource("2_hm2a3")

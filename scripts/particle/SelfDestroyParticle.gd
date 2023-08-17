@@ -2,7 +2,7 @@ extends GPUParticles2D
 
 var emmited: bool = false
 
-func _process(delta):
+func _process(_delta):
 	if emitting:
 		emmited = true
 	elif emmited:

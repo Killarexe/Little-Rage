@@ -38,16 +38,16 @@ grow_vertical = 2
 theme = ExtResource("2_63owt")
 alignment = 1
 
+[node name="LevelName" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_63owt")
+placeholder_text = "ui.level.name"
+
 [node name="LevelDescription" type="TextEdit" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("2_63owt")
 placeholder_text = "ui.level.description"
-
-[node name="LevelName" type="LineEdit" parent="VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_63owt")
-placeholder_text = "ui.level.name"
 
 [node name="LevelDifficulty" type="OptionButton" parent="VBoxContainer"]
 layout_mode = 2
@@ -70,8 +70,8 @@ offset_bottom = 720.0
 texture_normal = ExtResource("3_pqbcw")
 stretch_mode = 5
 
-[connection signal="text_changed" from="VBoxContainer/LevelDescription" to="." method="_on_level_description_text_changed"]
 [connection signal="text_changed" from="VBoxContainer/LevelName" to="." method="_on_level_name_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/LevelDescription" to="." method="_on_level_description_text_changed"]
 [connection signal="item_selected" from="VBoxContainer/LevelDifficulty" to="." method="_on_level_difficulty_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/YLimit" to="." method="_on_slider_value_changed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
