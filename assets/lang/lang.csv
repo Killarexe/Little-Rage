@@ -76,3 +76,5 @@ hat.player,Player Hat,Chapeau Joueur
 hat.slime,Slime Hat,Chapeau Slime
 skin.mexican_player,Mexican Player,Joueur Mexicain
 skin.skeleton,Skeletion,Squelette
+ui.settings.window_size,Window Size,Taille de la Fenêtre
+ui.fullscreen,Fullscreen,Plein écran

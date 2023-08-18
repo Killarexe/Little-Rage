@@ -8,10 +8,11 @@ enum Mode{
 
 enum LevelTheme{
 	PLAINS,
-	OCEAN,
 	CAVES,
 	MOUNTAINS,
-	VOLCANO
+	VOLCANO,
+	DESERT,
+	BEACH
 }
 
 enum Difficulty{

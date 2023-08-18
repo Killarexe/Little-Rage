@@ -50,6 +50,7 @@ custom_minimum_size = Vector2(320, 180)
 offset_top = -240.0
 offset_right = 320.0
 offset_bottom = -60.0
+mouse_filter = 1
 color = Color(0, 0, 0, 0.752941)
 
 [node name="Icon" type="TextureRect" parent="Frame"]
