@@ -7,7 +7,7 @@
 script = ExtResource("2_v8ycs")
 name = "Level 3"
 is_hidden = false
-description = "The first simple Level"
+description = "Ooooh spikes... =)"
 mode = 0
 y_limit = 512
 scene = ExtResource("1_0vhjg")

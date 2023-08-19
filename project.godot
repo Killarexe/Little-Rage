@@ -28,9 +28,8 @@ PlayerHatManager="*res://scripts/level/player/cosmetic/hat/PlayerHatManager.gd"
 SceneManager="*res://scenes/globals/SceneManager.tscn"
 Overlay="*res://scenes/globals/Overlay.tscn"
 PopUpFrame="*res://scenes/globals/PopUpFrame.tscn"
-DiscordRPCManager="*res://scripts/integration/discord/DiscordRPCManager.gd"
-DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 UpdateChecker="*res://scenes/globals/UpdateChecker.tscn"
+DiscordRPCManager="*res://scripts/integration/discord/DiscordRPCManager.gd"
 
 [display]
 
@@ -43,10 +42,6 @@ window/stretch/mode="canvas_items"
 [editor]
 
 movie_writer/movie_file="/home/killarexe/Bureau/Projets/Godot/LittleRage/builds/movies/movie.avi"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/discord-sdk-gd/plugin.cfg")
 
 [input]
 
@@ -108,6 +103,11 @@ pause={
 fullscreen={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194342,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+ui_enable={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194332,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 

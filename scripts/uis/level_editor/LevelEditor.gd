@@ -83,7 +83,9 @@ func _on_save_button_pressed():
 	var level: Level = LevelManager.get_level(level_id)
 	var packed_scene: PackedScene = PackedScene.new()
 	var level_name: String = level_settings.level_name
-	
+	camera.enabled = true
+	Global.can_pause = true
+	level_map.set_mode(LevelPlayer.Mode.EDIT)
 	level_map.mode = LevelPlayer.Mode.PLAY
 	
 	packed_scene.pack(level_map)

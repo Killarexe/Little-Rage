@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bkwmpwrjnhece"]
+[gd_scene load_steps=20 format=3 uid="uid://bkwmpwrjnhece"]
 
 [ext_resource type="Script" path="res://scripts/level/player/PlayerMovement.gd" id="1_l7flj"]
 [ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="2_alfuh"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/level/player/PlayerTimer.gd" id="8_3kxck"]
 [ext_resource type="Texture2D" uid="uid://cv22lwoysa8ap" path="res://assets/textures/ui/jump.png" id="8_5eel8"]
 [ext_resource type="Texture2D" uid="uid://buw3bxnswai6i" path="res://assets/textures/ui/pause.png" id="9_vwqws"]
+[ext_resource type="Script" path="res://scripts/uis/player/PlayerMenus.gd" id="12_k24f3"]
 [ext_resource type="PackedScene" uid="uid://t7l5lywub7jg" path="res://scenes/instances/level/player/uis/PlayerStatus.tscn" id="13_p0n42"]
 [ext_resource type="Script" path="res://scripts/level/player/PlayerCollider.gd" id="15_pys0j"]
 
@@ -127,14 +128,21 @@ scale = Vector2(8, 8)
 texture_normal = ExtResource("9_vwqws")
 action = "pause"
 
-[node name="PlayerStatus" parent="." node_paths=PackedStringArray("player", "timer") instance=ExtResource("13_p0n42")]
+[node name="WinMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_6ee8y")]
 player = NodePath("..")
-timer = NodePath("../Timer")
 
 [node name="PauseMenu" parent="." instance=ExtResource("5_iaj63")]
 
-[node name="WinMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_6ee8y")]
-player = NodePath("..")
+[node name="Menus" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("12_k24f3")
+
+[node name="PlayerStatus" parent="Menus" node_paths=PackedStringArray("player", "timer") instance=ExtResource("13_p0n42")]
+player = NodePath("../..")
+timer = NodePath("../../Timer")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

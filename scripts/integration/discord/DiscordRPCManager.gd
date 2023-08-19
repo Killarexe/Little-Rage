@@ -2,26 +2,41 @@ extends Node
 
 var enable_discord_rpc: bool = true
 
-#TODO: Tranlated states...
+var discord := DiscordRPC.new()
+
 func update_rpc(state: String, small_image: String, small_image_text: String):
-	if !discord_sdk.get_is_discord_working() || !enable_discord_rpc || Global.is_mobile:
+	if !enable_discord_rpc || Global.is_mobile:
 		return
-	discord_sdk.state = state
-	discord_sdk.small_image = small_image
-	discord_sdk.small_image_text = small_image_text
-	discord_sdk.refresh()
+	await discord.update_presence({
+		state = state,
+		assets = {
+			small_image = small_image,
+			small_image_text = small_image_text
+		}
+	})
 
 func _ready():
+	print("Running Discord RPC...")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	if !enable_discord_rpc || Global.is_mobile:
 		return
-	discord_sdk.app_id = 807516321830666292
-	discord_sdk.details = "A Small Simple 2D Platformer made by Killar.exe"
-	discord_sdk.large_image = "icon"
-	discord_sdk.large_image_text = "Little Rage"
-	discord_sdk.start_timestamp = int(Time.get_unix_time_from_system())
-	if !discord_sdk.get_is_discord_working():
-		print("Can't run Discord RPC: No Discord found...")
-		return
-	print("Running Discord RPC...")
+	add_child(discord)
+	discord.rpc_ready.connect(on_rpc_ready)
+	discord.rpc_error.connect(on_rpc_error)
+	discord.establish_connection(807516321830666292)
 	update_rpc("Playing...", "basicicon", "Playing...")
+
+func on_rpc_ready(user: Dictionary):
+	print("Discord User found:")
+	print(user)
+	discord.update_presence(
+		RichPresenceBuilder.new()\
+			.with_details("A Small Simple 2D Platformer made by Killar.exe")\
+			.with_large_image("icon")\
+			.with_large_text("Little Rage")\
+			.start_timestamp(int(Time.get_unix_time_from_system()))\
+			.build()
+	)
+
+func on_rpc_error(error: int):
+	print("Failed to update/load Discord RPC. Error %s" % error)

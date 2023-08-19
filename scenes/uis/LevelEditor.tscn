@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://btth5y287sdm0"]
+[gd_scene load_steps=13 format=3 uid="uid://btth5y287sdm0"]
 
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/level/DefaultLevel.tscn" id="1_dbihm"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditor.gd" id="1_iig2t"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://k4siyrr0ptjm" path="res://assets/textures/ui/save.png" id="3_av76s"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/SaveConfirmationDialog.gd" id="4_ddc04"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/DisableEditingCursor.gd" id="6_uokvo"]
+[ext_resource type="Script" path="res://scripts/uis/MobileVisiblity.gd" id="7_0remk"]
 [ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/quit.png" id="7_l3wyl"]
 [ext_resource type="Texture2D" uid="uid://dknlajug6w68u" path="res://assets/textures/ui/settings.png" id="9_2llvw"]
 [ext_resource type="PackedScene" uid="uid://o458ah6nqt0b" path="res://scenes/uis/LevelSettingsMenu.tscn" id="10_ncilj"]
@@ -69,19 +70,28 @@ stretch_mode = 0
 script = ExtResource("6_uokvo")
 editor = NodePath("../..")
 
-[node name="EraserButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
+[node name="MobileButtons" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("7_0remk")
+
+[node name="EraserButton" type="TextureButton" parent="CanvasLayer/MobileButtons" node_paths=PackedStringArray("editor")]
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -80.0
+offset_left = 1160.0
 offset_top = 303.0
+offset_right = 1240.0
 offset_bottom = 383.0
 grow_horizontal = 0
 toggle_mode = true
 texture_normal = ExtResource("2_kolu2")
 stretch_mode = 0
 script = ExtResource("6_uokvo")
-editor = NodePath("../..")
+editor = NodePath("../../..")
 
 [node name="SaveButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
 anchors_preset = 3
@@ -133,7 +143,7 @@ mode = 1
 [connection signal="empty_clicked" from="CanvasLayer/Tiles" to="." method="_on_tiles_empty_clicked"]
 [connection signal="item_selected" from="CanvasLayer/Tiles" to="." method="_on_tiles_item_selected"]
 [connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="toggled" from="CanvasLayer/EraserButton" to="Camera2D" method="_on_eraser_button_toggled"]
+[connection signal="toggled" from="CanvasLayer/MobileButtons/EraserButton" to="Camera2D" method="_on_eraser_button_toggled"]
 [connection signal="pressed" from="CanvasLayer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SettingsButton" to="CanvasLayer/LevelSettingsMenu" method="_on_settings_button_pressed"]

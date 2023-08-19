@@ -1,0 +1,19 @@
+[configuration]
+
+entry_symbol = "unixsocket_library_init"
+compatibility_minimum = 4.1.0
+
+[libraries]
+
+linux.x86_64 = "res://unix-socket/libunixsocket.linux.debug.x86_64.so"
+linux.arm64 = "res://unix-socket/libunixsocket.linux.debug.x86_64.so"
+linux.rv64 = "res://unix-socket/libunixsocket.linux.debug.x86_64.so"
+macos.x86_64 = "res://unix-socket/libunixsocket.macos.debug.universal.dylib"
+macos.arm64 = "res://unix-socket/libunixsocket.macos.debug.universal.dylib"
+
+linux.template_release.x86_64 = "res://unix-socket/libunixsocket.linux.release.x86_64.so"
+linux.template_release.arm64 = "res://unix-socket/libunixsocket.linux.release.x86_64.so"
+linux.template_release.rv64 = "res://unix-socket/libunixsocket.linux.release.x86_64.so"
+macos.template_release.x86_64 = "res://unix-socket/libunixsocket.macos.release.universal.dylib"
+macos.template_release.arm64 = "res://unix-socket/libunixsocket.macos.release.universal.dylib"
+

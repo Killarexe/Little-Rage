@@ -1,4 +1,5 @@
 extends Control
+class_name MobileVisibility
 
 @export var visible_on_mobile: bool = true
 
