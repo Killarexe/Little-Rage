@@ -3,6 +3,10 @@ extends Control
 @onready var language_menu: OptionButton = $CanvasLayer/VBoxContainer/Language/MenuButton
 
 func _ready():
+	if !PlayerSkinManager.is_skin_unlocked("rgb"):
+		Global.settings_time += 1
+		if Global.settings_time >= 10:
+			PlayerSkinManager.unhide_skin("rgb")
 	MusicManager.play_music("settings")
 	$Camera2D/AnimationPlayer.play("camera_scroll")
 	$CanvasLayer/VBoxContainer/MusicVolume/Slider.set_value_no_signal(MusicManager.music_volume)

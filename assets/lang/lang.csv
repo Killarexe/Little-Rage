@@ -66,7 +66,7 @@ skin.rgb,RGB,RGB
 skin.steve,Steve,Steve
 skin.killarexe,Killar.exe,Killar.exe
 skin.niark,Niark,Niark
-ui.popup.unlocked_skin,You’ve unlocked a skin: ’%s’,Tu as débloquée un skin: ’%s’
+ui.popup.unlocked_cosmetic,You’ve unlocked a cosmetic: ’%s’,Tu as débloquée un cosmétique: ’%s’
 ui.level.y_limit,Y Limit:,Limite Y:
 hat.jojo,Jojo Hat,Chapeau de Jojo
 hat.banana,Banana Hat,Banane
@@ -78,3 +78,6 @@ skin.mexican_player,Mexican Player,Joueur Mexicain
 skin.skeleton,Skeletion,Squelette
 ui.settings.window_size,Window Size,Taille de la Fenêtre
 ui.fullscreen,Fullscreen,Plein écran
+ui.popup.not_on_mobile,This feature is not available on mobile…,Cette fonctionnalité n’est pas disponible sur mobile…
+ui.popup.unlocked_skin,You’ve unlocked a skin: ’%s’,Tu as débloquée un skin: ’%s’
+ui.popup.unlocked_hat,You’ve unlocked a hat: ’%s’,Tu as débloquée un chapeau: ’%s’

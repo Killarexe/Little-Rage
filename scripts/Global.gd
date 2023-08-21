@@ -17,6 +17,7 @@ var can_pause: bool = true
 var is_mobile: bool = false
 var starting: bool = true
 var window_size: int = 5
+var settings_time: int = 0
 
 func _ready():
 	save.load_save()

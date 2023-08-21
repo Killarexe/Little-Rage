@@ -45,7 +45,7 @@ func open(mode_: Mode, time: Array[int], death_count: int):
 
 func mexican_mode():
 	MusicManager.play_music("mexican_music")
-	Global.instanceNodeAtPos(load("res://scenes/instances/level/tacosParticle.tscn"), self, Vector2(0, -20))
+	Global.instanceNodeAtPos(load("res://scenes/instances/level/tacosParticle.tscn"), self, Vector2(0, -100))
 
 func exit():
 	Global.can_pause = true

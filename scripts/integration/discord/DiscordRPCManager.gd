@@ -5,6 +5,7 @@ var enable_discord_rpc: bool = true
 var discord := DiscordRPC.new()
 
 func update_rpc(state: String, small_image: String, small_image_text: String):
+	return
 	if !enable_discord_rpc || Global.is_mobile:
 		return
 	await discord.update_presence({
@@ -16,6 +17,7 @@ func update_rpc(state: String, small_image: String, small_image_text: String):
 	})
 
 func _ready():
+	return
 	print("Running Discord RPC...")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	if !enable_discord_rpc || Global.is_mobile:

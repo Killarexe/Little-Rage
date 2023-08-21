@@ -112,6 +112,7 @@ offset_right = 320.0
 offset_bottom = -63.0
 grow_vertical = 2
 theme = ExtResource("2_oyb7t")
+theme_override_constants/v_separation = 16
 max_text_lines = 5
 
 [node name="LevelSettingsMenu" type="Control" parent="CanvasLayer"]

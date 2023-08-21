@@ -33,7 +33,7 @@ func unhide_skin(skin_id: String):
 		if skin.is_hidden && !unhidden_skins.has(skin_id):
 			unlocked_skins.append(skin_id)
 			unlock_skin(skin_id)
-			PopUpFrame.pop_translated("ui.popup.unlocked_skin" % TranslationServer.translate("skin." + skin_id))
+			PopUpFrame.pop(TranslationServer.translate("ui.popup.unlocked_skin") % TranslationServer.translate(skin.name))
 			Global.save_game()
 
 func is_skin_hidden(skin_id: String) -> bool:
@@ -52,7 +52,13 @@ func pick_random() -> String:
 	for skin in skins:
 		if !skin.is_hidden:
 			if random_number < skin.chance + offset:
-				return skin.id
+				if is_skin_unlocked(skin.id):
+					if randf() < 0.5:
+						offset += skin.chance
+					else:
+						return skin.id
+				else:
+					return skin.id
 			else:
 				offset += skin.chance
 	return pick_random()

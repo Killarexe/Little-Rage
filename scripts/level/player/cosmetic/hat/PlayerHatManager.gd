@@ -53,7 +53,13 @@ func pick_random() -> String:
 	for hat in hats:
 		if !hat.is_hidden:
 			if random_number < hat.chance + offset && hat.id != "no_hat":
-				return hat.id
+				if is_hat_unlocked(hat.id):
+					if randf() < 0.5:
+						offset += hat.chance
+					else:
+						return hat.id
+				else:
+					return hat.id
 			else:
 				offset += hat.chance
 	return pick_random()

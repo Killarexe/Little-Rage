@@ -8,14 +8,19 @@ func _ready():
 	if texts.size() <= 0:
 		text = "Hello, world!"
 	else:
+		randomize()
 		index = randi_range(0, texts.size() - 1)
 		text = texts[index]
 
 func _on_button_pressed():
 	match index:
-		51 | 17:
+		51:
+			PlayerSkinManager.unhide_skin("steve")
+		17:
 			PlayerSkinManager.unhide_skin("steve")
 		2:
 			PlayerSkinManager.unhide_skin("killarexe")
 		9:
+			PlayerSkinManager.unhide_skin("niark")
+		65:
 			PlayerSkinManager.unhide_skin("niark")
