@@ -49,10 +49,7 @@ func _on_play_button_pressed():
 func _on_back_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
 
-func _on_create_button_pressed():
-	if Global.is_mobile:
-		PopUpFrame.pop_translated("ui.popup.not_on_mobile")
-		return
+func _on_create_button_pressed(): 
 	if level_settings_menu.visible:
 		level_create_button.text = TranslationServer.translate("ui.create_level")
 		level_settings_menu.visible = false
@@ -61,9 +58,6 @@ func _on_create_button_pressed():
 		level_settings_menu.visible = true
 
 func _on_edit_button_pressed():
-	if Global.is_mobile:
-		PopUpFrame.pop_translated("ui.popup.not_on_mobile")
-		return
 	LevelManager.current_level = LevelManager.levels[level_index].id
 	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")
 
