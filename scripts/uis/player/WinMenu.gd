@@ -35,6 +35,7 @@ func open(mode_: Mode, time: Array[int], death_count: int):
 			singleplayer.visible = true
 			var is_best_time: bool = LevelManager.is_best_time(time)
 			time_label.start(time, death_count, is_best_time)
+			$Singleplayer/VBoxContainer/NextLevel.visible = LevelManager.is_default_level(LevelManager.current_level)
 			if is_best_time:
 				LevelManager.set_level_best_time(time)
 				Global.loot_boxes.add_loot_box(1)
@@ -56,3 +57,13 @@ func exit():
 		Mode.MULTIPLAYER:
 			#Return to lobby
 			pass
+
+func _on_next_level_pressed():
+	if LevelManager.default_levels.bsearch(LevelManager.current_level) == LevelManager.default_levels.size() - 1:
+		return
+	var current_level: String = "level_" + str(LevelManager.default_levels.bsearch(LevelManager.current_level) + 2)
+	var level: Level = LevelManager.get_level(current_level)
+	LevelManager.current_level = current_level
+	MusicManager.play_music("level_plains")
+	SceneManager.change_packed(level.scene)
+	DiscordRPCManager.update_rpc("Playing level '" + level.name + "'", "basicicon", "Playing level '" + level.name + "'",)

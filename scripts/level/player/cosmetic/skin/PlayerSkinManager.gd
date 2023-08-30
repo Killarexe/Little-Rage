@@ -30,7 +30,7 @@ func unlock_skin(skin_id: String):
 func unhide_skin(skin_id: String):
 	var skin: PlayerSkin = get_skin(skin_id)
 	if skin != null:
-		if skin.is_hidden && !unhidden_skins.has(skin_id):
+		if skin.is_hidden && !unhidden_skins.has(skin_id) && !unlocked_skins.has(skin_id):
 			unlocked_skins.append(skin_id)
 			unlock_skin(skin_id)
 			PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))

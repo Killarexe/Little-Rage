@@ -85,4 +85,13 @@ size_flags_vertical = 4
 theme = ExtResource("2_gnpol")
 text = "ui.back_to_menu"
 
+[node name="NextLevel" type="Button" parent="Singleplayer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(384, 64)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_gnpol")
+text = "ui.next_level"
+
 [connection signal="pressed" from="Singleplayer/VBoxContainer/Back to Menu" to="." method="exit"]
+[connection signal="pressed" from="Singleplayer/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]

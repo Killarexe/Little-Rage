@@ -83,7 +83,7 @@ func check_input():
 
 func handle_jump():
 	if is_on_floor():
-		if ground_timer < 0:
+		if ground_timer < GROUND_TIME - 0.1:
 			Global.instanceNodeAtPos(jump_particle, get_parent(), global_position + Vector2(0, 16))
 			animation.stop()
 			animation.play("PlayerAnimations/land")

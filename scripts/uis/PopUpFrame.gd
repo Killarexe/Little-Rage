@@ -16,7 +16,6 @@ func pop(message: String, icon_texture: Texture2D = null):
 	text.text = message
 	icon.texture = icon_texture
 	animation_player.play("pop")
-	#TODO: Play a sound effect when pops
 
 func _on_animation_player_animation_finished(_unused: String):
 	text.text = ""
