@@ -19,6 +19,7 @@ var start_distance: float = 0.0
 var current_angle: float = 0.0
 var start_angle: float = 0.0
 var is_panning: bool = false
+var can_placing: bool = true
 var placing: bool = true
 var is_drag: bool = false
 
@@ -41,17 +42,23 @@ func handle_touch(event: InputEventScreenTouch):
 	if event.pressed:
 		touch_points[event.index] = event.position
 	else:
-		touch_points.erase(event.index)
-	if touch_points.size() == 1 && !is_drag:
-		emit_signal("on_clicked", touch_points.values()[0], placing)
-	if touch_points.size() == 2:
-		var touch_point_positions = touch_points.values()
-		start_distance = touch_point_positions[0].distance_to(touch_point_positions[1])
-		start_angle = get_angle(touch_point_positions[0], touch_point_positions[1])
-		start_zoom = zoom
-	elif touch_points.size() < 2:
-		start_distance = 0
-		is_drag = false
+		if can_placing:
+			if touch_points.size() == 1 || is_drag:
+				emit_signal("on_clicked", touch_points.values()[0], placing)
+			else:
+				is_drag = false
+		else:
+			touch_points.erase(event.index)
+		if touch_points.size() == 1 && !is_drag:
+			emit_signal("on_clicked", touch_points.values()[0], placing)
+		if touch_points.size() == 2:
+			var touch_point_positions = touch_points.values()
+			start_distance = touch_point_positions[0].distance_to(touch_point_positions[1])
+			start_angle = get_angle(touch_point_positions[0], touch_point_positions[1])
+			start_zoom = zoom
+		elif touch_points.size() < 2:
+			start_distance = 0
+			is_drag = false
 
 func handle_drag(event: InputEventScreenDrag):
 	touch_points[event.index] = event.position
@@ -90,9 +97,23 @@ func _process(_delta):
 	elif Input.is_action_pressed("right_click"):
 		emit_signal("on_clicked", get_global_mouse_position(), false)
 
-func _on_eraser_button_toggled(button_pressed: bool):
+'''func _on_eraser_button_toggled(button_pressed: bool):
 	placing = button_pressed
+
+func _on_place_button_toggled(button_pressed: bool):
+	can_placing = button_pressed'''
 
 func get_angle(p1: Vector2, p2: Vector2) -> float:
 	var delta: Vector2 = p1 - p2
 	return fmod(atan2(delta.y, delta.x) + PI, 2 * PI)
+
+func _on_level_editor_tools_on_tool_set(index: int):
+	match index:
+		0:
+			placing = true
+			can_placing = true
+		1:
+			placing = false
+			can_placing = true
+		2:
+			can_placing = false

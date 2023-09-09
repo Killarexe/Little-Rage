@@ -53,7 +53,8 @@ func _draw():
 		var offset: Vector2i = tiles.get_selected_tile_id(selected_tile)
 		draw_texture_rect_region(atlas, Rect2(tile_pos * 16, Vector2(16, 16)), Rect2(16 * offset.x, 16 * offset.y, 16, 16))
 	if is_editing():
-		draw_texture(PlayerSkinManager.get_current_skin_texture(), Vector2(-8, 8))
+		draw_texture(PlayerSkinManager.get_current_skin_texture(), Vector2(-8, -8))
+		draw_texture(PlayerHatManager.get_current_hat_texture(), Vector2(-8, -24))
 
 func _on_tiles_item_selected(index):
 	selected_tile = index

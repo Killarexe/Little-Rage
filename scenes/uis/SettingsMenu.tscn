@@ -148,8 +148,6 @@ label_settings = ExtResource("6_a5c82")
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 theme = ExtResource("4_tdetm")
-theme_override_constants/h_separation = 8
-theme_override_constants/arrow_margin = 4
 icon_alignment = 1
 expand_icon = true
 

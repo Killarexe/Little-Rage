@@ -63,3 +63,6 @@ func pick_random() -> String:
 			else:
 				offset += hat.chance
 	return pick_random()
+
+func has_unlocked_all() -> bool:
+	return unlocked_hats.size() >= hats.size()

@@ -63,3 +63,6 @@ func pick_random() -> String:
 			else:
 				offset += skin.chance
 	return pick_random()
+
+func has_unlocked_all() -> bool:
+	return unlocked_skins.size() >= skins.size()

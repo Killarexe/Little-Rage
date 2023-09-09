@@ -5,11 +5,18 @@ extends Control
 
 func _ready():
 	get_tree().paused = false
-	MusicManager.play_music("main_menu")
+	var easter_title_screen: bool = PlayerHatManager.has_unlocked_all() && PlayerSkinManager.has_unlocked_all()
+	var animation: String = "start_menu"
+	if easter_title_screen:
+		MusicManager.play_music("title_screen_easter")
+		$CanvasLayer/Logo.texture = load("res://assets/textures/ui/little_rage_logo_easter.png")
+		animation = "start_menu_easter"
+	else:
+		MusicManager.play_music("main_menu")
 	if Global.starting:
 		Global.starting = false
 		spash_text.visible = false
-		logo_animation.play("start_menu")
+		logo_animation.play(animation)
 		await logo_animation.animation_finished
 		spash_text.visible = true
 	$Camera2D/AnimationPlayer.play("scroll")
