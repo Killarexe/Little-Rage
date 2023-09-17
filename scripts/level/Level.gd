@@ -9,10 +9,10 @@ enum Mode{
 enum LevelTheme{
 	PLAINS,
 	CAVES,
-	MOUNTAINS,
+	HEAVEN,
 	VOLCANO,
 	DESERT,
-	BEACH
+	ICE_DESERT
 }
 
 enum Difficulty{

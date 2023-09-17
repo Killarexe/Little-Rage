@@ -86,3 +86,9 @@ ui.editor.place,Place,Placer
 ui.editor.erase,Erase,Effacer
 ui.editor.move,Move,Bouger
 ui.wardrobe,Wardrobe,Armoire
+ui.level.description.level_one,The first simple Level,Le premier niveau très simple…
+ui.level.description.level_two,A Jumping level…,Un niveau basée sur le saut.
+ui.level.description.level_three,Ooooh spikes... =),Ohhh des piques… =)
+ui.level.description.level_four,A level witch show a new features for the noobies…,Un niveau qui ajoute du changement pour les noobs…
+ui.level.description.level_five,Color things + jumps + Color spikes,Truc de couleurs + Sauts + Piques de couleurs
+ui.level.description.level_six,The evaluation level…,Le niveau d’évaluation…

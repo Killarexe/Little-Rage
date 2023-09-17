@@ -54,15 +54,12 @@ func pick_random() -> String:
 		if !skin.is_hidden:
 			if random_number < skin.chance + offset:
 				if is_skin_unlocked(skin.id):
-					if randf() < 0.5:
 						offset += skin.chance
-					else:
-						return skin.id
 				else:
 					return skin.id
 			else:
 				offset += skin.chance
-	return pick_random()
+	return "default"
 
 func has_unlocked_all() -> bool:
 	return unlocked_skins.size() >= skins.size()

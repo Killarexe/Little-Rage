@@ -22,3 +22,12 @@ layout_mode = 2
 theme = ExtResource("1_g2og8")
 text = "Time: 00:00:00"
 label_settings = ExtResource("2_se4jf")
+
+[node name="RageQuitButton" type="Button" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("1_g2og8")
+text = "ui.ragequit"
+
+[connection signal="pressed" from="VBoxContainer/RageQuitButton" to="." method="_on_rage_quit_button_pressed"]

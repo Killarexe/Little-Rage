@@ -127,3 +127,6 @@ func _on_camera_2d_on_clicked(clicked_position: Vector2, placeing: bool):
 		else:
 			level_map.remove_tile_and_update(tile_pos)
 			not_saved = true
+
+func _on_back_to_center_button_pressed():
+	camera.offset = Vector2(0, 0)

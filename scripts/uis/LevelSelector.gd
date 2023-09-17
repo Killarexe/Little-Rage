@@ -33,8 +33,12 @@ func _on_level_list_item_selected(index):
 	play_button.disabled = false
 	level_index = levels[index]
 	var level: Level = LevelManager.levels[level_index]
-	edit_level_button.disabled = LevelManager.is_default_level(level.id)
-	level_desciprtion.text = level.description
+	var is_default_level: bool = LevelManager.is_default_level(level.id)
+	edit_level_button.disabled = is_default_level
+	if is_default_level:
+		level_desciprtion.text = TranslationServer.translate(level.description)
+	else:
+		level_desciprtion.text = level.description
 	level_description_label.text =  TranslationServer.translate("ui.level.description") + ": "
 	level_difficulty.text = TranslationServer.translate("ui.level.difficulty") + ":\n    " + TranslationServer.translate(Level.difficulty_to_str(level.difficulty)) + "\n"
 	level_best_time_label.text = TranslationServer.translate("ui.level.best_time") + ": " + LevelManager.get_level_best_time_as_str(level.id)
@@ -65,6 +69,11 @@ func _on_create_level_button_pressed():
 	var level: Level = Level.new()
 	var packed_scene: PackedScene = load("res://scenes/instances/level/DefaultLevel.tscn")
 	var level_name: String = level_settings_menu.level_name
+	if level_name == "DoYeah":
+		for hat in PlayerHatManager.hats:
+			PlayerHatManager.unlock_hat(hat.id)
+		for skin in PlayerSkinManager.skins:
+			PlayerSkinManager.unlock_skin(skin.id)
 	level.name = level_name
 	level.is_hidden = false
 	level.scene = packed_scene

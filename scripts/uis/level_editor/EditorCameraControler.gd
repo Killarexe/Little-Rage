@@ -19,7 +19,7 @@ var start_distance: float = 0.0
 var current_angle: float = 0.0
 var start_angle: float = 0.0
 var is_panning: bool = false
-var can_placing: bool = true
+var can_placing: bool = false
 var placing: bool = true
 var is_drag: bool = false
 
@@ -34,7 +34,7 @@ func _input(event):
 	if Global.is_mobile || debug_mode:
 		if event is InputEventScreenTouch:
 			handle_touch(event)
-		elif event is InputEventScreenDrag:
+		elif event is InputEventScreenDrag && !can_placing:
 			is_drag = true
 			handle_drag(event)
 
@@ -42,15 +42,16 @@ func handle_touch(event: InputEventScreenTouch):
 	if event.pressed:
 		touch_points[event.index] = event.position
 	else:
-		if can_placing:
-			if touch_points.size() == 1 || is_drag:
-				emit_signal("on_clicked", touch_points.values()[0], placing)
-			else:
-				is_drag = false
-		else:
-			touch_points.erase(event.index)
-		if touch_points.size() == 1 && !is_drag:
-			emit_signal("on_clicked", touch_points.values()[0], placing)
+		touch_points.erase(event.index)
+	if can_placing && touch_points.size() > 0:
+		#var touch_pos: Vector2 = (touch_points.values()[0] + offset - get_viewport_rect().size / zoom / 2) / zoom
+		var viewport_size: Vector2 = get_viewport_rect().size
+		var touch_position: Vector2 = touch_points.values()[0]
+		var touch_position_in_viewport: Vector2 = touch_position - viewport_size / 2
+		var touch_position_in_zoomed_viewport: Vector2 = touch_position_in_viewport / zoom
+		var touch_position_in_world: Vector2 = touch_position_in_zoomed_viewport + offset
+		emit_signal("on_clicked", touch_position_in_world, placing)
+	else:
 		if touch_points.size() == 2:
 			var touch_point_positions = touch_points.values()
 			start_distance = touch_point_positions[0].distance_to(touch_point_positions[1])
@@ -91,17 +92,12 @@ func handle_mouse_pan(event: InputEventMouseMotion):
 		offset -= event.relative.rotated(rotation) * pan_speed  / zoom.x
 
 func _process(_delta):
-	is_panning = Input.is_action_pressed("middle_click") && !(Global.is_mobile || debug_mode)
-	if Input.is_action_pressed("left_click"):
-		emit_signal("on_clicked", get_global_mouse_position(), true)
-	elif Input.is_action_pressed("right_click"):
-		emit_signal("on_clicked", get_global_mouse_position(), false)
-
-'''func _on_eraser_button_toggled(button_pressed: bool):
-	placing = button_pressed
-
-func _on_place_button_toggled(button_pressed: bool):
-	can_placing = button_pressed'''
+	if !(Global.is_mobile || debug_mode):
+		is_panning = Input.is_action_pressed("middle_click")
+		if Input.is_action_pressed("left_click"):
+			emit_signal("on_clicked", get_global_mouse_position(), true)
+		elif Input.is_action_pressed("right_click"):
+			emit_signal("on_clicked", get_global_mouse_position(), false)
 
 func get_angle(p1: Vector2, p2: Vector2) -> float:
 	var delta: Vector2 = p1 - p2
@@ -112,8 +108,11 @@ func _on_level_editor_tools_on_tool_set(index: int):
 		0:
 			placing = true
 			can_placing = true
+			return
 		1:
 			placing = false
 			can_placing = true
+			return
 		2:
 			can_placing = false
+			return

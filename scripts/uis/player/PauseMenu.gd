@@ -17,3 +17,6 @@ func _on_quit_button_pressed():
 func _process(_delta):
 	if Input.is_action_just_pressed("pause") && Global.can_pause:
 		pause()
+
+func _on_replay_button_pressed():
+	SceneManager.change_packed(LevelManager.get_current_level().scene)

@@ -7,7 +7,7 @@ const DEFAULT_SAVE: Dictionary = {
 	"unhidden_hats": [],
 	"unhidden_skins": [],
 	"current_skin": "default",
-	"current_hat": "",
+	"current_hat": "no_hat",
 	"level_times": {},
 	"music_volume": 100.0,
 	"sound_effects_volume": 100.0,
