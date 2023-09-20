@@ -25,7 +25,7 @@ label_settings = ExtResource("2_se4jf")
 
 [node name="RageQuitButton" type="Button" parent="VBoxContainer"]
 visible = false
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme = ExtResource("1_g2og8")
 text = "ui.ragequit"

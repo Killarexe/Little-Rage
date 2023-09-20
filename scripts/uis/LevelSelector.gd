@@ -61,11 +61,17 @@ func _on_create_button_pressed():
 		level_create_button.text = TranslationServer.translate("ui.back")
 		level_settings_menu.visible = true
 
-func _on_edit_button_pressed():
+func go_to_editor():
 	LevelManager.current_level = LevelManager.levels[level_index].id
 	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")
 
-func _on_create_level_button_pressed():
+func _on_edit_button_pressed():
+	if Global.is_mobile:
+		ExperiementalFrame.pop(go_to_editor, func():pass)
+	else:
+		go_to_editor()
+
+func create_level():
 	var level: Level = Level.new()
 	var packed_scene: PackedScene = load("res://scenes/instances/level/DefaultLevel.tscn")
 	var level_name: String = level_settings_menu.level_name
@@ -87,3 +93,9 @@ func _on_create_level_button_pressed():
 	LevelManager.load_levels()
 	LevelManager.current_level = level.id
 	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")
+
+func _on_create_level_button_pressed():
+	if Global.is_mobile:
+		ExperiementalFrame.pop(create_level, func():pass)
+	else:
+		create_level()

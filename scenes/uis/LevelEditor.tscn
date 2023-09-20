@@ -25,6 +25,7 @@ grow_vertical = 2
 script = ExtResource("1_7o0qm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 script = ExtResource("2_pc8il")
 can_zoom = true
 can_pan = true

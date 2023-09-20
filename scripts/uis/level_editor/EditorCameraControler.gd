@@ -85,7 +85,7 @@ func handle_mouse_zoom(event: InputEventMouseButton):
 			set_zoom_with_limit(zoom - Vector2(zoom_speed, zoom_speed))
 
 func set_zoom_with_limit(new_zoom: Vector2):
-	zoom = Vector2(clamp(new_zoom.x, 0.1, 10), clamp(new_zoom.y, 0.1, 10))
+	zoom = Vector2(clamp(new_zoom.x, 1, 4), clamp(new_zoom.y, 1, 4))
 
 func handle_mouse_pan(event: InputEventMouseMotion):
 	if is_panning && can_pan:

@@ -12,17 +12,21 @@ func get_animation() -> String:
 	return transition
 
 func change_scene(path: String) -> void:
+	color_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	color_rect.global_position = Vector2(0, 0)
 	var transition: String = get_animation()
 	animation_player.play(transition)
 	await animation_player.animation_finished
 	get_tree().change_scene_to_file(path)
 	animation_player.play_backwards(transition)
+	color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func change_packed(packed: PackedScene) -> void:
+	color_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	color_rect.global_position = Vector2(0, 0)
 	var transition: String = get_animation()
 	animation_player.play(transition)
 	await animation_player.animation_finished
 	get_tree().change_scene_to_packed(packed)
 	animation_player.play_backwards(transition)
+	color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE

@@ -134,7 +134,7 @@ theme = ExtResource("4_gdtw6")
 text = "ui.shop.open_loot_box"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/Shop"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(256, 64)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

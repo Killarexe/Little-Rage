@@ -59,10 +59,11 @@ func exit():
 			pass
 
 func _on_next_level_pressed():
-	if LevelManager.default_levels.bsearch(LevelManager.current_level) == LevelManager.default_levels.size() - 1:
+	var current_level_number: int = int(LevelManager.current_level.replace("level_", ""))
+	if current_level_number == LevelManager.default_levels.size():
 		#TODO: Credis scene...
-		pass
-	var current_level: String = "level_" + str(LevelManager.default_levels.bsearch(LevelManager.current_level) + 2)
+		return
+	var current_level: String = "level_" + str(current_level_number + 1)
 	var level: Level = LevelManager.get_level(current_level)
 	LevelManager.current_level = current_level
 	MusicManager.play_music("level_plains")

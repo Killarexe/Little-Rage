@@ -92,3 +92,11 @@ ui.level.description.level_three,Ooooh spikes... =),Ohhh des piques… =)
 ui.level.description.level_four,A level witch show a new features for the noobies…,Un niveau qui ajoute du changement pour les noobs…
 ui.level.description.level_five,Color things + jumps + Color spikes,Truc de couleurs + Sauts + Piques de couleurs
 ui.level.description.level_six,The evaluation level…,Le niveau d’évaluation…
+ui.yes,Yes,Oui
+ui.no,No,Non
+ui.experimental_frame.desc,"This feature is an experimental. It can produce bugs.
+Are you sure to continue ?","Cette fonctionnalité est expiremental. Ceci peut produire des bugs.
+Etes-vous sur de continuer ?"
+ui.back_to_center,Back to Center,Retour au Centre
+ui.replay,Replay Level,Rejouer le niveau
+ui.ragequit,RAGEQUIT,RAGEQUIT
