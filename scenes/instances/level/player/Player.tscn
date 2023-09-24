@@ -78,7 +78,7 @@ libraries = {
 "": SubResource("AnimationLibrary_pm6cf"),
 "PlayerAnimations": ExtResource("4_jqgtb")
 }
-blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]
+blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -142,11 +142,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_k24f3")
 
-[node name="PlayerStatus" parent="Menus" node_paths=PackedStringArray("player", "timer") instance=ExtResource("13_p0n42")]
-player = NodePath("../..")
-timer = NodePath("../../Timer")
+[node name="PlayerStatus" parent="Menus" instance=ExtResource("13_p0n42")]
+player = Object(CharacterBody2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":0,"collision_layer":8,"collision_mask":15,"collision_priority":1.0,"input_pickable":false,"motion_mode":0,"up_direction":Vector2(0, -1),"velocity":Vector2(0, 0),"slide_on_ceiling":true,"max_slides":4,"wall_min_slide_angle":0.261799,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.785398,"floor_snap_length":1.0,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.08,"script":ExtResource("1_l7flj"))
+
+timer = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":0.05,"one_shot":false,"autostart":true,"script":ExtResource("8_3kxck"))
+
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.05
 autostart = true
 script = ExtResource("8_3kxck")

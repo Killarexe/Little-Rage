@@ -9,7 +9,7 @@ func _ready():
 	connect("timeout", on_timeout)
 
 func on_timeout():
-	milliseconds += 10
+	milliseconds += 5
 	if milliseconds >= 100:
 		secondes += 1
 		milliseconds = 0

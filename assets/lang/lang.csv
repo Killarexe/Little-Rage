@@ -95,7 +95,7 @@ ui.level.description.level_six,The evaluation level…,Le niveau d’évaluation
 ui.yes,Yes,Oui
 ui.no,No,Non
 ui.experimental_frame.desc,"This feature is an experimental. It can produce bugs.
-Are you sure to continue ?","Cette fonctionnalité est expiremental. Ceci peut produire des bugs.
+Are you sure to continue ?","Cette fonctionnalité est expérimental Ceci peut produire des bugs.
 Etes-vous sur de continuer ?"
 ui.back_to_center,Back to Center,Retour au Centre
 ui.replay,Replay Level,Rejouer le niveau

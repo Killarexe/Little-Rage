@@ -44,7 +44,6 @@ func handle_touch(event: InputEventScreenTouch):
 	else:
 		touch_points.erase(event.index)
 	if can_placing && touch_points.size() > 0:
-		#var touch_pos: Vector2 = (touch_points.values()[0] + offset - get_viewport_rect().size / zoom / 2) / zoom
 		var viewport_size: Vector2 = get_viewport_rect().size
 		var touch_position: Vector2 = touch_points.values()[0]
 		var touch_position_in_viewport: Vector2 = touch_position - viewport_size / 2
