@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bkwmpwrjnhece"]
+[gd_scene load_steps=21 format=3 uid="uid://bkwmpwrjnhece"]
 
 [ext_resource type="Script" path="res://scripts/level/player/PlayerMovement.gd" id="1_l7flj"]
 [ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="2_alfuh"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c8kxkf324k7v" path="res://assets/textures/level_backgrounds/suface_blur.png" id="4_1alsf"]
 [ext_resource type="AnimationLibrary" uid="uid://lq7ufb3fx0yh" path="res://assets/animations/PlayerAnimations.res" id="4_jqgtb"]
 [ext_resource type="PackedScene" uid="uid://bruwtum1c48go" path="res://scenes/uis/PauseMenu.tscn" id="5_iaj63"]
+[ext_resource type="Script" path="res://scripts/level/player/CameraController.gd" id="5_u0egx"]
 [ext_resource type="PackedScene" uid="uid://c027b4usebimx" path="res://scenes/uis/WinMenu.tscn" id="6_6ee8y"]
 [ext_resource type="Script" path="res://scripts/uis/MobileVisiblity.gd" id="6_njdel"]
 [ext_resource type="Texture2D" uid="uid://dxd7u5xffvp21" path="res://assets/textures/ui/left.png" id="6_p1hc3"]
@@ -68,17 +69,19 @@ player = NodePath("..")
 
 [node name="Skin" parent="." instance=ExtResource("3_tlygq")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 process_mode = 3
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+script = ExtResource("5_u0egx")
+player = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_pm6cf"),
 "PlayerAnimations": ExtResource("4_jqgtb")
 }
-blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -142,11 +145,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("12_k24f3")
 
-[node name="PlayerStatus" parent="Menus" instance=ExtResource("13_p0n42")]
-player = Object(CharacterBody2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":0,"collision_layer":8,"collision_mask":15,"collision_priority":1.0,"input_pickable":false,"motion_mode":0,"up_direction":Vector2(0, -1),"velocity":Vector2(0, 0),"slide_on_ceiling":true,"max_slides":4,"wall_min_slide_angle":0.261799,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.785398,"floor_snap_length":1.0,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.08,"script":ExtResource("1_l7flj"))
-
-timer = Object(Timer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","process_callback":1,"wait_time":0.05,"one_shot":false,"autostart":true,"script":ExtResource("8_3kxck"))
-
+[node name="PlayerStatus" parent="Menus" node_paths=PackedStringArray("player", "timer") instance=ExtResource("13_p0n42")]
+player = NodePath("../..")
+timer = NodePath("../../Timer")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05

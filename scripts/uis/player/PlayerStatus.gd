@@ -9,6 +9,7 @@ func _ready():
 	player.on_death.connect(on_death)
 	timer.timeout.connect(on_timeout)
 	deaths_label.text = TranslationServer.translate("ui.deaths") + ": 0"
+	time_label.text = TranslationServer.translate("ui.time") + ": 00:00:00"
 
 func on_death(death_count: int):
 	$VBoxContainer/RageQuitButton.visible = death_count >= 10
