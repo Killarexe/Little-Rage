@@ -10,7 +10,7 @@ const WINDOW_SIZES: Array[Vector2] = [
 	Vector2(1280, 720),
 ]
 
-var GAME_VERSION: GameVersion = GameVersion.from(0, 4, 1)
+var GAME_VERSION: GameVersion = GameVersion.from(0, 4, 2)
 var loot_boxes: LootBoxesManager = LootBoxesManager.new()
 var save: SaveManager = SaveManager.new()
 var can_pause: bool = true

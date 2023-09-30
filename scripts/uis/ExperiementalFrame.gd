@@ -6,9 +6,9 @@ class_name ExpirementalFrame
 var on_confirmed: Callable = func():pass
 var on_canceled: Callable = func():pass
 
-func pop(on_confirmed: Callable, on_canceled: Callable):
-	self.on_confirmed = on_confirmed
-	self.on_canceled = on_canceled
+func pop(on_confirmed_lambda: Callable, on_canceled_lambda: Callable):
+	on_confirmed = on_confirmed_lambda
+	on_canceled = on_canceled_lambda
 	dialog.popup_centered()
 
 func _on_confirmation_dialog_canceled():

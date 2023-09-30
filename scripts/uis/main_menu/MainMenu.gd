@@ -21,6 +21,7 @@ func _ready():
 		spash_text.visible = true
 	$Camera2D/AnimationPlayer.play("scroll")
 	logo_animation.play("logo_move")
+	AchievementManager.unlock_achievement("start_the_game")
 	DiscordRPCManager.update_rpc("In Main Menu", "basicicon", "In Main Menu")
 
 func _on_settings_button_pressed():

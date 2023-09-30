@@ -2,10 +2,10 @@ extends CosmeticElement
 class_name PlayerParticle
 
 enum Type{
-	RUN,
+	STEP,
 	JUMP,
 	DEATH
 }
 
-@export var type: Type = Type.RUN
-@export var prefab: PackedScene = PackedScene.new()
+@export var type: Type = Type.STEP
+@export var material: ParticleProcessMaterial = ParticleProcessMaterial.new()

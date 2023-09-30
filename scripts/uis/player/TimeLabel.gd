@@ -35,8 +35,8 @@ func start(timer: Array[int], death_count: int, is_best_time: bool):
 	update_text()
 
 func update_text():
-	var time_str: String = TranslationServer.translate("ui.time") + ": " + str(timer_mins).pad_zeros(2) + ":" + str(timer_secs).pad_zeros(2) + ":" + str(timer_millis).pad_zeros(2)
-	var deaths_str: String = "\n" + TranslationServer.translate("ui.deaths") + ": "
+	var time_str: String = TranslationServer.translate("label.time") + ": " + str(timer_mins).pad_zeros(2) + ":" + str(timer_secs).pad_zeros(2) + ":" + str(timer_millis).pad_zeros(2)
+	var deaths_str: String = "\n" + TranslationServer.translate("label.deaths") + ": "
 	if best_time:
 		time_str += "    Best time!"
 	if deaths > 0 || show_zeros:

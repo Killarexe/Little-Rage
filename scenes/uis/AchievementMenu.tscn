@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3ip8ifiyu8b2"]
+
+[ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_yu7n6"]
+[ext_resource type="Script" path="res://scripts/uis/achievement_menu/AchievementList.gd" id="3_dff4b"]
+[ext_resource type="Script" path="res://scripts/uis/achievement_menu/AchievementInformation.gd" id="4_ql82p"]
+
+[node name="AchievementMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yu7n6")
+
+[node name="AchievementList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 760.0
+offset_bottom = 720.0
+max_columns = 3
+fixed_column_width = 192
+script = ExtResource("3_dff4b")
+
+[node name="AchievementInformation" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_ql82p")
+
+[node name="AchievementIcon" type="TextureRect" parent="AchievementInformation"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 0
+offset_left = 935.0
+offset_right = 1127.0
+offset_bottom = 192.0
+stretch_mode = 5
+
+[node name="AchievementDescription" type="RichTextLabel" parent="AchievementInformation"]
+layout_mode = 0
+offset_left = 760.0
+offset_top = 192.0
+offset_right = 1280.0
+offset_bottom = 717.0
+
+[node name="ColorRect" type="ColorRect" parent="AchievementInformation/AchievementDescription"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.384314)
+
+[connection signal="item_selected" from="AchievementList" to="AchievementList" method="_on_item_selected"]
+[connection signal="on_selected" from="AchievementList" to="AchievementInformation" method="_on_achievement_list_on_selected"]

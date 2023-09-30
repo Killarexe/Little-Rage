@@ -119,8 +119,10 @@ func _on_level_settings_menu_on_settings_changed():
 func _on_camera_2d_on_clicked(clicked_position: Vector2, placeing: bool):
 	if selected_tile < 0 || level_settings.visible:
 		can_place = false
+	
 	if can_place:
 		var tile_pos: Vector2i = floor(clicked_position / 16)
+		print()
 		if placeing:
 			tiles.editor_tiles[selected_tile].on_place(level_map, tile_pos)
 			not_saved = true

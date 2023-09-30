@@ -27,7 +27,7 @@ theme_override_constants/separation = 256
 [node name="LevelDescription" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_oyb7t")
-text = "ui.level.description"
+text = "level.description"
 label_settings = ExtResource("3_nmy32")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/VBoxContainer/LevelDescription"]
@@ -46,18 +46,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_oyb7t")
-text = "ui.none"
+text = "level.description.none"
 
 [node name="LevelDifficulty" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_oyb7t")
-text = "ui.level.difficulty"
+text = "level.difficulty"
 label_settings = ExtResource("3_nmy32")
 
 [node name="LevelBestTime" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_oyb7t")
-text = "ui.level.best_time"
+text = "level.best_time"
 label_settings = ExtResource("3_nmy32")
 
 [node name="PlayButton" type="Button" parent="CanvasLayer"]
@@ -74,7 +74,7 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_oyb7t")
-text = "ui.play"
+text = "button.play"
 
 [node name="BackButton" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(128, 48)
@@ -88,7 +88,7 @@ offset_top = -24.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("2_oyb7t")
-text = "ui.back"
+text = "button.back"
 
 [node name="EditButton" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(128, 48)
@@ -97,13 +97,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -921.0
+offset_left = -955.0
 offset_top = -48.0
-offset_right = -705.0
+offset_right = -675.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("2_oyb7t")
-text = "ui.edit_level"
+text = "button.edit_level"
 
 [node name="LevelList" type="ItemList" parent="CanvasLayer"]
 anchors_preset = 9
@@ -152,13 +152,13 @@ alignment = 1
 [node name="LevelName" type="LineEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_oyb7t")
-placeholder_text = "ui.level.name"
+placeholder_text = "level.name"
 
 [node name="LevelDescription" type="TextEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("2_oyb7t")
-placeholder_text = "ui.level.description"
+placeholder_text = "level.description"
 
 [node name="LevelDifficulty" type="OptionButton" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
 layout_mode = 2
@@ -170,7 +170,7 @@ layout_mode = 2
 min_value = 128.0
 max_value = 1024.0
 value = 128.0
-prefix = "ui.level.y_limit"
+prefix = "level.y_limit"
 script = ExtResource("5_j6eoi")
 
 [node name="CreateLevelButton" type="Button" parent="CanvasLayer/LevelSettingsMenu"]
@@ -181,7 +181,7 @@ offset_top = 617.0
 offset_right = 274.0
 offset_bottom = 665.0
 theme = ExtResource("2_oyb7t")
-text = "ui.create_level"
+text = "button.create_level"
 
 [node name="CreateButton" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(128, 48)
@@ -196,7 +196,7 @@ offset_right = -963.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("2_oyb7t")
-text = "ui.create_level"
+text = "button.create_level"
 
 [connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]

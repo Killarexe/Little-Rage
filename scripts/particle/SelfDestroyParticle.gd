@@ -1,4 +1,5 @@
 extends GPUParticles2D
+class_name SelfDestroyParticle
 
 var emmited: bool = false
 

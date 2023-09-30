@@ -14,11 +14,11 @@ var description: String = Level.DEFAULT_DESCRIPTION
 var difficulty: Level.Difficulty = Level.DEFAULT_DIFFICULTY
 
 func _ready():
-	level_diffculty_select.add_item("ui.level.difficulty.beginer_friendly")
-	level_diffculty_select.add_item("ui.level.difficulty.easy")
-	level_diffculty_select.add_item("ui.level.difficulty.normal")
-	level_diffculty_select.add_item("ui.level.difficulty.hard")
-	level_diffculty_select.add_item("ui.level.difficulty.extreme")
+	level_diffculty_select.add_item("level.difficulty.beginer_friendly")
+	level_diffculty_select.add_item("level.difficulty.easy")
+	level_diffculty_select.add_item("level.difficulty.normal")
+	level_diffculty_select.add_item("level.difficulty.hard")
+	level_diffculty_select.add_item("level.difficulty.extreme")
 	level_diffculty_select.select(2)
 	level_y_limit.value = y_limit
 	level_name_edit.text = level_name

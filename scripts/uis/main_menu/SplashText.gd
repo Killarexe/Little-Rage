@@ -15,12 +15,12 @@ func _ready():
 func _on_button_pressed():
 	match index:
 		51:
-			PlayerSkinManager.unhide_skin("steve")
+			PlayerSkinManager.unlock_skin("steve", true)
 		17:
-			PlayerSkinManager.unhide_skin("steve")
+			PlayerSkinManager.unlock_skin("steve", true)
 		2:
-			PlayerSkinManager.unhide_skin("killarexe")
+			PlayerSkinManager.unlock_skin("killarexe", true)
 		9:
-			PlayerSkinManager.unhide_skin("niark")
+			PlayerSkinManager.unlock_skin("niark", true)
 		65:
-			PlayerSkinManager.unhide_skin("niark")
+			PlayerSkinManager.unlock_skin("niark", true)

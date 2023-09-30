@@ -4,7 +4,6 @@ const SKINS_DIR_PATH: String = "res://data/skins"
 
 var current_skin: String = "default"
 var unlocked_skins: Array = ["default"]
-var unhidden_skins: Array = []
 var skins: Array[PlayerSkin]
 
 func _ready():
@@ -22,23 +21,17 @@ func get_skin(skin_id: String) -> PlayerSkin:
 			return skin
 	return null
 
-func unlock_skin(skin_id: String):
-	if get_skin(skin_id) != null && !is_skin_unlocked(skin_id):
+func unlock_skin(skin_id: String, special: bool = false):
+	var skin: PlayerSkin = get_skin(skin_id)
+	if skin != null && !is_skin_unlocked(skin_id):
 		unlocked_skins.append(skin_id)
 		Global.save_game()
-
-func unhide_skin(skin_id: String):
-	var skin: PlayerSkin = get_skin(skin_id)
-	if skin != null:
-		if skin.is_hidden && !unhidden_skins.has(skin_id) && !unlocked_skins.has(skin_id):
-			unlocked_skins.append(skin_id)
-			unlock_skin(skin_id)
-			PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))
-			PopUpFrame.pop(TranslationServer.translate("ui.popup.unlocked_skin") % TranslationServer.translate(skin.name))
-			Global.save_game()
+	if special:
+		PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))
+		PopUpFrame.pop(TranslationServer.translate("ui.popup.unlocked_skin") % TranslationServer.translate(skin.name))
 
 func is_skin_hidden(skin_id: String) -> bool:
-	return get_skin(skin_id).is_hidden && !unhidden_skins.has(skin_id)
+	return get_skin(skin_id).is_hidden
 
 func is_skin_unlocked(skin_id: String) -> bool:
 	return unlocked_skins.has(skin_id)

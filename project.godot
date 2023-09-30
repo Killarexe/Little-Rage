@@ -32,6 +32,9 @@ PopUpFrame="*res://scenes/globals/PopUpFrame.tscn"
 UpdateChecker="*res://scenes/globals/UpdateChecker.tscn"
 DiscordRPCManager="*res://scripts/integration/discord/DiscordRPCManager.gd"
 ExperiementalFrame="*res://scenes/globals/ExperiementalFrame.tscn"
+AchievementManager="*res://scripts/achievement/AchievementManager.gd"
+PlayerParticleManager="*res://scripts/level/player/cosmetic/particle/PlayerParticleManager.gd"
+DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 
 [display]
 
@@ -44,6 +47,10 @@ window/stretch/mode="canvas_items"
 [editor]
 
 movie_writer/movie_file="/home/killarexe/Bureau/Projets/Godot/LittleRage/builds/movies/movie.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/discord-sdk-gd/plugin.cfg")
 
 [input]
 

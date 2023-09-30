@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://babbbvmm62k2r"]
+
+[ext_resource type="Texture2D" uid="uid://dqwr6dqsywk6s" path="res://assets/textures/player/skins/player.png" id="1_yp1sx"]
+[ext_resource type="Script" path="res://scripts/achievement/Achievement.gd" id="2_tbu0j"]
+
+[resource]
+script = ExtResource("2_tbu0j")
+icon = ExtResource("1_yp1sx")
+type = 0
+hidden = false

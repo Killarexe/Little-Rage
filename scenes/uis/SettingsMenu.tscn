@@ -38,7 +38,7 @@ mode = 1
 title = "ui.settings.reset_save"
 initial_position = 2
 size = Vector2i(249, 100)
-dialog_text = "ui.settings.reset_save.confirm"
+dialog_text = "settings.reset_save.confirm"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -77,7 +77,7 @@ layout_mode = 2
 [node name="Text" type="Label" parent="CanvasLayer/VBoxContainer/MusicVolume"]
 layout_mode = 2
 theme = ExtResource("4_tdetm")
-text = "ui.settings.music_volume"
+text = "settings.music_volume"
 label_settings = ExtResource("6_a5c82")
 
 [node name="Slider" type="HSlider" parent="CanvasLayer/VBoxContainer/MusicVolume"]
@@ -93,7 +93,7 @@ layout_mode = 2
 [node name="Text" type="Label" parent="CanvasLayer/VBoxContainer/SoundEffectVolume"]
 layout_mode = 2
 theme = ExtResource("4_tdetm")
-text = "ui.settings.sound_effect_volume"
+text = "settings.sound_effect_volume"
 label_settings = ExtResource("6_a5c82")
 
 [node name="Slider" type="HSlider" parent="CanvasLayer/VBoxContainer/SoundEffectVolume"]
@@ -111,7 +111,7 @@ visible_on_mobile = false
 [node name="Text" type="Label" parent="CanvasLayer/VBoxContainer/WindowSize"]
 layout_mode = 2
 theme = ExtResource("4_tdetm")
-text = "ui.settings.window_size"
+text = "settings.window_size"
 label_settings = ExtResource("6_a5c82")
 
 [node name="OptionButton" type="OptionButton" parent="CanvasLayer/VBoxContainer/WindowSize"]
@@ -141,7 +141,7 @@ layout_mode = 2
 [node name="Text" type="Label" parent="CanvasLayer/VBoxContainer/Language"]
 layout_mode = 2
 theme = ExtResource("4_tdetm")
-text = "ui.settings.language"
+text = "settings.language"
 label_settings = ExtResource("6_a5c82")
 
 [node name="MenuButton" type="OptionButton" parent="CanvasLayer/VBoxContainer/Language"]
@@ -156,7 +156,7 @@ custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("4_tdetm")
-text = "ui.settings.discord_rpc"
+text = "settings.discord_rpc"
 alignment = 1
 script = ExtResource("7_u0f2h")
 visible_on_mobile = false
@@ -166,7 +166,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_horizontal = 8
 theme = ExtResource("4_tdetm")
-text = "ui.settings.reset_save"
+text = "settings.reset_save"
 
 [node name="BackButton" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(128, 48)
@@ -177,7 +177,7 @@ offset_top = -24.0
 offset_right = 120.0
 grow_vertical = 0
 theme = ExtResource("4_tdetm")
-text = "ui.back"
+text = "button.back"
 
 [node name="SoundTrackButton" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(512, 72)
@@ -191,7 +191,7 @@ offset_top = -72.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("4_tdetm")
-text = "ui.settings.sound_track"
+text = "button.settings.sound_track"
 
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
 [connection signal="value_changed" from="CanvasLayer/VBoxContainer/MusicVolume/Slider" to="." method="_on_volume_slider_value_changed"]

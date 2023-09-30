@@ -41,13 +41,13 @@ alignment = 1
 [node name="LevelName" type="LineEdit" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_63owt")
-placeholder_text = "ui.level.name"
+placeholder_text = "level.name"
 
 [node name="LevelDescription" type="TextEdit" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("2_63owt")
-placeholder_text = "ui.level.description"
+placeholder_text = "level.description"
 
 [node name="LevelDifficulty" type="OptionButton" parent="VBoxContainer"]
 layout_mode = 2
@@ -59,7 +59,7 @@ layout_mode = 2
 min_value = 128.0
 max_value = 1024.0
 value = 128.0
-prefix = "ui.level.y_limit"
+prefix = "level.y_limit"
 
 [node name="BackButton" type="TextureButton" parent="."]
 layout_mode = 0

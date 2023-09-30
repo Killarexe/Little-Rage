@@ -4,7 +4,6 @@ const HATS_DIR_PATH: String = "res://data/hats"
 
 var current_hat: String = "no_hat"
 var unlocked_hats: Array = ["no_hat"]
-var unhidden_hats: Array = []
 var hats: Array[PlayerHat]
 
 func _ready():
@@ -22,20 +21,17 @@ func get_hat(hat_id: String) -> PlayerHat:
 			return hat
 	return null
 
-func unlock_hat(hat_id: String):
-	if get_hat(hat_id) != null && !is_hat_unlocked(hat_id):
+func unlock_hat(hat_id: String, special: bool = false):
+	var hat: PlayerHat = get_hat(hat_id)
+	if hat != null && !is_hat_unlocked(hat_id):
 		unlocked_hats.append(hat_id)
 		Global.save_game()
-
-func unhide_hat(hat_id: String):
-	var hat: PlayerHat = get_hat(hat_id)
-	if hat != null:
-		if hat.is_hidden && !unhidden_hats.has(hat_id):
-			unhidden_hats.append(hat_id)
-			Global.save_game()
+	if special:
+		PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))
+		PopUpFrame.pop(TranslationServer.translate("ui.popup.unlocked_hat") % TranslationServer.translate(hat.name))
 
 func is_hat_hidden(hat_id: String) -> bool:
-	return get_hat(hat_id).is_hidden && !unhidden_hats.has(hat_id)
+	return get_hat(hat_id).is_hidden
 
 func is_hat_unlocked(hat_id: String) -> bool:
 	return unlocked_hats.has(hat_id)

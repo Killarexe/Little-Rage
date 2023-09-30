@@ -20,6 +20,7 @@ const MAX_SPEED: float = 200.0
 const ACCEL: float = 7.5
 const UP: Vector2 = Vector2(0, -1)
 const G: float = 20.0
+const DOWN_DISTORTION: float = 0.25 #TODO: set to 0.25 but at 0.75 it's kinda fun to watch :joy:
 
 var death_count: int = 0
 var jump_timer: float = 0
@@ -29,8 +30,6 @@ var motion: Vector2 = Vector2()
 var previous_tile_type: int = 0
 var spawn_point: Vector2 = Vector2()
 var y_limit: int = Level.DEFAULT_Y_LIMIT
-var jump_particle: Resource = load("res://scenes/instances/level/player/particles/JumpParticle.tscn")
-var step_particle: Resource = load("res://scenes/instances/level/player/particles/StepParticle.tscn")
 
 func _ready():
 	spawn_point = global_position
@@ -40,7 +39,7 @@ func _ready():
 
 func _physics_process(delta: float):
 	check_speed_and_timers(delta)
-	skin_distortion()
+	skin_distortion(delta)
 	check_input()
 	handle_jump()
 	set_velocity(motion)
@@ -59,9 +58,15 @@ func check_speed_and_timers(delta: float):
 	ground_timer -= delta
 	motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 
-func skin_distortion():
+func skin_distortion(delta: float):
 	skin.global_skew = lerpf(skin.global_skew, velocity.x / 2000, 0.2)
-	skin.scale.y = lerpf(skin.scale.y, abs(motion.y) / MAX_FALL_SPEED / 4 + 1, 0.2)
+	if Input.is_action_pressed("down") && ground_timer > GROUND_TIME - 0.1:
+		scale.y = lerpf(scale.y, 1 - DOWN_DISTORTION, 10 * delta)
+		scale.x = lerpf(scale.x, 1 + DOWN_DISTORTION, 10 * delta)
+	else:
+		scale.y = lerpf(scale.y, 1, 10 * delta)
+		scale.x = lerpf(scale.x, 1, 10 * delta)
+		skin.scale.y = lerpf(skin.scale.y, abs(motion.y) / MAX_FALL_SPEED / 4 + 1, 0.2)
 
 func check_input():
 	if Input.is_action_pressed("left"):
@@ -84,16 +89,16 @@ func check_input():
 func handle_jump():
 	if is_on_floor():
 		if ground_timer < GROUND_TIME - 0.1:
-			Global.instanceNodeAtPos(jump_particle, get_parent(), global_position + Vector2(0, 16))
+			PlayerParticleManager.spawn_particle(get_parent(), global_position + Vector2(0, 16), PlayerParticle.Type.JUMP)
 			animation.stop()
 			animation.play("PlayerAnimations/land")
 		if abs(velocity.x) >= MAX_SPEED:
-			Global.instanceNodeAtPos(step_particle, get_parent(), global_position + Vector2(0, 16))
+			PlayerParticleManager.spawn_particle(get_parent(), global_position + Vector2(0, 16), PlayerParticle.Type.STEP)
 		ground_timer = GROUND_TIME
 	if (jump_timer > 0) && (ground_timer > 0):
 		animation.play("PlayerAnimations/jump")
 		sound_effect_manager.play_sfx("classic_jump")
-		Global.instanceNodeAtPos(jump_particle, get_parent(), global_position + Vector2(0, 16))
+		PlayerParticleManager.spawn_particle(get_parent(), global_position + Vector2(0, 16), PlayerParticle.Type.JUMP)
 		motion.y = -JUMP_FORCE
 		jump_timer = 0
 		ground_timer = 0

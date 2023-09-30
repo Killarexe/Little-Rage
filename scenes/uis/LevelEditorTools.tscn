@@ -34,11 +34,11 @@ text_overrun_behavior = 4
 item_count = 3
 icon_mode = 0
 icon_scale = 4.0
-item_0/text = "ui.editor.place"
+item_0/text = "editor.item.place"
 item_0/icon = ExtResource("1_nj3vm")
-item_1/text = "ui.editor.erase"
+item_1/text = "editor.item.erase"
 item_1/icon = ExtResource("2_3b1e0")
-item_2/text = "ui.editor.move"
+item_2/text = "editor.item.move"
 item_2/icon = ExtResource("3_ag4gc")
 script = ExtResource("6_03fot")
 

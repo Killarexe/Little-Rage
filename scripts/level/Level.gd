@@ -38,24 +38,24 @@ const DEFAULT_DIFFICULTY: Difficulty = Difficulty.NORMAL
 @export var level_theme: LevelTheme = LevelTheme.PLAINS
 @export var difficulty: Difficulty = DEFAULT_DIFFICULTY
 
-static func mode_to_str(mode_: Mode) -> String:
-	match mode_:
+static func mode_to_str(mode: Mode) -> String:
+	match mode:
 		Mode.RACE:
-			return "ui.level.mode.race"
+			return "level.mode.race"
 		Mode.BATTLE:
-			return "ui.level.mode.battle"
-	return "ui.unknown"
+			return "level.mode.battle"
+	return "unknown"
 
 static func difficulty_to_str(diffuculty: Difficulty) -> String:
 	match diffuculty:
 		Difficulty.BEGINER_FRIENDLY:
-			return "ui.level.difficulty.beginer_friendly"
+			return "level.difficulty.beginer_friendly"
 		Difficulty.EASY:
-			return "ui.level.difficulty.easy"
+			return "level.difficulty.easy"
 		Difficulty.NORMAL:
-			return "ui.level.difficulty.normal"
+			return "level.difficulty.normal"
 		Difficulty.HARD:
-			return "ui.level.difficulty.hard"
+			return "level.difficulty.hard"
 		Difficulty.EXTREME:
-			return "ui.level.difficulty.extreme"
-	return "ui.unknown"
+			return "level.difficulty.extreme"
+	return "unknown"

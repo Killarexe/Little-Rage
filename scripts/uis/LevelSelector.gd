@@ -39,9 +39,9 @@ func _on_level_list_item_selected(index):
 		level_desciprtion.text = TranslationServer.translate(level.description)
 	else:
 		level_desciprtion.text = level.description
-	level_description_label.text =  TranslationServer.translate("ui.level.description") + ": "
-	level_difficulty.text = TranslationServer.translate("ui.level.difficulty") + ":\n    " + TranslationServer.translate(Level.difficulty_to_str(level.difficulty)) + "\n"
-	level_best_time_label.text = TranslationServer.translate("ui.level.best_time") + ": " + LevelManager.get_level_best_time_as_str(level.id)
+	level_description_label.text =  TranslationServer.translate("level.description") + ": "
+	level_difficulty.text = TranslationServer.translate("level.difficulty") + ":\n    " + TranslationServer.translate(Level.difficulty_to_str(level.difficulty)) + "\n"
+	level_best_time_label.text = TranslationServer.translate("level.best_time") + ": " + LevelManager.get_level_best_time_as_str(level.id)
 
 func _on_play_button_pressed():
 	var level: Level = LevelManager.levels[level_index]
@@ -55,10 +55,10 @@ func _on_back_button_pressed():
 
 func _on_create_button_pressed(): 
 	if level_settings_menu.visible:
-		level_create_button.text = TranslationServer.translate("ui.create_level")
+		level_create_button.text = TranslationServer.translate("button.create_level")
 		level_settings_menu.visible = false
 	else:
-		level_create_button.text = TranslationServer.translate("ui.back")
+		level_create_button.text = TranslationServer.translate("button.back")
 		level_settings_menu.visible = true
 
 func go_to_editor():
