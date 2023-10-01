@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://wcpkho1r3os3"]
+
+[ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_q884x"]
+[ext_resource type="Texture2D" uid="uid://dqwr6dqsywk6s" path="res://assets/textures/player/skins/player.png" id="2_aj8vv"]
+[ext_resource type="PackedScene" uid="uid://bdh74bhco1ccg" path="res://scenes/instances/uis/AnimatedButton.tscn" id="2_upjvg"]
+
+[node name="CollectionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_q884x")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Buttons" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_right = 512.0
+grow_vertical = 2
+theme_override_constants/separation = 48
+alignment = 1
+
+[node name="SkinsButton" parent="CanvasLayer/Buttons" instance=ExtResource("2_upjvg")]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+text = "button.skins"
+icon = ExtResource("2_aj8vv")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+start_animation = true
+mouse_over_animation = true
+clicked_animation = true
+
+[node name="HatsButton" parent="CanvasLayer/Buttons" instance=ExtResource("2_upjvg")]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+text = "button.hats"
+icon = ExtResource("2_aj8vv")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+start_animation = true
+mouse_over_animation = true
+clicked_animation = true
+start_animation_delay = 0.1
+
+[node name="ParticlesButton" parent="CanvasLayer/Buttons" instance=ExtResource("2_upjvg")]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+text = "button.particles"
+icon = ExtResource("2_aj8vv")
+alignment = 0
+icon_alignment = 2
+expand_icon = true
+start_animation = true
+mouse_over_animation = true
+clicked_animation = true
+start_animation_delay = 0.2
+
+[node name="Camera2D" type="Camera2D" parent="."]

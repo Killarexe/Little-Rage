@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c027b4usebimx"]
+[gd_scene load_steps=6 format=3 uid="uid://c027b4usebimx"]
 
 [ext_resource type="Script" path="res://scripts/uis/player/WinMenu.gd" id="1_vuus5"]
 [ext_resource type="PackedScene" uid="uid://c5ls5sjfr4mir" path="res://scenes/instances/level/player/uis/time_label.tscn" id="2_bie6w"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="2_gnpol"]
 [ext_resource type="LabelSettings" uid="uid://6bd6ywcaci6c" path="res://assets/style/label_settings/big_label.tres" id="3_41jao"]
+[ext_resource type="PackedScene" uid="uid://bdh74bhco1ccg" path="res://scenes/instances/uis/AnimatedButton.tscn" id="5_gf52x"]
 
 [node name="WinMenu" type="CanvasLayer"]
 process_mode = 3
@@ -78,20 +79,22 @@ alignment = 1
 [node name="TimeLabel" parent="Singleplayer/VBoxContainer" instance=ExtResource("2_bie6w")]
 layout_mode = 2
 
-[node name="Back to Menu" type="Button" parent="Singleplayer/VBoxContainer"]
-custom_minimum_size = Vector2(384, 64)
+[node name="Back to Menu" parent="Singleplayer/VBoxContainer" instance=ExtResource("5_gf52x")]
+custom_minimum_size = Vector2(0, 92)
 layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("2_gnpol")
 text = "button.back_to_menu"
+start_animation = true
+mouse_over_animation = true
+clicked_animation = true
 
-[node name="NextLevel" type="Button" parent="Singleplayer/VBoxContainer"]
+[node name="NextLevel" parent="Singleplayer/VBoxContainer" instance=ExtResource("5_gf52x")]
 visible = false
-custom_minimum_size = Vector2(384, 64)
+custom_minimum_size = Vector2(0, 92)
 layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("2_gnpol")
 text = "button.next_level"
+start_animation = true
+mouse_over_animation = true
+clicked_animation = true
 
 [connection signal="pressed" from="Singleplayer/VBoxContainer/Back to Menu" to="." method="exit"]
 [connection signal="pressed" from="Singleplayer/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
