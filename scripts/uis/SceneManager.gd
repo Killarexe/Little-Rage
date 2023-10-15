@@ -1,32 +1,27 @@
 extends CanvasLayer
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var color_rect: ColorRect = $ColorRect
+@onready var texture_rect: ColorRect = $Texture
 
-func get_animation() -> String:
-	var transition: String = animation_player.get_animation_list()[
-		randi_range(0, animation_player.get_animation_list().size() - 1)
-	]
-	if transition == "RESET":
-		return get_animation()
-	return transition
+func prepare():
+	texture_rect.mouse_filter = Control.MOUSE_FILTER_STOP
+	texture_rect.global_position = Vector2(0, 0)
+	texture_rect.modulate = Color(1.0, 1.0, 1.0, 1.0)
+
+func end():
+	texture_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	texture_rect.modulate = Color(1.0, 1.0, 1.0, 0.0)
 
 func change_scene(path: String) -> void:
-	color_rect.mouse_filter = Control.MOUSE_FILTER_STOP
-	color_rect.global_position = Vector2(0, 0)
-	var transition: String = get_animation()
-	animation_player.play(transition)
+	prepare()
+	animation_player.play("Transitions/scroll")
 	await animation_player.animation_finished
 	get_tree().change_scene_to_file(path)
-	animation_player.play_backwards(transition)
-	color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	end()
 
 func change_packed(packed: PackedScene) -> void:
-	color_rect.mouse_filter = Control.MOUSE_FILTER_STOP
-	color_rect.global_position = Vector2(0, 0)
-	var transition: String = get_animation()
-	animation_player.play(transition)
-	await animation_player.animation_finished
+	prepare()
 	get_tree().change_scene_to_packed(packed)
-	animation_player.play_backwards(transition)
-	color_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	animation_player.play("Transitions/scroll")
+	await animation_player.animation_finished
+	end()

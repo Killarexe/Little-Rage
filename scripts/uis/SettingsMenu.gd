@@ -49,7 +49,7 @@ func _on_confirmation_dialog_confirmed():
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
 
 func _on_sound_track_button_pressed():
-	PlayerSkinManager.unhide_skin("rgb")
+	PlayerSkinManager.unlock_skin("rgb")
 	SceneManager.change_scene("res://scenes/uis/SoundTrackMenu.tscn")
 
 func _on_option_button_item_selected(index):

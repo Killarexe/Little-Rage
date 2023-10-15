@@ -34,7 +34,7 @@ func _on_multiplayer_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/MultiplayerSelection.tscn")
 
 func _on_shop_button_pressed():
-	SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn")
+	SceneManager.change_scene("res://scenes/uis/CollectionsMenu.tscn")
 
 func _on_quit_button_pressed():
 	Global.save_game()

@@ -38,11 +38,11 @@ func play_rand_music(type: Music.Type):
 	stream = musics_type[index].get_stream()
 	play()
 
-func play_music(music_id: String):
+func play_music(music_id: String, from_position: float = 0.0):
 	var music: Music = get_music(music_id)
 	if music != null:
 		stop()
 		stream = music.get_stream()
-		play()
+		play(from_position)
 	else:
 		print("Failed to play music: '" + music_id + "'")

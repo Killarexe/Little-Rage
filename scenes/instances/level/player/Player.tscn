@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bkwmpwrjnhece"]
+[gd_scene load_steps=22 format=3 uid="uid://bkwmpwrjnhece"]
 
 [ext_resource type="Script" path="res://scripts/level/player/PlayerMovement.gd" id="1_l7flj"]
 [ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="2_alfuh"]
+[ext_resource type="Script" path="res://scripts/level/player/SkinDistortion.gd" id="2_e5yys"]
 [ext_resource type="PackedScene" uid="uid://1qv3udmr8sxh" path="res://scenes/instances/level/player/PlayerSkin.tscn" id="3_tlygq"]
 [ext_resource type="Texture2D" uid="uid://c8kxkf324k7v" path="res://assets/textures/level_backgrounds/suface_blur.png" id="4_1alsf"]
 [ext_resource type="AnimationLibrary" uid="uid://lq7ufb3fx0yh" path="res://assets/animations/PlayerAnimations.res" id="4_jqgtb"]
@@ -58,6 +59,11 @@ collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_l7flj")
 
+[node name="SkinDistortion" type="Node2D" parent="." node_paths=PackedStringArray("skin", "player")]
+script = ExtResource("2_e5yys")
+skin = NodePath("../Skin")
+player = NodePath("..")
+
 [node name="SoundEffectPlayer" type="AudioStreamPlayer2D" parent="."]
 bus = &"Sound Effects"
 script = ExtResource("2_alfuh")
@@ -81,7 +87,7 @@ libraries = {
 "": SubResource("AnimationLibrary_pm6cf"),
 "PlayerAnimations": ExtResource("4_jqgtb")
 }
-blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0

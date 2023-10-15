@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name PlayerMovement
 
+@export var controllable: bool = true
+
 @onready var timer: PlayerTimer = $Timer
 @onready var skin: PlayerSkinSprite = $Skin
 @onready var animation: AnimationPlayer = $AnimationPlayer
@@ -10,7 +12,6 @@ signal on_setting_spawnpoint(pos: Vector2)
 signal on_switch_color(color: bool)
 signal on_win(time: Array[int], death_count: int)
 signal on_death(death_count: int)
-signal on_collide_tile(tile_type: int, pos: Vector2)
 
 const MAX_FALL_SPEED: float = 500.0
 const GROUND_TIME: float = 0.2
@@ -20,13 +21,12 @@ const MAX_SPEED: float = 200.0
 const ACCEL: float = 7.5
 const UP: Vector2 = Vector2(0, -1)
 const G: float = 20.0
-const DOWN_DISTORTION: float = 0.25 #TODO: set to 0.25 but at 0.75 it's kinda fun to watch :joy:
 
 var death_count: int = 0
 var jump_timer: float = 0
 var ground_timer: float = 0
 var is_invinsible: bool = false
-var motion: Vector2 = Vector2()
+@export var motion: Vector2 = Vector2()
 var previous_tile_type: int = 0
 var spawn_point: Vector2 = Vector2()
 var y_limit: int = Level.DEFAULT_Y_LIMIT
@@ -39,13 +39,11 @@ func _ready():
 
 func _physics_process(delta: float):
 	check_speed_and_timers(delta)
-	skin_distortion(delta)
 	check_input()
 	handle_jump()
 	set_velocity(motion)
 	set_up_direction(UP)
 	move_and_slide()
-	manage_collisions()
 	motion = velocity
 
 func check_speed_and_timers(delta: float):
@@ -58,28 +56,19 @@ func check_speed_and_timers(delta: float):
 	ground_timer -= delta
 	motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
 
-func skin_distortion(delta: float):
-	skin.global_skew = lerpf(skin.global_skew, velocity.x / 2000, 0.2)
-	if Input.is_action_pressed("down") && ground_timer > GROUND_TIME - 0.1:
-		scale.y = lerpf(scale.y, 1 - DOWN_DISTORTION, 10 * delta)
-		scale.x = lerpf(scale.x, 1 + DOWN_DISTORTION, 10 * delta)
-	else:
-		scale.y = lerpf(scale.y, 1, 10 * delta)
-		scale.x = lerpf(scale.x, 1, 10 * delta)
-		skin.scale.y = lerpf(skin.scale.y, abs(motion.y) / MAX_FALL_SPEED / 4 + 1, 0.2)
-
 func check_input():
-	if Input.is_action_pressed("left"):
-		skin.flip_h = true
-		motion.x -= ACCEL
-	elif Input.is_action_pressed("right"):
-		skin.flip_h = false
-		motion.x += ACCEL
-	else:
-		motion.x = lerpf(motion.x, 0, 0.2)
-	
-	if Input.is_action_pressed("jump"):
-		jump_timer = JUMP_TIME
+	if controllable:
+		if Input.is_action_pressed("left"):
+			skin.flip_h = true
+			motion.x -= ACCEL
+		elif Input.is_action_pressed("right"):
+			skin.flip_h = false
+			motion.x += ACCEL
+		else:
+			motion.x = lerpf(motion.x, 0, 0.2)
+		
+		if Input.is_action_pressed("jump"):
+			jump_timer = JUMP_TIME
 	
 	if jump_timer > 0 && !Input.is_action_pressed("jump"):
 		jump_timer = 0
@@ -102,18 +91,6 @@ func handle_jump():
 		motion.y = -JUMP_FORCE
 		jump_timer = 0
 		ground_timer = 0
-
-func manage_collisions():
-	for i in get_slide_collision_count():
-		var collision: KinematicCollision2D = get_slide_collision(i)
-		var collider: Object = collision.get_collider()
-		if collider is TileMap:
-			var pos: Vector2 = collider.local_to_map(collision.get_position() - collision.get_normal() - Vector2(1, 0))
-			var cell: TileData = collider.get_cell_tile_data(0, pos)
-			if cell != null:
-				var type = cell.get_custom_data("type")
-				if type != null && type is int:
-					on_collide_tile.emit(type, pos)
 
 func die():
 	sound_effect_manager.play_rand_sfx(PlayerSoundEffect.Type.DIE)

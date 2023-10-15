@@ -1,15 +1,15 @@
 id,en,fr
 ui.title,Little Rage,Little Rage
-ui.singleplayer,Singleplayer,Solo
-ui.multiplayer,Multiplayer,Multijoueur
-ui.multiplayer.local,Local,Locale
-ui.multiplayer.online,Online,En ligne
-ui.level_selection,Level Seclection,Sélection de niveau
-ui.pause,Pause,Pause
-ui.back_to_game,Back to Game,Retour au Jeu
-ui.quit,Quit,Quitter
-ui.settings,Settings,Paramètres
-ui.shop,Shop,Magasin
+button.singleplayer,Singleplayer,Solo
+button.multiplayer,Multiplayer,Multijoueur
+button.unused,Local,Locale
+button.unused_sec,Online,En ligne
+label.level_selection,Level Seclection,Sélection de niveau
+label.pause,Pause,Pause
+button.back_to_game,Back to Game,Retour au Jeu
+button.quit,Quit,Quitter
+button.settings,Settings,Paramètres
+button.collections,Collections,Collections
 ui.buy,Buy,Acheter
 ui.coins,Coins,Pièces
 ui.select,Select,Séléctioner
@@ -20,8 +20,8 @@ ui.settings.music_volume,Music Volume,Volume de Musique
 ui.settings.sound_effect_volume,Sound Effect Volume,Volume d’éffect de son
 ui.settings.reset_save,Reset Save,Effacer la Sauvegarde
 ui.default_splash_text,Splash Text,Texte
-ui.play,Play,Jouer
-ui.level_editor,Level Editor,Editeur de Niveau
+button.play,Play,Jouer
+button.level_editor,Level Editor,Editeur de Niveau
 ui.save_level,Save Level,Sauvegarder le Niveau
 ui.load_level,Load Level,Charger un Niveau
 ui.close,Close,Fermer
