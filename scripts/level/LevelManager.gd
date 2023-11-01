@@ -41,7 +41,10 @@ func is_best_time(current_time: Array[int]) -> bool:
 	var best_time: Array = get_level_best_time(current_level)
 	if best_time == [0, 0, 0]:
 		return true
-	return time_to_int(best_time) > time_to_int(current_time)
+	if time_to_int(best_time) > time_to_int(current_time):
+		AchievementManager.unlock_achievement("new_record")
+		return true
+	return false
 
 func set_level_best_time(time: Array[int]):
 	levels_best_times[current_level] = time

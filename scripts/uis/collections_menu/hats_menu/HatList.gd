@@ -7,9 +7,8 @@ var hats_ids: Array[String] = []
 func _ready():
 	max_columns = PlayerHatManager.hats.size() + 1
 	for hat in PlayerHatManager.hats:
-		var unlocked: bool = PlayerHatManager.is_hat_unlocked(hat.id)
-		if !(hat.is_hidden && !unlocked):
-			add_icon_item(hat.texture, unlocked)
+		if PlayerHatManager.is_hat_unlocked(hat.id):
+			add_icon_item(hat.texture)
 			hats_ids.append(hat.id)
 
 func _on_item_selected(index: int):

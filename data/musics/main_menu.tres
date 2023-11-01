@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="Music" load_steps=3 format=3 uid="uid://4k1gtukny5en"]
 
 [ext_resource type="Script" path="res://scripts/music/Music.gd" id="1_i7xfv"]
-[ext_resource type="AudioStream" uid="uid://dvifj5qor2y8f" path="res://assets/musics/title_screen.wav" id="2_1spef"]
+[ext_resource type="AudioStream" uid="uid://daatlxlubdk3x" path="res://assets/musics/title_screen.ogg" id="2_bl5jo"]
 
 [resource]
 script = ExtResource("1_i7xfv")
-streams = Array[AudioStream]([ExtResource("2_1spef")])
+streams = Array[AudioStream]([ExtResource("2_bl5jo")])
 type = 1
-id = "main_menu"

@@ -66,12 +66,16 @@ flat = true
 [node name="Icon" type="TextureRect" parent="Frame"]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
-offset_right = 48.0
-offset_bottom = 48.0
+offset_left = 10.0
+offset_top = 40.0
+offset_right = 110.0
+offset_bottom = 140.0
+expand_mode = 4
+stretch_mode = 6
 
 [node name="Text" type="Label" parent="Frame"]
 layout_mode = 1
-offset_top = 58.0
+offset_left = 123.0
 offset_right = 320.0
 offset_bottom = 180.0
 theme = ExtResource("2_7kg61")

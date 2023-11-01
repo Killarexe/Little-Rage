@@ -36,3 +36,8 @@ func _on_back_button_pressed():
 	animation_player.play_backwards("enter")
 	await animation_player.animation_finished
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
+
+func _on_achievements_button_pressed():
+	animation_player.play_backwards("enter")
+	await animation_player.animation_finished
+	SceneManager.change_scene("res://scenes/uis/AchievementMenu.tscn")

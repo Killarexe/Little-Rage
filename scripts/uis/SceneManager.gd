@@ -17,11 +17,15 @@ func change_scene(path: String) -> void:
 	animation_player.play("Transitions/scroll")
 	await animation_player.animation_finished
 	get_tree().change_scene_to_file(path)
+	animation_player.play("Transitions/scroll_inverse")
+	await animation_player.animation_finished
 	end()
 
 func change_packed(packed: PackedScene) -> void:
 	prepare()
+	animation_player.play_backwards("Transitions/scroll_inverse")
+	await animation_player.animation_finished
 	get_tree().change_scene_to_packed(packed)
-	animation_player.play("Transitions/scroll")
+	animation_player.play_backwards("Transitions/scroll")
 	await animation_player.animation_finished
 	end()

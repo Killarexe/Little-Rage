@@ -3,7 +3,7 @@ extends HTTPRequest
 signal on_update_checked(flag: GameVersion.GameVersionFlag)
 
 func _ready():
-	request_completed.connect(on_receive)
+	request_completed.connect(on_receive)	
 	request("https://api.github.com/repos/Killarexe/Little-Rage/releases/latest")
 
 func on_receive(result: int, response_code: int, _headers, body):

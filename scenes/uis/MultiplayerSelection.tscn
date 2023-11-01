@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/uis/multiplayer/MultiplayerSelection.gd" id="1_cr2wo"]
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/level/DefaultLevel.tscn" id="1_uj7rr"]
-[ext_resource type="Animation" uid="uid://cx04at5pdf11i" path="res://assets/animations/camera_scroll.res" id="2_e7ftj"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="2_vncqb"]
 [ext_resource type="LabelSettings" uid="uid://6bd6ywcaci6c" path="res://assets/style/label_settings/big_label.tres" id="3_nl62p"]
 
@@ -21,10 +20,27 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_inqfd"]
+resource_name = "camera_scroll"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1281, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pjon1"]
 _data = {
 "RESET": SubResource("Animation_5pl0o"),
-"camera_scroll": ExtResource("2_e7ftj")
+"camera_scroll": SubResource("Animation_inqfd")
 }
 
 [node name="MultiplayerSelection" type="Control"]
@@ -37,7 +53,6 @@ grow_vertical = 2
 script = ExtResource("1_cr2wo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(6, 0)
 zoom = Vector2(1.5, 1.5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
@@ -60,45 +75,47 @@ offset_right = 448.0
 offset_bottom = 67.0
 grow_horizontal = 2
 theme = ExtResource("2_vncqb")
-text = "ui.multiplayer"
+text = "label.multiplayer"
 label_settings = ExtResource("3_nl62p")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_right = 360.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Local" type="Button" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(344, 0)
+custom_minimum_size = Vector2(344, 128)
 layout_mode = 2
 theme = ExtResource("2_vncqb")
-text = "ui.multiplayer.local"
+text = "button.local_multiplayer"
 
 [node name="Online" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 theme = ExtResource("2_vncqb")
 disabled = true
-text = "ui.multiplayer.online"
+text = "button.online_multiplayer"
 
 [node name="Back" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(256, 80)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -24.0
-offset_right = 120.0
+offset_left = 16.0
+offset_top = -101.0
+offset_right = 272.0
+offset_bottom = -21.0
 grow_vertical = 0
 theme = ExtResource("2_vncqb")
-text = "ui.back"
+text = "button.back"
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Local" to="." method="_on_local_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Online" to="." method="_on_online_pressed"]

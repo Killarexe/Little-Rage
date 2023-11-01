@@ -30,6 +30,6 @@ hue_variation_max = 0.25
 script = ExtResource("1_1k4na")
 type = 2
 material = SubResource("3")
-name = "ui.default_jump"
+name = "particle.default_death"
 chance = 1
 is_hidden = false

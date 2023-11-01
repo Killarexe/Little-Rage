@@ -19,7 +19,20 @@ offset_right = 760.0
 offset_bottom = 720.0
 max_columns = 3
 fixed_column_width = 192
+icon_mode = 0
+icon_scale = 4.0
+fixed_icon_size = Vector2i(16, 16)
 script = ExtResource("3_dff4b")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -74.0
+offset_right = 239.0
+grow_vertical = 0
+text = "button.back"
 
 [node name="AchievementInformation" type="Control" parent="."]
 layout_mode = 1
@@ -58,3 +71,4 @@ color = Color(0, 0, 0, 0.384314)
 
 [connection signal="item_selected" from="AchievementList" to="AchievementList" method="_on_item_selected"]
 [connection signal="on_selected" from="AchievementList" to="AchievementInformation" method="_on_achievement_list_on_selected"]
+[connection signal="pressed" from="BackButton" to="AchievementInformation" method="_on_back_button_pressed"]

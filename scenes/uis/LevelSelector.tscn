@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bi2ylttoym0l5"]
+[gd_scene load_steps=5 format=3 uid="uid://bi2ylttoym0l5"]
 
 [ext_resource type="Script" path="res://scripts/uis/LevelSelector.gd" id="1_fqa51"]
+[ext_resource type="Script" path="res://scripts/uis/level_selector/LevelsList.gd" id="2_he86j"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="2_oyb7t"]
-[ext_resource type="LabelSettings" uid="uid://cd8gvl774mr2v" path="res://assets/style/label_settings/medium_label.tres" id="3_nmy32"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/LevelSettingsMenu.gd" id="4_veq7r"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/YLimitSilider.gd" id="5_j6eoi"]
+[ext_resource type="Script" path="res://scripts/uis/level_selector/LevelInformation.gd" id="3_f868j"]
 
 [node name="LevelSelector" type="Control"]
 layout_mode = 3
@@ -17,194 +16,91 @@ script = ExtResource("1_fqa51")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 320.0
-offset_right = 1280.0
-offset_bottom = 720.0
-size_flags_horizontal = 0
-theme_override_constants/separation = 256
+[node name="Container" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="LevelDescription" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="LevelsList" type="ItemList" parent="CanvasLayer/Container"]
+custom_minimum_size = Vector2(320, 0)
+layout_direction = 1
 layout_mode = 2
-theme = ExtResource("2_oyb7t")
-text = "level.description"
-label_settings = ExtResource("3_nmy32")
+script = ExtResource("2_he86j")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/VBoxContainer/LevelDescription"]
+[node name="LevelInformation" type="Control" parent="CanvasLayer/Container"]
+layout_mode = 2
+size_flags_horizontal = 8
+script = ExtResource("3_f868j")
+
+[node name="Description" type="Control" parent="CanvasLayer/Container/LevelInformation"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Container/LevelInformation/Description"]
 layout_mode = 0
-offset_left = 86.0
-offset_top = 40.0
-offset_right = 799.0
-offset_bottom = 212.0
-color = Color(0, 0, 0, 0.501961)
+offset_left = 149.0
+offset_top = 29.0
+offset_right = 517.0
+offset_bottom = 52.0
+theme = ExtResource("2_oyb7t")
+text = "label.level_description"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/VBoxContainer/LevelDescription/ColorRect"]
+[node name="Background" type="ColorRect" parent="CanvasLayer/Container/LevelInformation/Description"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 62.0
+offset_right = 939.0
+offset_bottom = 282.0
+color = Color(0.239216, 0.239216, 0.239216, 0.509804)
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer/Container/LevelInformation/Description/Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_oyb7t")
-text = "level.description.none"
 
-[node name="LevelDifficulty" type="Label" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_oyb7t")
-text = "level.difficulty"
-label_settings = ExtResource("3_nmy32")
+[node name="Difficulty" type="Control" parent="CanvasLayer/Container/LevelInformation"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="LevelBestTime" type="Label" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_oyb7t")
-text = "level.best_time"
-label_settings = ExtResource("3_nmy32")
-
-[node name="PlayButton" type="Button" parent="CanvasLayer"]
-custom_minimum_size = Vector2(256, 64)
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 43.0
-offset_top = -67.0
-offset_right = 299.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_oyb7t")
-text = "button.play"
-
-[node name="BackButton" type="Button" parent="CanvasLayer"]
-custom_minimum_size = Vector2(128, 48)
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -120.0
-offset_top = -24.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("2_oyb7t")
-text = "button.back"
-
-[node name="EditButton" type="Button" parent="CanvasLayer"]
-custom_minimum_size = Vector2(128, 48)
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -955.0
-offset_top = -48.0
-offset_right = -675.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("2_oyb7t")
-text = "button.edit_level"
-
-[node name="LevelList" type="ItemList" parent="CanvasLayer"]
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 320.0
-offset_bottom = -63.0
-grow_vertical = 2
-theme = ExtResource("2_oyb7t")
-max_text_lines = 5
-
-[node name="LevelSettingsMenu" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 319.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_veq7r")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/LevelSettingsMenu"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Container/LevelInformation/Difficulty"]
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 376.0
+offset_top = 328.0
+offset_right = 899.0
+offset_bottom = 340.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.5, 0.5, 0.5, 0.501961)
+color = Color(1, 0, 0, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelSettingsMenu"]
+[node name="Label" type="Label" parent="CanvasLayer/Container/LevelInformation/Difficulty/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -16.0
-offset_right = 160.0
-offset_bottom = 16.0
+offset_left = -264.0
+offset_top = -13.5
+offset_right = 264.0
+offset_bottom = 13.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_oyb7t")
-alignment = 1
+theme_override_font_sizes/font_size = 24
+text = "label.level_difficulty"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LevelName" type="LineEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_oyb7t")
-placeholder_text = "level.name"
-
-[node name="LevelDescription" type="TextEdit" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
-custom_minimum_size = Vector2(0, 128)
-layout_mode = 2
-theme = ExtResource("2_oyb7t")
-placeholder_text = "level.description"
-
-[node name="LevelDifficulty" type="OptionButton" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_oyb7t")
-alignment = 1
-
-[node name="YLimit" type="SpinBox" parent="CanvasLayer/LevelSettingsMenu/VBoxContainer"]
-layout_mode = 2
-min_value = 128.0
-max_value = 1024.0
-value = 128.0
-prefix = "level.y_limit"
-script = ExtResource("5_j6eoi")
-
-[node name="CreateLevelButton" type="Button" parent="CanvasLayer/LevelSettingsMenu"]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 0
-offset_left = 26.0
-offset_top = 617.0
-offset_right = 274.0
-offset_bottom = 665.0
-theme = ExtResource("2_oyb7t")
-text = "button.create_level"
-
-[node name="CreateButton" type="Button" parent="CanvasLayer"]
-custom_minimum_size = Vector2(128, 48)
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1280.0
-offset_top = -67.0
-offset_right = -963.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("2_oyb7t")
-text = "button.create_level"
-
-[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/EditButton" to="." method="_on_edit_button_pressed"]
-[connection signal="item_selected" from="CanvasLayer/LevelList" to="." method="_on_level_list_item_selected"]
-[connection signal="text_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelName" to="CanvasLayer/LevelSettingsMenu" method="_on_level_name_text_changed" flags=18]
-[connection signal="text_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDescription" to="CanvasLayer/LevelSettingsMenu" method="_on_level_description_text_changed" flags=18]
-[connection signal="item_selected" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/LevelDifficulty" to="CanvasLayer/LevelSettingsMenu" method="_on_level_difficulty_item_selected" flags=18]
-[connection signal="value_changed" from="CanvasLayer/LevelSettingsMenu/VBoxContainer/YLimit" to="CanvasLayer/LevelSettingsMenu" method="_on_slider_value_changed" flags=18]
-[connection signal="pressed" from="CanvasLayer/LevelSettingsMenu/CreateLevelButton" to="." method="_on_create_level_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/CreateButton" to="." method="_on_create_button_pressed"]
+[connection signal="item_selected" from="CanvasLayer/Container/LevelsList" to="CanvasLayer/Container/LevelsList" method="_on_item_selected"]
+[connection signal="on_level_selected" from="CanvasLayer/Container/LevelsList" to="CanvasLayer/Container/LevelInformation" method="_on_levels_list_on_level_selected"]

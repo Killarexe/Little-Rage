@@ -17,6 +17,7 @@ func unlock_achievement(achievement_id: String):
 	for achievement in achievements:
 		if achievement.id == achievement_id:
 			unlocked_achievements.append(achievement_id)
-			PopUpFrame.pop(TranslationServer.translate("popup.unlocked_achievement") % TranslationServer.translate("achievement." + achievement_id + ".desc"))
+			PopUpFrame.pop(TranslationServer.translate("popup.unlocked_achievement") % TranslationServer.translate("achievement." + achievement_id + ".desc"), achievement.icon)
+			Global.save_game()
 			return
 	print("Failed to unlock achievement: %s" % achievement_id)
