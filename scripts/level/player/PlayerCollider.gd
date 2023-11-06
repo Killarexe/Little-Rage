@@ -7,9 +7,12 @@ var checkpoint_particle: Resource = load("res://scenes/instances/level/player/pa
 var previous_tile_type: int
 
 func _process(_delta: float):
+	if !player.interactable:
+		return
 	for i in player.get_slide_collision_count():
 		var collision: KinematicCollision2D = player.get_slide_collision(i)
-		var collider: Object = collision.get_collider()
+		var collider: Node = collision.get_collider() as Node
+		
 		if collider is TileMap:
 			var pos: Vector2 = collider.local_to_map(collision.get_position() - collision.get_normal() - Vector2(1, 0))
 			var cell: TileData = collider.get_cell_tile_data(0, pos)
@@ -17,6 +20,10 @@ func _process(_delta: float):
 				var type = cell.get_custom_data("type")
 				if type != null && type is int:
 					on_collide(type, pos)
+			
+		if collider.is_in_group("player"):
+			#TODO: knockback between players
+			pass
 
 func on_collide(type: int, pos: Vector2):
 	var player_position: Vector2 = player.global_position

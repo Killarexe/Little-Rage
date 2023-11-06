@@ -2,6 +2,9 @@ extends CharacterBody2D
 class_name PlayerMovement
 
 @export var controllable: bool = true
+@export var can_pause: bool = true
+@export var interactable: bool = true
+@export var camera_enabled: bool = true
 
 @onready var timer: PlayerTimer = $Timer
 @onready var skin: PlayerSkinSprite = $Skin
@@ -23,15 +26,27 @@ const UP: Vector2 = Vector2(0, -1)
 const G: float = 20.0
 
 var death_count: int = 0
+
 var jump_timer: float = 0
 var ground_timer: float = 0
 var is_invinsible: bool = false
-@export var motion: Vector2 = Vector2()
-var previous_tile_type: int = 0
-var spawn_point: Vector2 = Vector2()
+
 var y_limit: int = Level.DEFAULT_Y_LIMIT
 
+@export var motion: Vector2 = Vector2()
+var knockback: Vector2 = Vector2.ZERO
+var spawn_point: Vector2 = Vector2()
+
+var movement_array: Array[String] = [
+	"left",
+	"right",
+	"jump",
+	"down"
+]
+
 func _ready():
+	camera_enabled = LocalMultiplayer.is_enabled
+	Global.can_pause = can_pause
 	spawn_point = global_position
 	var current_level: Level = LevelManager.get_current_level()
 	if current_level != null:
@@ -44,6 +59,7 @@ func _physics_process(delta: float):
 	set_velocity(motion)
 	set_up_direction(UP)
 	move_and_slide()
+	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 	motion = velocity
 
 func check_speed_and_timers(delta: float):
@@ -55,25 +71,28 @@ func check_speed_and_timers(delta: float):
 	jump_timer -= delta
 	ground_timer -= delta
 	motion.x = clamp(motion.x, -MAX_SPEED, MAX_SPEED)
+	motion += knockback
 
 func check_input():
 	if controllable:
-		if Input.is_action_pressed("left"):
+		if Input.is_action_pressed(movement_array[0]):
 			skin.flip_h = true
 			motion.x -= ACCEL
-		elif Input.is_action_pressed("right"):
+		elif Input.is_action_pressed(movement_array[1]):
 			skin.flip_h = false
 			motion.x += ACCEL
 		else:
 			motion.x = lerpf(motion.x, 0, 0.2)
 		
-		if Input.is_action_pressed("jump"):
+		if Input.is_action_pressed(movement_array[2]):
 			jump_timer = JUMP_TIME
-	
-	if jump_timer > 0 && !Input.is_action_pressed("jump"):
-		jump_timer = 0
-		if(motion.y < 0):
-			motion.y = motion.y * 0.5
+			
+		if jump_timer > 0 && !Input.is_action_pressed(movement_array[2]):
+			jump_timer = 0
+			if(motion.y < 0):
+				motion.y = motion.y * 0.5
+	else:
+		motion.x = lerpf(motion.x, 0, 0.2)
 
 func handle_jump():
 	if is_on_floor():
@@ -81,7 +100,7 @@ func handle_jump():
 			PlayerParticleManager.spawn_particle(get_parent(), global_position + Vector2(0, 16), PlayerParticle.Type.JUMP)
 			animation.stop()
 			animation.play("PlayerAnimations/land")
-		if abs(velocity.x) >= MAX_SPEED:
+		if abs(velocity.x) >= MAX_SPEED * 0.75:
 			PlayerParticleManager.spawn_particle(get_parent(), global_position + Vector2(0, 16), PlayerParticle.Type.STEP)
 		ground_timer = GROUND_TIME
 	if (jump_timer > 0) && (ground_timer > 0):
@@ -101,3 +120,6 @@ func die():
 func finish_level():
 	if !LevelManager.current_level.is_empty():
 		on_win.emit(timer.get_time(), death_count)
+	else:
+		#TODO: stop the play mode in the editor
+		pass

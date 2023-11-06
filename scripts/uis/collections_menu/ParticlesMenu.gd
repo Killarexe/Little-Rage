@@ -5,7 +5,8 @@ extends Control
 @onready var run_list: ItemList = $Particles/RunTab/List
 
 @onready var main_menu: MainCollectionMenu = $"../MainMenu"
-@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/Player/Camera2D/AnimationPlayer"
+@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/Player/PlayerViewer/AnimationPlayer"
+@onready var player: PlayerMovement = $"../../DefaultLevel/Player"
 
 var death_particle_ids: Array[String] = []
 var jump_particle_ids: Array[String] = []
@@ -38,6 +39,7 @@ func _on_death_list_selected(index: int):
 	PlayerParticleManager.current_death_particle = death_particle_ids[index]
 
 func _on_jump_list_selected(index: int):
+	player.jump_timer = player.JUMP_TIME
 	PlayerParticleManager.current_jump_particle = jump_particle_ids[index]
 
 func _on_run_particle_list_selected(index: int):

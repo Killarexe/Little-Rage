@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3ip8ifiyu8b2"]
+[gd_scene load_steps=5 format=3 uid="uid://c3ip8ifiyu8b2"]
 
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_yu7n6"]
+[ext_resource type="Script" path="res://scripts/uis/achievement_menu/AchievementMenu.gd" id="2_efsre"]
 [ext_resource type="Script" path="res://scripts/uis/achievement_menu/AchievementList.gd" id="3_dff4b"]
 [ext_resource type="Script" path="res://scripts/uis/achievement_menu/AchievementInformation.gd" id="4_ql82p"]
 
@@ -12,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_yu7n6")
+script = ExtResource("2_efsre")
 
 [node name="AchievementList" type="ItemList" parent="."]
 layout_mode = 0
@@ -50,6 +52,7 @@ layout_mode = 0
 offset_left = 935.0
 offset_right = 1127.0
 offset_bottom = 192.0
+expand_mode = 1
 stretch_mode = 5
 
 [node name="AchievementDescription" type="RichTextLabel" parent="AchievementInformation"]

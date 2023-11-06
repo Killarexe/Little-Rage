@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Music" load_steps=3 format=3 uid="uid://tt8hjnlhve1p"]
+
+[ext_resource type="Script" path="res://scripts/music/Music.gd" id="1_oooee"]
+[ext_resource type="AudioStream" uid="uid://5qr2tfggogmb" path="res://assets/musics/achievement_menu.ogg" id="2_cev8c"]
+
+[resource]
+script = ExtResource("1_oooee")
+streams = Array[AudioStream]([ExtResource("2_cev8c")])
+type = 1

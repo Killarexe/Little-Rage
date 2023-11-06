@@ -21,3 +21,6 @@ func unlock_achievement(achievement_id: String):
 			Global.save_game()
 			return
 	print("Failed to unlock achievement: %s" % achievement_id)
+
+func has_unlocked_achievement(achievement_id: String) -> bool:
+	return unlocked_achievements.has(achievement_id)

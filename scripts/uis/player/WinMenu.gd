@@ -53,7 +53,7 @@ func exit():
 	match mode:
 		Mode.SINGLEPLAYER:
 			Global.save_game()
-			SceneManager.change_scene("res://scenes/uis/LevelSelector.tscn")
+			SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 		Mode.MULTIPLAYER:
 			#Return to lobby
 			pass

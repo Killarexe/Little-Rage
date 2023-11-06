@@ -7,6 +7,7 @@ extends CanvasLayer
 @export var timer: PlayerTimer
 
 func _ready():
+	visible = player.controllable
 	player.on_death.connect(on_death)
 	timer.timeout.connect(on_timeout)
 	deaths_label.text = TranslationServer.translate("label.deaths") + ": 0"

@@ -2,7 +2,7 @@ extends Control
 class_name MainCollectionMenu
 
 @onready var animation_player: AnimationPlayer = $SelectButtons/AnimationPlayer
-@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/Player/Camera2D/AnimationPlayer"
+@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/Player/PlayerViewer/AnimationPlayer"
 
 func _ready():
 	MusicManager.play_music("collection_main_menu")
@@ -20,7 +20,7 @@ func set_menu_to(menu: int):
 	animation_player.play_backwards("enter")
 	await animation_player.animation_finished
 	visible = false
-	MusicManager.play_music("multiplayer_lobby", MusicManager.get_playback_position())
+	MusicManager.play_music("collection_cosmetic_selection", MusicManager.get_playback_position())
 	match menu:
 		0:
 			camera_animation_player.play("zoom_skin")

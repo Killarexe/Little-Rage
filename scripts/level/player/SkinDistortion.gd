@@ -7,7 +7,7 @@ const DOWN_DISTORTION: float = 0.25 #TODO: set to 0.25 but at 0.75 it's kinda fu
 
 func _process(delta: float):
 	skin.global_skew = lerpf(skin.global_skew, player.velocity.x / 1000, 0.2)
-	if Input.is_action_pressed("down") && player.ground_timer > PlayerMovement.GROUND_TIME - 0.1:
+	if Input.is_action_pressed(player.movement_array[3]) && player.ground_timer > PlayerMovement.GROUND_TIME - 0.1 && player.controllable:
 		player.scale.y = lerpf(player.scale.y, 1 - DOWN_DISTORTION, 10 * delta)
 		player.scale.x = lerpf(player.scale.x, 1 + DOWN_DISTORTION, 10 * delta)
 	else:

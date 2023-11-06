@@ -45,6 +45,7 @@ var countdown_prefab: Resource = load("res://scenes/instances/level/player/uis/c
 
 func _ready():
 	if mode == Mode.PLAY:
+		MusicManager.play_music("level_plains")
 		spawn_player()
 		Global.instanceNode(countdown_prefab, self)
 

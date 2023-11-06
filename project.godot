@@ -8,10 +8,6 @@
 
 config_version=5
 
-[DiscordSDK]
-
-EditorPresence/enabled=true
-
 [application]
 
 config/name="LittleRage"
@@ -39,6 +35,7 @@ ExperiementalFrame="*res://scenes/globals/ExperiementalFrame.tscn"
 AchievementManager="*res://scripts/achievement/AchievementManager.gd"
 PlayerParticleManager="*res://scripts/level/player/cosmetic/particle/PlayerParticleManager.gd"
 DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
+LocalMultiplayer="*res://scripts/multiplayer/local/LocalMultiplayer.gd"
 
 [display]
 

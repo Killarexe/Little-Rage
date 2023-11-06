@@ -54,7 +54,7 @@ _data = {
 "RESET": SubResource("Animation_10f12")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_l7flj")
@@ -87,7 +87,7 @@ libraries = {
 "": SubResource("AnimationLibrary_pm6cf"),
 "PlayerAnimations": ExtResource("4_jqgtb")
 }
-blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -139,11 +139,6 @@ scale = Vector2(8, 8)
 texture_normal = ExtResource("9_vwqws")
 action = "pause"
 
-[node name="WinMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_6ee8y")]
-player = NodePath("..")
-
-[node name="PauseMenu" parent="." instance=ExtResource("5_iaj63")]
-
 [node name="Menus" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -154,6 +149,11 @@ script = ExtResource("12_k24f3")
 [node name="PlayerStatus" parent="Menus" node_paths=PackedStringArray("player", "timer") instance=ExtResource("13_p0n42")]
 player = NodePath("../..")
 timer = NodePath("../../Timer")
+
+[node name="WinMenu" parent="Menus" node_paths=PackedStringArray("player") instance=ExtResource("6_6ee8y")]
+player = NodePath("../..")
+
+[node name="PauseMenu" parent="Menus" instance=ExtResource("5_iaj63")]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05

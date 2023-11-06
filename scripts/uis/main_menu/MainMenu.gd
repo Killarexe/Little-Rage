@@ -12,7 +12,7 @@ func _ready():
 		$CanvasLayer/Logo.texture = load("res://assets/textures/ui/little_rage_logo_easter.png")
 		animation = "start_menu_easter"
 	else:
-		MusicManager.play_music("main_menu")
+		MusicManager.play_music("title_screen")
 	if Global.starting:
 		Global.starting = false
 		spash_text.visible = false
@@ -28,7 +28,7 @@ func _on_settings_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/SettingsMenu.tscn")
 
 func _on_play_button_pressed():
-	SceneManager.change_scene("res://scenes/uis/LevelSelector.tscn")
+	SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 
 func _on_multiplayer_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/MultiplayerSelection.tscn")
