@@ -49,13 +49,13 @@ static func mode_to_str(level_mode: Mode) -> String:
 static func difficulty_to_str(level_diffuculty: Difficulty) -> String:
 	match level_diffuculty:
 		Difficulty.BEGINER_FRIENDLY:
-			return "level.difficulty.beginer_friendly"
+			return "label.level.difficulty.beginer_friendly"
 		Difficulty.EASY:
-			return "level.difficulty.easy"
+			return "label.level.difficulty.easy"
 		Difficulty.NORMAL:
-			return "level.difficulty.normal"
+			return "label.level.difficulty.normal"
 		Difficulty.HARD:
-			return "level.difficulty.hard"
+			return "label.level.difficulty.hard"
 		Difficulty.EXTREME:
-			return "level.difficulty.extreme"
-	return "unknown"
+			return "label.level.difficulty.extreme"
+	return "label.unknown"

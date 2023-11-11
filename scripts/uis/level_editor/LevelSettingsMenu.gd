@@ -46,7 +46,7 @@ func _on_level_name_text_changed(new_text):
 	level_name = new_text
 	emit_signal("on_settings_changed")
 
-func _on_level_difficulty_item_selected(index):
+func _on_level_difficulty_item_selected(index: int):
 	match index:
 		0:
 			difficulty = Level.Difficulty.BEGINER_FRIENDLY
@@ -60,7 +60,7 @@ func _on_level_difficulty_item_selected(index):
 			difficulty = Level.Difficulty.EXTREME
 	emit_signal("on_settings_changed")
 
-func _on_slider_value_changed(value):
+func _on_slider_value_changed(value: int):
 	y_limit = value
 	emit_signal("on_settings_changed")
 

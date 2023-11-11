@@ -222,8 +222,8 @@ layer = 2
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 320.0
-offset_right = 960.0
+offset_left = -320.0
+offset_right = 320.0
 offset_bottom = 360.0
 grow_horizontal = 2
 texture = ExtResource("3_4yirm")
@@ -327,6 +327,12 @@ layout_mode = 2
 theme = ExtResource("1_fjp12")
 text = "button.multiplayer"
 
+[node name="LevelEditorButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(384, 64)
+layout_mode = 2
+theme = ExtResource("1_fjp12")
+text = "button.level_editor"
+
 [node name="ShopButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
@@ -353,4 +359,5 @@ script = ExtResource("10_5eid8")
 [connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/SingleplayerButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/LevelEditorButton" to="." method="_on_level_editor_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ShopButton" to="." method="_on_shop_button_pressed"]

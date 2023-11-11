@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://c0eemdlxklmax" path="res://assets/textures/ui/vignette.png" id="1_fc0f2"]
 
 [node name="Overlay" type="CanvasLayer"]
-layer = 5
+layer = 0
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.501961)
+modulate = Color(1, 1, 1, 0.752941)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

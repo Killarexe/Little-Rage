@@ -36,6 +36,9 @@ func _on_multiplayer_button_pressed():
 func _on_shop_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/CollectionsMenu.tscn")
 
+func _on_level_editor_button_pressed():
+	SceneManager.change_scene("res://scenes/uis/LevelEditorSelectionMenu.tscn")
+
 func _on_quit_button_pressed():
 	Global.save_game()
 	get_tree().quit()

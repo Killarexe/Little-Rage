@@ -1,5 +1,5 @@
 id,en,fr
-ui.title,Little Rage,Little Rage
+label.title,Little Rage,Little Rage
 button.singleplayer,Singleplayer,Solo
 button.multiplayer,Multiplayer,Multijoueur
 button.unused,Local,Locale
@@ -14,48 +14,48 @@ ui.buy,Buy,Acheter
 ui.coins,Coins,Pièces
 ui.select,Select,Séléctioner
 ui.selected,Selected,Séléctionée
-ui.skins,Skins,Skins
-ui.hats,Hats,Chapeaux
-ui.settings.music_volume,Music Volume,Volume de Musique
-ui.settings.sound_effect_volume,Sound Effect Volume,Volume d’éffect de son
-ui.settings.reset_save,Reset Save,Effacer la Sauvegarde
-ui.default_splash_text,Splash Text,Texte
+button.skins,Skins,Skins
+button.hats,Hats,Chapeaux
+label.settings.music_volume,Music Volume,Volume de Musique
+label.settings.sound_effect_volume,Sound Effect Volume,Volume d’éffect de son
+label.settings.reset_save,Reset Save,Effacer la Sauvegarde
+label.default_splash_text,Splash Text,Texte
 button.play,Play,Jouer
 button.level_editor,Level Editor,Editeur de Niveau
-ui.save_level,Save Level,Sauvegarder le Niveau
-ui.load_level,Load Level,Charger un Niveau
-ui.close,Close,Fermer
-ui.back,Back,Retour
-ui.level.name,Level Name,Nom du Niveau
-ui.level.difficulty,Level Difficulty,Difficulté
-ui.level.description,Level Description,Description du Niveau
-ui.level.difficulty.beginer_friendly,Beginer Friendly,Débutant
-ui.level.difficulty.easy,Easy,Facile
-ui.level.difficulty.normal,Normal,Normale
-ui.level.difficulty.hard,Hard,Dur
-ui.level.difficulty.extreme,EXTREME,EXTREME
-ui.back_to_menu,Back To Menu,Retour au Menu
-ui.level.complete,Level Complete,Niveau Terminée
-ui.level.win,You Win,Tu as gagnée
-ui.level.loose,You Loose,Perdu
-ui.settings.language,Language,Language
-ui.settings.discord_rpc,Discord Itegration,Itegration Discord
-ui.editor.dont_save,Don’t Save,Ne pas Enregistrer
-ui.editor.save,Save,Enregistrer
-ui.update,A new update is avaliable!,Une nouvelle mise à jour est disponible!
-ui.level_editor.save_option,Do you want to save before ?,Voulez vous enregistrer avant ?
-ui.editor.saved,Saved into file: ‘%s’ ,Enregistrer sous le fichier: ‘%s’
-ui.editor.loaded,Loaded level: ‘%s’,Chargée le niveau: ‘%s’
-ui.editor.false_load,Failed to load level from path: ‘%s’,Échec de chargement de niveau: ’%s’ 
-ui.settings.sound_track,Soundtacks,Sons Du Jeu
-ui.settings.reset_save.confirm,Are you sure?\nAll your progression will be deleted…,Êtes-vous sure?\nToute votre progression va être supprimée…
-ui.time,Time,Temps
-ui.deaths,Deaths,Morts
-ui.level.best_time,Best Time,Temps Record
-ui.popup.new_loot_box,You recived a new Loot Box!,Vous avez reçu une nouvelle Loot Box !
-ui.shop.open_loot_box,Open Loot Box : %s left,Ouvrir une Loot Box : %s restant 
-ui.create_level,New Level,Nouveau Niveau
-ui.edit_level,Edit,Editer
+button.save_level,Save Level,Sauvegarder le Niveau
+button.load_level,Load Level,Charger un Niveau
+button.close,Close,Fermer
+button.back,Back,Retour
+label.level.name,Level Name,Nom du Niveau
+label.level.difficulty,Level Difficulty,Difficulté
+label.level.description,Level Description,Description du Niveau
+label.level.difficulty.beginer_friendly,Beginer Friendly,Débutant
+label.level.difficulty.easy,Easy,Facile
+label.level.difficulty.normal,Normal,Normale
+label.level.difficulty.hard,Hard,Dur
+label.level.difficulty.extreme,EXTREME,EXTREME
+button.back_to_menu,Back To Menu,Retour au Menu
+label.level.complete,Level Complete,Niveau Terminée
+label.level.win,You Win,Tu as gagnée
+label.level.loose,You Loose,Perdu
+label.settings.language,Language,Language
+label.settings.discord_rpc,Discord Itegration,Itegration Discord
+button.dont_save,Don’t Save,Ne pas Enregistrer
+button.save,Save,Enregistrer
+message.update,A new update is avaliable!,Une nouvelle mise à jour est disponible!
+message.level_editor.save_option,Do you want to save before ?,Voulez vous enregistrer avant ?
+message.editor.saved,Saved into file: ‘%s’ ,Enregistrer sous le fichier: ‘%s’
+message.editor.loaded,Loaded level: ‘%s’,Chargée le niveau: ‘%s’
+message.editor.failed_load,Failed to load level from path: ‘%s’,Échec de chargement de niveau: ’%s’ 
+button.settings.sound_track,Soundtacks,Sons Du Jeu
+message.settings.reset_save.confirm,Are you sure?\nAll your progression will be deleted…,Êtes-vous sure?\nToute votre progression va être supprimée…
+label.time,Time,Temps
+label.deaths,Deaths,Morts
+label.best_time,Best Time,Temps Record
+message.popup.new_loot_box,You recived a new Loot Box!,Vous avez reçu une nouvelle Loot Box !
+message.shop.open_loot_box,Open Loot Box : %s left,Ouvrir une Loot Box : %s restant 
+button.create_level,New Level,Nouveau Niveau
+button.edit_level,Edit,Editer
 hat.none,None,Rien
 hat.fez,Fez,Fez
 hat.simple,Simple Hat,Simple Chapeau
@@ -66,8 +66,8 @@ skin.rgb,RGB,RGB
 skin.steve,Steve,Steve
 skin.killarexe,Killar.exe,Killar.exe
 skin.niark,Niark,Niark
-ui.popup.unlocked_cosmetic,You’ve unlocked a cosmetic: ’%s’,Tu as débloqué un cosmétique: ’%s’
-ui.level.y_limit,Y Limit:,Limite Y:
+message.popup.unlocked_cosmetic,You’ve unlocked a cosmetic: ’%s’,Tu as débloqué un cosmétique: ’%s’
+label.level.y_limit,Y Limit:,Limite Y:
 hat.jojo,Jojo Hat,Chapeau de Jojo
 hat.banana,Banana Hat,Banane
 hat.crown,Crown,Couronne
@@ -76,27 +76,35 @@ hat.player,Player Hat,Chapeau Joueur
 hat.slime,Slime Hat,Chapeau Slime
 skin.mexican_player,Mexican Player,Joueur Mexicain
 skin.skeleton,Skeletion,Squelette
-ui.settings.window_size,Window Size,Taille de la Fenêtre
-ui.fullscreen,Fullscreen,Plein écran
-ui.popup.not_on_mobile,This feature is not available on mobile…,Cette fonctionnalité n’est pas disponible sur mobile…
-ui.popup.unlocked_skin,You’ve unlocked a skin: ’%s’,Tu as débloquée un skin: ’%s’
-ui.popup.unlocked_hat,You’ve unlocked a hat: ’%s’,Tu as débloquée un chapeau: ’%s’
-ui.next_level,Next Level,Prochain Niveau
-ui.editor.place,Place,Placer
-ui.editor.erase,Erase,Effacer
-ui.editor.move,Move,Bouger
-ui.wardrobe,Wardrobe,Armoire
-ui.level.description.level_one,The first simple Level,Le premier niveau très simple…
-ui.level.description.level_two,A Jumping level…,Un niveau basée sur le saut.
-ui.level.description.level_three,Ooooh spikes... =),Ohhh des piques… =)
-ui.level.description.level_four,A level witch show a new features for the noobies…,Un niveau qui ajoute du changement pour les noobs…
-ui.level.description.level_five,Color things + jumps + Color spikes,Truc de couleurs + Sauts + Piques de couleurs
-ui.level.description.level_six,The evaluation level…,Le niveau d’évaluation…
-ui.yes,Yes,Oui
-ui.no,No,Non
-ui.experimental_frame.desc,"This feature is an experimental. It can produce bugs.
+label.settings.window_size,Window Size,Taille de la Fenêtre
+label.fullscreen,Fullscreen,Plein écran
+message.popup.not_on_mobile,This feature is not available on mobile…,Cette fonctionnalité n’est pas disponible sur mobile…
+message.popup.unlocked_skin,You’ve unlocked a skin: ’%s’,Tu as débloquée un skin: ’%s’
+message.popup.unlocked_hat,You’ve unlocked a hat: ’%s’,Tu as débloquée un chapeau: ’%s’
+button.next_level,Next Level,Prochain Niveau
+button.editor.place,Place,Placer
+button.editor.erase,Erase,Effacer
+button.editor.move,Move,Bouger
+button.wardrobe,Wardrobe,Armoire
+message.level.description.level_one,The first simple Level,Le premier niveau très simple…
+message.level.description.level_two,A Jumping level…,Un niveau basée sur le saut.
+message.level.description.level_three,Ooooh spikes... =),Ohhh des piques… =)
+message.level.description.level_four,A level witch show a new features for the noobies…,Un niveau qui ajoute du changement pour les noobs…
+message.level.description.level_five,Color things + jumps + Color spikes,Truc de couleurs + Sauts + Piques de couleurs
+message.level.description.level_six,The evaluation level…,Le niveau d’évaluation…
+label.yes,Yes,Oui
+label.no,No,Non
+message.experimental_frame.desc,"This feature is an experimental. It can produce bugs.
 Are you sure to continue ?","Cette fonctionnalité est expérimental Ceci peut produire des bugs.
 Etes-vous sur de continuer ?"
-ui.back_to_center,Back to Center,Retour au Centre
-ui.replay,Replay Level,Rejouer le niveau
-ui.ragequit,RAGEQUIT,RAGEQUIT
+button.back_to_center,Back to Center,Retour au Centre
+button.replay,Replay Level,Rejouer le niveau
+button.ragequit,RAGEQUIT,RAGEQUIT
+button.default_levels,Default Levels,Niveaux Intégrée
+button.custom_levels,Custom Levels,Niveaux Externes
+button.weekly_level,Weekly Level,Niveau de la Semaine
+button.local_multiplayer,Local Multiplayer,Multijoueur Local
+button.online_multiplayer,Online Multiplayer,Multijoueur en Ligne
+button.particles,Particles,Particules
+button.achievements,Achievements,Progrès
+button.loot_boxes,Loot Boxes,Loot Boxes

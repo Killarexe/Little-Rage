@@ -7,7 +7,7 @@
 script = ExtResource("2_ykwir")
 name = "Level 5"
 is_hidden = false
-description = "ui.level.description.level_five"
+description = "message.level.description.level_five"
 mode = 0
 y_limit = 512
 scene = ExtResource("1_urxao")

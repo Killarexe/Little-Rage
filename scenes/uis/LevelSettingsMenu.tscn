@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://o458ah6nqt0b"]
+[gd_scene load_steps=3 format=3 uid="uid://o458ah6nqt0b"]
 
 [ext_resource type="Script" path="res://scripts/uis/level_editor/LevelSettingsMenu.gd" id="1_w1w2a"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="2_63owt"]
-[ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/quit.png" id="3_pqbcw"]
 
 [node name="LevelSettingsMenu" type="Control"]
 layout_mode = 3
@@ -29,16 +28,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -16.0
-offset_right = 160.0
-offset_bottom = 16.0
+offset_left = -256.0
+offset_top = -192.0
+offset_right = 256.0
+offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_63owt")
 alignment = 1
 
 [node name="LevelName" type="LineEdit" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = ExtResource("2_63owt")
 placeholder_text = "level.name"
@@ -50,25 +50,27 @@ theme = ExtResource("2_63owt")
 placeholder_text = "level.description"
 
 [node name="LevelDifficulty" type="OptionButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = ExtResource("2_63owt")
 alignment = 1
 
 [node name="YLimit" type="SpinBox" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 min_value = 128.0
 max_value = 1024.0
 value = 128.0
 prefix = "level.y_limit"
 
-[node name="BackButton" type="TextureButton" parent="."]
+[node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 910.0
-offset_top = 640.0
-offset_right = 990.0
-offset_bottom = 720.0
-texture_normal = ExtResource("3_pqbcw")
-stretch_mode = 5
+offset_left = 824.0
+offset_top = 570.0
+offset_right = 1037.0
+offset_bottom = 642.0
+theme = ExtResource("2_63owt")
+text = "button.back"
 
 [connection signal="text_changed" from="VBoxContainer/LevelName" to="." method="_on_level_name_text_changed"]
 [connection signal="text_changed" from="VBoxContainer/LevelDescription" to="." method="_on_level_description_text_changed"]
