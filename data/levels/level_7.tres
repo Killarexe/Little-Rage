@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://iijj7y2dhy20"]
 
-[ext_resource type="PackedScene" uid="uid://c0g8slx4o72ky" path="res://scenes/levels/Level1.tscn" id="1_r76ed"]
+[ext_resource type="PackedScene" uid="uid://ctqir3c8dw7fd" path="res://scenes/levels/Level7.tscn" id="1_ho5fe"]
 [ext_resource type="Script" path="res://scripts/level/Level.gd" id="2_on5lx"]
 
 [resource]
@@ -10,6 +10,6 @@ is_hidden = true
 description = "The first simple Level"
 mode = 0
 y_limit = 512
-scene = ExtResource("1_r76ed")
+scene = ExtResource("1_ho5fe")
 level_theme = 0
 difficulty = 2
