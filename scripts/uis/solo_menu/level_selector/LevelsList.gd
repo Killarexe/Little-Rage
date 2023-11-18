@@ -20,8 +20,6 @@ func load_level_list():
 		if (is_default && default) || (!is_default && custom):
 			levels.append(level.id)
 			add_item(level.name)
-	select(current_index)
-	_on_item_selected(current_index)
 
 func _on_item_selected(index: int):
 	current_index = index

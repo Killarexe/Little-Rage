@@ -55,7 +55,9 @@ func exit():
 			Global.save_game()
 			SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 		Mode.MULTIPLAYER:
-			#Return to lobby
+			#TODO: Return to lobby
+			Global.save_game()
+			SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 			pass
 
 func _on_next_level_pressed():

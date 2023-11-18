@@ -1,28 +1,43 @@
-// Original by ChaffDave : https://godotshaders.com/shader/tilt-shift-shader/
-
 shader_type canvas_item;
 
-uniform float limit: hint_range(0.0,0.5) = 0.2;
-uniform float blur: hint_range(0.0,8.0) = 2.0;
-uniform float size;
-uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
+uniform float bloomRadius = 1.0;
+uniform float bloomThreshold = 1.0;
+uniform float bloomIntensity = 1.0;
 
-void fragment(){
-	
-	vec2 suv = abs(UV * 2.0 - 1.0);
-	vec2 u = vec2(size / (1.0 / TEXTURE_PIXEL_SIZE));
-	
-	if ((u.y * u.x) < limit){
+vec3 GetBloomPixel(sampler2D tex, vec2 uv, vec2 texPixelSize) {
+	vec2 uv2 = floor(uv / texPixelSize) * texPixelSize;
+	uv2 += texPixelSize * .001;
+	vec3 tl = max(texture(tex, uv2).rgb - bloomThreshold, 0.0);
+	vec3 tr = max(texture(tex, uv2 + vec2(texPixelSize.x, 0.0)).rgb - bloomThreshold, 0.0);
+	vec3 bl = max(texture(tex, uv2 + vec2(0.0, texPixelSize.y)).rgb - bloomThreshold, 0.0);
+	vec3 br = max(texture(tex, uv2 + vec2(texPixelSize.x, texPixelSize.y)).rgb - bloomThreshold, 0.0);
+	vec2 f = fract( uv / texPixelSize );
 
-		float blur_amount = blur * (1.0 - (SCREEN_UV.y / limit));
-		COLOR = textureLod(screen_texture, SCREEN_UV, blur_amount);
+	vec3 tA = mix( tl, tr, f.x );
+	vec3 tB = mix( bl, br, f.x );
 
-	} else if ((u.y * u.x) > 1.0-limit){
+	return mix( tA, tB, f.y );
+}
 
-		float blur_amount = blur * (1.0 - ((1.0 - SCREEN_UV.y) / limit));
-		COLOR = textureLod(screen_texture, SCREEN_UV, blur_amount);
+vec3 GetBloom(sampler2D tex, vec2 uv, vec2 texPixelSize) {
+	vec3 bloom = vec3(0.0);
+	vec2 off = vec2(1) * texPixelSize * bloomRadius;
+	bloom += GetBloomPixel(tex, uv + off * vec2(-1, -1), texPixelSize * bloomRadius) * 0.292893;
+	bloom += GetBloomPixel(tex, uv + off * vec2(-1, 0), texPixelSize * bloomRadius) * 0.5;
+	bloom += GetBloomPixel(tex, uv + off * vec2(-1, 1), texPixelSize * bloomRadius) * 0.292893;
+	bloom += GetBloomPixel(tex, uv + off * vec2(0, -1), texPixelSize * bloomRadius) * 0.5;
+	bloom += GetBloomPixel(tex, uv + off * vec2(0, 0), texPixelSize * bloomRadius) * 1.0;
+	bloom += GetBloomPixel(tex, uv + off * vec2(0, 1), texPixelSize * bloomRadius) * 0.5;
+	bloom += GetBloomPixel(tex, uv + off * vec2(1, -1), texPixelSize * bloomRadius) * 0.292893;
+	bloom += GetBloomPixel(tex, uv + off * vec2(1, 0), texPixelSize * bloomRadius) * 0.5;
+	bloom += GetBloomPixel(tex, uv + off * vec2(1, 1), texPixelSize * bloomRadius) * 0.292893;
+	bloom /= 4.171573f;
+	return bloom;
+}
 
-	} else {
-		COLOR.a = 0.0;
-	}
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec3 bloom = GetBloom(TEXTURE, UV, TEXTURE_PIXEL_SIZE);
+	col.rgb += bloom * bloomIntensity;
+	COLOR = col;
 }

@@ -20,7 +20,6 @@ func set_menu_to(menu: int):
 	animation_player.play_backwards("enter")
 	await animation_player.animation_finished
 	visible = false
-	MusicManager.play_music("collection_cosmetic_selection", MusicManager.get_playback_position())
 	match menu:
 		0:
 			camera_animation_player.play("zoom_skin")

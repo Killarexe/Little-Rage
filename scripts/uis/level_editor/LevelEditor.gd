@@ -24,8 +24,10 @@ func _ready():
 	var level: Level = LevelManager.get_current_level()
 	level_settings.set_settings(level)
 	level_map.queue_free()
-	level_map = Global.instanceNode(level.scene, self)
-	level_map.set_mode(LevelPlayer.Mode.EDIT)
+	var new_level_map: LevelPlayer = level.scene.instantiate()
+	new_level_map.mode = LevelPlayer.Mode.EDIT
+	add_child(new_level_map)
+	level_map = new_level_map
 	level_id = level.id
 	LevelManager.current_level = ""
 	not_saved = false

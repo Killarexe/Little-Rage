@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://wcpkho1r3os3"]
+[gd_scene load_steps=28 format=3 uid="uid://wcpkho1r3os3"]
 
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_q884x"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/MainCollectionMenu.gd" id="2_e00sk"]
@@ -9,9 +9,49 @@
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/skins_menu/SkinList.gd" id="5_v2mtl"]
 [ext_resource type="Texture2D" uid="uid://c7mwfhdfqw7dp" path="res://assets/textures/ui/icon.png" id="5_y5klq"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/HatsMenu.gd" id="5_ya7cv"]
+[ext_resource type="Texture2D" uid="uid://c5yejwo4hxfqa" path="res://assets/textures/ui/red-circle.png" id="6_eeex5"]
+[ext_resource type="Script" path="res://scripts/uis/collections_menu/LootBoxButton.gd" id="6_ptwc0"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/ParticlesMenu.gd" id="6_y5t24"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/hats_menu/HatList.gd" id="7_5na8b"]
 [ext_resource type="PackedScene" uid="uid://bkwmpwrjnhece" path="res://scenes/instances/level/player/Player.tscn" id="12_0v4n3"]
+
+[sub_resource type="Animation" id="Animation_lmfb0"]
+resource_name = "zoom"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 0.318471, 3.14),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.125, 1.125), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0iwv6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pvj0d"]
+_data = {
+"RESET": SubResource("Animation_0iwv6"),
+"zoom": SubResource("Animation_lmfb0")
+}
 
 [sub_resource type="Animation" id="Animation_44qp2"]
 length = 0.001
@@ -237,7 +277,6 @@ custom_minimum_size = Vector2(384, 192)
 layout_mode = 2
 text = "button.skins"
 icon = ExtResource("3_hfyt6")
-alignment = 0
 icon_alignment = 2
 expand_icon = true
 
@@ -246,7 +285,6 @@ custom_minimum_size = Vector2(384, 192)
 layout_mode = 2
 text = "button.hats"
 icon = ExtResource("4_n7by3")
-alignment = 0
 icon_alignment = 2
 expand_icon = true
 
@@ -255,7 +293,6 @@ custom_minimum_size = Vector2(384, 192)
 layout_mode = 2
 text = "button.particles"
 icon = ExtResource("3_hfyt6")
-alignment = 0
 icon_alignment = 2
 expand_icon = true
 
@@ -284,6 +321,39 @@ icon = ExtResource("5_y5klq")
 alignment = 0
 icon_alignment = 2
 expand_icon = true
+script = ExtResource("6_ptwc0")
+
+[node name="Circle" type="TextureRect" parent="CanvasLayer/MainMenu/SelectButtons/LootBoxButton"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -15.0
+offset_right = 24.0
+offset_bottom = 25.0
+pivot_offset = Vector2(19, 20)
+texture = ExtResource("6_eeex5")
+expand_mode = 4
+
+[node name="LootBoxCount" type="Label" parent="CanvasLayer/MainMenu/SelectButtons/LootBoxButton/Circle"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -9.5
+offset_right = 20.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MainMenu/SelectButtons/LootBoxButton/Circle"]
+autoplay = "zoom"
+libraries = {
+"": SubResource("AnimationLibrary_pvj0d")
+}
 
 [node name="BackButton" type="Button" parent="CanvasLayer/MainMenu/SelectButtons"]
 layout_mode = 0

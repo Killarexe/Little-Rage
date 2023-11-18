@@ -59,3 +59,17 @@ static func difficulty_to_str(level_diffuculty: Difficulty) -> String:
 		Difficulty.EXTREME:
 			return "label.level.difficulty.extreme"
 	return "label.unknown"
+
+static func difficulty_to_color(level_diffuculty: Level.Difficulty) -> Color:
+	match level_diffuculty:
+		Level.Difficulty.BEGINER_FRIENDLY:
+			return Color.LIME_GREEN
+		Level.Difficulty.EASY:
+			return Color.SEA_GREEN
+		Level.Difficulty.NORMAL:
+			return Color.GREEN_YELLOW
+		Level.Difficulty.HARD:
+			return Color.ORANGE_RED
+		Level.Difficulty.EXTREME:
+			return Color.RED
+	return Color.SEA_GREEN

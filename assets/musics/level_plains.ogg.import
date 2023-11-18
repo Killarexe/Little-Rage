@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/level_plains.ogg-31b2210c047d0d053030dc20f165
 [params]
 
 loop=true
-loop_offset=54.925
+loop_offset=54.857
 bpm=0.0
 beat_count=0
 bar_beats=4
