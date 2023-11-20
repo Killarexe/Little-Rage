@@ -6,10 +6,12 @@ extends Control
 @onready var level_description: RichTextLabel = $DescriptionColor/LevelDescription
 
 @onready var level_map: LevelPlayer = $"../../DefaultLevel"
+@onready var level_create_import_menu: Control = $"../LevelCreateImportMenu"
 
 var selected_level: String = ""
 
 func _ready():
+	#TODO: Add entry animation
 	level_list._on_item_selected(level_list.current_index)
 
 func _on_level_list_on_level_selected(level: Level):
@@ -29,3 +31,11 @@ func _on_edit_button_pressed():
 
 func _on_back_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
+
+func _on_delete_button_pressed():
+	if LevelManager.delete_level(selected_level):
+		level_list.load_level_list()
+
+func _on_create_import_level_button_pressed():
+	#TODO: Add entry animation
+	level_create_import_menu.visible = true

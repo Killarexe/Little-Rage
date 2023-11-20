@@ -65,9 +65,9 @@ prefix = "level.y_limit"
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 824.0
+offset_left = 253.0
 offset_top = 570.0
-offset_right = 1037.0
+offset_right = 466.0
 offset_bottom = 642.0
 theme = ExtResource("2_63owt")
 text = "button.back"

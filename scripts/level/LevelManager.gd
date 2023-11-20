@@ -65,3 +65,14 @@ func get_level(level_id: String) -> Level:
 func load_level(level_id: String):
 	var level: Level = get_level(level_id)
 	get_tree().change_scene_to_packed(level.scene)
+
+func delete_level(level_id: String) -> bool:
+	print("Try Deleting '%s/%s.tres'" % [EXTERNAL_LEVELS_DIR, level_id])
+	var level_dir: DirAccess = DirAccess.open(EXTERNAL_LEVELS_DIR)
+	if level_dir.remove(level_id + ".tres") == OK:
+		load_levels()
+		PopUpFrame.pop_translated("popup.delete_level.success")
+		return true
+	#PopUpFrame.pop(TranslationServer.translate("popup.delete_level.failed" % level_dir))
+	PopUpFrame.pop("Failed...") #DEBUG only
+	return false

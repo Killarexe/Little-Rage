@@ -15,6 +15,21 @@
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/hats_menu/HatList.gd" id="7_5na8b"]
 [ext_resource type="PackedScene" uid="uid://bkwmpwrjnhece" path="res://scenes/instances/level/player/Player.tscn" id="12_0v4n3"]
 
+[sub_resource type="Animation" id="Animation_0iwv6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_lmfb0"]
 resource_name = "zoom"
 length = 2.0
@@ -30,21 +45,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 0.318471, 3.14),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.125, 1.125), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_0iwv6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pvj0d"]
@@ -291,6 +291,7 @@ expand_icon = true
 [node name="ParticlesButton" type="Button" parent="CanvasLayer/MainMenu/SelectButtons/Buttons"]
 custom_minimum_size = Vector2(384, 192)
 layout_mode = 2
+disabled = true
 text = "button.particles"
 icon = ExtResource("3_hfyt6")
 icon_alignment = 2

@@ -13,6 +13,7 @@ func _ready():
 	load_level_list()
 
 func load_level_list():
+	clear()
 	levels = []
 	current_index = 0
 	for level in LevelManager.levels:

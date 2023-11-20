@@ -16,12 +16,13 @@ func load_data_in_dir(dir_path: String, type: String) -> Array[ResourceElement]:
 		print("\tLoading %s" % file)
 		if file == "":
 			break
-		elif is_tres:
+		if is_tres:
 			var resource: Resource = load(dir_path + "/" + file)
 			if resource is ResourceElement:
 				var id: String = file.split(".")[0]
 				if id_array.has(id):
 					print("Resource element confilct: Two " + type + " with the same id '" + resource.id + "'")
+					PopUpFrame.pop(TranslationServer.translate("popup.resource_eleement_confict") % [type, resource.id])
 				else:
 					print("\t%s loaded succesfully!" % file)
 					resource.id = id
