@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1733arhcko0q"]
+[gd_scene load_steps=9 format=3 uid="uid://c1733arhcko0q"]
 
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_he4o6"]
 [ext_resource type="Script" path="res://scripts/uis/solo_menu/level_selector/LevelsList.gd" id="1_hgblp"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" path="res://scripts/uis/level_editor_selection_menu/LevelCreateImportMenu.gd" id="5_gk0c8"]
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/level/DefaultLevel.tscn" id="5_wlka4"]
 [ext_resource type="LabelSettings" uid="uid://6bd6ywcaci6c" path="res://assets/style/label_settings/big_label.tres" id="6_4ymxd"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor_selection_menu/ImportMenu.gd" id="9_jipvu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_x8g0n"]
 font_size = 48
@@ -219,88 +218,23 @@ offset_bottom = 640.0
 theme = ExtResource("1_he4o6")
 text = "button.create_level"
 
-[node name="ImportMenu" type="Control" parent="Uis/LevelCreateImportMenu"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("9_jipvu")
-
-[node name="ColorRect" type="ColorRect" parent="Uis/LevelCreateImportMenu/ImportMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.00455554, 0.212715, 0.30716, 0.501961)
-
-[node name="FileButton" type="Button" parent="Uis/LevelCreateImportMenu/ImportMenu"]
-layout_mode = 0
-offset_left = 851.0
-offset_top = 282.0
-offset_right = 1147.0
-offset_bottom = 330.0
-theme = ExtResource("1_he4o6")
-text = "button.import_file"
-
-[node name="FilePath" type="LineEdit" parent="Uis/LevelCreateImportMenu/ImportMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -512.0
-offset_top = -24.0
-offset_right = 512.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_he4o6")
-
-[node name="ImportLevelButton" type="Button" parent="Uis/LevelCreateImportMenu/ImportMenu"]
-layout_mode = 0
-offset_left = 466.0
-offset_top = 472.0
-offset_right = 786.0
-offset_bottom = 520.0
-theme = ExtResource("1_he4o6")
-text = "button.import_level"
-
-[node name="BackButton" type="Button" parent="Uis/LevelCreateImportMenu/ImportMenu"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 605.0
-offset_right = 295.0
-offset_bottom = 677.0
-theme = ExtResource("1_he4o6")
-text = "button.back"
-
-[node name="Label" type="Label" parent="Uis/LevelCreateImportMenu/ImportMenu"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -576.0
-offset_top = 64.0
-offset_right = 576.0
-offset_bottom = 131.0
-grow_horizontal = 2
-theme = ExtResource("1_he4o6")
-text = "label.import_level"
-label_settings = ExtResource("6_4ymxd")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Label2" type="Label" parent="Uis/LevelCreateImportMenu"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "TODO:  Add icons for the Create and Import Level...."
+
+[node name="FileDialog" type="FileDialog" parent="Uis/LevelCreateImportMenu"]
+canvas_item_default_texture_filter = 0
+title = "Open a File"
+size = Vector2i(1280, 720)
+unresizable = true
+borderless = true
+ok_button_text = "Open"
+cancel_button_text = "button.back"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tres ;Godot\'s Resource Files")
 
 [connection signal="item_selected" from="Uis/LevelSelection/LevelList" to="Uis/LevelSelection/LevelList" method="_on_item_selected"]
 [connection signal="on_level_selected" from="Uis/LevelSelection/LevelList" to="Uis/LevelSelection" method="_on_level_list_on_level_selected"]
@@ -312,6 +246,4 @@ text = "TODO:  Add icons for the Create and Import Level...."
 [connection signal="pressed" from="Uis/LevelCreateImportMenu/ImportButton" to="Uis/LevelCreateImportMenu" method="_on_import_button_pressed"]
 [connection signal="pressed" from="Uis/LevelCreateImportMenu/BackButton" to="Uis/LevelCreateImportMenu" method="_on_back_button_pressed"]
 [connection signal="pressed" from="Uis/LevelCreateImportMenu/LevelCreation/CreateLevelButton" to="Uis/LevelCreateImportMenu" method="_on_create_level_button_pressed"]
-[connection signal="pressed" from="Uis/LevelCreateImportMenu/ImportMenu/FileButton" to="Uis/LevelCreateImportMenu/ImportMenu" method="_on_file_button_pressed"]
-[connection signal="pressed" from="Uis/LevelCreateImportMenu/ImportMenu/ImportLevelButton" to="Uis/LevelCreateImportMenu/ImportMenu" method="_on_import_level_button_pressed"]
-[connection signal="pressed" from="Uis/LevelCreateImportMenu/ImportMenu/BackButton" to="Uis/LevelCreateImportMenu/ImportMenu" method="_on_back_button_pressed"]
+[connection signal="file_selected" from="Uis/LevelCreateImportMenu/FileDialog" to="Uis/LevelCreateImportMenu" method="_on_file_dialog_file_selected"]
