@@ -1,23 +1,29 @@
 extends Control
+class_name LevelCreateImportMenu
 
 @onready var level_creation_menu: LevelSettingsMenu = $LevelCreation
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var file_dialog: FileDialog = $FileDialog
 
 func _ready():
 	file_dialog.root_subfolder = OS.get_user_data_dir()
+	position.x = -1280
 
 func _on_create_button_pressed():
-	#TODO: Add animation
 	level_creation_menu.visible = true
+	animation_player.play("entry_second")
 
 func _on_import_button_pressed():
 	file_dialog.popup_centered()
-	#TODO: Add animation
+	animation_player.play("entry_third")
 
 #Maybe this needs some optimisation...
 func _on_file_dialog_file_selected(path: String):
+	file_dialog.visible = true
+	animation_player.play_backwards("entry_third")
+	await animation_player.animation_finished
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
-	var file_error: Error = file.get_open_error()
+	var file_error: Error = FileAccess.get_open_error()
 	if file_error != OK:
 		PopUpFrame.pop("Failed to read file. Code: " + str(file_error))
 		return
@@ -28,7 +34,6 @@ func _on_file_dialog_file_selected(path: String):
 		PopUpFrame.pop("Invalid level file...")
 		return
 	
-	var level: Level = load(path)
 	var dir_array: PackedStringArray = path.split("/")
 	var file_name: String = dir_array[dir_array.size() - 1]
 	var level_id: String = file_name.replace(".tres", "")
@@ -40,7 +45,7 @@ func _on_file_dialog_file_selected(path: String):
 		return
 	
 	var new_file: FileAccess = FileAccess.open(LevelManager.EXTERNAL_LEVELS_DIR + "/" + file_name, FileAccess.WRITE_READ)
-	var new_file_error: Error = file.get_open_error()
+	var new_file_error: Error = FileAccess.get_open_error()
 	if new_file_error:
 		PopUpFrame.pop("Failed to copy level into 'levels' folder. Code: " + str(new_file_error))
 		return
@@ -63,5 +68,7 @@ func _on_create_level_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")
 
 func _on_back_button_pressed():
-	#TODO: Add Animation
-	visible = false
+	animation_player.play_backwards("entry")
+
+func _on_file_dialog_canceled():
+	animation_player.play_backwards("entry_third")

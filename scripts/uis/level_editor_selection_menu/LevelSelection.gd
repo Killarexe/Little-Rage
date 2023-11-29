@@ -6,13 +6,14 @@ extends Control
 @onready var level_description: RichTextLabel = $DescriptionColor/LevelDescription
 
 @onready var level_map: LevelPlayer = $"../../DefaultLevel"
-@onready var level_create_import_menu: Control = $"../LevelCreateImportMenu"
+@onready var level_create_import_menu: LevelCreateImportMenu = $"../LevelCreateImportMenu"
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var selected_level: String = ""
 
 func _ready():
-	#TODO: Add entry animation
 	level_list._on_item_selected(level_list.current_index)
+	animation_player.play("entry")
 
 func _on_level_list_on_level_selected(level: Level):
 	difficulty_color.color = Level.difficulty_to_color(level.difficulty)
@@ -27,9 +28,13 @@ func _on_level_list_on_level_selected(level: Level):
 
 func _on_edit_button_pressed():
 	LevelManager.current_level = selected_level
+	animation_player.play_backwards("entry")
+	await animation_player.animation_finished
 	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")
 
 func _on_back_button_pressed():
+	animation_player.play_backwards("entry")
+	await animation_player.animation_finished
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
 
 func _on_delete_button_pressed():
@@ -37,5 +42,4 @@ func _on_delete_button_pressed():
 		level_list.load_level_list()
 
 func _on_create_import_level_button_pressed():
-	#TODO: Add entry animation
-	level_create_import_menu.visible = true
+	level_create_import_menu.animation_player.play("entry")

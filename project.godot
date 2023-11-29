@@ -53,6 +53,13 @@ movie_writer/movie_file="/home/killarexe/Bureau/Projets/Godot/LittleRage/builds/
 
 enabled=PackedStringArray("res://addons/discord-sdk-gd/plugin.cfg")
 
+[importer_defaults]
+
+csv_translation={
+"compress": false,
+"delimiter": 0
+}
+
 [input]
 
 left={

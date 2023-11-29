@@ -137,7 +137,7 @@ offset_right = 535.0
 offset_bottom = 45.0
 theme = ExtResource("13_nxxam")
 theme_override_font_sizes/font_size = 16
-text = "ui.back_to_center"
+text = "button.back_to_center"
 script = ExtResource("4_qa1hv")
 editor = NodePath("../..")
 
