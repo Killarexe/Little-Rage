@@ -51,6 +51,8 @@ func _ready():
 	var current_level: Level = LevelManager.get_current_level()
 	if current_level != null:
 		y_limit = LevelManager.get_current_level().y_limit
+	if controllable:
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _physics_process(delta: float):
 	check_speed_and_timers(delta)

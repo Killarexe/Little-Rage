@@ -23,6 +23,7 @@ func on_player_win(time: Array[int], death_count: int):
 
 func open(mode_: Mode, time: Array[int], death_count: int):
 	MusicManager.stop()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if PlayerSkinManager.current_skin == "mexican_player" && PlayerHatManager.current_hat == "mexican_hat":
 		mexican_mode()
 	get_tree().paused = true
