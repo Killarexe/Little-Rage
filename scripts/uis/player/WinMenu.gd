@@ -10,6 +10,7 @@ enum Mode{
 @onready var singleplayer: Control = $Singleplayer
 @onready var multiplayer_control: Control = $Mutiplayer
 @onready var time_label: TimeLabel = $Singleplayer/VBoxContainer/TimeLabel
+@onready var best_time_animation: AnimationPlayer = $Singleplayer/AnimationPlayer
 
 var mode: Mode = Mode.SINGLEPLAYER
 
@@ -35,11 +36,13 @@ func open(mode_: Mode, time: Array[int], death_count: int):
 		Mode.SINGLEPLAYER:
 			singleplayer.visible = true
 			var is_best_time: bool = LevelManager.is_best_time(time)
-			time_label.start(time, death_count, is_best_time)
+			time_label.start(time, death_count)
 			$Singleplayer/VBoxContainer/NextLevel.visible = LevelManager.is_default_level(LevelManager.current_level) && LevelManager.default_levels.bsearch(LevelManager.current_level) != LevelManager.default_levels.size() - 1
 			if is_best_time:
 				LevelManager.set_level_best_time(time)
 				Global.loot_boxes.add_loot_box(1)
+				await time_label.on_terminated
+				best_time_animation.play("pop_besttime")
 			else:
 				Global.loot_boxes.add_loot_box(1.0 / time_sum / 3.0 * 99.0)
 		Mode.MULTIPLAYER:

@@ -25,34 +25,34 @@ func _on_file_dialog_file_selected(path: String):
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	var file_error: Error = FileAccess.get_open_error()
 	if file_error != OK:
-		PopUpFrame.pop("Failed to read file. Code: " + str(file_error))
+		PopUpFrame.pop(TranslationServer.translate("popup.failed_load_level.read_file") % file_error)
 		return
 	
 	#To doge hacks and false files...
 	var file_contents: String = file.get_as_text()
 	if file_contents.is_empty() || file_contents.contains("GDScript") || !file_contents.begins_with("[gd_resource type=\"Resource\" script_class=\"Level\""):
-		PopUpFrame.pop("Invalid level file...")
+		PopUpFrame.pop_translated("popup.failed_load_level.invalid_file")
 		return
 	
 	var dir_array: PackedStringArray = path.split("/")
 	var file_name: String = dir_array[dir_array.size() - 1]
 	var level_id: String = file_name.replace(".tres", "")
 	if level_id.is_empty():
-		PopUpFrame.pop("Failed to load level. Invalid id '%s'." % level_id)
+		PopUpFrame.pop_translated("popup.failed_load_level.invaild_id")
 		return
 	if LevelManager.get_level(level_id) != null:
-		PopUpFrame.pop("Failed to load level. It's sharing the same id '%s'." % level_id)
+		PopUpFrame.pop(TranslationServer.translate("popup.failed_load_level.sheared_id") % level_id)
 		return
 	
 	var new_file: FileAccess = FileAccess.open(LevelManager.EXTERNAL_LEVELS_DIR + "/" + file_name, FileAccess.WRITE_READ)
 	var new_file_error: Error = FileAccess.get_open_error()
 	if new_file_error:
-		PopUpFrame.pop("Failed to copy level into 'levels' folder. Code: " + str(new_file_error))
+		PopUpFrame.pop(TranslationServer.translate("popup.failed_load_level.copy_file") % new_file_error)
 		return
 	
 	new_file.store_string(file_contents)
 	LevelManager.load_levels()
-	PopUpFrame.pop("Succesfuly load level '%s'." % level_id)
+	PopUpFrame.pop(TranslationServer.translate("popup.load_level_success") % level_id)
 
 func _on_create_level_button_pressed():
 	var level: Level = Level.new()

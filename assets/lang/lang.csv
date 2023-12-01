@@ -29,7 +29,7 @@ label.level.difficulty.normal,Normal,Normale
 label.level.difficulty.hard,Hard,Dur
 label.level.difficulty.extreme,EXTREME,EXTREME
 button.back_to_menu,Back To Menu,Retour au Menu
-label.level.complete,Level Complete,Niveau Terminée
+label.level_complete,Level Complete,Niveau Terminée
 label.level.win,You Win,Tu as gagnée
 label.level.loose,You Loose,Perdu
 label.settings.language,Language,Language
@@ -103,3 +103,9 @@ button.loot_boxes,Loot Boxes,Loot Boxes
 button.delete_level,Delete Level,Supprimer le Niveau
 button.create_import_level,Create/Import Level,Créer/Importer Niveau
 button.import_level,Import Level,Importer Niveau
+popup.failed_load_level.read_file,Failed to read file. Code: %s,Échec de la lecture du ficher. Code: %s
+popup.failed_load_level.invalid_file,Invalid level file…,Ficher niveau invalide…
+popup.failed_load_level.invaild_id,Failed to load level. Invalid id.,Échec de la lecture du ficher. Id invalide.
+popup.failed_load_level.sheared_id,Failed to load level. It's sharing the same id '%s'.,Échec de la lecture du ficher. Id déjà présent ‘%s’.
+popup.failed_load_level.copy_file,Failed to copy level into 'levels' folder. Code: %s,Echec de la copie du ficher dans le dossier ‘levels’. Code: %s
+popup.load_level_success,Succesfuly load level '%s'.,Niveau ‘%s’ chargée avec succès!
