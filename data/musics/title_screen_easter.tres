@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Music" load_steps=3 format=3 uid="uid://b3s5i171dk8pr"]
-
-[ext_resource type="Script" path="res://scripts/music/Music.gd" id="1_mrk31"]
-[ext_resource type="AudioStream" uid="uid://ba1dxo337scmt" path="res://assets/musics/title_screen_remake.ogg" id="2_08mko"]
-
-[resource]
-script = ExtResource("1_mrk31")
-streams = Array[AudioStream]([ExtResource("2_08mko")])
-type = 1

@@ -1,7 +1,7 @@
 class_name DataLoader
 
 func load_data_in_dir(dir_path: String, type: String) -> Array[ResourceElement]:
-	print("Reading %s: " % type)
+	print("Registering %s: " % type)
 	var result: Array[ResourceElement] = []
 	var id_array: Array[String] = []
 	var dir: DirAccess = DirAccess.open(dir_path)
@@ -13,7 +13,6 @@ func load_data_in_dir(dir_path: String, type: String) -> Array[ResourceElement]:
 		var file = dir.get_next()
 		file = file.replace(".remap", "")
 		var is_tres: bool = file.ends_with(".tres")
-		print("\tLoading %s" % file)
 		if file == "":
 			break
 		if is_tres:
@@ -24,7 +23,7 @@ func load_data_in_dir(dir_path: String, type: String) -> Array[ResourceElement]:
 					print("Resource element confilct: Two " + type + " with the same id '" + resource.id + "'")
 					PopUpFrame.pop(TranslationServer.translate("popup.resource_eleement_confict") % [type, resource.id])
 				else:
-					print("\t%s loaded succesfully!" % file)
+					print("\t%s loaded." % id)
 					resource.id = id
 					id_array.append(id)
 					result.append(resource)

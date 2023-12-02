@@ -90,7 +90,7 @@ label.yes,Yes,Oui
 label.no,No,Non
 message.experimental_frame.desc,This feature is an experimental. It can produce bugs. Are you sure to continue ?,Cette fonctionnalité est expérimental. Ceci peut produire des bugs. Etes-vous sur de continuer ?
 button.back_to_center,Back to Center,Retour au Centre
-button.replay,Replay Level,Rejouer le niveau
+button.replay_level,Replay Level,Rejouer le niveau
 button.ragequit,RAGEQUIT,RAGEQUIT
 button.default_levels,Default Levels,Niveaux Intégrée
 button.custom_levels,Custom Levels,Niveaux Externes
@@ -109,3 +109,4 @@ popup.failed_load_level.invaild_id,Failed to load level. Invalid id.,Échec de l
 popup.failed_load_level.sheared_id,Failed to load level. It's sharing the same id '%s'.,Échec de la lecture du ficher. Id déjà présent ‘%s’.
 popup.failed_load_level.copy_file,Failed to copy level into 'levels' folder. Code: %s,Echec de la copie du ficher dans le dossier ‘levels’. Code: %s
 popup.load_level_success,Succesfuly load level '%s'.,Niveau ‘%s’ chargée avec succès!
+button.quit_level,Quit Level,Quitter le niveau

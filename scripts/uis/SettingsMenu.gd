@@ -7,7 +7,7 @@ func _ready():
 		Global.settings_time += 1
 		if Global.settings_time >= 10:
 			PlayerSkinManager.unlock_skin("rgb", true)
-	MusicManager.play_music("settings")
+	MusicManager.play_music("settings_menu")
 	$Camera2D/AnimationPlayer.play("camera_scroll")
 	$CanvasLayer/VBoxContainer/MusicVolume/Slider.set_value_no_signal(MusicManager.music_volume)
 	$CanvasLayer/VBoxContainer/SoundEffectVolume/Slider.set_value_no_signal(MusicManager.sound_effect_volume)

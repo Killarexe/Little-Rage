@@ -5,7 +5,7 @@ class_name MainCollectionMenu
 @onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/Player/PlayerViewer/AnimationPlayer"
 
 func _ready():
-	MusicManager.play_music("collection_main_menu")
+	MusicManager.play_music("collections_menu")
 
 func _on_skins_button_pressed():
 	set_menu_to(0)

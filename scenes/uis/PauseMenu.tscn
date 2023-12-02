@@ -27,7 +27,7 @@ offset_right = 23.5
 offset_bottom = 26.0
 grow_horizontal = 2
 theme = ExtResource("1_588rf")
-text = "Pause"
+text = "label.pause"
 label_settings = SubResource("LabelSettings_2vivb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

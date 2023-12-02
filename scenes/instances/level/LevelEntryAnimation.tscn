@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhxkop4hjnx1p"]
+
+[ext_resource type="Script" path="res://scripts/level/LevelEntryAnimation.gd" id="1_s4tn7"]
+
+[sub_resource type="Animation" id="Animation_hw0rh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wjaiv"]
+resource_name = "enrty"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 4),
+"transitions": PackedFloat32Array(1, 0.318471, 3.14),
+"update": 0,
+"values": [Vector2(1024, 0), Vector2(256, 0), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enable_status"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08ra1"]
+_data = {
+"RESET": SubResource("Animation_hw0rh"),
+"entry": SubResource("Animation_wjaiv")
+}
+
+[node name="LevelEntryAnimation" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_s4tn7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+zoom = Vector2(2, 2)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_08ra1")
+}

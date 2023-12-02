@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2q47ldtp782l"]
+[gd_scene load_steps=8 format=3 uid="uid://c2q47ldtp782l"]
 
 [ext_resource type="Script" path="res://scripts/uis/player/Countdown.gd" id="1_bp1h4"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_o7ci3"]
+[ext_resource type="AudioStream" uid="uid://cr20uo2pstjq" path="res://assets/sound_effects/counter.ogg" id="3_5kxys"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k7oub"]
 font_size = 512
@@ -20,9 +21,34 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["3"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_mw4mr"]
-resource_name = "fade"
+resource_name = "countdown"
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -30,16 +56,54 @@ tracks/0/path = NodePath("Label:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 3.03143),
+"times": PackedFloat32Array(0, 0.5, 0.9, 1, 1.5, 1.9, 2, 2.5, 2.9, 3, 4),
+"transitions": PackedFloat32Array(1, 3.03143, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.9, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": ["3", "2", "1", "GO"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6jeul"]
 _data = {
 "RESET": SubResource("Animation_4a60o"),
-"fade": SubResource("Animation_mw4mr")
+"countdown": SubResource("Animation_mw4mr")
 }
 
 [node name="Countdown" type="CanvasLayer"]
@@ -62,3 +126,7 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_6jeul")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5kxys")
+bus = &"Sound Effects"

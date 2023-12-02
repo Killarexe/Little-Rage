@@ -107,14 +107,14 @@ func handle_jump():
 		ground_timer = GROUND_TIME
 	if (jump_timer > 0) && (ground_timer > 0):
 		animation.play("PlayerAnimations/jump")
-		sound_effect_manager.play_sfx("classic_jump")
+		sound_effect_manager.play_sfx("jump")
 		PlayerParticleManager.spawn_particle(get_parent(), global_position + Vector2(0, 16), PlayerParticle.Type.JUMP)
 		motion.y = -JUMP_FORCE
 		jump_timer = 0
 		ground_timer = 0
 
 func die():
-	sound_effect_manager.play_rand_sfx(PlayerSoundEffect.Type.DIE)
+	sound_effect_manager.play_sfx("die")
 	death_count += 1
 	on_death.emit(death_count)
 	global_position = spawn_point

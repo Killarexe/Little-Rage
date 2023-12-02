@@ -332,8 +332,7 @@ offset_top = 626.0
 offset_right = 262.0
 offset_bottom = 696.0
 theme = ExtResource("1_pxu12")
-text = "button.back
-"
+text = "button.back"
 
 [node name="Label" type="Label" parent="CanvasLayer/SoloMainMenu"]
 layout_mode = 1

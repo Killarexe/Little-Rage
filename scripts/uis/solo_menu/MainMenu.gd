@@ -7,7 +7,7 @@ extends Control
 
 func _ready():
 	animation_player.play("enter")
-	MusicManager.play_music("level_selection")
+	MusicManager.play_music("level_selection_menu")
 
 func _on_default_levels_button_pressed():
 	select_menu(0)

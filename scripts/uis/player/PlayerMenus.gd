@@ -1,6 +1,12 @@
 extends Control
+class_name PlayerMenus
 
+@export var player: PlayerMovement
 @onready var player_status: CanvasLayer = $PlayerStatus
+@onready var mobile_control: Control = $MobileControl
+
+func _ready():
+	mobile_control.visible = player.controllable && Global.is_mobile
 
 func _unhandled_key_input(event: InputEvent):
 	if event is InputEventKey:

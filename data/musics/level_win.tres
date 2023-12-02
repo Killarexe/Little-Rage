@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Music" load_steps=2 format=3 uid="uid://ckb7irfwdkn2e"]
-
-[ext_resource type="Script" path="res://scripts/music/Music.gd" id="1_bm48h"]
-
-[resource]
-script = ExtResource("1_bm48h")
-streams = Array[AudioStream]([])
-type = 1
