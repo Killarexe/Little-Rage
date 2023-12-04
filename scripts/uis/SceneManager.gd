@@ -5,12 +5,13 @@ extends CanvasLayer
 
 func prepare():
 	texture_rect.mouse_filter = Control.MOUSE_FILTER_STOP
-	texture_rect.global_position = Vector2(0, 0)
+	texture_rect.modulate = Color.WHITE
 	texture_rect.visible = true
 
 func end():
 	texture_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	texture_rect.visible = false
+	texture_rect.position = Vector2(0, 0)
 
 func play_animation(transition_type: int, inverse: bool) -> bool:
 	var speed: float = 1.0

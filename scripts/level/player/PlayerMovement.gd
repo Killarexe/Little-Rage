@@ -5,6 +5,8 @@ class_name PlayerMovement
 @export var can_pause: bool = true
 @export var interactable: bool = true
 @export var camera_enabled: bool = true
+@export var override_skin: String = ""
+@export var override_hat: String = ""
 
 @onready var timer: PlayerTimer = $Timer
 @onready var skin: PlayerSkinSprite = $Skin
@@ -53,6 +55,10 @@ func _ready():
 		y_limit = LevelManager.get_current_level().y_limit
 	if controllable:
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	if !override_skin.is_empty():
+		skin.texture = PlayerSkinManager.get_skin(override_skin).texture
+	if !override_hat.is_empty():
+		skin.hat_sprite.texture = PlayerHatManager.get_hat(override_hat).texture
 
 func _physics_process(delta: float):
 	check_speed_and_timers(delta)
@@ -125,3 +131,16 @@ func finish_level():
 	else:
 		#TODO: stop the play mode in the editor
 		pass
+
+#----------
+#Animation purpuse only!
+#----------
+
+func flip_sprite():
+	skin.flip_h = !skin.flip_h
+
+func jump_player():
+	jump_timer = JUMP_TIME
+
+func end_jump():
+	jump_timer = 0

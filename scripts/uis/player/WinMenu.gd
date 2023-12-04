@@ -37,7 +37,7 @@ func open(mode_: Mode, time: Array[int], death_count: int):
 			singleplayer.visible = true
 			var is_best_time: bool = LevelManager.is_best_time(time)
 			time_label.start(time, death_count)
-			$Singleplayer/VBoxContainer/NextLevel.visible = LevelManager.is_default_level(LevelManager.current_level) && LevelManager.default_levels.bsearch(LevelManager.current_level) != LevelManager.default_levels.size() - 1
+			$Singleplayer/VBoxContainer/NextLevel.visible = LevelManager.is_default_level(LevelManager.current_level)
 			if is_best_time:
 				LevelManager.set_level_best_time(time)
 				Global.loot_boxes.add_loot_box(1)
@@ -67,11 +67,11 @@ func exit():
 func _on_next_level_pressed():
 	var current_level_number: int = int(LevelManager.current_level.replace("level_", ""))
 	if current_level_number == LevelManager.default_levels.size():
-		#TODO: Credis scene...
-		return
-	var current_level: String = "level_" + str(current_level_number + 1)
-	var level: Level = LevelManager.get_level(current_level)
-	LevelManager.current_level = current_level
-	MusicManager.play_music("level_plains")
-	SceneManager.change_packed(level.scene)
-	DiscordRPCManager.update_rpc("Playing level '" + level.name + "'", "basicicon", "Playing level '" + level.name + "'",)
+		SceneManager.change_scene("res://scenes/levels/CreditsScene.tscn")
+	else:
+		var current_level: String = "level_" + str(current_level_number + 1)
+		var level: Level = LevelManager.get_level(current_level)
+		LevelManager.current_level = current_level
+		MusicManager.play_music("level_plains")
+		SceneManager.change_packed(level.scene)
+		DiscordRPCManager.update_rpc("Playing level '" + level.name + "'", "basicicon", "Playing level '" + level.name + "'",)
