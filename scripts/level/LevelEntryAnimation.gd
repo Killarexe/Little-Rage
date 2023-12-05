@@ -10,9 +10,13 @@ var countdown_prefab: Resource = load("res://scenes/instances/level/player/uis/c
 
 func _ready():
 	if visible && player.camera_enabled && player.controllable:
-		play_animation()
+		if LevelManager.current_level.is_empty():
+			enable_status()
+		else:
+			play_animation()
 
 func play_animation():
+	await player.ready
 	player_menus.player_status.visible = false
 	player_menus.mobile_control.visible = false
 	animation_camera.enabled = true
@@ -20,7 +24,7 @@ func play_animation():
 	Global.can_pause = false
 	get_tree().paused = true
 	animation_player.play("entry")
-	MusicManager.play_music("start_level_var2")
+	MusicManager.play_music("start_level_var1")
 	await MusicManager.finished
 	player_camera.enabled = true
 	animation_camera.enabled = false
@@ -28,5 +32,5 @@ func play_animation():
 	queue_free()
 
 func enable_status():
-	player_menus.player_status.visible = true
-	player_menus.mobile_control.visible = true
+	player_menus.player_status.visible = !LevelManager.current_level.is_empty()
+	player_menus.mobile_control.visible = Global.is_mobile

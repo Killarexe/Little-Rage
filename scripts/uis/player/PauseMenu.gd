@@ -13,7 +13,7 @@ func pause(change_mouse: bool = false):
 	get_tree().paused = visible
 
 func _on_back_to_game_button_pressed():
-	pause(true)
+	pause(!LevelManager.current_level.is_empty())
 
 func _on_quit_button_pressed():
 	get_tree().paused = false
@@ -21,7 +21,7 @@ func _on_quit_button_pressed():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause") && Global.can_pause:
-		pause(true)
+		pause(!LevelManager.current_level.is_empty())
 
 func _on_replay_button_pressed():
 	SceneManager.change_packed(LevelManager.get_current_level().scene)

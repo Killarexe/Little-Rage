@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bkwmpwrjnhece"]
+[gd_scene load_steps=22 format=3 uid="uid://bkwmpwrjnhece"]
 
 [ext_resource type="Script" path="res://scripts/level/player/PlayerMovement.gd" id="1_l7flj"]
 [ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="2_alfuh"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bruwtum1c48go" path="res://scenes/uis/PauseMenu.tscn" id="5_iaj63"]
 [ext_resource type="Script" path="res://scripts/level/player/CameraController.gd" id="5_u0egx"]
 [ext_resource type="PackedScene" uid="uid://c027b4usebimx" path="res://scenes/uis/WinMenu.tscn" id="6_6ee8y"]
-[ext_resource type="Script" path="res://scripts/uis/MobileVisiblity.gd" id="6_njdel"]
 [ext_resource type="Texture2D" uid="uid://dxd7u5xffvp21" path="res://assets/textures/ui/left.png" id="6_p1hc3"]
 [ext_resource type="Texture2D" uid="uid://bcvu2cbuyoknu" path="res://assets/textures/ui/right.png" id="7_baypg"]
 [ext_resource type="Script" path="res://scripts/level/player/PlayerTimer.gd" id="8_3kxck"]
@@ -89,7 +88,7 @@ libraries = {
 "": SubResource("AnimationLibrary_pm6cf"),
 "PlayerAnimations": ExtResource("4_jqgtb")
 }
-blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
 
 [node name="Menus" type="Control" parent="." node_paths=PackedStringArray("player")]
 layout_mode = 3
@@ -99,16 +98,8 @@ offset_bottom = 40.0
 script = ExtResource("12_k24f3")
 player = NodePath("..")
 
-[node name="MobileControl" type="Control" parent="Menus"]
+[node name="MobileControl" type="CanvasLayer" parent="Menus"]
 process_mode = 3
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-script = ExtResource("6_njdel")
 
 [node name="LeftButton" type="TouchScreenButton" parent="Menus/MobileControl"]
 position = Vector2(50, 520)

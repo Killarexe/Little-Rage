@@ -11,6 +11,7 @@ enum Mode{
 @onready var multiplayer_control: Control = $Mutiplayer
 @onready var time_label: TimeLabel = $Singleplayer/VBoxContainer/TimeLabel
 @onready var best_time_animation: AnimationPlayer = $Singleplayer/AnimationPlayer
+@onready var next_level_button: Button = $Singleplayer/VBoxContainer/NextLevel
 
 var mode: Mode = Mode.SINGLEPLAYER
 
@@ -22,7 +23,7 @@ func _ready():
 func on_player_win(time: Array[int], death_count: int):
 	open(Mode.SINGLEPLAYER, time, death_count)
 
-func open(mode_: Mode, time: Array[int], death_count: int):
+func open(playing_mode: Mode, time: Array[int], death_count: int):
 	MusicManager.stop()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if PlayerSkinManager.current_skin == "mexican_player" && PlayerHatManager.current_hat == "mexican_hat":
@@ -32,12 +33,12 @@ func open(mode_: Mode, time: Array[int], death_count: int):
 	var time_sum: int = 0
 	for i in time:
 		time_sum += i
-	match mode_:
+	match playing_mode:
 		Mode.SINGLEPLAYER:
 			singleplayer.visible = true
 			var is_best_time: bool = LevelManager.is_best_time(time)
 			time_label.start(time, death_count)
-			$Singleplayer/VBoxContainer/NextLevel.visible = LevelManager.is_default_level(LevelManager.current_level)
+			next_level_button.visible = LevelManager.is_default_level(LevelManager.current_level)
 			if is_best_time:
 				LevelManager.set_level_best_time(time)
 				Global.loot_boxes.add_loot_box(1)

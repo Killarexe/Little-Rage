@@ -20,6 +20,7 @@ func _process(_delta):
 		$Panel/TextureRect.self_modulate = Color(\"#797979\")
 		$Panel/TextureRect/AnimationPlayer.stop()
 		debug_text_update()
+		
 
 func debug_text_update():
 	$Panel/Info.text = \"Application ID : {id}
@@ -69,7 +70,7 @@ func _on_toggle_sdk_toggled(button_pressed):
 	if(button_pressed):
 		discord_sdk.unclear()
 	else:
-		discord_sdk.clear()
+		discord_sdk.clear(false)
 
 func _on_print_friends_pressed():
 	print(discord_sdk.get_all_relationships())

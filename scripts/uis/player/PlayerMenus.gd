@@ -3,7 +3,7 @@ class_name PlayerMenus
 
 @export var player: PlayerMovement
 @onready var player_status: CanvasLayer = $PlayerStatus
-@onready var mobile_control: Control = $MobileControl
+@onready var mobile_control: CanvasLayer = $MobileControl
 
 func _ready():
 	mobile_control.visible = player.controllable && Global.is_mobile

@@ -40,7 +40,7 @@ func _unhandled_key_input(event: InputEvent):
 	if event is InputEventKey:
 		pass #TODO: "Cheat code" impl
 
-func _notification(what):
+func _notification(what: int):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST || what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		save_game()
 		get_tree().quit()

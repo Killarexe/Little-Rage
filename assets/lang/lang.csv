@@ -12,7 +12,7 @@ button.skins,Skins,Skins
 button.hats,Hats,Chapeaux
 label.settings.music_volume,Music Volume,Volume de Musique
 label.settings.sound_effect_volume,Sound Effect Volume,Volume d’éffect de son
-label.settings.reset_save,Reset Save,Effacer la Sauvegarde
+button.reset_save,Reset Save,Effacer la Sauvegarde
 label.default_splash_text,Splash Text,Texte
 button.play,Play,Jouer
 button.level_editor,Level Editor,Editeur de Niveau
@@ -110,3 +110,18 @@ popup.failed_load_level.sheared_id,Failed to load level. It's sharing the same i
 popup.failed_load_level.copy_file,Failed to copy level into 'levels' folder. Code: %s,Echec de la copie du ficher dans le dossier ‘levels’. Code: %s
 popup.load_level_success,Succesfuly load level '%s'.,Niveau ‘%s’ chargée avec succès!
 button.quit_level,Quit Level,Quitter le niveau
+popup.unlocked_achievement,Achievement unlocked!\n%s.,Progrès obtenu!\n%s!
+achievement.first_death,First Death,1ère Mort
+achievement.invincible,Invincible!,Invincible!
+achievement.making_my_own,Making my own.,Je fais le mien
+achievement.new_record,New record!,Nouveau record!
+achievement.rage_quit,RAGEQUIT,RAGEQUIT
+achievement.start_the_game,Start the game.,Commencez le jeu.
+achievement.yeepee,YEEPEE,YEEPEE
+achievement.first_death.desc,Your first and uinque death…,Ton premier et unique mort…
+achievement.invincible.desc,Finish a level with more than 25 deaths.,Fini un niveau avec plus de 25 morts.
+achievement.making_my_own.desc,Create your own level.,Créer ton propre niveau.
+achievement.new_record.desc,Make a new time record.,Faire un nouveau temps record.
+achievement.rage_quit.desc,Click «RAGEQUIT» button…,Appuyer sur le boutton «RAGEQUIT» …
+achievement.start_the_game.desc,Start playing the game…,Commencez a jouer le jeu…
+achievement.yeepee.desc,HYYYAAYHOOO,HYYYAAYHOOO

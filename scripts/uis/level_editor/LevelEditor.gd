@@ -34,7 +34,7 @@ func _ready():
 	
 	DiscordRPCManager.update_rpc("In Editor", "basicicon", "In Editor")
 
-func _process(_delta):
+func _process(delta: float):
 	if !Global.is_mobile:
 		if Input.is_action_just_pressed("pause"):
 			selected_tile = -1
@@ -53,10 +53,30 @@ func _draw():
 	if can_place && selected_tile >= 0 && !Global.is_mobile:
 		var tile_pos: Vector2 = floor(camera.get_global_mouse_position() / 16)
 		var offset: Vector2i = tiles.get_selected_tile_id(selected_tile)
-		draw_texture_rect_region(atlas, Rect2(tile_pos * 16, Vector2(16, 16)), Rect2(16 * offset.x, 16 * offset.y, 16, 16))
+		draw_texture_rect_region(atlas, Rect2(tile_pos * 16, Vector2(16, 16)), Rect2(16 * offset.x, 16 * offset.y, 16, 16), Color(1.0, 1.0, 1.0, 0.5))
 	if is_editing():
 		draw_texture(PlayerSkinManager.get_current_skin_texture(), Vector2(-8, -8))
 		draw_texture(PlayerHatManager.get_current_hat_texture(), Vector2(-8, -24))
+		
+		var vp_size: Vector2 = get_viewport().size
+		var cam_pos: Vector2 = camera.offset
+		var vp_right: float = vp_size.x * camera.zoom.x
+		var vp_bottom: float = vp_size.y * camera.zoom.y
+		
+		var leftmost: float = -vp_right + cam_pos.x
+		var topmost: float = -vp_bottom + cam_pos.y
+		
+		var left: float = ceil(leftmost / 16) * 16
+		var bottommost: float = abs(vp_bottom + cam_pos.y)
+		for _x in range(0, vp_size.x / camera.zoom.x + 1):
+			draw_line(Vector2(left, topmost), Vector2(left, bottommost), Color.BLACK)
+			left += 16
+
+		var top: float = ceil(topmost / 16) * 16
+		var rightmost: float = vp_right + cam_pos.x
+		for _y in range(0, vp_size.y / camera.zoom.y + 1):
+			draw_line(Vector2(leftmost, top), Vector2(rightmost, top), Color.BLACK)
+			top += 16
 
 func _on_tiles_item_selected(index):
 	selected_tile = index
@@ -75,12 +95,15 @@ func on_mouse_exited():
 func _on_play_button_pressed():
 	if is_editing():
 		camera.enabled = false
-		Global.can_pause = false
 		level_map.set_mode(LevelPlayer.Mode.PLAY)
+		Global.can_pause = false
 	else:
-		camera.enabled = true
-		Global.can_pause = true
-		level_map.set_mode(LevelPlayer.Mode.EDIT)
+		switch_edit_mode()
+
+func switch_edit_mode():
+	camera.enabled = true
+	level_map.set_mode(LevelPlayer.Mode.EDIT)
+	Global.can_pause = true
 
 func _on_save_button_pressed():
 	var level: Level = LevelManager.get_level(level_id)
@@ -124,7 +147,6 @@ func _on_camera_2d_on_clicked(clicked_position: Vector2, placeing: bool):
 	
 	if can_place:
 		var tile_pos: Vector2i = floor(clicked_position / 16)
-		print()
 		if placeing:
 			tiles.editor_tiles[selected_tile].on_place(level_map, tile_pos)
 			not_saved = true

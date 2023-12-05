@@ -53,8 +53,10 @@ func _ready():
 	var current_level: Level = LevelManager.get_current_level()
 	if current_level != null:
 		y_limit = LevelManager.get_current_level().y_limit
-	if controllable:
+	
+	if controllable && !LevelManager.current_level.is_empty():
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	
 	if !override_skin.is_empty():
 		skin.texture = PlayerSkinManager.get_skin(override_skin).texture
 	if !override_hat.is_empty():
@@ -129,7 +131,8 @@ func finish_level():
 	if !LevelManager.current_level.is_empty():
 		on_win.emit(timer.get_time(), death_count)
 	else:
-		#TODO: stop the play mode in the editor
+		#FIXME: Bad code...
+		get_parent().get_parent().switch_edit_mode()
 		pass
 
 #----------

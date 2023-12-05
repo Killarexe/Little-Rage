@@ -1,6 +1,8 @@
 extends Control
 
 @onready var logo_animation: AnimationPlayer = $CanvasLayer/Logo/AnimationPlayer
+@onready var camera_animation: AnimationPlayer = $Camera2D/AnimationPlayer
+@onready var logo: TextureRect = $CanvasLayer/Logo
 @onready var spash_text = $CanvasLayer/SplashText
 
 func _ready():
@@ -9,7 +11,7 @@ func _ready():
 	var animation: String = "start_menu"
 	if easter_title_screen:
 		MusicManager.play_music("title_screen_easter")
-		$CanvasLayer/Logo.texture = load("res://assets/textures/ui/little_rage_logo_easter.png")
+		logo.texture = load("res://assets/textures/ui/little_rage_logo_easter.png")
 		animation = "start_menu_easter"
 	else:
 		MusicManager.play_music("title_screen")
@@ -19,7 +21,7 @@ func _ready():
 		logo_animation.play(animation)
 		await logo_animation.animation_finished
 		spash_text.visible = true
-	$Camera2D/AnimationPlayer.play("scroll")
+	camera_animation.play("scroll")
 	logo_animation.play("logo_move")
 	AchievementManager.unlock_achievement("start_the_game")
 	DiscordRPCManager.update_rpc("In Main Menu", "basicicon", "In Main Menu")

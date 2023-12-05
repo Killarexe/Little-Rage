@@ -34,7 +34,7 @@ DiscordRPCManager="*res://scripts/integration/discord/DiscordRPCManager.gd"
 ExperiementalFrame="*res://scenes/globals/ExperiementalFrame.tscn"
 AchievementManager="*res://scripts/achievement/AchievementManager.gd"
 PlayerParticleManager="*res://scripts/level/player/cosmetic/particle/PlayerParticleManager.gd"
-DiscordSDKLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
+DiscordLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 LocalMultiplayer="*res://scripts/multiplayer/local/LocalMultiplayer.gd"
 
 [display]

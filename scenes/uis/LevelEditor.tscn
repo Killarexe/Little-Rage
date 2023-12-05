@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://btth5y287sdm0"]
+[gd_scene load_steps=14 format=3 uid="uid://btth5y287sdm0"]
 
 [ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditor.gd" id="1_7o0qm"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/EditorCameraControler.gd" id="2_pc8il"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://scripts/uis/MobileVisiblity.gd" id="7_lfx71"]
 [ext_resource type="Texture2D" uid="uid://k4siyrr0ptjm" path="res://assets/textures/ui/save.png" id="8_la3tb"]
 [ext_resource type="PackedScene" uid="uid://ewvi8u3crj0y" path="res://scenes/uis/LevelEditorTools.tscn" id="8_ldi2f"]
-[ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/quit.png" id="9_waia4"]
 [ext_resource type="Texture2D" uid="uid://dknlajug6w68u" path="res://assets/textures/ui/settings.png" id="10_ik0m7"]
 [ext_resource type="PackedScene" uid="uid://o458ah6nqt0b" path="res://scenes/uis/LevelSettingsMenu.tscn" id="11_ftb0d"]
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/level/DefaultLevel.tscn" id="12_33otr"]
@@ -106,18 +105,20 @@ stretch_mode = 0
 script = ExtResource("4_qa1hv")
 editor = NodePath("../..")
 
-[node name="QuitButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
+[node name="QuitButton" type="Button" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -80.0
+offset_left = -271.0
+offset_top = -92.0
+offset_right = -28.0
+offset_bottom = -31.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_normal = ExtResource("9_waia4")
-stretch_mode = 0
+theme = ExtResource("13_nxxam")
+text = "button.quit"
 script = ExtResource("4_qa1hv")
 editor = NodePath("../..")
 

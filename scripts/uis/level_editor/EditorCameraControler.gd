@@ -44,7 +44,7 @@ func handle_touch(event: InputEventScreenTouch):
 	else:
 		touch_points.erase(event.index)
 	if can_placing && touch_points.size() > 0:
-		var viewport_size: Vector2 = get_viewport_rect().size
+		var viewport_size: Vector2 = Vector2(1280.0, 720.0)
 		var touch_position: Vector2 = touch_points.values()[0]
 		var touch_position_in_viewport: Vector2 = touch_position - viewport_size / 2.0
 		var touch_position_in_zoomed_viewport: Vector2 = touch_position_in_viewport / zoom
@@ -90,13 +90,22 @@ func handle_mouse_pan(event: InputEventMouseMotion):
 	if is_panning && can_pan:
 		offset -= event.relative.rotated(rotation) * pan_speed  / zoom.x
 
-func _process(_delta):
+func _process(delta: float):
 	if !(Global.is_mobile || debug_mode):
 		is_panning = Input.is_action_pressed("middle_click")
 		if Input.is_action_pressed("left_click"):
 			emit_signal("on_clicked", get_global_mouse_position(), true)
 		elif Input.is_action_pressed("right_click"):
 			emit_signal("on_clicked", get_global_mouse_position(), false)
+		
+		if Input.is_action_pressed("left"):
+			offset.x -= 400 / zoom.x * delta
+		if Input.is_action_pressed("right"):
+			offset.x += 400 / zoom.x * delta
+		if Input.is_action_pressed("jump"):
+			offset.y -= 400 / zoom.y * delta
+		if Input.is_action_pressed("down"):
+			offset.y += 400 / zoom.y * delta
 
 func get_angle(p1: Vector2, p2: Vector2) -> float:
 	var delta: Vector2 = p1 - p2
