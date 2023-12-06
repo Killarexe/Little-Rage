@@ -34,7 +34,7 @@ func _ready():
 	
 	DiscordRPCManager.update_rpc("In Editor", "basicicon", "In Editor")
 
-func _process(delta: float):
+func _process(_delta: float):
 	if !Global.is_mobile:
 		if Input.is_action_just_pressed("pause"):
 			selected_tile = -1
@@ -63,7 +63,7 @@ func _draw():
 		var vp_right: float = vp_size.x * camera.zoom.x
 		var vp_bottom: float = vp_size.y * camera.zoom.y
 		
-		var leftmost: float = -vp_right + cam_pos.x
+		var leftmost: float = -vp_right + cam_pos.x	
 		var topmost: float = -vp_bottom + cam_pos.y
 		
 		var left: float = ceil(leftmost / 16) * 16

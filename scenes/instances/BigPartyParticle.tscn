@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://pjwtudwrc6ef"]
+
+[ext_resource type="Script" path="res://scripts/particle/SelfDestroyParticle.gd" id="1_cfdkh"]
+
+[sub_resource type="Gradient" id="Gradient_wxo33"]
+offsets = PackedFloat32Array(0, 0.876543, 1)
+colors = PackedColorArray(1, 0.878431, 0.415686, 1, 0.894118, 0.4, 0.870588, 1, 0.894118, 0.4, 0.870588, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_35qww"]
+gradient = SubResource("Gradient_wxo33")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cd44b"]
+lifetime_randomness = 0.25
+emission_shape = 1
+emission_sphere_radius = 128.0
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+direction = Vector3(0, -10, 0)
+spread = 142.05
+gravity = Vector3(0, 100, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 200.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+linear_accel_min = -10.0
+linear_accel_max = 10.0
+angle_min = -360.0
+angle_max = 360.0
+scale_min = 5.0
+scale_max = 10.0
+color_ramp = SubResource("GradientTexture1D_35qww")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[node name="Particles" type="GPUParticles2D"]
+position = Vector2(640, 360)
+amount = 64
+process_material = SubResource("ParticleProcessMaterial_cd44b")
+lifetime = 3.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+script = ExtResource("1_cfdkh")

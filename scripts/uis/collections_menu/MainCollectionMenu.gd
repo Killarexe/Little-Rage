@@ -3,6 +3,7 @@ class_name MainCollectionMenu
 
 @onready var animation_player: AnimationPlayer = $SelectButtons/AnimationPlayer
 @onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/Player/PlayerViewer/AnimationPlayer"
+@onready var loot_box_menu: LootBoxMenu = $LootBoxMenu
 
 func _ready():
 	MusicManager.play_music("collections_menu")
@@ -40,3 +41,6 @@ func _on_achievements_button_pressed():
 	animation_player.play_backwards("enter")
 	await animation_player.animation_finished
 	SceneManager.change_scene("res://scenes/uis/AchievementMenu.tscn")
+
+func _on_loot_box_button_pressed():
+	loot_box_menu.open()

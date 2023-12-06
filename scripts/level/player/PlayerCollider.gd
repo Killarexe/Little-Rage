@@ -3,8 +3,11 @@ class_name PlayerCollider
 
 @export var player: PlayerMovement
 
-var checkpoint_particle: Resource = load("res://scenes/instances/level/player/particles/DefaultCheckpointParticle.tscn")
+var checkpoint_particle: Resource = null
 var previous_tile_type: int
+
+func _ready():
+	checkpoint_particle = load("res://scenes/instances/level/player/particles/DefaultCheckpointParticle.tscn")
 
 func _process(_delta: float):
 	if !player.interactable:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://wcpkho1r3os3"]
+[gd_scene load_steps=34 format=3 uid="uid://wcpkho1r3os3"]
 
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_q884x"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/MainCollectionMenu.gd" id="2_e00sk"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/ParticlesMenu.gd" id="6_y5t24"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/hats_menu/HatList.gd" id="7_5na8b"]
 [ext_resource type="PackedScene" uid="uid://bkwmpwrjnhece" path="res://scenes/instances/level/player/Player.tscn" id="12_0v4n3"]
+[ext_resource type="Script" path="res://scripts/uis/collections_menu/LootBoxMenu.gd" id="13_86pp1"]
 
 [sub_resource type="Animation" id="Animation_0iwv6"]
 length = 0.001
@@ -88,6 +89,280 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_44qp2"),
 "enter": SubResource("Animation_q3uxl")
+}
+
+[sub_resource type="Animation" id="Animation_ik3hb"]
+resource_name = "entry"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 0.318471, 3.14),
+"update": 0,
+"values": [Vector2(0, 720), Vector2(0, 360), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Buttons:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"update_buttons"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CosmeticTexture:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CosmeticTexture:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../SelectButtons/LootBoxButton")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_j66g4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CosmeticTexture:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vvw41"]
+resource_name = "back"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CosmeticTexture:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 0.318471, 3.14),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 0.318471, 3.14),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 360), Vector2(0, 720)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Buttons:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_lu1mu"]
+resource_name = "entry"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"update_texture"
+}, {
+"args": [],
+"method": &"update_buttons"
+}, {
+"args": [],
+"method": &"spawn_particles"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CosmeticTexture:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 0.318471, 3.14),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CosmeticTexture:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SelectButtons/LootBoxButton")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"update_button"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sa12i"]
+_data = {
+"RESET": SubResource("Animation_j66g4"),
+"back": SubResource("Animation_vvw41"),
+"entry": SubResource("Animation_ik3hb"),
+"show": SubResource("Animation_lu1mu")
 }
 
 [sub_resource type="Animation" id="Animation_hbmar"]
@@ -244,9 +519,12 @@ theme = ExtResource("1_q884x")
 
 [node name="MainMenu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("2_e00sk")
 
 [node name="SelectButtons" type="ColorRect" parent="CanvasLayer/MainMenu"]
@@ -255,8 +533,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 66.0
-offset_right = 596.0
-offset_bottom = 680.0
+offset_right = -581.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.772549, 0.227451, 0.239216, 1)
@@ -370,6 +647,79 @@ autoplay = "enter"
 libraries = {
 "": SubResource("AnimationLibrary_dnby0")
 }
+
+[node name="LootBoxMenu" type="Control" parent="CanvasLayer/MainMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("13_86pp1")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/MainMenu/LootBoxMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 0.000244141
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.176471, 0.176471, 0.176471, 0.501961)
+
+[node name="CosmeticTexture" type="TextureRect" parent="CanvasLayer/MainMenu/LootBoxMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -180.5
+offset_right = 290.5
+offset_bottom = 180.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(290, 180)
+texture = ExtResource("5_y5klq")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MainMenu/LootBoxMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_sa12i")
+}
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/MainMenu/LootBoxMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -342.0
+offset_top = -145.0
+offset_right = 342.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_q884x")
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="BackButton" type="Button" parent="CanvasLayer/MainMenu/LootBoxMenu/Buttons"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "button.back"
+
+[node name="NextBoxButton" type="Button" parent="CanvasLayer/MainMenu/LootBoxMenu/Buttons"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+text = "button.next_box"
 
 [node name="SkinsMenu" type="Control" parent="CanvasLayer"]
 visible = false
@@ -501,6 +851,7 @@ layer_0/tile_data = PackedInt32Array(1507367, 65537, 1, 1441831, 65537, 1, 13762
 mode = 1
 
 [node name="Player" parent="DefaultLevel" instance=ExtResource("12_0v4n3")]
+position = Vector2(13, 7)
 velocity = Vector2(400, 0)
 controllable = false
 can_pause = false
@@ -526,7 +877,10 @@ libraries = {
 [connection signal="pressed" from="CanvasLayer/MainMenu/SelectButtons/Buttons/HatsButton" to="CanvasLayer/MainMenu" method="_on_hats_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/SelectButtons/Buttons/ParticlesButton" to="CanvasLayer/MainMenu" method="_on_particles_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/SelectButtons/AchievementsButton" to="CanvasLayer/MainMenu" method="_on_achievements_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/SelectButtons/LootBoxButton" to="CanvasLayer/MainMenu" method="_on_loot_box_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/SelectButtons/BackButton" to="CanvasLayer/MainMenu" method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/LootBoxMenu/Buttons/BackButton" to="CanvasLayer/MainMenu/LootBoxMenu" method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/LootBoxMenu/Buttons/NextBoxButton" to="CanvasLayer/MainMenu/LootBoxMenu" method="_on_next_box_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SkinsMenu/BackButton" to="CanvasLayer/SkinsMenu" method="_on_back_button_pressed"]
 [connection signal="item_selected" from="CanvasLayer/SkinsMenu/SkinList" to="CanvasLayer/SkinsMenu/SkinList" method="_on_item_selected"]
 [connection signal="pressed" from="CanvasLayer/HatsMenu/BackButton" to="CanvasLayer/HatsMenu" method="_on_back_button_pressed"]

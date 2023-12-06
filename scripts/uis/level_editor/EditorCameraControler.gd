@@ -44,11 +44,12 @@ func handle_touch(event: InputEventScreenTouch):
 	else:
 		touch_points.erase(event.index)
 	if can_placing && touch_points.size() > 0:
-		var viewport_size: Vector2 = Vector2(1280.0, 720.0)
-		var touch_position: Vector2 = touch_points.values()[0]
-		var touch_position_in_viewport: Vector2 = touch_position - viewport_size / 2.0
-		var touch_position_in_zoomed_viewport: Vector2 = touch_position_in_viewport / zoom
-		var touch_position_in_world: Vector2 = touch_position_in_zoomed_viewport + offset
+		#var viewport_size: Vector2 = Vector2(1280.0, 720.0)
+		#var touch_position: Vector2 = touch_points.values()[0]
+		#var touch_position_in_viewport: Vector2 = touch_position - viewport_size / 2.0
+		#var touch_position_in_zoomed_viewport: Vector2 = touch_position_in_viewport / zoom
+		#var touch_position_in_world: Vector2 = touch_position_in_zoomed_viewport + offset
+		var touch_position_in_world: Vector2 = Vector2()
 		emit_signal("on_clicked", touch_position_in_world, placing)
 	else:
 		if touch_points.size() == 2:

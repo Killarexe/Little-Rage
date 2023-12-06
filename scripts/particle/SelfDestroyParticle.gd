@@ -3,7 +3,7 @@ class_name SelfDestroyParticle
 
 var emmited: bool = false
 
-func _process(_delta):
+func _process(_delta: float):
 	if emitting:
 		emmited = true
 	elif emmited:
