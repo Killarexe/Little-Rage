@@ -58,27 +58,8 @@ func _draw():
 		draw_texture(PlayerSkinManager.get_current_skin_texture(), Vector2(-8, -8))
 		draw_texture(PlayerHatManager.get_current_hat_texture(), Vector2(-8, -24))
 		
-		var vp_size: Vector2 = get_viewport().size
-		var cam_pos: Vector2 = camera.offset
-		var vp_right: float = vp_size.x * camera.zoom.x
-		var vp_bottom: float = vp_size.y * camera.zoom.y
-		
-		var leftmost: float = -vp_right + cam_pos.x	
-		var topmost: float = -vp_bottom + cam_pos.y
-		
-		var left: float = ceil(leftmost / 16) * 16
-		var bottommost: float = abs(vp_bottom + cam_pos.y)
-		for _x in range(0, vp_size.x / camera.zoom.x + 1):
-			draw_line(Vector2(left, topmost), Vector2(left, bottommost), Color.BLACK)
-			left += 16
 
-		var top: float = ceil(topmost / 16) * 16
-		var rightmost: float = vp_right + cam_pos.x
-		for _y in range(0, vp_size.y / camera.zoom.y + 1):
-			draw_line(Vector2(leftmost, top), Vector2(rightmost, top), Color.BLACK)
-			top += 16
-
-func _on_tiles_item_selected(index):
+func _on_tiles_item_selected(index: int):
 	selected_tile = index
 
 func _on_tiles_empty_clicked(_at_position, _mouse_button_index):
@@ -127,7 +108,7 @@ func _on_save_button_pressed():
 	
 	level_map.mode = LevelPlayer.Mode.EDIT
 	
-	PopUpFrame.pop(TranslationServer.translate("ui.editor.saved") % level.id, load("res://assets/textures/ui/save.png"))
+	PopUpFrame.pop(TranslationServer.translate("message.editor.saved") % level.id, load("res://assets/textures/ui/save.png"))
 
 func _on_quit_button_pressed():
 	Input.use_accumulated_input = true

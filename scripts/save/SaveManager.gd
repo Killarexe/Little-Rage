@@ -35,14 +35,13 @@ func save():
 	data["unlocked_hats"] = PlayerHatManager.unlocked_hats
 	data["unlocked_skins"] = PlayerSkinManager.unlocked_skins
 	data["loot_box_count"] = Global.loot_boxes.loot_box_count
-	data["discord_rpc"] = DiscordRPCManager.enable_discord_rpc
 	data["sound_effects_volume"] = MusicManager.sound_effect_volume
 	data["unlocked_achievements"] = AchievementManager.unlocked_achievements
 	data["unlocked_particles"] = PlayerParticleManager.unlocked_particles
 	data["current_death_particle"] = PlayerParticleManager.current_death_particle
 	data["current_jump_particle"] = PlayerParticleManager.current_jump_particle
 	data["current_step_particle"] = PlayerParticleManager.current_step_particle
-	
+	data["discord_rpc"] = DiscordRPCManager.enable_discord_rpc
 	save_file.store_string(JSON.stringify(data))
 	save_file.close()
 
@@ -68,7 +67,6 @@ func load_save():
 		PlayerHatManager.unlocked_hats = get_or_default(data, "unlocked_hats")
 		PlayerSkinManager.unlocked_skins = get_or_default(data, "unlocked_skins")
 		Global.loot_boxes.loot_box_count = get_or_default(data, "loot_box_count")
-		DiscordRPCManager.enable_discord_rpc = get_or_default(data, "discord_rpc")
 		AchievementManager.unlocked_achievements = get_or_default(data, "unlocked_achievements")
 		PlayerParticleManager.unlocked_particles = get_or_default(data, "unlocked_particles")
 		PlayerParticleManager.current_death_particle = get_or_default(data, "current_death_particle")
@@ -76,5 +74,6 @@ func load_save():
 		PlayerParticleManager.current_step_particle = get_or_default(data, "current_step_particle")
 		MusicManager.sound_effect_volume = get_or_default(data, "sound_effects_volume")
 		MusicManager.set_music_volume(get_or_default(data, "music_volume"))
+		DiscordRPCManager.enable_discord_rpc = get_or_default(data, "discord_rpc")
 	else:
 		create_save()

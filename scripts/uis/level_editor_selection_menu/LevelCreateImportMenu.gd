@@ -58,7 +58,7 @@ func _on_create_level_button_pressed():
 	var level: Level = Level.new()
 	var level_id: String = level_creation_menu.level_name.to_lower().replace(" ", "_")
 	level.name = level_creation_menu.level_name
-	level.description = level_creation_menu.level_description
+	level.description = level_creation_menu.description
 	level.y_limit = level_creation_menu.y_limit
 	level.difficulty = level_creation_menu.difficulty
 	level.scene = load("res://scenes/instances/level/DefaultLevel.tscn")
