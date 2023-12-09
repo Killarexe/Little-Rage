@@ -16,4 +16,4 @@ You can find versions on the [release page](https://github.com/Killarexe/Little-
 
 # Edit / Export 
 
-If you want to edit/export the game. **Download** the repo and [**Install the lastest Godot Version *(4.1.1)***](https://godotengine.org/)
+If you want to edit/export the game. **Download** the repo and [**Install the lastest Godot Version *(4.2)***](https://godotengine.org/)

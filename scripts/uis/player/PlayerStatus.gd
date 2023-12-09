@@ -28,5 +28,5 @@ func on_timeout():
 	time_label.text = TranslationServer.translate("label.time") + ": " + str(time[0]).pad_zeros(2) + ":" + str(time[1]).pad_zeros(2) + ":" + str(time[2]).pad_zeros(2)
 
 func _on_rage_quit_button_pressed():
-	Achievement.unlock_achievement("rage_quit")
+	AchievementManager.unlock_achievement("rage_quit")
 	get_tree().quit()
