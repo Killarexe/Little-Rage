@@ -21,7 +21,6 @@ func _ready():
 		)
 		if language == TranslationServer.get_locale():
 			language_menu.select(i)
-	$CanvasLayer/VBoxContainer/DiscordRPC.set_pressed_no_signal(DiscordRPCManager.enable_discord_rpc)
 
 func _on_back_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
@@ -35,10 +34,6 @@ func _on_volume_slider_value_changed(value):
 
 func _on_menu_button_item_selected(index):
 	TranslationServer.set_locale(TranslationServer.get_loaded_locales()[index])
-	Global.save_game()
-
-func _on_discord_rpc_toggled(button_pressed):
-	DiscordRPCManager.enable_discord_rpc = button_pressed
 	Global.save_game()
 
 func _on_reset_buttton_pressed():

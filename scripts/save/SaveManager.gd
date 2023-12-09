@@ -14,7 +14,6 @@ const DEFAULT_SAVE: Dictionary = {
 	"level_times": {},
 	"music_volume": 50.0,
 	"sound_effects_volume": 50.0,
-	"discord_rpc": true,
 	"loot_box_count": 0,
 	"window_size": 5,
 	"lang": "en"
@@ -41,7 +40,6 @@ func save():
 	data["current_death_particle"] = PlayerParticleManager.current_death_particle
 	data["current_jump_particle"] = PlayerParticleManager.current_jump_particle
 	data["current_step_particle"] = PlayerParticleManager.current_step_particle
-	data["discord_rpc"] = DiscordRPCManager.enable_discord_rpc
 	save_file.store_string(JSON.stringify(data))
 	save_file.close()
 
@@ -74,6 +72,5 @@ func load_save():
 		PlayerParticleManager.current_step_particle = get_or_default(data, "current_step_particle")
 		MusicManager.sound_effect_volume = get_or_default(data, "sound_effects_volume")
 		MusicManager.set_music_volume(get_or_default(data, "music_volume"))
-		DiscordRPCManager.enable_discord_rpc = get_or_default(data, "discord_rpc")
 	else:
 		create_save()

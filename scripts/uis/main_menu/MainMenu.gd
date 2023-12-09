@@ -24,7 +24,6 @@ func _ready():
 	camera_animation.play("scroll")
 	logo_animation.play("logo_move")
 	AchievementManager.unlock_achievement("start_the_game")
-	DiscordRPCManager.update_rpc("In Main Menu", "basicicon", "In Main Menu")
 
 func _on_settings_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/SettingsMenu.tscn")

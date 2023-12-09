@@ -14,7 +14,6 @@ func _on_play_button_pressed():
 	var selected_level: Level = level_list.get_level_from_selection()
 	LevelManager.current_level = selected_level.id
 	SceneManager.change_packed(selected_level.scene, 1, false, 1, true)
-	DiscordRPCManager.update_rpc("Playing level '" + selected_level.name + "'", "basicicon", "Playing level '" + selected_level.name + "'",)
 
 func _on_back_button_pressed():
 	animation_player.play_backwards("enter")

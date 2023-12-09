@@ -50,10 +50,11 @@ func handle_touch(event: InputEventScreenTouch):
 		var touch_position_in_zoomed_viewport: Vector2 = touch_position_in_viewport / zoom
 		var touch_position_in_world: Vector2 = touch_position_in_zoomed_viewport + offset
 		
-		print("Touch pos: " + str(touch_position))
-		print("Touch pos in view: " + str(touch_position_in_viewport))
-		print("Touch pos in zoomed: " + str(touch_position_in_zoomed_viewport))
-		print("Touch pos in world: " + str(touch_position_in_world))
+		print_debug("Touch pos: " + str(touch_position))
+		print_debug("Touch pos in view: " + str(touch_position_in_viewport))
+		print_debug("Touch pos in zoomed: " + str(touch_position_in_zoomed_viewport))
+		print_debug("Touch pos in world: " + str(touch_position_in_world))
+		print_debug("Placing: " + str(placing))
 		
 		emit_signal("on_clicked", touch_position_in_world, placing)
 	else:

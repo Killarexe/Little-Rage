@@ -152,16 +152,6 @@ theme = ExtResource("4_tdetm")
 icon_alignment = 1
 expand_icon = true
 
-[node name="DiscordRPC" type="CheckButton" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("4_tdetm")
-text = "label.settings.discord_rpc"
-alignment = 1
-script = ExtResource("7_u0f2h")
-visible_on_mobile = false
-
 [node name="ResetButtton" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
@@ -203,7 +193,6 @@ text = "button.settings.sound_track"
 [connection signal="value_changed" from="CanvasLayer/VBoxContainer/SoundEffectVolume/Slider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="item_selected" from="CanvasLayer/VBoxContainer/WindowSize/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="item_selected" from="CanvasLayer/VBoxContainer/Language/MenuButton" to="." method="_on_menu_button_item_selected"]
-[connection signal="toggled" from="CanvasLayer/VBoxContainer/DiscordRPC" to="." method="_on_discord_rpc_toggled"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ResetButtton" to="." method="_on_reset_buttton_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SoundTrackButton" to="." method="_on_sound_track_button_pressed"]

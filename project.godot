@@ -30,11 +30,9 @@ SceneManager="*res://scenes/globals/SceneManager.tscn"
 Overlay="*res://scenes/globals/Overlay.tscn"
 PopUpFrame="*res://scenes/globals/PopUpFrame.tscn"
 UpdateChecker="*res://scenes/globals/UpdateChecker.tscn"
-DiscordRPCManager="*res://scripts/integration/discord/DiscordRPCManager.gd"
 ExperiementalFrame="*res://scenes/globals/ExperiementalFrame.tscn"
 AchievementManager="*res://scripts/achievement/AchievementManager.gd"
 PlayerParticleManager="*res://scripts/level/player/cosmetic/particle/PlayerParticleManager.gd"
-DiscordLoader="*res://addons/discord-sdk-gd/nodes/core_updater.gd"
 LocalMultiplayer="*res://scripts/multiplayer/local/LocalMultiplayer.gd"
 
 [display]
@@ -51,7 +49,7 @@ movie_writer/movie_file="/home/killarexe/Bureau/Projets/Godot/LittleRage/builds/
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-sdk-gd/plugin.cfg")
+enabled=PackedStringArray()
 
 [importer_defaults]
 

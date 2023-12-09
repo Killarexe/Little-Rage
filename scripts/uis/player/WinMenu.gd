@@ -75,4 +75,3 @@ func _on_next_level_pressed():
 		LevelManager.current_level = current_level
 		MusicManager.play_music("level_plains")
 		SceneManager.change_packed(level.scene)
-		DiscordRPCManager.update_rpc("Playing level '" + level.name + "'", "basicicon", "Playing level '" + level.name + "'",)

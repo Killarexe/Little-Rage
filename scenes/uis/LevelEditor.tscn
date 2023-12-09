@@ -57,9 +57,9 @@ editor = NodePath("../../..")
 [node name="SaveConfirmationDialog" type="ConfirmationDialog" parent="CanvasLayer"]
 title = "ui.save_level"
 size = Vector2i(320, 192)
-ok_button_text = "ui.editor.save"
-dialog_text = "ui.level_editor.save_option"
-cancel_button_text = "ui.editor.dont_save"
+ok_button_text = "button.save"
+dialog_text = "message.level_editor.save_option"
+cancel_button_text = "button.dont_save"
 script = ExtResource("5_i2jn6")
 
 [node name="PlayButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]

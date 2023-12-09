@@ -31,8 +31,6 @@ func _ready():
 	level_id = level.id
 	LevelManager.current_level = ""
 	not_saved = false
-	
-	DiscordRPCManager.update_rpc("In Editor", "basicicon", "In Editor")
 
 func _process(_delta: float):
 	if !Global.is_mobile:

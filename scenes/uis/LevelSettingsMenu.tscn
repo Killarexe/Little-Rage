@@ -61,7 +61,7 @@ layout_mode = 2
 min_value = 128.0
 max_value = 1024.0
 value = 128.0
-prefix = "level.y_limit"
+prefix = "label.level.y_limit"
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
