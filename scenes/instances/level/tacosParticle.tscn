@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqtbxechhhw47"]
 
-[ext_resource type="Texture2D" uid="uid://cv5jvtidjxyfp" path="res://assets/textures/ui/tacos.png" id="1_iihhn"]
+[ext_resource type="Texture2D" uid="uid://cv5jvtidjxyfp" path="res://assets/textures/ui/particles_textures/tacos.png" id="1_iihhn"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dur1k"]
 emission_shape = 3

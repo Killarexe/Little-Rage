@@ -25,14 +25,14 @@ func _ready():
 func _on_back_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
 
-func _on_sfx_slider_value_changed(value):
+func _on_sfx_slider_value_changed(value: int):
 	MusicManager.sound_effect_volume = value
 	Global.save_game()
 
-func _on_volume_slider_value_changed(value):
+func _on_volume_slider_value_changed(value: int):
 	MusicManager.set_music_volume(value)
 
-func _on_menu_button_item_selected(index):
+func _on_menu_button_item_selected(index: int):
 	TranslationServer.set_locale(TranslationServer.get_loaded_locales()[index])
 	Global.save_game()
 
@@ -47,7 +47,7 @@ func _on_sound_track_button_pressed():
 	PlayerSkinManager.unlock_skin("rgb")
 	SceneManager.change_scene("res://scenes/uis/SoundTrackMenu.tscn")
 
-func _on_option_button_item_selected(index):
+func _on_option_button_item_selected(index: int):
 	Global.window_size = index
 	Global.update_window(index)
 	Global.save_game()

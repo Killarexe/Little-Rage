@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3leilbjuyb5y"
-path="res://.godot/imported/move.png-fcddff8144452f709d0fd24435d1d6a0.ctex"
+uid="uid://c5yejwo4hxfqa"
+path="res://.godot/imported/red-circle.png-4e688b1d7324e0ad27f6ace8d4928f5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/move.png"
-dest_files=["res://.godot/imported/move.png-fcddff8144452f709d0fd24435d1d6a0.ctex"]
+source_file="res://assets/textures/ui/icons/red-circle.png"
+dest_files=["res://.godot/imported/red-circle.png-4e688b1d7324e0ad27f6ace8d4928f5e.ctex"]
 
 [params]
 

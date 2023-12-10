@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv5jvtidjxyfp"
-path="res://.godot/imported/tacos.png-0b6c14554066f813641ae54b577caefc.ctex"
+uid="uid://dxd7u5xffvp21"
+path="res://.godot/imported/left.png-43509832dd0767701403f7b466209e55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/tacos.png"
-dest_files=["res://.godot/imported/tacos.png-0b6c14554066f813641ae54b577caefc.ctex"]
+source_file="res://assets/textures/ui/mobile_player_interface/left.png"
+dest_files=["res://.godot/imported/left.png-43509832dd0767701403f7b466209e55.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://culry7vxbj16y"
-path="res://.godot/imported/placer.png-420d6ac1c1f1cf3992e400c7035acc17.ctex"
+uid="uid://ksfev1r6k01h"
+path="res://.godot/imported/quit.png-7d1b1ff9c544ad669a19a9bf5bd806f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ui/placer.png"
-dest_files=["res://.godot/imported/placer.png-420d6ac1c1f1cf3992e400c7035acc17.ctex"]
+source_file="res://assets/textures/ui/icons/quit.png"
+dest_files=["res://.godot/imported/quit.png-7d1b1ff9c544ad669a19a9bf5bd806f3.ctex"]
 
 [params]
 
