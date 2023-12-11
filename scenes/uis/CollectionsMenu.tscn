@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://wcpkho1r3os3"]
+[gd_scene load_steps=37 format=3 uid="uid://wcpkho1r3os3"]
 
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_q884x"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/MainCollectionMenu.gd" id="2_e00sk"]
@@ -6,11 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://b5mfjkd164e3g" path="res://assets/textures/player/hats/test_hat.png" id="4_n7by3"]
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/level/DefaultLevel.tscn" id="4_oxrq8"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/SkinsMenu.gd" id="4_qs3l5"]
+[ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/icons/quit.png" id="5_thpgw"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/skins_menu/SkinList.gd" id="5_v2mtl"]
-[ext_resource type="Texture2D" uid="uid://c7mwfhdfqw7dp" path="res://assets/textures/ui/icon.png" id="5_y5klq"]
+[ext_resource type="Texture2D" uid="uid://c7mwfhdfqw7dp" path="res://assets/textures/ui/icons/icon.png" id="5_y5klq"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/HatsMenu.gd" id="5_ya7cv"]
-[ext_resource type="Texture2D" uid="uid://c5yejwo4hxfqa" path="res://assets/textures/ui/red-circle.png" id="6_eeex5"]
+[ext_resource type="Texture2D" uid="uid://cy8unx2tygxgd" path="res://assets/textures/ui/icons/trophy.png" id="5_yo61c"]
+[ext_resource type="Texture2D" uid="uid://c5yejwo4hxfqa" path="res://assets/textures/ui/icons/red-circle.png" id="6_eeex5"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/LootBoxButton.gd" id="6_ptwc0"]
+[ext_resource type="Texture2D" uid="uid://ckml4862knfib" path="res://assets/textures/ui/icons/chest.png" id="6_w1d50"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/ParticlesMenu.gd" id="6_y5t24"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/hats_menu/HatList.gd" id="7_5na8b"]
 [ext_resource type="PackedScene" uid="uid://bkwmpwrjnhece" path="res://scenes/instances/level/player/Player.tscn" id="12_0v4n3"]
@@ -89,6 +92,97 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_44qp2"),
 "enter": SubResource("Animation_q3uxl")
+}
+
+[sub_resource type="Animation" id="Animation_j66g4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CosmeticTexture:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vvw41"]
+resource_name = "back"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CosmeticTexture:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 0.318471, 3.14),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Background:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 0.318471, 3.14),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 360), Vector2(0, 720)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Buttons:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_ik3hb"]
@@ -190,97 +284,6 @@ tracks/7/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "values": []
-}
-
-[sub_resource type="Animation" id="Animation_j66g4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CosmeticTexture:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_vvw41"]
-resource_name = "back"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CosmeticTexture:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 0.318471, 3.14),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.5, 0.5), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Background:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Background:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.5),
-"transitions": PackedFloat32Array(1, 0.318471, 3.14),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 360), Vector2(0, 720)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Buttons:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_lu1mu"]
@@ -570,7 +573,7 @@ custom_minimum_size = Vector2(384, 192)
 layout_mode = 2
 disabled = true
 text = "button.particles"
-icon = ExtResource("3_hfyt6")
+icon = ExtResource("5_thpgw")
 icon_alignment = 2
 expand_icon = true
 
@@ -582,8 +585,7 @@ offset_right = 1193.0
 offset_bottom = 84.0
 theme = ExtResource("1_q884x")
 text = "button.achievements"
-icon = ExtResource("5_y5klq")
-alignment = 0
+icon = ExtResource("5_yo61c")
 icon_alignment = 2
 expand_icon = true
 
@@ -595,7 +597,7 @@ offset_right = 1193.0
 offset_bottom = 162.0
 theme = ExtResource("1_q884x")
 text = "button.loot_boxes"
-icon = ExtResource("5_y5klq")
+icon = ExtResource("6_w1d50")
 alignment = 0
 icon_alignment = 2
 expand_icon = true
@@ -628,10 +630,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MainMenu/SelectButtons/LootBoxButton/Circle"]
-autoplay = "zoom"
 libraries = {
 "": SubResource("AnimationLibrary_pvj0d")
 }
+autoplay = "zoom"
 
 [node name="BackButton" type="Button" parent="CanvasLayer/MainMenu/SelectButtons"]
 layout_mode = 0
@@ -643,10 +645,10 @@ theme = ExtResource("1_q884x")
 text = "button.back"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MainMenu/SelectButtons"]
-autoplay = "enter"
 libraries = {
 "": SubResource("AnimationLibrary_dnby0")
 }
+autoplay = "enter"
 
 [node name="LootBoxMenu" type="Control" parent="CanvasLayer/MainMenu"]
 visible = false
@@ -740,7 +742,7 @@ offset_bottom = 694.0
 theme = ExtResource("1_q884x")
 text = "button.back"
 
-[node name="SkinList" type="ItemList" parent="CanvasLayer/SkinsMenu"]
+[node name="SkinList" type="ItemList" parent="CanvasLayer/SkinsMenu" node_paths=PackedStringArray("player")]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 172.0
@@ -749,6 +751,7 @@ theme_override_constants/h_separation = 48
 icon_mode = 0
 icon_scale = 4.5
 script = ExtResource("5_v2mtl")
+player = NodePath("../../../DefaultLevel/Player")
 
 [node name="HatsMenu" type="Control" parent="CanvasLayer"]
 visible = false
@@ -769,7 +772,7 @@ offset_bottom = 694.0
 theme = ExtResource("1_q884x")
 text = "button.back"
 
-[node name="HatList" type="ItemList" parent="CanvasLayer/HatsMenu"]
+[node name="HatList" type="ItemList" parent="CanvasLayer/HatsMenu" node_paths=PackedStringArray("player")]
 custom_minimum_size = Vector2(1280, 172)
 layout_mode = 0
 offset_right = 40.0
@@ -778,6 +781,7 @@ theme = ExtResource("1_q884x")
 theme_override_constants/h_separation = 32
 icon_scale = 8.0
 script = ExtResource("7_5na8b")
+player = NodePath("../../../DefaultLevel/Player")
 
 [node name="ParticlesMenu" type="Control" parent="CanvasLayer"]
 visible = false
@@ -860,10 +864,10 @@ camera_enabled = false
 motion = Vector2(400, 0)
 
 [node name="PlayerAnimator" type="AnimationPlayer" parent="DefaultLevel/Player"]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_65662")
 }
+autoplay = "walk"
 
 [node name="PlayerViewer" type="Camera2D" parent="DefaultLevel/Player"]
 zoom = Vector2(2, 2)

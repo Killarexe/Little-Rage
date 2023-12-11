@@ -1,9 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://chmck8yuda2o3"]
+[gd_scene load_steps=27 format=3 uid="uid://chmck8yuda2o3"]
 
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/level/DefaultLevel.tscn" id="1_cys63"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_pxu12"]
 [ext_resource type="Script" path="res://scripts/uis/solo_menu/MainMenu.gd" id="2_dttf3"]
 [ext_resource type="Texture2D" uid="uid://c7mwfhdfqw7dp" path="res://assets/textures/ui/icons/icon.png" id="2_ma3wp"]
+[ext_resource type="Texture2D" uid="uid://bc081015vjirg" path="res://assets/textures/ui/icons/default_levels.png" id="3_pkov0"]
+[ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/icons/quit.png" id="4_8htda"]
 [ext_resource type="LabelSettings" uid="uid://cd8gvl774mr2v" path="res://assets/style/label_settings/medium_label.tres" id="4_rq44t"]
 [ext_resource type="PackedScene" uid="uid://bkwmpwrjnhece" path="res://scenes/instances/level/player/Player.tscn" id="4_t7rns"]
 [ext_resource type="Script" path="res://scripts/uis/solo_menu/DefaultLevelsSelectionMenu.gd" id="5_0r2vh"]
@@ -282,10 +284,9 @@ offset_bottom = 124.0
 grow_vertical = 2
 theme = ExtResource("1_pxu12")
 text = "button.default_levels"
-icon = ExtResource("2_ma3wp")
+icon = ExtResource("3_pkov0")
 icon_alignment = 1
 vertical_icon_alignment = 0
-expand_icon = true
 
 [node name="CustomLevelsButton" type="Button" parent="CanvasLayer/SoloMainMenu/Buttons"]
 layout_mode = 1
@@ -320,7 +321,7 @@ grow_vertical = 2
 theme = ExtResource("1_pxu12")
 disabled = true
 text = "button.weekly_level"
-icon = ExtResource("2_ma3wp")
+icon = ExtResource("4_8htda")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
@@ -477,10 +478,10 @@ camera_enabled = false
 motion = Vector2(400, 0)
 
 [node name="PlayerAnimator" type="AnimationPlayer" parent="DefaultLevel/Player"]
-autoplay = "walk"
 libraries = {
 "": SubResource("AnimationLibrary_mxgr3")
 }
+autoplay = "walk"
 
 [node name="PlayerCamera" type="Camera2D" parent="DefaultLevel/Player"]
 offset = Vector2(0, -128)

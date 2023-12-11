@@ -9,11 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://bruwtum1c48go" path="res://scenes/uis/PauseMenu.tscn" id="5_iaj63"]
 [ext_resource type="Script" path="res://scripts/level/player/CameraController.gd" id="5_u0egx"]
 [ext_resource type="PackedScene" uid="uid://c027b4usebimx" path="res://scenes/uis/WinMenu.tscn" id="6_6ee8y"]
-[ext_resource type="Texture2D" uid="uid://dxd7u5xffvp21" path="res://assets/textures/ui/left.png" id="6_p1hc3"]
-[ext_resource type="Texture2D" uid="uid://bcvu2cbuyoknu" path="res://assets/textures/ui/right.png" id="7_baypg"]
+[ext_resource type="Texture2D" uid="uid://dxd7u5xffvp21" path="res://assets/textures/ui/mobile_player_interface/left.png" id="6_p1hc3"]
+[ext_resource type="Texture2D" uid="uid://bcvu2cbuyoknu" path="res://assets/textures/ui/mobile_player_interface/right.png" id="7_baypg"]
 [ext_resource type="Script" path="res://scripts/level/player/PlayerTimer.gd" id="8_3kxck"]
-[ext_resource type="Texture2D" uid="uid://cv22lwoysa8ap" path="res://assets/textures/ui/jump.png" id="8_5eel8"]
-[ext_resource type="Texture2D" uid="uid://buw3bxnswai6i" path="res://assets/textures/ui/pause.png" id="9_vwqws"]
+[ext_resource type="Texture2D" uid="uid://cv22lwoysa8ap" path="res://assets/textures/ui/mobile_player_interface/jump.png" id="8_5eel8"]
+[ext_resource type="Texture2D" uid="uid://buw3bxnswai6i" path="res://assets/textures/ui/mobile_player_interface/pause.png" id="9_vwqws"]
 [ext_resource type="Script" path="res://scripts/uis/player/PlayerMenus.gd" id="12_k24f3"]
 [ext_resource type="PackedScene" uid="uid://t7l5lywub7jg" path="res://scenes/instances/level/player/uis/PlayerStatus.tscn" id="13_p0n42"]
 [ext_resource type="Script" path="res://scripts/level/player/PlayerCollider.gd" id="15_pys0j"]
@@ -83,12 +83,12 @@ script = ExtResource("5_u0egx")
 player = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "camera_enter"
 libraries = {
 "": SubResource("AnimationLibrary_pm6cf"),
 "PlayerAnimations": ExtResource("4_jqgtb")
 }
-blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
+autoplay = "camera_enter"
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
 
 [node name="Menus" type="Control" parent="." node_paths=PackedStringArray("player")]
 layout_mode = 3

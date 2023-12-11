@@ -36,10 +36,9 @@ layer_1/tile_data = PackedInt32Array(9, 131073, 0, 65545, 131073, 1, 131081, 131
 mode = 1
 
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
-title = "ui.settings.reset_save"
+title = "button.reset_save"
 initial_position = 2
 size = Vector2i(300, 100)
-visible = true
 ok_button_text = "label.yes"
 dialog_text = "message.settings.reset_save.confirm"
 cancel_button_text = "label.no"

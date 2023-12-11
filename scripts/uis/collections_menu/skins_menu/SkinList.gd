@@ -1,6 +1,6 @@
 extends ItemList
 
-@export var player_skin: PlayerSkinSprite
+@export var player: PlayerMovement
 
 var skin_ids: Array[String] = []
 
@@ -13,5 +13,5 @@ func _ready():
 
 func _on_item_selected(index: int):
 	PlayerSkinManager.current_skin = skin_ids[index]
-	player_skin.update_skin()
+	player.skin.update_skin()
 	Global.save_game()
