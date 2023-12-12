@@ -34,7 +34,7 @@ func on_collide(type: int, pos: Vector2):
 		2:
 			if previous_tile_type != type:
 				player.spawn_point = player_position
-				Global.instanceNodeAtPos(checkpoint_particle, player.get_parent(), pos + Vector2(0, 16))
+				Global.instanceNodeAtPos(checkpoint_particle, player.get_parent(), pos * Vector2(16, 16) - Vector2(-8, 8))
 				player.on_setting_spawnpoint.emit(pos)
 		3:
 			if previous_tile_type != type:
