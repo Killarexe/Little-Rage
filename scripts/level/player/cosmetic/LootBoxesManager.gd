@@ -3,12 +3,13 @@ class_name LootBoxesManager
 var loot_box_count: int = 0
 
 #chance: 0 - 1
-func add_loot_box(chance: float):
-	if randf() > chance:
+func add_loot_box(chance: float, always: bool = false):
+	var random: float = randf()
+	if random <= chance || always:
 		loot_box_count += 1
 		Global.save_game()
 		PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))
-		PopUpFrame.pop_translated("popup.new_loot_box")
+		PopUpFrame.pop_translated("message.popup.new_loot_box", load("res://assets/textures/ui/icons/chest.png"))
 
 func has_loot_box() ->  bool:
 	return loot_box_count > 0

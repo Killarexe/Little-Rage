@@ -57,5 +57,12 @@ func pick_random() -> String:
 				offset += hat.chance
 	return "no_hat"
 
+func has_unlocked_unhiddens() -> bool:
+	var hidden_hats: int = 0
+	for hat in hats:
+		if hat.is_hidden:
+			hidden_hats += 1
+	return unlocked_hats.size() >= hats.size() - hidden_hats
+
 func has_unlocked_all() -> bool:
 	return unlocked_hats.size() >= hats.size()

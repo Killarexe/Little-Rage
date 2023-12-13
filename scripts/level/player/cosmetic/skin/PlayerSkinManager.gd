@@ -54,5 +54,12 @@ func pick_random() -> String:
 				offset += skin.chance
 	return "default"
 
+func has_unlocked_unhiddens() -> bool:
+	var hidden_skins: int = 0
+	for skin in skins:
+		if skin.is_hidden:
+			hidden_skins += 1
+	return unlocked_skins.size() >= skins.size() - hidden_skins
+
 func has_unlocked_all() -> bool:
 	return unlocked_skins.size() >= skins.size()

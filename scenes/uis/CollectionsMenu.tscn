@@ -598,7 +598,6 @@ offset_bottom = 162.0
 theme = ExtResource("1_q884x")
 text = "button.loot_boxes"
 icon = ExtResource("6_w1d50")
-alignment = 0
 icon_alignment = 2
 expand_icon = true
 script = ExtResource("6_ptwc0")

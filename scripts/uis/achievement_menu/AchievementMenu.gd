@@ -1,4 +1,12 @@
 extends CanvasLayer
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 func _ready():
 	MusicManager.play_music("achievement_menu")
+	animation_player.play("entry")
+
+func _on_back_button_pressed():
+	animation_player.play_backwards("entry")
+	await animation_player.animation_finished
+	SceneManager.change_scene("res://scenes/uis/CollectionsMenu.tscn")

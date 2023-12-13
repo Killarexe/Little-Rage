@@ -1,7 +1,8 @@
 extends ResourceElement
 class_name EditorTile
 
-@export var tile_dictionary: Dictionary
+@export var tile_dictionary: Dictionary = {}
+@export var icon_region: Rect2i = Rect2i(-1, -1, -1, -1)
 
 func new(_tile_dictionary: Dictionary):
 	self.tile_dictionary = _tile_dictionary

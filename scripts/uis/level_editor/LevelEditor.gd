@@ -8,7 +8,7 @@ class_name LevelEditor
 @onready var save_confirmation_dialog: ConfirmationDialog = $CanvasLayer/SaveConfirmationDialog
 
 var level_id: String = ""
-var atlas: CompressedTexture2D = load("res://assets/textures/tileset.png")
+var atlas: CompressedTexture2D = load("res://assets/textures/tilesets/tileset.png")
 var tile_set: TileSet = load("res://assets/Tileset.tres")
 var is_panning: bool = false
 var can_place: bool = false                                                                                  
@@ -106,7 +106,7 @@ func _on_save_button_pressed():
 	
 	level_map.mode = LevelPlayer.Mode.EDIT
 	
-	PopUpFrame.pop(TranslationServer.translate("message.editor.saved") % level.id, load("res://assets/textures/ui/save.png"))
+	PopUpFrame.pop(TranslationServer.translate("message.editor.saved") % level.id, load("res://assets/textures/ui/icons/save.png"))
 
 func _on_quit_button_pressed():
 	Input.use_accumulated_input = true

@@ -12,7 +12,9 @@ func on_receive(result: int, response_code: int, _headers, body):
 		var version: GameVersion = GameVersion.from_string(version_name)
 		var version_flag: GameVersion.GameVersionFlag = Global.GAME_VERSION.compare(version)
 		if version_flag == GameVersion.GameVersionFlag.HIGHER:
-			PopUpFrame.pop_translated("ui.update", load("res://assets/textures/ui/update.png"))
+			PopUpFrame.pop_translated("message.update", load("res://assets/textures/ui/icons/update.png"))
+		elif version_flag == GameVersion.GameVersionFlag.LOWER:
+			AchievementManager.unlock_achievement("beta_tester")
 	else:
 		print("Failed to get latest version:\n\tResponse code: " + str(response_code) + "\n\tResult: " + str(result))
 	request_completed.disconnect(on_receive)

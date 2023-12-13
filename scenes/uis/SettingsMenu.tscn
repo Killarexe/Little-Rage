@@ -4,8 +4,8 @@
 [ext_resource type="Animation" uid="uid://cx04at5pdf11i" path="res://assets/animations/camera_scroll.res" id="1_nbals"]
 [ext_resource type="Script" path="res://scripts/uis/SettingsMenu.gd" id="1_y0ggs"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="4_tdetm"]
-[ext_resource type="LabelSettings" uid="uid://6bd6ywcaci6c" path="res://assets/style/label_settings/big_label.tres" id="5_th61l"]
-[ext_resource type="LabelSettings" uid="uid://cd8gvl774mr2v" path="res://assets/style/label_settings/medium_label.tres" id="6_a5c82"]
+[ext_resource type="LabelSettings" uid="uid://bf4264al524mo" path="res://assets/style/label_settings/shadow_big_label.tres" id="5_7dhlh"]
+[ext_resource type="LabelSettings" uid="uid://dfu1k8upq5eqm" path="res://assets/style/label_settings/shadow_medium_label.tres" id="6_70nof"]
 [ext_resource type="Script" path="res://scripts/uis/MobileVisiblity.gd" id="7_u0f2h"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0jn6v"]
@@ -56,33 +56,46 @@ offset_bottom = 67.0
 grow_horizontal = 2
 theme = ExtResource("4_tdetm")
 text = "button.settings"
-label_settings = ExtResource("5_th61l")
+label_settings = ExtResource("5_7dhlh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 90.0
+offset_right = -14.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.223529, 0.223529, 0.223529, 0.501961)
+
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-custom_minimum_size = Vector2(1280, 640)
+custom_minimum_size = Vector2(1200, 580)
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -640.0
-offset_top = -640.0
-offset_right = 640.0
+offset_left = -600.0
+offset_top = -620.0
+offset_right = 600.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 32
 
 [node name="MusicVolume" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(1280, 0)
+custom_minimum_size = Vector2(1100, 0)
 layout_mode = 2
 
 [node name="Text" type="Label" parent="CanvasLayer/VBoxContainer/MusicVolume"]
 layout_mode = 2
 theme = ExtResource("4_tdetm")
 text = "label.settings.music_volume"
-label_settings = ExtResource("6_a5c82")
+label_settings = ExtResource("6_70nof")
 
 [node name="Slider" type="HSlider" parent="CanvasLayer/VBoxContainer/MusicVolume"]
 layout_mode = 2
@@ -91,14 +104,14 @@ size_flags_vertical = 4
 theme = ExtResource("4_tdetm")
 
 [node name="SoundEffectVolume" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(1280, 0)
+custom_minimum_size = Vector2(1100, 0)
 layout_mode = 2
 
 [node name="Text" type="Label" parent="CanvasLayer/VBoxContainer/SoundEffectVolume"]
 layout_mode = 2
 theme = ExtResource("4_tdetm")
 text = "label.settings.sound_effect_volume"
-label_settings = ExtResource("6_a5c82")
+label_settings = ExtResource("6_70nof")
 
 [node name="Slider" type="HSlider" parent="CanvasLayer/VBoxContainer/SoundEffectVolume"]
 layout_mode = 2
@@ -107,7 +120,7 @@ size_flags_vertical = 4
 theme = ExtResource("4_tdetm")
 
 [node name="WindowSize" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(1280, 0)
+custom_minimum_size = Vector2(1100, 0)
 layout_mode = 2
 script = ExtResource("7_u0f2h")
 visible_on_mobile = false
@@ -116,7 +129,7 @@ visible_on_mobile = false
 layout_mode = 2
 theme = ExtResource("4_tdetm")
 text = "label.settings.window_size"
-label_settings = ExtResource("6_a5c82")
+label_settings = ExtResource("6_70nof")
 
 [node name="OptionButton" type="OptionButton" parent="CanvasLayer/VBoxContainer/WindowSize"]
 layout_mode = 2
@@ -139,21 +152,22 @@ popup/item_6/text = "label.fullscreen"
 popup/item_6/id = 6
 
 [node name="Language" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
-custom_minimum_size = Vector2(1280, 0)
+custom_minimum_size = Vector2(1100, 0)
 layout_mode = 2
 
 [node name="Text" type="Label" parent="CanvasLayer/VBoxContainer/Language"]
 layout_mode = 2
 theme = ExtResource("4_tdetm")
 text = "label.settings.language"
-label_settings = ExtResource("6_a5c82")
+label_settings = ExtResource("6_70nof")
 
 [node name="MenuButton" type="OptionButton" parent="CanvasLayer/VBoxContainer/Language"]
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 theme = ExtResource("4_tdetm")
-icon_alignment = 1
+icon_alignment = 2
 expand_icon = true
+fit_to_longest_item = false
 
 [node name="ResetButtton" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)

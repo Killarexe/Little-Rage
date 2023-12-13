@@ -8,4 +8,4 @@ tile_dictionary = {
 Vector2i(0, 0): Vector2i(2, 6),
 Vector2i(0, 1): Vector2i(2, 7)
 }
-id = "door"
+icon_region = Rect2i(32, 96, 16, 32)

@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var sound_effect: AudioStreamPlayer = $Frame/SoundEffect
 @onready var icon: TextureRect = $Frame/Icon
 @onready var text: Label = $Frame/Text
+
 var on_pressed: Callable = func():pass
 
 func set_on_pressed(value: Callable):

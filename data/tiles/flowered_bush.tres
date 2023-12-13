@@ -12,4 +12,4 @@ Vector2i(0, 0): Vector2i(6, 7),
 Vector2i(1, -1): Vector2i(7, 6),
 Vector2i(1, 0): Vector2i(7, 7)
 }
-id = "flowered_bush"
+icon_region = Rect2i(80, 96, 48, 32)

@@ -7,4 +7,4 @@ script = ExtResource("1_luv0u")
 tile_dictionary = {
 Vector2i(0, 0): Vector2i(4, 3)
 }
-id = "checkpoint"
+icon_region = Rect2i(-1, -1, -1, -1)
