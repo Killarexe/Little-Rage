@@ -24,7 +24,12 @@ func play_animation():
 	Global.can_pause = false
 	get_tree().paused = true
 	animation_player.play("entry")
-	MusicManager.play_music("start_level_var1")
+	var music_id: String = "start_level_var1"
+	if LevelManager.get_level_best_time(LevelManager.current_level) == [0, 0, 0]:
+		music_id = "start_level"
+	elif PlayerHatManager.has_unlocked_unhiddens() && PlayerSkinManager.has_unlocked_unhiddens():
+		music_id = "start_level_var2"
+	MusicManager.play_music(music_id)
 	await MusicManager.finished
 	player_camera.enabled = true
 	animation_camera.enabled = false

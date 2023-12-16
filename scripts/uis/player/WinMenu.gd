@@ -39,11 +39,13 @@ func open(playing_mode: Mode, time: Array[int], death_count: int):
 			var is_best_time: bool = LevelManager.is_best_time(time)
 			time_label.start(time, death_count)
 			next_level_button.visible = LevelManager.is_default_level(LevelManager.current_level)
-			if is_best_time && LevelManager.get_level_best_time(LevelManager.current_level) != [0, 0, 0]:
+			if is_best_time:
+				if LevelManager.get_level_best_time(LevelManager.current_level) != [0, 0, 0]:
+					Global.loot_boxes.add_loot_box(0, true)
+					best_time_animation.play("pop_besttime")
+				else:
+					Global.loot_boxes.add_loot_box((time_sum * time_sum) / pow(3 * 99, 2))
 				LevelManager.set_level_best_time(time)
-				Global.loot_boxes.add_loot_box(0, true)
-				await time_label.on_terminated
-				best_time_animation.play("pop_besttime")
 			else:
 				Global.loot_boxes.add_loot_box((time_sum * time_sum) / pow(3 * 99, 2))
 		Mode.MULTIPLAYER:

@@ -6,46 +6,6 @@
 [ext_resource type="Script" path="res://scripts/uis/achievement_menu/AchievementInformation.gd" id="4_ql82p"]
 [ext_resource type="LabelSettings" uid="uid://dfu1k8upq5eqm" path="res://assets/style/label_settings/shadow_medium_label.tres" id="5_wawtv"]
 
-[sub_resource type="Animation" id="Animation_7tivd"]
-resource_name = "entry"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AchievementList:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 0.318471, 3.14),
-"update": 0,
-"values": [Vector2(-1280, 0), Vector2(-640, 0), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BackButton:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.5),
-"transitions": PackedFloat32Array(1, 0.318471, 3.14),
-"update": 0,
-"values": [Vector2(-1256, 622), Vector2(-628, 622), Vector2(24, 622)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AchievementInformation:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 0.318471, 3.14),
-"update": 0,
-"values": [Vector2(1280, 0), Vector2(640, 0), Vector2(0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_un7id"]
 length = 0.001
 tracks/0/type = "value"
@@ -174,6 +134,46 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_7tivd"]
+resource_name = "entry"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AchievementList:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 0.318471, 3.14),
+"update": 0,
+"values": [Vector2(-1280, 0), Vector2(-640, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 0.318471, 3.14),
+"update": 0,
+"values": [Vector2(-1256, 622), Vector2(-628, 622), Vector2(24, 622)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AchievementInformation:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 0.318471, 3.14),
+"update": 0,
+"values": [Vector2(1280, 0), Vector2(640, 0), Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fxehi"]
 _data = {
 "RESET": SubResource("Animation_un7id"),
@@ -200,9 +200,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
-offset_top = -98.0
+offset_top = 622.0
 offset_right = 263.0
-offset_bottom = -24.0
+offset_bottom = 696.0
 grow_vertical = 0
 theme = ExtResource("1_yu7n6")
 text = "button.back"
@@ -212,7 +212,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 0.0012207
+offset_right = 1280.0
+offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -228,6 +229,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="AchievementName" type="Label" parent="AchievementInformation"]
+clip_contents = true
 custom_minimum_size = Vector2(520, 103)
 layout_mode = 0
 offset_left = 760.0
@@ -238,6 +240,8 @@ theme = ExtResource("1_yu7n6")
 label_settings = ExtResource("5_wawtv")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 1
+clip_text = true
 
 [node name="ColorRect" type="ColorRect" parent="AchievementInformation"]
 z_index = -1
@@ -258,8 +262,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 11.0
 offset_top = 15.0
-offset_right = -12.0017
-offset_bottom = -12.0
+offset_right = 507.998
+offset_bottom = 348.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_yu7n6")
