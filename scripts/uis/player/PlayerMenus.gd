@@ -6,7 +6,7 @@ class_name PlayerMenus
 @onready var mobile_control: CanvasLayer = $MobileControl
 
 func _ready():
-	mobile_control.visible = player.controllable && Global.is_mobile
+	mobile_control.visible = player.controllable && Game.is_mobile
 
 func _unhandled_key_input(event: InputEvent):
 	if event is InputEventKey:

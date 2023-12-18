@@ -7,21 +7,14 @@ extends Control
 
 func _ready():
 	get_tree().paused = false
-	var easter_title_screen: bool = PlayerHatManager.has_unlocked_unhiddens() && PlayerSkinManager.has_unlocked_unhiddens()
+	var easter_title_screen: bool = Game.has_unlocked_unhiddens()
 	var music: String = "title_screen"
 	var animation: String = "start_menu"
 	
-	var date = Time.get_datetime_dict_from_system()
-	var day: int = date["day"]
-	var month: int = date["month"]
-	if (day >= 23 && day <= 26) && month == 12:
+	if Game.current_event == Game.Event.CHRISTMAS:
 		music = "title_screen_christmas_special"
-		RenderingServer.set_default_clear_color(Color.hex(0x80cff7FF))
-		AchievementManager.unlock_achievement("christmas_event")
-	elif (day == 30 || day == 31) && month == 10:
+	elif Game.current_event == Game.Event.HALLOWEEN:
 		music = "title_screen_halloween_special"
-		RenderingServer.set_default_clear_color(Color.hex(0x1b1c28FF))
-		AchievementManager.unlock_achievement("halloween_event")
 	elif easter_title_screen:
 		music = "title_screen_easter"
 	
@@ -30,8 +23,8 @@ func _ready():
 		animation = "start_menu_easter"
 	MusicManager.play_music(music)
 	
-	if Global.starting:
-		Global.starting = false
+	if Game.starting:
+		Game.starting = false
 		spash_text.visible = false
 		logo_animation.play(animation)
 		await logo_animation.animation_finished
@@ -56,5 +49,5 @@ func _on_level_editor_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/LevelEditorSelectionMenu.tscn")
 
 func _on_quit_button_pressed():
-	Global.save_game()
+	SaveManager.save_game()
 	get_tree().quit()

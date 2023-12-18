@@ -20,6 +20,11 @@ func on_death(death_count: int):
 		animation_player.play("pop_ragequit_button")
 	elif ragequit_button.visible:
 		animation_player.play_backwards("pop_ragequit_button")
+	
+	if death_count == 25:
+		PlayerSkinManager.unlock_skin("injured_player")
+		AchievementManager.unlock_achievement("invincible")
+		player.skin.texture = PlayerSkinManager.get_skin("injured_player").texture
 	AchievementManager.unlock_achievement("first_death")
 	deaths_label.text = TranslationServer.translate("label.deaths") + ": " + str(death_count)
 

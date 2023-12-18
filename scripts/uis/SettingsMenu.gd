@@ -4,14 +4,11 @@ extends Control
 
 func _ready():
 	if !PlayerSkinManager.is_skin_unlocked("rgb"):
-		Global.settings_time += 1
-		if Global.settings_time >= 10:
-			PlayerSkinManager.unlock_skin("rgb", true)
 	MusicManager.play_music("settings_menu")
 	$Camera2D/AnimationPlayer.play("camera_scroll")
 	$CanvasLayer/VBoxContainer/MusicVolume/Slider.set_value_no_signal(MusicManager.music_volume)
 	$CanvasLayer/VBoxContainer/SoundEffectVolume/Slider.set_value_no_signal(MusicManager.sound_effect_volume)
-	$CanvasLayer/VBoxContainer/WindowSize/OptionButton.select(Global.window_size)
+	$CanvasLayer/VBoxContainer/WindowSize/OptionButton.select(Game.window_size)
 	$CanvasLayer/SoundTrackButton.visible = randf() <= 0.05
 	for i in TranslationServer.get_loaded_locales().size():
 		var language: String = TranslationServer.get_loaded_locales()[i]
@@ -27,7 +24,7 @@ func _on_back_button_pressed():
 
 func _on_sfx_slider_value_changed(value: int):
 	MusicManager.sound_effect_volume = value
-	Global.save_game()
+	SaveManager.save()
 
 func _on_volume_slider_value_changed(value: int):
 	MusicManager.set_music_volume(value)
@@ -44,7 +41,7 @@ func _on_confirmation_dialog_confirmed():
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
 
 func _on_sound_track_button_pressed():
-	PlayerSkinManager.unlock_skin("rgb")
+	PlayerSkinManager.unlock_skin("rgb", true)
 	SceneManager.change_scene("res://scenes/uis/SoundTrackMenu.tscn")
 
 func _on_option_button_item_selected(index: int):

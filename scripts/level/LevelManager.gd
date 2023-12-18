@@ -48,7 +48,7 @@ func is_best_time(current_time: Array[int]) -> bool:
 
 func set_level_best_time(time: Array[int]):
 	levels_best_times[current_level] = time
-	Global.save_game()
+	SaveManager.save()
 
 func is_default_level(level_id: String) -> bool:
 	return default_levels.has(level_id)
@@ -73,6 +73,5 @@ func delete_level(level_id: String) -> bool:
 		load_levels()
 		PopUpFrame.pop_translated("popup.delete_level.success")
 		return true
-	#PopUpFrame.pop(TranslationServer.translate("popup.delete_level.failed" % level_dir))
-	PopUpFrame.pop("Failed...") #DEBUG only
+	PopUpFrame.pop(TranslationServer.translate("popup.delete_level.failed" % level_dir))
 	return false

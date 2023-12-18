@@ -25,10 +25,10 @@ func unlock_hat(hat_id: String, special: bool = false):
 	var hat: PlayerHat = get_hat(hat_id)
 	if hat != null && !is_hat_unlocked(hat_id):
 		unlocked_hats.append(hat_id)
-		Global.save_game()
+		SaveManager.save()
 	if special:
 		PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))
-		PopUpFrame.pop(TranslationServer.translate("ui.popup.unlocked_hat") % TranslationServer.translate(hat.name))
+		PopUpFrame.pop(TranslationServer.translate("message.popup.unlocked_hat") % TranslationServer.translate(hat.name))
 
 func is_hat_hidden(hat_id: String) -> bool:
 	return get_hat(hat_id).is_hidden

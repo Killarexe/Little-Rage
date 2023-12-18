@@ -1,4 +1,4 @@
-class_name SaveManager
+extends Node
 
 const SAVE_FILE: String = "user://save.json"
 const DEFAULT_SAVE: Dictionary = {
@@ -25,7 +25,7 @@ func save():
 	var save_file: FileAccess = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
 	var data: Dictionary = DEFAULT_SAVE.duplicate()
 	
-	data["window_size"] = Global.window_size
+	data["window_size"] = WindowManager.window_size
 	data["lang"] = TranslationServer.get_locale()
 	data["music_volume"] = MusicManager.music_volume
 	data["current_hat"] = PlayerHatManager.current_hat
@@ -33,7 +33,7 @@ func save():
 	data["current_skin"] = PlayerSkinManager.current_skin
 	data["unlocked_hats"] = PlayerHatManager.unlocked_hats
 	data["unlocked_skins"] = PlayerSkinManager.unlocked_skins
-	data["loot_box_count"] = Global.loot_boxes.loot_box_count
+	data["loot_box_count"] = LootBoxesManager.loot_box_count
 	data["sound_effects_volume"] = MusicManager.sound_effect_volume
 	data["unlocked_achievements"] = AchievementManager.unlocked_achievements
 	data["unlocked_particles"] = PlayerParticleManager.unlocked_particles
@@ -57,14 +57,14 @@ func load_save():
 	var save_file: FileAccess = FileAccess.open(SAVE_FILE, FileAccess.READ)
 	var data = JSON.parse_string(save_file.get_as_text())
 	if data is Dictionary:
-		Global.window_size = get_or_default(data, "window_size")
+		WindowManager.window_size = get_or_default(data, "window_size")
 		TranslationServer.set_locale(get_or_default(data, "lang"))
 		PlayerHatManager.current_hat = get_or_default(data, "current_hat")
 		LevelManager.levels_best_times = get_or_default(data, "level_times")
 		PlayerSkinManager.current_skin = get_or_default(data, "current_skin")
 		PlayerHatManager.unlocked_hats = get_or_default(data, "unlocked_hats")
 		PlayerSkinManager.unlocked_skins = get_or_default(data, "unlocked_skins")
-		Global.loot_boxes.loot_box_count = get_or_default(data, "loot_box_count")
+		LootBoxesManager.loot_box_count = get_or_default(data, "loot_box_count")
 		AchievementManager.unlocked_achievements = get_or_default(data, "unlocked_achievements")
 		PlayerParticleManager.unlocked_particles = get_or_default(data, "unlocked_particles")
 		PlayerParticleManager.current_death_particle = get_or_default(data, "current_death_particle")
@@ -74,3 +74,7 @@ func load_save():
 		MusicManager.set_music_volume(get_or_default(data, "music_volume"))
 	else:
 		create_save()
+
+func reset_save():
+	create_save()
+	load_save()

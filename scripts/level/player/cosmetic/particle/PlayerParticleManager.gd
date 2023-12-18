@@ -35,7 +35,7 @@ func unlock_particle(particle_id: String, special: bool = false):
 	var particle: PlayerParticle = get_particle(particle_id)
 	if particle != null && !is_particle_unlocked(particle_id):
 		unlocked_particles.append(particle_id)
-		Global.save_game()
+		SaveManager.save()
 	if special:
 		PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))
 		PopUpFrame.pop(TranslationServer.translate("ui.popup.unlocked_particle") % TranslationServer.translate(particle.name))

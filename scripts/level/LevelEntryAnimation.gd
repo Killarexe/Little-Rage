@@ -21,7 +21,7 @@ func play_animation():
 	player_menus.mobile_control.visible = false
 	animation_camera.enabled = true
 	player_camera.enabled = false
-	Global.can_pause = false
+	Game.can_pause = false
 	get_tree().paused = true
 	animation_player.play("entry")
 	var music_id: String = "start_level_var1"
@@ -33,9 +33,9 @@ func play_animation():
 	await MusicManager.finished
 	player_camera.enabled = true
 	animation_camera.enabled = false
-	Global.instanceNode(countdown_prefab, player)
+	Game.instanceNode(countdown_prefab, player)
 	queue_free()
 
 func enable_status():
 	player_menus.player_status.visible = !LevelManager.current_level.is_empty()
-	player_menus.mobile_control.visible = Global.is_mobile
+	player_menus.mobile_control.visible = Game.is_mobile

@@ -23,20 +23,23 @@ config/icon="res://assets/textures/ui/icons/icon.png"
 
 [autoload]
 
-Global="*res://scripts/Global.gd"
-LevelManager="*res://scripts/level/LevelManager.gd"
+Game="*res://scripts/Game.gd"
+SaveManager="*res://scripts/save/SaveManager.gd"
+WindowManager="*res://scripts/WindowManager.gd"
+ScreenshotManager="*res://scripts/save/ScreenshotManager.gd"
+SceneManager="*res://scenes/globals/SceneManager.tscn"
 MusicManager="*res://scripts/music/MusicManager.gd"
+LevelManager="*res://scripts/level/LevelManager.gd"
 PlayerSkinManager="*res://scripts/level/player/cosmetic/skin/PlayerSkinManager.gd"
 PlayerHatManager="*res://scripts/level/player/cosmetic/hat/PlayerHatManager.gd"
-SceneManager="*res://scenes/globals/SceneManager.tscn"
-Overlay="*res://scenes/globals/Overlay.tscn"
-PopUpFrame="*res://scenes/globals/PopUpFrame.tscn"
-UpdateChecker="*res://scenes/globals/UpdateChecker.tscn"
-ExperiementalFrame="*res://scenes/globals/ExperiementalFrame.tscn"
 AchievementManager="*res://scripts/achievement/AchievementManager.gd"
 PlayerParticleManager="*res://scripts/level/player/cosmetic/particle/PlayerParticleManager.gd"
+LootBoxesManager="*res://scripts/level/player/cosmetic/LootBoxesManager.gd"
+Overlay="*res://scenes/globals/Overlay.tscn"
+PopUpFrame="*res://scenes/globals/PopUpFrame.tscn"
+ExperiementalFrame="*res://scenes/globals/ExperiementalFrame.tscn"
 LocalMultiplayer="*res://scripts/multiplayer/local/LocalMultiplayer.gd"
-ScreenshotManager="*res://scripts/save/ScreenshotManager.gd"
+UpdateChecker="*res://scenes/globals/UpdateChecker.tscn"
 
 [display]
 

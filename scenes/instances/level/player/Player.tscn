@@ -89,7 +89,7 @@ libraries = {
 "PlayerAnimations": ExtResource("4_jqgtb")
 }
 autoplay = "camera_enter"
-blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
 
 [node name="Menus" type="Control" parent="." node_paths=PackedStringArray("player")]
 layout_mode = 3
@@ -130,21 +130,21 @@ action = "pause"
 scroll_base_offset = Vector2(0, 512)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="Menus/ParallaxBackground"]
-motion_scale = Vector2(0.25, 0.25)
-motion_mirroring = Vector2(636, 0)
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(763.2, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Menus/ParallaxBackground/ParallaxLayer2"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("15_0n0l1")
 offset = Vector2(436, 436)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Menus/ParallaxBackground"]
 motion_scale = Vector2(0.25, 0.25)
-motion_mirroring = Vector2(636, 0)
+motion_mirroring = Vector2(763.2, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Menus/ParallaxBackground/ParallaxLayer"]
 self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("13_yh3m6")
 offset = Vector2(636, 436)
 

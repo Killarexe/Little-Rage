@@ -14,7 +14,7 @@ func set_music_volume(value: float):
 	volume_db = music_volume / 4 - 25
 	if value == 0.0:
 		volume_db = -99
-	Global.save_game()
+	SaveManager.save()
 
 func play_music(music_id: String, from_position: float = 0.0):
 	var music: AudioStream = load(MUSIC_DIR_PATH + music_id + ".ogg")

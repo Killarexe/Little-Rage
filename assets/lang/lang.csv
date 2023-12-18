@@ -114,10 +114,10 @@ button.quit_level,Quit Level,Quitter le niveau
 popup.unlocked_achievement,Achievement unlocked!\n%s.,Progrès obtenu!\n%s!
 achievement.first_death,First Death,1ère Mort
 achievement.invincible,Invincible!,Invincible!
-achievement.making_my_own,Making my own.,Je fais le mien
+achievement.making_my_own,Making my own,Je fais le mien
 achievement.new_record,New record!,Nouveau record!
 achievement.rage_quit,RAGEQUIT,RAGEQUIT
-achievement.start_the_game,Start the game.,Commencez le jeu.
+achievement.start_the_game,Start the game,Commencez le jeu
 achievement.yeepee,YEEPEE,YEEPEE
 achievement.beta_tester,Beta Tester,Beta Testeur
 achievement.first_death.desc,Your first and uinque death…,Ton premier et unique mort…
@@ -128,3 +128,4 @@ achievement.rage_quit.desc,Click «RAGEQUIT» button…,Appuyer sur le boutton �
 achievement.start_the_game.desc,Start playing the game…,Commencez a jouer le jeu…
 achievement.yeepee.desc,HYYYAAYHOOO,HYYYAAYHOOO
 achievement.beta_tester.desc,Beta Test my game!,Beta Test mon jeu!
+popup.resource_element_confict,%s id conflict: %s,L’id de %s conflit avec %s.

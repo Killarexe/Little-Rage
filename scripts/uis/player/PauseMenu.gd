@@ -20,7 +20,7 @@ func _on_quit_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 
 func _process(_delta):
-	if Input.is_action_just_pressed("pause") && Global.can_pause:
+	if Input.is_action_just_pressed("pause") && Game.can_pause:
 		pause(!LevelManager.current_level.is_empty())
 
 func _on_replay_button_pressed():

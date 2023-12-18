@@ -47,7 +47,7 @@ func _ready():
 		spawn_player()
 
 func spawn_player():
-	var player = Global.instanceNodeAtPos(player_prefab, self, start_pos)
+	var player = Game.instanceNodeAtPos(player_prefab, self, start_pos)
 	player.connect("on_switch_color", switch_colors)
 	player.connect("on_setting_spawnpoint", set_spawnpoint)
 

@@ -24,3 +24,9 @@ func _on_button_pressed():
 			PlayerSkinManager.unlock_skin("niark", true)
 		65:
 			PlayerSkinManager.unlock_skin("niark", true)
+		61:
+			PlayerSkinManager.unlock_skin("rgb", true)
+		48:
+			PlayerSkinManager.unlock_skin("rgb", true)
+		49:
+			PlayerSkinManager.unlock_skin("rainer", true)

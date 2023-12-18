@@ -20,8 +20,8 @@ func load_data_in_dir(dir_path: String, type: String) -> Array[ResourceElement]:
 			if resource is ResourceElement:
 				var id: String = file.split(".")[0]
 				if id_array.has(id):
-					print("Resource element confilct: Two " + type + " with the same id '" + resource.id + "'")
-					PopUpFrame.pop(TranslationServer.translate("popup.resource_eleement_confict") % [type, resource.id])
+					print("Resource element conflict: Two " + type + " with the same id '" + resource.id + "'")
+					PopUpFrame.pop(TranslationServer.translate("popup.resource_element_confict") % [type, resource.id])
 				else:
 					print("\t%s loaded." % id)
 					resource.id = id

@@ -29,7 +29,7 @@ func open(playing_mode: Mode, time: Array[int], death_count: int):
 	if PlayerSkinManager.current_skin == "mexican_player" && PlayerHatManager.current_hat == "mexican_hat":
 		mexican_mode()
 	get_tree().paused = true
-	Global.can_pause = false
+	Game.can_pause = false
 	var time_sum: int = 0
 	for i in time:
 		time_sum += i
@@ -41,29 +41,29 @@ func open(playing_mode: Mode, time: Array[int], death_count: int):
 			next_level_button.visible = LevelManager.is_default_level(LevelManager.current_level)
 			if is_best_time:
 				if LevelManager.get_level_best_time(LevelManager.current_level) != [0, 0, 0]:
-					Global.loot_boxes.add_loot_box(0, true)
+					LootBoxesManager.add_loot_box(0, true)
 					best_time_animation.play("pop_besttime")
 				else:
-					Global.loot_boxes.add_loot_box((time_sum * time_sum) / pow(3 * 99, 2))
+					LootBoxesManager.add_loot_box((time_sum * time_sum) / pow(3 * 99, 2))
 				LevelManager.set_level_best_time(time)
 			else:
-				Global.loot_boxes.add_loot_box((time_sum * time_sum) / pow(3 * 99, 2))
+				LootBoxesManager.add_loot_box((time_sum * time_sum) / pow(3 * 99, 2))
 		Mode.MULTIPLAYER:
 			multiplayer_control.visible = true
 
 func mexican_mode():
 	MusicManager.play_music("mexican_music")
-	Global.instanceNodeAtPos(load("res://scenes/instances/level/tacosParticle.tscn"), self, Vector2(0, -100))
+	Game.instanceNodeAtPos(load("res://scenes/instances/level/tacosParticle.tscn"), self, Vector2(0, -100))
 
 func exit():
-	Global.can_pause = true
+	Game.can_pause = true
 	match mode:
 		Mode.SINGLEPLAYER:
-			Global.save_game()
+			SaveManager.save_game()
 			SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 		Mode.MULTIPLAYER:
 			#TODO: Return to lobby
-			Global.save_game()
+			SaveManager.save_game()
 			SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 			pass
 
