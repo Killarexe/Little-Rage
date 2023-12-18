@@ -17,4 +17,4 @@ func _ready():
 func _on_item_selected(index: int):
 	PlayerHatManager.current_hat = hats_ids[index]
 	player.skin.update_hat()
-	Global.save_game()
+	SaveManager.save()

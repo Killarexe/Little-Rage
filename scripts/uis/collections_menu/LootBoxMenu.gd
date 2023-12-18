@@ -11,14 +11,14 @@ func open():
 	animation_player.queue("show")
 
 func update_texture():
-	var cosmetic: CosmeticElement = Global.loot_boxes.use_loot_box()
+	var cosmetic: CosmeticElement = LootBoxesManager.use_loot_box()
 	cosmetic_texture.texture = cosmetic.texture
 
 func update_buttons():
-	next_button.visible = Global.loot_boxes.has_loot_box()
+	next_button.visible = LootBoxesManager.has_loot_box()
 
 func spawn_particles():
-	Global.instanceNodeAtPos(load("res://scenes/instances/BigPartyParticle.tscn"), self, Vector2(1280.0 / 2.0, 720.0 / 2.0))
+	Game.instanceNodeAtPos(load("res://scenes/instances/BigPartyParticle.tscn"), self, Vector2(1280.0 / 2.0, 720.0 / 2.0))
 
 func _on_next_box_button_pressed():
 	if !animation_player.is_playing():

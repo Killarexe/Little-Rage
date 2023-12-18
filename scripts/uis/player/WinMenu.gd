@@ -59,11 +59,11 @@ func exit():
 	Game.can_pause = true
 	match mode:
 		Mode.SINGLEPLAYER:
-			SaveManager.save_game()
+			SaveManager.save()
 			SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 		Mode.MULTIPLAYER:
 			#TODO: Return to lobby
-			SaveManager.save_game()
+			SaveManager.save()
 			SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 			pass
 

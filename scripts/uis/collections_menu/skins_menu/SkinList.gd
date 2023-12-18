@@ -14,4 +14,4 @@ func _ready():
 func _on_item_selected(index: int):
 	PlayerSkinManager.current_skin = skin_ids[index]
 	player.skin.update_skin()
-	Global.save_game()
+	SaveManager.save()

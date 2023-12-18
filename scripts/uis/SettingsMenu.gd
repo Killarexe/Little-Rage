@@ -3,7 +3,6 @@ extends Control
 @onready var language_menu: OptionButton = $CanvasLayer/VBoxContainer/Language/MenuButton
 
 func _ready():
-	if !PlayerSkinManager.is_skin_unlocked("rgb"):
 	MusicManager.play_music("settings_menu")
 	$Camera2D/AnimationPlayer.play("camera_scroll")
 	$CanvasLayer/VBoxContainer/MusicVolume/Slider.set_value_no_signal(MusicManager.music_volume)
@@ -31,13 +30,13 @@ func _on_volume_slider_value_changed(value: int):
 
 func _on_menu_button_item_selected(index: int):
 	TranslationServer.set_locale(TranslationServer.get_loaded_locales()[index])
-	Global.save_game()
+	SaveManager.save()
 
 func _on_reset_buttton_pressed():
 	$ConfirmationDialog.popup_centered()
 
 func _on_confirmation_dialog_confirmed():
-	Global.reset_save()
+	SaveManager.reset_save()
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
 
 func _on_sound_track_button_pressed():
@@ -45,6 +44,6 @@ func _on_sound_track_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/SoundTrackMenu.tscn")
 
 func _on_option_button_item_selected(index: int):
-	Global.window_size = index
-	Global.update_window(index)
-	Global.save_game()
+	WindowManager.window_size = index
+	WindowManager.update_window(index)
+	SaveManager.save()

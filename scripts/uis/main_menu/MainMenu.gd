@@ -49,5 +49,5 @@ func _on_level_editor_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/LevelEditorSelectionMenu.tscn")
 
 func _on_quit_button_pressed():
-	SaveManager.save_game()
+	SaveManager.save()
 	get_tree().quit()

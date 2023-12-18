@@ -24,14 +24,14 @@ var placing: bool = true
 var is_drag: bool = false
 
 func _unhandled_input(event):
-	if !(Global.is_mobile || debug_mode):
+	if !(Game.is_mobile || debug_mode):
 		if event is InputEventMouseButton:
 			handle_mouse_zoom(event)
 		if event is InputEventMouseMotion:
 			handle_mouse_pan(event)
 
 func _input(event):
-	if Global.is_mobile || debug_mode:
+	if Game.is_mobile || debug_mode:
 		if event is InputEventScreenTouch:
 			handle_touch(event)
 		elif event is InputEventScreenDrag && !can_placing:
@@ -98,7 +98,7 @@ func handle_mouse_pan(event: InputEventMouseMotion):
 		offset -= event.relative.rotated(rotation) * pan_speed  / zoom.x
 
 func _process(delta: float):
-	if !(Global.is_mobile || debug_mode):
+	if !(Game.is_mobile || debug_mode):
 		is_panning = Input.is_action_pressed("middle_click")
 		if Input.is_action_pressed("left_click"):
 			emit_signal("on_clicked", get_global_mouse_position(), true)
