@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqwr6dqsywk6s"
-path="res://.godot/imported/player.png-c82662d10aaaf7c6229e5f3a7f20f0e0.ctex"
+uid="uid://ccxonb7svtht0"
+path="res://.godot/imported/invincible.png-6938a6419e576efbc7799a63357b246a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/skins/player.png"
-dest_files=["res://.godot/imported/player.png-c82662d10aaaf7c6229e5f3a7f20f0e0.ctex"]
+source_file="res://assets/textures/achievement_icons/invincible.png"
+dest_files=["res://.godot/imported/invincible.png-6938a6419e576efbc7799a63357b246a.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

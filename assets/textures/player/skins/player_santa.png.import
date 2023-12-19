@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxlmo3gf516gh"
-path="res://.godot/imported/playerrainer.png-48762b914b325ce9949ab69b12f2614a.ctex"
+uid="uid://cvg6rj82f5a1r"
+path="res://.godot/imported/player_santa.png-fe6120e6745fb16b05db5ebaf3e25f69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/skins/playerrainer.png"
-dest_files=["res://.godot/imported/playerrainer.png-48762b914b325ce9949ab69b12f2614a.ctex"]
+source_file="res://assets/textures/player/skins/player_santa.png"
+dest_files=["res://.godot/imported/player_santa.png-fe6120e6745fb16b05db5ebaf3e25f69.ctex"]
 
 [params]
 

@@ -7,7 +7,7 @@ func _ready():
 	$Camera2D/AnimationPlayer.play("camera_scroll")
 	$CanvasLayer/VBoxContainer/MusicVolume/Slider.set_value_no_signal(MusicManager.music_volume)
 	$CanvasLayer/VBoxContainer/SoundEffectVolume/Slider.set_value_no_signal(MusicManager.sound_effect_volume)
-	$CanvasLayer/VBoxContainer/WindowSize/OptionButton.select(Game.window_size)
+	$CanvasLayer/VBoxContainer/WindowSize/OptionButton.select(WindowManager.window_size)
 	$CanvasLayer/SoundTrackButton.visible = randf() <= 0.05
 	for i in TranslationServer.get_loaded_locales().size():
 		var language: String = TranslationServer.get_loaded_locales()[i]

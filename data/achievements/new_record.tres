@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://df47vq181dd82"]
 
-[ext_resource type="Texture2D" uid="uid://dqwr6dqsywk6s" path="res://assets/textures/player/skins/player.png" id="1_skalc"]
+[ext_resource type="Texture2D" uid="uid://hbaurun2n8x5" path="res://assets/textures/achievement_icons/best_time.png" id="1_4gm3h"]
 [ext_resource type="Script" path="res://scripts/achievement/Achievement.gd" id="2_ylute"]
 
 [resource]
 script = ExtResource("2_ylute")
-icon = ExtResource("1_skalc")
+icon = ExtResource("1_4gm3h")
 type = 0
 hidden = false

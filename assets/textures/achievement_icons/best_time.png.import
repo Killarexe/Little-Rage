@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vj21tntesqqd"
-path="res://.godot/imported/playerrgb.png-cae0be82be5f66c61adb6a1985328183.ctex"
+uid="uid://hbaurun2n8x5"
+path="res://.godot/imported/best_time.png-73866ee04050c6f752bc254c222c97ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/skins/playerrgb.png"
-dest_files=["res://.godot/imported/playerrgb.png-cae0be82be5f66c61adb6a1985328183.ctex"]
+source_file="res://assets/textures/achievement_icons/best_time.png"
+dest_files=["res://.godot/imported/best_time.png-73866ee04050c6f752bc254c222c97ed.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

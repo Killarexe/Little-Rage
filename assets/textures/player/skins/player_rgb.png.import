@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqvskpvlvc5u0"
-path="res://.godot/imported/playermioka.png-dafd634996b2c96d90d1b1bc500ca3c3.ctex"
+uid="uid://vj21tntesqqd"
+path="res://.godot/imported/player_rgb.png-cc30ba0f78f039e6020fee0a95721c08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/skins/playermioka.png"
-dest_files=["res://.godot/imported/playermioka.png-dafd634996b2c96d90d1b1bc500ca3c3.ctex"]
+source_file="res://assets/textures/player/skins/player_rgb.png"
+dest_files=["res://.godot/imported/player_rgb.png-cc30ba0f78f039e6020fee0a95721c08.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

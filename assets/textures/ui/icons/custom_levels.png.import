@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duod646maas33"
-path="res://.godot/imported/test_glass.png-09c79fe23c4f31c6f7d13fcab4db0886.ctex"
+uid="uid://bjssxpgxg40v0"
+path="res://.godot/imported/custom_levels.png-baeb3f04eb94d96a044832ea724c84a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/hats/test_glass.png"
-dest_files=["res://.godot/imported/test_glass.png-09c79fe23c4f31c6f7d13fcab4db0886.ctex"]
+source_file="res://assets/textures/ui/icons/custom_levels.png"
+dest_files=["res://.godot/imported/custom_levels.png-baeb3f04eb94d96a044832ea724c84a5.ctex"]
 
 [params]
 

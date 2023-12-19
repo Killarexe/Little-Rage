@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://big5f7eoo6kiv"
-path="res://.godot/imported/playerniark.png-f165c77bfa4123563fe2f0bae758d558.ctex"
+uid="uid://cbtpjwb7ft5tk"
+path="res://.godot/imported/player_water.png-2d6ccf5a4bc5b3d6054c84c7c00823a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/skins/playerniark.png"
-dest_files=["res://.godot/imported/playerniark.png-f165c77bfa4123563fe2f0bae758d558.ctex"]
+source_file="res://assets/textures/player/skins/player_water.png"
+dest_files=["res://.godot/imported/player_water.png-2d6ccf5a4bc5b3d6054c84c7c00823a5.ctex"]
 
 [params]
 

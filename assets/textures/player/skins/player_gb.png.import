@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://65dw57im4f6p"
-path="res://.godot/imported/skeleton.png-7df48ce41642028746d2347b35efb411.ctex"
+uid="uid://bsvnvil16pktm"
+path="res://.godot/imported/player_gb.png-c12babcd95fbbc01139d915bad9e1ad3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/skins/skeleton.png"
-dest_files=["res://.godot/imported/skeleton.png-7df48ce41642028746d2347b35efb411.ctex"]
+source_file="res://assets/textures/player/skins/player_gb.png"
+dest_files=["res://.godot/imported/player_gb.png-c12babcd95fbbc01139d915bad9e1ad3.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

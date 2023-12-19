@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsvnvil16pktm"
-path="res://.godot/imported/playergb.png-2e19a0a1d2b4e02b8ebf55b986985c3e.ctex"
+uid="uid://cxlmo3gf516gh"
+path="res://.godot/imported/player_rainer.png-249123d43a05f5304f71bf3d6029c5df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/skins/playergb.png"
-dest_files=["res://.godot/imported/playergb.png-2e19a0a1d2b4e02b8ebf55b986985c3e.ctex"]
+source_file="res://assets/textures/player/skins/player_rainer.png"
+dest_files=["res://.godot/imported/player_rainer.png-249123d43a05f5304f71bf3d6029c5df.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://cvaq8og4df2pd"]
 
-[ext_resource type="Texture2D" uid="uid://dqwr6dqsywk6s" path="res://assets/textures/player/skins/player.png" id="1_fabg6"]
+[ext_resource type="Texture2D" uid="uid://dqwr6dqsywk6s" path="res://assets/textures/player/skins/player_default.png" id="1_fabg6"]
 [ext_resource type="Script" path="res://scripts/achievement/Achievement.gd" id="2_7vuov"]
 
 [resource]

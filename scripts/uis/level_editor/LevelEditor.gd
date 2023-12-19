@@ -17,7 +17,7 @@ var selected_tile: int = -1
 
 func _ready():
 	MusicManager.play_music("level_editor")
-	can_place = Global.is_mobile
+	can_place = Game.is_mobile
 	Input.use_accumulated_input = false
 	tiles.create_list(atlas);
 	
@@ -33,7 +33,7 @@ func _ready():
 	not_saved = false
 
 func _process(_delta: float):
-	if !Global.is_mobile:
+	if !Game.is_mobile:
 		if Input.is_action_just_pressed("pause"):
 			selected_tile = -1
 	queue_redraw()
@@ -48,7 +48,7 @@ func is_editing() -> bool:
 	return level_map.mode == LevelPlayer.Mode.EDIT
 
 func _draw():
-	if can_place && selected_tile >= 0 && !Global.is_mobile:
+	if can_place && selected_tile >= 0 && !Game.is_mobile:
 		var tile_pos: Vector2 = floor(camera.get_global_mouse_position() / 16)
 		var offset: Vector2i = tiles.get_selected_tile_id(selected_tile)
 		draw_texture_rect_region(atlas, Rect2(tile_pos * 16, Vector2(16, 16)), Rect2(16 * offset.x, 16 * offset.y, 16, 16), Color(1.0, 1.0, 1.0, 0.5))
@@ -64,32 +64,32 @@ func _on_tiles_empty_clicked(_at_position, _mouse_button_index):
 	selected_tile = -1
 
 func on_mouse_entered():
-	if !Global.is_mobile:
+	if !Game.is_mobile:
 		can_place = false
 
 func on_mouse_exited():
-	if !Global.is_mobile:
+	if !Game.is_mobile:
 		can_place = true
 
 func _on_play_button_pressed():
 	if is_editing():
 		camera.enabled = false
 		level_map.set_mode(LevelPlayer.Mode.PLAY)
-		Global.can_pause = false
+		Game.can_pause = false
 	else:
 		switch_edit_mode()
 
 func switch_edit_mode():
 	camera.enabled = true
 	level_map.set_mode(LevelPlayer.Mode.EDIT)
-	Global.can_pause = true
+	Game.can_pause = true
 
 func _on_save_button_pressed():
 	var level: Level = LevelManager.get_level(level_id)
 	var packed_scene: PackedScene = PackedScene.new()
 	var level_name: String = level_settings.level_name
 	camera.enabled = true
-	Global.can_pause = true
+	Game.can_pause = true
 	level_map.set_mode(LevelPlayer.Mode.EDIT)
 	level_map.mode = LevelPlayer.Mode.PLAY
 	

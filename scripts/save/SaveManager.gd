@@ -19,6 +19,9 @@ const DEFAULT_SAVE: Dictionary = {
 	"lang": "en"
 }
 
+func _ready():
+	load_save()
+
 func save():
 	if !FileAccess.file_exists(SAVE_FILE):
 		create_save()

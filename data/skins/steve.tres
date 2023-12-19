@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PlayerSkin" load_steps=3 format=3 uid="uid://imesfewf6s18"]
 
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkin.gd" id="1_pv1y4"]
-[ext_resource type="Texture2D" uid="uid://cik24l2w0wsyr" path="res://assets/textures/player/skins/playersteve.png" id="2_hm2a3"]
+[ext_resource type="Texture2D" uid="uid://cik24l2w0wsyr" path="res://assets/textures/player/skins/player_steve.png" id="2_hm2a3"]
 
 [resource]
 script = ExtResource("1_pv1y4")

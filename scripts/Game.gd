@@ -22,6 +22,8 @@ func _ready():
 	var month: int = date["month"]
 	if (day >= 23 && day <= 26) && month == 12:
 		RenderingServer.set_default_clear_color(Color.hex(0x80cff7FF))
+		PlayerSkinManager.unlock_skin("santa")
+		PlayerHatManager.unlocked_hat("santa_hat")
 		AchievementManager.unlock_achievement("christmas_event")
 		current_event = Event.CHRISTMAS
 	elif (day == 30 || day == 31) && month == 10:

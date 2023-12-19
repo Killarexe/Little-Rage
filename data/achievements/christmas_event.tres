@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://cwatk18465c8x"]
 
-[ext_resource type="Texture2D" uid="uid://dqwr6dqsywk6s" path="res://assets/textures/player/skins/player.png" id="1_hvduh"]
+[ext_resource type="Texture2D" uid="uid://c72kdcsuc0bu0" path="res://assets/textures/player/hats/santa_hat.png" id="1_yhvph"]
 [ext_resource type="Script" path="res://scripts/achievement/Achievement.gd" id="2_6q8gf"]
 
 [resource]
 script = ExtResource("2_6q8gf")
-icon = ExtResource("1_hvduh")
+icon = ExtResource("1_yhvph")
 type = 2
 hidden = true

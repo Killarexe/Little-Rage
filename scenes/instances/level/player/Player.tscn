@@ -89,7 +89,7 @@ libraries = {
 "PlayerAnimations": ExtResource("4_jqgtb")
 }
 autoplay = "camera_enter"
-blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0]
 
 [node name="Menus" type="Control" parent="." node_paths=PackedStringArray("player")]
 layout_mode = 3

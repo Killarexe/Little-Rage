@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vr2wntol3qfr"
-path="res://.godot/imported/playerexe.png-9748d2e15de586da9b198435562e6cd7.ctex"
+uid="uid://3iy7bgnmfqbp"
+path="res://.godot/imported/player_mexican.png-b52860d38887b4618ad887a44cabdcb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/player/skins/playerexe.png"
-dest_files=["res://.godot/imported/playerexe.png-9748d2e15de586da9b198435562e6cd7.ctex"]
+source_file="res://assets/textures/player/skins/player_mexican.png"
+dest_files=["res://.godot/imported/player_mexican.png-b52860d38887b4618ad887a44cabdcb7.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
