@@ -8,7 +8,7 @@ func _ready():
 	$CanvasLayer/VBoxContainer/MusicVolume/Slider.set_value_no_signal(MusicManager.music_volume)
 	$CanvasLayer/VBoxContainer/SoundEffectVolume/Slider.set_value_no_signal(MusicManager.sound_effect_volume)
 	$CanvasLayer/VBoxContainer/WindowSize/OptionButton.select(WindowManager.window_size)
-	$CanvasLayer/SoundTrackButton.visible = randf() <= 0.05
+	$CanvasLayer/SoundTrackButton.visible = randf() <= 0.05 || (Input.is_action_pressed("pause") && Input.is_action_pressed("down"))
 	for i in TranslationServer.get_loaded_locales().size():
 		var language: String = TranslationServer.get_loaded_locales()[i]
 		language_menu.add_icon_item(

@@ -497,12 +497,6 @@ offset_bottom = 640.0
 theme = ExtResource("1_he4o6")
 text = "button.create_level"
 
-[node name="Label2" type="Label" parent="Uis/LevelCreateImportMenu"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "TODO:  Add icons for the Create and Import Level...."
-
 [node name="FileDialog" type="FileDialog" parent="Uis/LevelCreateImportMenu"]
 canvas_item_default_texture_filter = 0
 title = "Open a File"

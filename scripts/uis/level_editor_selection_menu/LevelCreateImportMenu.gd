@@ -24,14 +24,15 @@ func _on_file_dialog_file_selected(path: String):
 	await animation_player.animation_finished
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	var file_error: Error = FileAccess.get_open_error()
+	var error_icon: Texture2D = load("res://assets/textures/ui/icons/quit.png")
 	if file_error != OK:
-		PopUpFrame.pop(TranslationServer.translate("popup.failed_load_level.read_file") % file_error)
+		PopUpFrame.pop(TranslationServer.translate("popup.failed_load_level.read_file") % file_error, error_icon)
 		return
 	
 	#To doge hacks and false files...
 	var file_contents: String = file.get_as_text()
 	if file_contents.is_empty() || file_contents.contains("GDScript") || !file_contents.begins_with("[gd_resource type=\"Resource\" script_class=\"Level\""):
-		PopUpFrame.pop_translated("popup.failed_load_level.invalid_file")
+		PopUpFrame.pop_translated("popup.failed_load_level.invalid_file", error_icon)
 		return
 	
 	var dir_array: PackedStringArray = path.split("/")
@@ -41,18 +42,18 @@ func _on_file_dialog_file_selected(path: String):
 		PopUpFrame.pop_translated("popup.failed_load_level.invaild_id")
 		return
 	if LevelManager.get_level(level_id) != null:
-		PopUpFrame.pop(TranslationServer.translate("popup.failed_load_level.sheared_id") % level_id)
+		PopUpFrame.pop(TranslationServer.translate("popup.failed_load_level.sheared_id") % level_id, error_icon)
 		return
 	
 	var new_file: FileAccess = FileAccess.open(LevelManager.EXTERNAL_LEVELS_DIR + "/" + file_name, FileAccess.WRITE_READ)
 	var new_file_error: Error = FileAccess.get_open_error()
 	if new_file_error:
-		PopUpFrame.pop(TranslationServer.translate("popup.failed_load_level.copy_file") % new_file_error)
+		PopUpFrame.pop(TranslationServer.translate("popup.failed_load_level.copy_file") % new_file_error, error_icon)
 		return
 	
 	new_file.store_string(file_contents)
 	LevelManager.load_levels()
-	PopUpFrame.pop(TranslationServer.translate("popup.load_level_success") % level_id)
+	PopUpFrame.pop(TranslationServer.translate("popup.load_level_success") % level_id, error_icon)
 
 func _on_create_level_button_pressed():
 	var level: Level = Level.new()
