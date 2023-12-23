@@ -12,8 +12,8 @@ const DEFAULT_SAVE: Dictionary = {
 	"current_jump_particle": "default_jump",
 	"current_step_particle": "default_step",
 	"level_times": {},
-	"music_volume": 50.0,
-	"sound_effects_volume": 50.0,
+	"music_volume": 75.0,
+	"sound_effects_volume": 25.0,
 	"loot_box_count": 0,
 	"window_size": 5,
 	"lang": "en"

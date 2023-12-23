@@ -1,10 +1,15 @@
 extends ItemList
+class_name SkinList
 
 @export var player: PlayerMovement
 
 var skin_ids: Array[String] = []
 
 func _ready():
+	set_item_skins()
+
+func set_item_skins():
+	clear()
 	max_columns = PlayerSkinManager.skins.size() + 1
 	for skin in PlayerSkinManager.skins:
 		if PlayerSkinManager.is_skin_unlocked(skin.id):

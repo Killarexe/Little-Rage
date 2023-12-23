@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://bwx0hsntoyvi4"]
+[gd_resource type="Resource" script_class="Level" load_steps=2 format=3 uid="uid://bwx0hsntoyvi4"]
 
-[ext_resource type="PackedScene" uid="uid://bms4sm8nbqg7h" path="res://scenes/levels/Level5.tscn" id="1_urxao"]
 [ext_resource type="Script" path="res://scripts/level/Level.gd" id="2_ykwir"]
 
 [resource]
@@ -10,6 +9,5 @@ is_hidden = false
 description = "message.level.description.level_five"
 mode = 0
 y_limit = 512
-scene = ExtResource("1_urxao")
 level_theme = 0
 difficulty = 1

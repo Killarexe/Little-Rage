@@ -3,8 +3,10 @@ class_name LootBoxMenu
 
 @onready var cosmetic_texture: TextureRect = $CosmeticTexture
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-
 @onready var next_button: Button = $Buttons/NextBoxButton
+
+@export var skin_list: SkinList
+@export var hat_list: HatList
 
 func open():
 	animation_player.play("entry")
@@ -13,6 +15,8 @@ func open():
 func update_texture():
 	var cosmetic: CosmeticElement = LootBoxesManager.use_loot_box()
 	cosmetic_texture.texture = cosmetic.texture
+	skin_list.set_item_skins()
+	hat_list.set_hat_items()
 
 func update_buttons():
 	next_button.visible = LootBoxesManager.has_loot_box()

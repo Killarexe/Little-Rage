@@ -38,13 +38,22 @@ enum Mode{
 	EDIT
 }
 
+const CHANGE_COLOR_TIME: float = 0.5
+
 @export var mode: Mode = Mode.PLAY
 @export var start_pos: Vector2 = Vector2()
 var player_prefab: Resource = load("res://scenes/instances/level/player/Player.tscn")
 
+var change_color_time: float = 0.0
+
 func _ready():
+	if Game.current_event == Game.Event.CHRISTMAS:
+		tile_set.get_source(1).texture = load("res://assets/textures/tilesets/plains_christmas.png")
 	if mode == Mode.PLAY:
 		spawn_player()
+
+func _process(delta: float):
+	change_color_time -= delta
 
 func spawn_player():
 	var player = Game.instanceNodeAtPos(player_prefab, self, start_pos)
@@ -61,6 +70,9 @@ func filter_used_grass_cells() -> Array[Vector2i]:
 
 #Color: true = red, false = blue
 func switch_colors(color: bool):
+	if change_color_time > 0.0:
+		return
+	change_color_time = CHANGE_COLOR_TIME
 	if color:
 		replace_tile_by(ON_TILE, OFF_TILE)
 		
