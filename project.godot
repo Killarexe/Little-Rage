@@ -23,7 +23,6 @@ config/icon="res://assets/textures/ui/icons/icon.png"
 
 [autoload]
 
-Game="*res://scripts/Game.gd"
 SaveManager="*res://scripts/save/SaveManager.gd"
 WindowManager="*res://scripts/WindowManager.gd"
 ScreenshotManager="*res://scripts/save/ScreenshotManager.gd"
@@ -40,6 +39,7 @@ PopUpFrame="*res://scenes/globals/PopUpFrame.tscn"
 ExperiementalFrame="*res://scenes/globals/ExperiementalFrame.tscn"
 LocalMultiplayer="*res://scripts/multiplayer/local/LocalMultiplayer.gd"
 UpdateChecker="*res://scenes/globals/UpdateChecker.tscn"
+Game="*res://scripts/Game.gd"
 
 [display]
 

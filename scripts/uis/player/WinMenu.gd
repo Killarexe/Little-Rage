@@ -38,7 +38,13 @@ func open(playing_mode: Mode, time: Array[int], death_count: int):
 			singleplayer.visible = true
 			var is_best_time: bool = LevelManager.is_best_time(time)
 			time_label.start(time, death_count)
-			next_level_button.visible = LevelManager.is_default_level(LevelManager.current_level)
+			if LevelManager.is_default_level(LevelManager.current_level):
+				var current_level_number: int = int(LevelManager.current_level.replace("level_", ""))
+				if current_level_number == LevelManager.default_levels.size():
+					next_level_button.text = TranslationServer.translate("button.credits_scene")
+				next_level_button.visible = true
+			else:
+				next_level_button.visible = false
 			if is_best_time:
 				if LevelManager.get_level_best_time(LevelManager.current_level) != [0, 0, 0]:
 					LootBoxesManager.add_loot_box(0, true)

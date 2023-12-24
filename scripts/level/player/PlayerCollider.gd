@@ -28,6 +28,12 @@ func _process(_delta: float):
 				if type == null:
 					type = 0
 				on_collide(type, pos)
+			var front_pos: Vector2 = collider.local_to_map(collision.get_position() - collision.get_normal() - Vector2(1, 0))
+			var front_cell: TileData = collider.get_cell_tile_data(0, front_pos)
+			if front_cell != null:
+				var type = front_cell.get_custom_data("type")
+				if type == 4:
+					player.finish_level()
 
 func on_collide(type: int, pos: Vector2):
 	if previous_tile_type != type:
