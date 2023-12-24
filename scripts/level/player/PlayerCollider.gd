@@ -21,7 +21,7 @@ func _process(_delta: float):
 		var collider: Node = collision.get_collider() as Node
 		
 		if collider is TileMap:
-			var pos: Vector2 = collider.local_to_map(collision.get_position() - collision.get_normal() - Vector2(1, 0))
+			var pos: Vector2 = collider.local_to_map(collision.get_position() - collision.get_normal() - Vector2(2, 0))
 			var cell: TileData = collider.get_cell_tile_data(0, pos)
 			if cell != null:
 				var type = cell.get_custom_data("type")

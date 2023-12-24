@@ -47,7 +47,6 @@ var movement_array: Array[String] = [
 ]
 
 func _ready():
-	camera_enabled = LocalMultiplayer.is_enabled
 	Game.can_pause = can_pause
 	spawn_point = global_position
 	var current_level: Level = LevelManager.get_current_level()
