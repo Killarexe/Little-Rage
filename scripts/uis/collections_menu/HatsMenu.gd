@@ -1,8 +1,7 @@
 extends Control
 
-@onready var player_hat: PlayerHatSprite = $"../../DefaultLevel/Player/Skin/PlayerHatSprite"
 @onready var main_menu: MainCollectionMenu = $"../MainMenu"
-@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/Player/PlayerViewer/AnimationPlayer"
+@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/PlayerDummy/PlayerViewer/AnimationPlayer"
 
 func _on_back_button_pressed():
 	visible = false

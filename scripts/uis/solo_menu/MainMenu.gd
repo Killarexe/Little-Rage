@@ -3,7 +3,7 @@ extends Control
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var default_levels: DefaultLevelSelectionMenu = $"../DefaultLevelsSelectionMenu"
 @onready var custom_levels: DefaultLevelSelectionMenu = $"../CustomLevelsSelectionMenu"
-@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/Player/PlayerCamera/AnimationPlayer"
+@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/PlayerDummy/PlayerCamera/AnimationPlayer"
 
 func _ready():
 	animation_player.play("enter")

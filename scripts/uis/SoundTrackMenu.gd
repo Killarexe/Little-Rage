@@ -1,10 +1,11 @@
 extends CanvasLayer
 
+
 @onready var music_list: ItemList = $MusicList
 
 func _ready():
 	MusicManager.stop()
-	var music_dir: DirAccess = DirAccess.open("res://assets/musics/")
+	var music_dir: DirAccess = DirAccess.open(MusicManager.MUSIC_DIR_PATH)
 	for file_name in music_dir.get_files():
 		if !file_name.ends_with(".import"):
 			music_list.add_item(file_name.replace(".ogg", ""))

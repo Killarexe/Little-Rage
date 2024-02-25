@@ -1,7 +1,7 @@
 extends ItemList
 class_name SkinList
 
-@export var player: PlayerMovement
+@export var player: PlayerDummyComponent
 
 var skin_ids: Array[String] = []
 
@@ -18,5 +18,5 @@ func set_item_skins():
 
 func _on_item_selected(index: int):
 	PlayerSkinManager.current_skin = skin_ids[index]
-	player.skin.update_skin()
+	player.player_skin.update_skin()
 	SaveManager.save()

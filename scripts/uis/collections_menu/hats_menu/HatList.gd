@@ -1,7 +1,7 @@
 extends ItemList
 class_name HatList
 
-@export var player: PlayerMovement
+@export var player: PlayerDummyComponent
 
 var hats_ids: Array[String] = []
 
@@ -21,5 +21,5 @@ func set_hat_items():
 
 func _on_item_selected(index: int):
 	PlayerHatManager.current_hat = hats_ids[index]
-	player.skin.update_hat()
+	player.player_hat.update_hat()
 	SaveManager.save()

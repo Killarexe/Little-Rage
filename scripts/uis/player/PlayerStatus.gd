@@ -4,11 +4,11 @@ extends CanvasLayer
 @onready var ragequit_button: Button = $RageQuitButton
 @onready var deaths_label: Label = $DeathsLabel
 @onready var time_label: Label = $TimeLabel
-@export var player: PlayerMovement
+@export var player: PlayerComponent
+@export var player_skin: PlayerSkinSprite
 @export var timer: PlayerTimer
 
 func _ready():
-	visible = player.controllable
 	player.on_death.connect(on_death)
 	timer.timeout.connect(on_timeout)
 	deaths_label.text = TranslationServer.translate("label.deaths") + ": 0"
@@ -24,7 +24,7 @@ func on_death(death_count: int):
 	if death_count == 25:
 		PlayerSkinManager.unlock_skin("injured_player")
 		AchievementManager.unlock_achievement("invincible")
-		player.skin.texture = PlayerSkinManager.get_skin("injured_player").texture
+		player_skin.texture = PlayerSkinManager.get_skin("injured_player").texture
 	AchievementManager.unlock_achievement("first_death")
 	deaths_label.text = TranslationServer.translate("label.deaths") + ": " + str(death_count)
 

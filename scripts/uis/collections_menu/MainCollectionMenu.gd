@@ -2,7 +2,7 @@ extends Control
 class_name MainCollectionMenu
 
 @onready var animation_player: AnimationPlayer = $SelectButtons/AnimationPlayer
-@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/Player/PlayerViewer/AnimationPlayer"
+@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/PlayerDummy/PlayerViewer/AnimationPlayer"
 @onready var loot_box_menu: LootBoxMenu = $LootBoxMenu
 
 func _ready():

@@ -4,7 +4,7 @@ class_name DefaultLevelSelectionMenu
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var main_menu: Control = $"../SoloMainMenu"
 @onready var level_list: LevelList = $LevelList
-@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/Player/PlayerCamera/AnimationPlayer"
+@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/PlayerDummy/PlayerCamera/AnimationPlayer"
 
 func _on_play_button_pressed():
 	animation_player.play_backwards("enter")

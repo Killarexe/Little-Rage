@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://bf6u6lge7vm8i"]
+
+[ext_resource type="Script" path="res://scripts/components/PlayerDummyComponent.gd" id="1_rhxy3"]
+[ext_resource type="Script" path="res://scripts/level/player/PlayerCollider.gd" id="2_4vnr8"]
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="3_0rkse"]
+[ext_resource type="Script" path="res://scripts/components/DeathComponent.gd" id="3_cbkx3"]
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="4_6fqh6"]
+[ext_resource type="Script" path="res://scripts/level/player/SkinDistortion.gd" id="6_2u6px"]
+[ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="7_nca7a"]
+[ext_resource type="AnimationLibrary" uid="uid://lq7ufb3fx0yh" path="res://assets/animations/PlayerAnimations.res" id="8_ukl5h"]
+[ext_resource type="PackedScene" uid="uid://dhqud11vg5pq4" path="res://scenes/bundles/ParallaxBackground.tscn" id="9_fdwyx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qru1a"]
+size = Vector2(16, 32)
+
+[sub_resource type="Animation" id="Animation_10f12"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skin:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skin:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pm6cf"]
+_data = {
+"RESET": SubResource("Animation_10f12")
+}
+
+[node name="PlayerDummy" type="CharacterBody2D" node_paths=PackedStringArray("player_skin", "player_hat", "animation", "sound_effect_player")]
+script = ExtResource("1_rhxy3")
+player_skin = NodePath("Skin")
+player_hat = NodePath("Skin/PlayerHatSprite")
+animation = NodePath("AnimationPlayer")
+sound_effect_player = NodePath("SoundEffectPlayer")
+
+[node name="PlayerCollider" type="CollisionShape2D" parent="." node_paths=PackedStringArray("player", "death_component")]
+shape = SubResource("RectangleShape2D_qru1a")
+script = ExtResource("2_4vnr8")
+player = NodePath("..")
+death_component = NodePath("../DeathComponent")
+
+[node name="Skin" type="Sprite2D" parent="."]
+script = ExtResource("3_0rkse")
+
+[node name="PlayerHatSprite" type="Sprite2D" parent="Skin"]
+position = Vector2(0, -24)
+script = ExtResource("4_6fqh6")
+
+[node name="ColorRect" type="ColorRect" parent="Skin"]
+z_index = -2
+offset_left = -9.0
+offset_top = -15.0
+offset_right = 7.0
+offset_bottom = 17.0
+color = Color(0, 0, 0, 0.501961)
+
+[node name="DeathComponent" type="Node" parent="." node_paths=PackedStringArray("player", "sound_effects")]
+script = ExtResource("3_cbkx3")
+player = NodePath("..")
+sound_effects = NodePath("../SoundEffectPlayer")
+
+[node name="SkinDistortionComponent" type="Node" parent="." node_paths=PackedStringArray("skin", "player")]
+script = ExtResource("6_2u6px")
+skin = NodePath("../Skin")
+player = NodePath("..")
+
+[node name="SoundEffectPlayer" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource("7_nca7a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pm6cf"),
+"PlayerAnimations": ExtResource("8_ukl5h")
+}
+autoplay = "camera_enter"
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("9_fdwyx")]

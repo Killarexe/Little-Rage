@@ -21,7 +21,8 @@ func load_level_list():
 		if (is_default && default) || (!is_default && custom):
 			levels.append(level.id)
 			add_item(level.name)
-	_on_item_selected.call_deferred(0)
+	if !levels.is_empty():
+		_on_item_selected.call_deferred(0)
 
 func _on_item_selected(index: int):
 	current_index = index

@@ -1,10 +1,7 @@
 extends Camera2D
+class_name PlayerCamera
 
-@export var player: PlayerMovement
-
-func _ready():
-	enabled = player.camera_enabled
+@export var player: PlayerComponent
 
 func _process(delta: float):
-	if player.camera_enabled:
-		offset.x = lerpf(offset.x, player.velocity.x / 3, delta)
+	offset.x = lerpf(offset.x, player.velocity.x / 3, delta)

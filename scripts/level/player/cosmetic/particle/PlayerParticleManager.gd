@@ -67,7 +67,7 @@ func pick_random() -> String:
 func has_unlocked_all() -> bool:
 	return unlocked_particles.size() >= particles.size()
 
-func spawn_particle(parent: Node, position: Vector2, type: PlayerParticle.Type) -> Object:
+func spawn_particle(parent: Node, particle_position: Vector2, type: PlayerParticle.Type) -> Object:
 	var id: String = get_current_particle_id(type)
 	if !id.is_empty():
 		var prefab_path: String = "res://scenes/instances/level/player/particles/StepParticle.tscn"
@@ -81,7 +81,7 @@ func spawn_particle(parent: Node, position: Vector2, type: PlayerParticle.Type) 
 		
 		var particle: GPUParticles2D = load(prefab_path).instantiate()
 		particle.process_material = get_particle(id).material
-		particle.global_position = position
+		particle.global_position = particle_position
 		parent.add_child(particle)
 		return particle
 	return null

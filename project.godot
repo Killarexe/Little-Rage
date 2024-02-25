@@ -17,8 +17,7 @@ config/tags=PackedStringArray("games")
 run/main_scene="res://scenes/uis/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/bg_color=Color(0.235294, 0.737255, 0.988235, 1)
-boot_splash/show_image=false
-boot_splash/image="res://assets/textures/ui/logo.png"
+boot_splash/image="res://assets/textures/ui/icons/icon.png"
 config/icon="res://assets/textures/ui/icons/icon.png"
 
 [autoload]
@@ -66,6 +65,7 @@ folder_colors={
 "res://assets/sound_effects/": "teal",
 "res://assets/style/": "purple",
 "res://assets/textures/": "blue",
+"res://builds/": "gray",
 "res://data/": "blue",
 "res://data/achievements/": "red",
 "res://data/hats/": "orange",
@@ -176,6 +176,10 @@ locale/test="en"
 2d_physics/layer_2="Door"
 2d_physics/layer_3="Danger"
 2d_physics/layer_4="Player"
+
+[physics]
+
+common/max_physics_steps_per_frame=15
 
 [rendering]
 

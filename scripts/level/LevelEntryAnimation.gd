@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var player: PlayerMovement
+@export var player: PlayerComponent
 @export var player_camera: Camera2D
 @export var player_menus: PlayerMenus
 @onready var animation_camera: Camera2D = $Camera2D
@@ -9,11 +9,10 @@ extends Node2D
 var countdown_prefab: Resource = load("res://scenes/instances/level/player/uis/countdown.tscn")
 
 func _ready():
-	if visible && player.camera_enabled && player.controllable:
-		if LevelManager.current_level.is_empty():
-			enable_status()
-		else:
-			play_animation()
+	if LevelManager.current_level.is_empty():
+		enable_status()
+	else:
+		play_animation()
 
 func play_animation():
 	await player.ready

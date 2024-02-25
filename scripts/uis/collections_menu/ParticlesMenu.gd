@@ -5,8 +5,8 @@ extends Control
 @onready var run_list: ItemList = $Particles/RunTab/List
 
 @onready var main_menu: MainCollectionMenu = $"../MainMenu"
-@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/Player/PlayerViewer/AnimationPlayer"
-@onready var player: PlayerMovement = $"../../DefaultLevel/Player"
+@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/PlayerDummy/PlayerViewer/AnimationPlayer"
+@onready var player: PlayerComponent = $"../../DefaultLevel/PlayerDummy"
 
 var death_particle_ids: Array[String] = []
 var jump_particle_ids: Array[String] = []

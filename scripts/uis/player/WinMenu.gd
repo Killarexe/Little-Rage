@@ -6,7 +6,7 @@ enum Mode{
 	MULTIPLAYER
 }
 
-@export var player: PlayerMovement
+@export var player: PlayerComponent
 @onready var singleplayer: Control = $Singleplayer
 @onready var multiplayer_control: Control = $Mutiplayer
 @onready var time_label: TimeLabel = $Singleplayer/VBoxContainer/TimeLabel

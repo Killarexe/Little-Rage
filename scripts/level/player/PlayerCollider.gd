@@ -1,7 +1,9 @@
-extends Node2D
+extends CollisionShape2D
 class_name PlayerCollider
 
-@export var player: PlayerMovement
+@export var player: PlayerComponent
+@export var death_component: DeathComponent
+@export var player_controller: PlayerControllerComponent
 
 var checkpoint_particle: Resource = null
 var previous_tile_type: int = 0
@@ -10,11 +12,9 @@ func _ready():
 	checkpoint_particle = preload("res://scenes/instances/level/player/particles/DefaultCheckpointParticle.tscn")
 
 func _process(_delta: float):
-	if !player.interactable:
-		return
-	
-	if player.ground_timer < 0:
-		previous_tile_type = 0
+	if player_controller:
+		if player_controller.ground_timer < 0:
+			previous_tile_type = 0
 	
 	for i in player.get_slide_collision_count():
 		var collision: KinematicCollision2D = player.get_slide_collision(i)
@@ -44,7 +44,7 @@ func on_collide(type: int, pos: Vector2):
 				Game.instanceNodeAtPos(checkpoint_particle, player.get_parent(), spawnpoint_position)
 				player.on_setting_spawnpoint.emit(pos)
 			3:
-				player.die()
+				death_component.die()
 			4:
 				player.finish_level()
 			5:

@@ -8,7 +8,7 @@ func add_loot_box(chance: float, always: bool = false):
 	if random <= chance || always:
 		loot_box_count += 1
 		SaveManager.save()
-		PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))
+		PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/CollectionsMenu.tscn"))
 		PopUpFrame.pop_translated("message.popup.new_loot_box", load("res://assets/textures/ui/icons/chest.png"))
 
 func has_loot_box() ->  bool:

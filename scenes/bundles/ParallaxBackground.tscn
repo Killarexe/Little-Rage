@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhqud11vg5pq4"]
+
+[ext_resource type="Texture2D" uid="uid://m5grllpuuwx3" path="res://assets/textures/level_backgrounds/suface_and_clouds.png" id="1_lipmm"]
+[ext_resource type="Texture2D" uid="uid://dscg2drgx6pkv" path="res://assets/textures/level_backgrounds/suface.png" id="2_ra6ai"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+layer = -1
+scroll_base_offset = Vector2(0, 512)
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(763.2, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_lipmm")
+offset = Vector2(436, 436)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.25, 0.25)
+motion_offset = Vector2(800, 181)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ra6ai")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ra6ai")
+offset = Vector2(800, 0)
