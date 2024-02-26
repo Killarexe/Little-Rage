@@ -42,7 +42,7 @@ const CHANGE_COLOR_TIME: float = 0.5
 
 @export var mode: Mode = Mode.PLAY
 @export var start_pos: Vector2 = Vector2()
-var player_prefab: Resource = load("res://scenes/instances/level/player/Player.tscn")
+var player_prefab: Resource = load("res://scenes/bundles/player/Player.tscn")
 
 var change_color_time: float = 0.0
 

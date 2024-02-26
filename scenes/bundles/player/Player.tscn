@@ -1,26 +1,27 @@
-[gd_scene load_steps=25 format=3 uid="uid://bkwmpwrjnhece"]
+[gd_scene load_steps=26 format=3 uid="uid://bkwmpwrjnhece"]
 
-[ext_resource type="Script" path="res://scripts/components/PlayerComponent.gd" id="1_gjc84"]
-[ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="2_alfuh"]
-[ext_resource type="Script" path="res://scripts/level/player/SkinDistortion.gd" id="2_e5yys"]
-[ext_resource type="AnimationLibrary" uid="uid://lq7ufb3fx0yh" path="res://assets/animations/PlayerAnimations.res" id="4_jqgtb"]
-[ext_resource type="PackedScene" uid="uid://bruwtum1c48go" path="res://scenes/uis/PauseMenu.tscn" id="5_iaj63"]
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="5_kbeej"]
-[ext_resource type="Script" path="res://scripts/level/player/CameraController.gd" id="5_u0egx"]
-[ext_resource type="PackedScene" uid="uid://c027b4usebimx" path="res://scenes/uis/WinMenu.tscn" id="6_6ee8y"]
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="6_lijfy"]
-[ext_resource type="Texture2D" uid="uid://dxd7u5xffvp21" path="res://assets/textures/ui/mobile_player_interface/left.png" id="6_p1hc3"]
-[ext_resource type="Texture2D" uid="uid://bcvu2cbuyoknu" path="res://assets/textures/ui/mobile_player_interface/right.png" id="7_baypg"]
-[ext_resource type="PackedScene" uid="uid://dhqud11vg5pq4" path="res://scenes/bundles/ParallaxBackground.tscn" id="7_i7y65"]
-[ext_resource type="Script" path="res://scripts/level/player/PlayerTimer.gd" id="8_3kxck"]
-[ext_resource type="Texture2D" uid="uid://cv22lwoysa8ap" path="res://assets/textures/ui/mobile_player_interface/jump.png" id="8_5eel8"]
-[ext_resource type="Texture2D" uid="uid://buw3bxnswai6i" path="res://assets/textures/ui/mobile_player_interface/pause.png" id="9_vwqws"]
-[ext_resource type="Script" path="res://scripts/uis/player/PlayerMenus.gd" id="12_k24f3"]
-[ext_resource type="PackedScene" uid="uid://t7l5lywub7jg" path="res://scenes/instances/level/player/uis/PlayerStatus.tscn" id="13_p0n42"]
-[ext_resource type="Script" path="res://scripts/level/player/PlayerCollider.gd" id="15_pys0j"]
-[ext_resource type="PackedScene" uid="uid://dhxkop4hjnx1p" path="res://scenes/instances/level/LevelEntryAnimation.tscn" id="20_5xphv"]
-[ext_resource type="Script" path="res://scripts/level/player/PlayerControllerComponent.gd" id="20_xxdnh"]
-[ext_resource type="Script" path="res://scripts/components/DeathComponent.gd" id="22_uj8ok"]
+[ext_resource type="Script" path="res://scripts/components/PlayerComponent.gd" id="1_fvwbd"]
+[ext_resource type="Script" path="res://scripts/level/player/PlayerCollider.gd" id="2_imbgx"]
+[ext_resource type="PackedScene" uid="uid://ci0p37ottv00" path="res://scenes/bundles/particles/DefaultCheckpointParticle.tscn" id="3_phvfs"]
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="4_433oa"]
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="5_nuugr"]
+[ext_resource type="Script" path="res://scripts/level/player/CameraController.gd" id="6_bc5q0"]
+[ext_resource type="PackedScene" uid="uid://dhxkop4hjnx1p" path="res://scenes/bundles/LevelEntryAnimation.tscn" id="7_2geyv"]
+[ext_resource type="PackedScene" uid="uid://dhqud11vg5pq4" path="res://scenes/bundles/ParallaxBackground.tscn" id="8_nd3ki"]
+[ext_resource type="Script" path="res://scripts/uis/player/PlayerMenus.gd" id="9_maer3"]
+[ext_resource type="Texture2D" uid="uid://dxd7u5xffvp21" path="res://assets/textures/ui/mobile_player_interface/left.png" id="10_lrdbt"]
+[ext_resource type="Texture2D" uid="uid://bcvu2cbuyoknu" path="res://assets/textures/ui/mobile_player_interface/right.png" id="11_l1qwt"]
+[ext_resource type="Texture2D" uid="uid://cv22lwoysa8ap" path="res://assets/textures/ui/mobile_player_interface/jump.png" id="12_27o0f"]
+[ext_resource type="Texture2D" uid="uid://buw3bxnswai6i" path="res://assets/textures/ui/mobile_player_interface/pause.png" id="13_fxv75"]
+[ext_resource type="PackedScene" uid="uid://t7l5lywub7jg" path="res://scenes/bundles/uis/PlayerStatus.tscn" id="14_arcat"]
+[ext_resource type="PackedScene" uid="uid://c027b4usebimx" path="res://scenes/uis/WinMenu.tscn" id="15_86y6y"]
+[ext_resource type="PackedScene" uid="uid://bruwtum1c48go" path="res://scenes/uis/PauseMenu.tscn" id="16_rp8rw"]
+[ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="17_ob0nn"]
+[ext_resource type="Script" path="res://scripts/level/player/PlayerTimer.gd" id="18_ms4pk"]
+[ext_resource type="Script" path="res://scripts/level/player/PlayerControllerComponent.gd" id="19_d4lqc"]
+[ext_resource type="Script" path="res://scripts/components/DeathComponent.gd" id="20_xjlge"]
+[ext_resource type="Script" path="res://scripts/level/player/SkinDistortion.gd" id="21_c2ukq"]
+[ext_resource type="AnimationLibrary" uid="uid://lq7ufb3fx0yh" path="res://assets/animations/PlayerAnimations.res" id="22_pcsr0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ve1"]
 size = Vector2(16, 32)
@@ -60,21 +61,22 @@ _data = {
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 8
 collision_mask = 15
-script = ExtResource("1_gjc84")
+script = ExtResource("1_fvwbd")
 
 [node name="Collider" type="CollisionShape2D" parent="." node_paths=PackedStringArray("player", "death_component", "player_controller")]
 shape = SubResource("RectangleShape2D_h7ve1")
-script = ExtResource("15_pys0j")
+script = ExtResource("2_imbgx")
 player = NodePath("..")
 death_component = NodePath("../DeathComponent")
 player_controller = NodePath("../PlayerControllerComponent")
+checkpoint_particle = ExtResource("3_phvfs")
 
 [node name="Skin" type="Sprite2D" parent="."]
-script = ExtResource("5_kbeej")
+script = ExtResource("4_433oa")
 
 [node name="PlayerHatSprite" type="Sprite2D" parent="Skin"]
 position = Vector2(0, -24)
-script = ExtResource("6_lijfy")
+script = ExtResource("5_nuugr")
 
 [node name="ColorRect" type="ColorRect" parent="Skin"]
 z_index = -2
@@ -88,22 +90,22 @@ color = Color(0, 0, 0, 0.501961)
 process_mode = 3
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
-script = ExtResource("5_u0egx")
+script = ExtResource("6_bc5q0")
 player = NodePath("..")
 
-[node name="LevelEntryAnimation" parent="." node_paths=PackedStringArray("player", "player_camera", "player_menus") instance=ExtResource("20_5xphv")]
+[node name="LevelEntryAnimation" parent="." node_paths=PackedStringArray("player", "player_camera", "player_menus") instance=ExtResource("7_2geyv")]
 player = NodePath("..")
 player_camera = NodePath("../Camera2D")
 player_menus = NodePath("../Menus")
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("7_i7y65")]
+[node name="ParallaxBackground" parent="." instance=ExtResource("8_nd3ki")]
 
 [node name="Menus" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("12_k24f3")
+script = ExtResource("9_maer3")
 
 [node name="MobileControl" type="CanvasLayer" parent="Menus"]
 process_mode = 3
@@ -111,61 +113,61 @@ process_mode = 3
 [node name="LeftButton" type="TouchScreenButton" parent="Menus/MobileControl"]
 position = Vector2(50, 520)
 scale = Vector2(8, 8)
-texture_normal = ExtResource("6_p1hc3")
+texture_normal = ExtResource("10_lrdbt")
 passby_press = true
 action = "left"
 
 [node name="RightButton" type="TouchScreenButton" parent="Menus/MobileControl"]
 position = Vector2(203, 520)
 scale = Vector2(8, 8)
-texture_normal = ExtResource("7_baypg")
+texture_normal = ExtResource("11_l1qwt")
 passby_press = true
 action = "right"
 
 [node name="JumpButton" type="TouchScreenButton" parent="Menus/MobileControl"]
 position = Vector2(1075, 520)
 scale = Vector2(8, 8)
-texture_normal = ExtResource("8_5eel8")
+texture_normal = ExtResource("12_27o0f")
 action = "jump"
 
 [node name="PauseButton" type="TouchScreenButton" parent="Menus/MobileControl"]
 position = Vector2(1152, 0)
 scale = Vector2(8, 8)
-texture_normal = ExtResource("9_vwqws")
+texture_normal = ExtResource("13_fxv75")
 action = "pause"
 
-[node name="PlayerStatus" parent="Menus" node_paths=PackedStringArray("player", "timer") instance=ExtResource("13_p0n42")]
+[node name="PlayerStatus" parent="Menus" node_paths=PackedStringArray("player", "timer") instance=ExtResource("14_arcat")]
 player = NodePath("../..")
 timer = NodePath("../../Timer")
 
-[node name="WinMenu" parent="Menus" node_paths=PackedStringArray("player") instance=ExtResource("6_6ee8y")]
+[node name="WinMenu" parent="Menus" node_paths=PackedStringArray("player") instance=ExtResource("15_86y6y")]
 player = NodePath("../..")
 
-[node name="PauseMenu" parent="Menus" instance=ExtResource("5_iaj63")]
+[node name="PauseMenu" parent="Menus" instance=ExtResource("16_rp8rw")]
 
 [node name="SoundEffectPlayer" type="AudioStreamPlayer2D" parent="."]
 bus = &"Sound Effects"
-script = ExtResource("2_alfuh")
+script = ExtResource("17_ob0nn")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
 autostart = true
-script = ExtResource("8_3kxck")
+script = ExtResource("18_ms4pk")
 
 [node name="PlayerControllerComponent" type="Node" parent="." node_paths=PackedStringArray("player", "skin", "animation", "sound_effect_player")]
-script = ExtResource("20_xxdnh")
+script = ExtResource("19_d4lqc")
 player = NodePath("..")
 skin = NodePath("../Skin")
 animation = NodePath("../AnimationPlayer")
 sound_effect_player = NodePath("../SoundEffectPlayer")
 
 [node name="DeathComponent" type="Node" parent="." node_paths=PackedStringArray("player", "sound_effects")]
-script = ExtResource("22_uj8ok")
+script = ExtResource("20_xjlge")
 player = NodePath("..")
 sound_effects = NodePath("../SoundEffectPlayer")
 
 [node name="SkinDistortion" type="Node" parent="." node_paths=PackedStringArray("skin", "player", "controller")]
-script = ExtResource("2_e5yys")
+script = ExtResource("21_c2ukq")
 skin = NodePath("../Skin")
 player = NodePath("..")
 controller = NodePath("../PlayerControllerComponent")
@@ -173,7 +175,7 @@ controller = NodePath("../PlayerControllerComponent")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_pm6cf"),
-"PlayerAnimations": ExtResource("4_jqgtb")
+"PlayerAnimations": ExtResource("22_pcsr0")
 }
 autoplay = "camera_enter"
 blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0]

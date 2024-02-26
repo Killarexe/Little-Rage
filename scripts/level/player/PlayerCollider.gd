@@ -4,12 +4,9 @@ class_name PlayerCollider
 @export var player: PlayerComponent
 @export var death_component: DeathComponent
 @export var player_controller: PlayerControllerComponent
+@export var checkpoint_particle: PackedScene
 
-var checkpoint_particle: Resource = null
 var previous_tile_type: int = 0
-
-func _ready():
-	checkpoint_particle = preload("res://scenes/instances/level/player/particles/DefaultCheckpointParticle.tscn")
 
 func _process(_delta: float):
 	if player_controller:

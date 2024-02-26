@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/MainCollectionMenu.gd" id="2_e00sk"]
 [ext_resource type="Texture2D" uid="uid://dqwr6dqsywk6s" path="res://assets/textures/player/skins/player_default.png" id="3_hfyt6"]
 [ext_resource type="Texture2D" uid="uid://b5mfjkd164e3g" path="res://assets/textures/player/hats/test_hat.png" id="4_n7by3"]
-[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/instances/level/DefaultLevel.tscn" id="4_oxrq8"]
+[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/DefaultLevel.tscn" id="4_oxrq8"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/SkinsMenu.gd" id="4_qs3l5"]
 [ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/icons/quit.png" id="5_thpgw"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/skins_menu/SkinList.gd" id="5_v2mtl"]
@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/ParticlesMenu.gd" id="6_y5t24"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/hats_menu/HatList.gd" id="7_5na8b"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/LootBoxMenu.gd" id="13_86pp1"]
-[ext_resource type="PackedScene" uid="uid://bf6u6lge7vm8i" path="res://scenes/instances/level/player/PlayerDummy.tscn" id="19_h3c7l"]
+[ext_resource type="PackedScene" uid="uid://bf6u6lge7vm8i" path="res://scenes/bundles/player/PlayerDummy.tscn" id="19_h3c7l"]
 
 [sub_resource type="Animation" id="Animation_0iwv6"]
 length = 0.001
@@ -536,7 +536,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 66.0
-offset_right = -581.0
+offset_right = -637.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.772549, 0.227451, 0.239216, 1)
@@ -668,7 +668,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 0.000244141
+offset_right = 1280.0
+offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.176471, 0.176471, 0.176471, 0.501961)
@@ -743,7 +744,7 @@ offset_bottom = 694.0
 theme = ExtResource("1_q884x")
 text = "button.back"
 
-[node name="SkinList" type="ItemList" parent="CanvasLayer/SkinsMenu" node_paths=PackedStringArray("player")]
+[node name="SkinList" type="ItemList" parent="CanvasLayer/SkinsMenu"]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 172.0
@@ -752,7 +753,6 @@ theme_override_constants/h_separation = 48
 icon_mode = 0
 icon_scale = 4.5
 script = ExtResource("5_v2mtl")
-player = NodePath("")
 
 [node name="HatsMenu" type="Control" parent="CanvasLayer"]
 visible = false
@@ -773,7 +773,7 @@ offset_bottom = 694.0
 theme = ExtResource("1_q884x")
 text = "button.back"
 
-[node name="HatList" type="ItemList" parent="CanvasLayer/HatsMenu" node_paths=PackedStringArray("player")]
+[node name="HatList" type="ItemList" parent="CanvasLayer/HatsMenu"]
 custom_minimum_size = Vector2(1280, 172)
 layout_mode = 0
 offset_right = 40.0
@@ -782,7 +782,6 @@ theme = ExtResource("1_q884x")
 theme_override_constants/h_separation = 32
 icon_scale = 8.0
 script = ExtResource("7_5na8b")
-player = NodePath("")
 
 [node name="ParticlesMenu" type="Control" parent="CanvasLayer"]
 visible = false

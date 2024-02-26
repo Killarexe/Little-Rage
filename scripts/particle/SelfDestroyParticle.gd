@@ -1,10 +1,8 @@
 extends GPUParticles2D
 class_name SelfDestroyParticle
 
-var emmited: bool = false
-
-func _process(_delta: float):
-	if emitting:
-		emmited = true
-	elif emmited:
-		queue_free()
+func _ready():
+	one_shot = true
+	emitting = true
+	await finished
+	queue_free()

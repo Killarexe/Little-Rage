@@ -12,7 +12,6 @@ extends Control
 var selected_level: String = ""
 
 func _ready():
-	level_list._on_item_selected(level_list.current_index)
 	animation_player.play("entry")
 
 func _on_level_list_on_level_selected(level: Level):

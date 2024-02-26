@@ -75,7 +75,6 @@ folder_colors={
 "res://data/tiles/": "blue",
 "res://scenes/": "red",
 "res://scenes/globals/": "blue",
-"res://scenes/instances/": "yellow",
 "res://scenes/levels/": "purple",
 "res://scenes/uis/": "green",
 "res://scripts/": "purple"
