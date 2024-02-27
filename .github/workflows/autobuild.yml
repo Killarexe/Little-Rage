@@ -33,8 +33,8 @@ jobs:
           echo "Downloading Godot's export templates..."
           wget https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_mono_export_templates.tpz
           unzip Godot_v4.2.1-stable_mono_export_templates.tpz
-          mkdir -p ~/.local/share/godot
-          mv templates ~/.local/share/godot/export_templates
+          mkdir -p ~/.local/share/godot/export_templates
+          mv templates ~/.local/share/godot/export_templates/4.2.1.stable/
           echo "Export templates downloaded!"
           
       - name: Export project
