@@ -1,0 +1,49 @@
+name: Autobuild
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install prerequisites
+        run: |
+          echo "Installing prerequisites..."
+          sudo apt install -y wget unzip
+          echo "Install complete!"
+
+      - name: Download Godot LTS Version
+        run: |
+          echo "Downloading Godot..."
+          wget https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_linux.x86_64.zip
+          unzip Godot_v4.2.1-stable_linux.x86_64.zip
+          mv Godot_v4.2.1-stable_linux.x86_64 godot
+          chmod +x godot
+          echo "Download complete!"
+          
+      - name: Donwload Godot export templates
+        run: |
+          echo "Downloading Godot's export templates..."
+          wget https://github.com/godotengine/godot/releases/download/4.2.1-stable/Godot_v4.2.1-stable_mono_export_templates.tpz
+          unzip Godot_v4.2.1-stable_mono_export_templates.tpz
+          mkdir -p ~/.local/share/godot
+          mv templates ~/.local/share/godot/export_templates
+          echo "Export templates downloaded!"
+          
+      - name: Export project
+        run: |
+          echo "Exporting project..."
+          echo "Export project to Linux(release)"
+          mkdir -p build/linux
+          ./godot --headless --path . --export-release "Linux/X11" build/linux/LittleRage.x86_64
+          echo "Export project to Windows(release)"
+          mkdir -p build/windows
+          ./godot --headless --path . --export-release "Windows Desktop" build/windows/LittleRage.exe
+          echo "Project exported!"
