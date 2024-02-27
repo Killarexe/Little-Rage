@@ -41,8 +41,9 @@ jobs:
         run: |
           echo "Exporting project..."
           echo "Export project to Linux(release)"
+          echo "$PWD"
           mkdir -p build/linux
-          ./godot --headless --path . --export-release "Linux/X11" build/linux/LittleRage.x86_64
+          ./godot --headless --export-release "Linux/X11" build/linux/LittleRage.x86_64
           echo "Export project to Windows(release)"
           mkdir -p build/windows
           ./godot --headless --path . --export-release "Windows Desktop" build/windows/LittleRage.exe
