@@ -4,6 +4,7 @@ class_name PlayerCollider
 @export var player: PlayerComponent
 @export var death_component: DeathComponent
 @export var player_controller: PlayerControllerComponent
+@export var timer_component: PlayerTimer
 @export var checkpoint_particle: PackedScene
 
 var previous_tile_type: int = 0
@@ -29,21 +30,24 @@ func _process(_delta: float):
 			var front_cell: TileData = collider.get_cell_tile_data(0, front_pos)
 			if front_cell != null:
 				var type = front_cell.get_custom_data("type")
-				if type == 4:
-					player.finish_level()
+				var level: Node = player.get_parent()
+				if type == 4 && level is LevelPlayer:
+					level.finish_level(player, death_component, timer_component)
 
 func on_collide(type: int, pos: Vector2):
 	if previous_tile_type != type:
 		match type:
 			2:
 				var spawnpoint_position: Vector2 = pos * Vector2(16, 16) - Vector2(-8, 8)
-				player.spawn_point = spawnpoint_position
+				death_component.spawn_point = spawnpoint_position
 				Game.instanceNodeAtPos(checkpoint_particle, player.get_parent(), spawnpoint_position)
 				player.on_setting_spawnpoint.emit(pos)
 			3:
 				death_component.die()
 			4:
-				player.finish_level()
+				var level: Node = player.get_parent()
+				if level is LevelPlayer:
+					level.finish_level(player, death_component, timer_component)
 			5:
 				if previous_tile_type != 6:
 					player.on_switch_color.emit(true)

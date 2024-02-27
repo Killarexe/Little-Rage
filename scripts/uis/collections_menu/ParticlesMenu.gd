@@ -6,7 +6,7 @@ extends Control
 
 @onready var main_menu: MainCollectionMenu = $"../MainMenu"
 @onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/PlayerDummy/PlayerViewer/AnimationPlayer"
-@onready var player: PlayerComponent = $"../../DefaultLevel/PlayerDummy"
+@export var player: PlayerDummyComponent
 
 var death_particle_ids: Array[String] = []
 var jump_particle_ids: Array[String] = []

@@ -22,7 +22,7 @@ func update_buttons():
 	next_button.visible = LootBoxesManager.has_loot_box()
 
 func spawn_particles():
-	Game.instanceNodeAtPos(load("res://scenes/instances/BigPartyParticle.tscn"), self, Vector2(1280.0 / 2.0, 720.0 / 2.0))
+	Game.instanceNodeAtPos(load("res://scenes/bundles/particles/BigPartyParticle.tscn"), self, Vector2(1280.0 / 2.0, 720.0 / 2.0))
 
 func _on_next_box_button_pressed():
 	if !animation_player.is_playing():

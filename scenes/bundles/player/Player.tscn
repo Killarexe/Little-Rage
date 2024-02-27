@@ -63,12 +63,13 @@ collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_fvwbd")
 
-[node name="Collider" type="CollisionShape2D" parent="." node_paths=PackedStringArray("player", "death_component", "player_controller")]
+[node name="Collider" type="CollisionShape2D" parent="." node_paths=PackedStringArray("player", "death_component", "player_controller", "timer_component")]
 shape = SubResource("RectangleShape2D_h7ve1")
 script = ExtResource("2_imbgx")
 player = NodePath("..")
 death_component = NodePath("../DeathComponent")
 player_controller = NodePath("../PlayerControllerComponent")
+timer_component = NodePath("../Timer")
 checkpoint_particle = ExtResource("3_phvfs")
 
 [node name="Skin" type="Sprite2D" parent="."]

@@ -370,7 +370,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_hbmar"]
 resource_name = "walk"
-length = 15.9
+length = 10.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -536,7 +536,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 66.0
-offset_right = -637.0
+offset_right = -761.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.772549, 0.227451, 0.239216, 1)
@@ -571,7 +571,6 @@ expand_icon = true
 [node name="ParticlesButton" type="Button" parent="CanvasLayer/MainMenu/SelectButtons/Buttons"]
 custom_minimum_size = Vector2(384, 192)
 layout_mode = 2
-disabled = true
 text = "button.particles"
 icon = ExtResource("5_thpgw")
 icon_alignment = 2
@@ -744,7 +743,7 @@ offset_bottom = 694.0
 theme = ExtResource("1_q884x")
 text = "button.back"
 
-[node name="SkinList" type="ItemList" parent="CanvasLayer/SkinsMenu"]
+[node name="SkinList" type="ItemList" parent="CanvasLayer/SkinsMenu" node_paths=PackedStringArray("player")]
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 172.0
@@ -753,6 +752,7 @@ theme_override_constants/h_separation = 48
 icon_mode = 0
 icon_scale = 4.5
 script = ExtResource("5_v2mtl")
+player = NodePath("../../../DefaultLevel/PlayerDummy")
 
 [node name="HatsMenu" type="Control" parent="CanvasLayer"]
 visible = false
@@ -773,7 +773,7 @@ offset_bottom = 694.0
 theme = ExtResource("1_q884x")
 text = "button.back"
 
-[node name="HatList" type="ItemList" parent="CanvasLayer/HatsMenu"]
+[node name="HatList" type="ItemList" parent="CanvasLayer/HatsMenu" node_paths=PackedStringArray("player")]
 custom_minimum_size = Vector2(1280, 172)
 layout_mode = 0
 offset_right = 40.0
@@ -782,8 +782,9 @@ theme = ExtResource("1_q884x")
 theme_override_constants/h_separation = 32
 icon_scale = 8.0
 script = ExtResource("7_5na8b")
+player = NodePath("../../../DefaultLevel/PlayerDummy")
 
-[node name="ParticlesMenu" type="Control" parent="CanvasLayer"]
+[node name="ParticlesMenu" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("player")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -792,6 +793,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_y5t24")
+player = NodePath("../../DefaultLevel/PlayerDummy")
 
 [node name="BackButton" type="Button" parent="CanvasLayer/ParticlesMenu"]
 layout_mode = 0

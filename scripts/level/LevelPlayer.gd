@@ -55,6 +55,13 @@ func _ready():
 func _process(delta: float):
 	change_color_time -= delta
 
+func finish_level(player: PlayerComponent, death: DeathComponent, time: PlayerTimer):
+	var parent: Node = get_parent()
+	if parent is LevelEditor:
+		parent.switch_edit_mode()
+	else:
+		player.on_win.emit(time.get_time(), death.death_count)
+
 func spawn_player():
 	var player = Game.instanceNodeAtPos(player_prefab, self, start_pos)
 	player.connect("on_switch_color", switch_colors)

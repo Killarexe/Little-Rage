@@ -3,7 +3,7 @@ extends Node
 const SCREENSHOT_DIR: String = "user://screenshots/"
 
 func _unhandled_input(event: InputEvent):
-	if event is InputEventKey:
+	if event is InputEventKey && OS.get_name() != "Web":
 		if event.is_action_pressed("screenshot"):
 			var image: Image = get_viewport().get_texture().get_image()
 			if !DirAccess.dir_exists_absolute(SCREENSHOT_DIR):
@@ -16,6 +16,7 @@ func _unhandled_input(event: InputEvent):
 			var file_path: String = SCREENSHOT_DIR + date_string + ".png"
 			var save_error: Error = image.save_png(file_path)
 			if save_error:
-				print_debug(("Failed to create screenshot file '%s'. Error code: " % file_path) + str(save_error))
+				print(("Failed to create screenshot file '%s'.\n\tError code: " % file_path) + str(save_error))
 				return
-			print_debug("Successfuly create screenshot. '%s'!" % file_path)
+			PopUpFrame.pop_translated("popup.screenshot")
+			print("Successfuly created a screenshot. '%s'!" % file_path)

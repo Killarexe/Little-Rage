@@ -6,7 +6,7 @@ extends Node2D
 @onready var animation_camera: Camera2D = $Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-var countdown_prefab: Resource = load("res://scenes/instances/level/player/uis/countdown.tscn")
+var countdown_prefab: Resource = load("res://scenes/bundles/uis/countdown.tscn")
 
 func _ready():
 	if LevelManager.current_level.is_empty():
