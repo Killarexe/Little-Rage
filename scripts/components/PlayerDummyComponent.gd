@@ -26,8 +26,8 @@ func _ready():
 var jump_timer: float = 0
 var ground_timer: float = 0
 
-func _physics_process(delta: float) -> void:
-	super._physics_process(delta)
+func _process(delta: float) -> void:
+	super._process(delta)
 	handle_jump()
 
 func update_timers(delta: float) -> void:

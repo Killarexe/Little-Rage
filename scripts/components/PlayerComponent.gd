@@ -13,24 +13,18 @@ signal on_death(death_count: int)
 
 @export_category("Gravity settings")
 @export var GRAVITY_DIRECTION: Vector2 = Vector2(0, -1)
-@export_range(0.0, 40.0) var GRAVITY: float = 20.0
+@export_range(0.0, 40.0) var GRAVITY: float = 17.5
 
 @export var motion: Vector2 = Vector2()
 
 func _ready():
 	set_up_direction(GRAVITY_DIRECTION)
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	motion.y += GRAVITY
 	if motion.y > MAX_FALL_SPEED:
 		motion.y = MAX_FALL_SPEED
-	motion.x = clampf(motion.x, -MAX_SPEED, MAX_SPEED)
 	set_velocity(motion)
 	move_and_slide()
 	motion = velocity
-
-func accelerate():
-	motion.x += ACCEL
-
-func decelerate():
-	motion.x -= ACCEL
+	motion.x = clampf(motion.x, -MAX_SPEED, MAX_SPEED)

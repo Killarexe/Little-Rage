@@ -176,10 +176,6 @@ locale/test="en"
 2d_physics/layer_3="Danger"
 2d_physics/layer_4="Player"
 
-[physics]
-
-common/max_physics_steps_per_frame=15
-
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

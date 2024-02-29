@@ -21,7 +21,7 @@ func _ready() -> void:
 	if !LevelManager.current_level.is_empty():
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	update_timers(delta)
 	check_input()
 	handle_jump()
@@ -33,12 +33,12 @@ func update_timers(delta: float) -> void:
 func check_input() -> void:
 	if Input.is_action_pressed("left"):
 		skin.flip_h = true
-		player.decelerate()
+		player.motion.x -= player.ACCEL
 	elif Input.is_action_pressed("right"):
 		skin.flip_h = false
-		player.accelerate()
+		player.motion.x += player.ACCEL
 	else:
-		player.motion.x = lerpf(player.motion.x, 0, 0.2)
+		player.motion.x = lerpf(player.motion.x, 0.0, 0.2)
 	
 	if Input.is_action_pressed("jump"):
 		jump_timer = JUMP_TIME
