@@ -27,8 +27,6 @@ func _input(event: InputEvent):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	if event is InputEventKey:
-		pass #TODO: "Cheat code" impl
 
 func _notification(what: int):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST || what == NOTIFICATION_WM_GO_BACK_REQUEST:
