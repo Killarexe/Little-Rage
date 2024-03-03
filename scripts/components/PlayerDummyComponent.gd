@@ -50,3 +50,9 @@ func handle_jump() -> void:
 		motion.y = -JUMP_FORCE
 		jump_timer = 0
 		ground_timer = 0
+
+func flip_sprite():
+	player_skin.flip_h = !player_skin.flip_h
+
+func jump_player():
+	jump_timer = JUMP_TIME

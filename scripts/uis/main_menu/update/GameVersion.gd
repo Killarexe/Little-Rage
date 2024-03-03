@@ -12,11 +12,12 @@ enum GameVersionFlag{
 }
 
 static func from_string(value: String) -> GameVersion:
-	var regex = RegEx.new()
+	var regex: RegEx = RegEx.new()
 	regex.compile("[^0-9.]")
 	var version_array: PackedStringArray = regex.sub(value, "").split(".")
-	if version_array.size() < 3:
+	if version_array.size() < 2:
 		return null
+	version_array.resize(3)
 	return from(int(version_array[0]), int(version_array[1]), int(version_array[2]))
 
 static func from(upper_: int, middle_: int, down_: int) -> GameVersion:
