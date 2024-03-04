@@ -6,7 +6,9 @@ var index: int = 0
 func _ready():
 	$AnimationPlayer.play("zoom")
 	if texts.size() <= 0:
-		text = "Hello, world!"
+		text = "MISSINGNO."
+	elif Game.current_event == Game.Event.ANNIVERSARY:
+		text = "Happy Birthday!"
 	else:
 		randomize()
 		index = randi_range(0, texts.size() - 1)

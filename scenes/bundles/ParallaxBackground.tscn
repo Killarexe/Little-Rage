@@ -7,26 +7,58 @@
 layer = -1
 scroll_base_offset = Vector2(0, 512)
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(763.2, 0)
+[node name="Ground2" type="ParallaxLayer" parent="."]
+position = Vector2(-64, -160)
+motion_scale = Vector2(0.15, 0.15)
+motion_offset = Vector2(800, 181)
+motion_mirroring = Vector2(960, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+[node name="Sprite2D" type="Sprite2D" parent="Ground2"]
+self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ra6ai")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Ground2"]
+self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ra6ai")
+offset = Vector2(800, 0)
+
+[node name="Clouds" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds"]
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_lipmm")
-offset = Vector2(436, 436)
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="Clouds"]
+position = Vector2(480, 0)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_lipmm")
+
+[node name="Clouds2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.175, 0.175)
+motion_mirroring = Vector2(864, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Clouds2"]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_lipmm")
+
+[node name="Ground" type="ParallaxLayer" parent="."]
+modulate = Color(0.752941, 0.752941, 0.752941, 1)
+position = Vector2(0, -128)
 motion_scale = Vector2(0.25, 0.25)
 motion_offset = Vector2(800, 181)
 motion_mirroring = Vector2(960, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
 self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_ra6ai")
 
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+[node name="Sprite2D2" type="Sprite2D" parent="Ground"]
 self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_ra6ai")

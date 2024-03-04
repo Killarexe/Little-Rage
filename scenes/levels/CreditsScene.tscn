@@ -707,7 +707,7 @@ script = ExtResource("1_ju23v")
 
 [node name="Killar" parent="." instance=ExtResource("2_atls6")]
 position = Vector2(-400, 0)
-override_hat_id = "no_hat"
+override_hat_id = "fez"
 override_skin_id = "killarexe"
 
 [node name="Niark" parent="." instance=ExtResource("2_atls6")]

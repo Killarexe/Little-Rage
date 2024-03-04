@@ -123,7 +123,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_xgwfs"]
 resource_name = "walk"
-length = 14.9
+length = 12.9
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
