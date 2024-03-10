@@ -1,6 +1,7 @@
 extends Node2D
 
 func _ready():
+	MusicManager.stop()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _unhandled_key_input(event: InputEvent):

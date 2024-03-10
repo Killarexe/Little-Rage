@@ -7,6 +7,8 @@ class_name DefaultLevelSelectionMenu
 @onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/PlayerDummy/PlayerCamera/AnimationPlayer"
 
 func _on_play_button_pressed():
+	if level_list.levels.is_empty():
+		return
 	animation_player.play_backwards("enter")
 	await animation_player.animation_finished
 	camera_animation_player.play("out_zoomed")

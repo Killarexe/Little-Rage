@@ -5,25 +5,7 @@
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 layer = -1
-scroll_base_offset = Vector2(0, 512)
-
-[node name="Ground2" type="ParallaxLayer" parent="."]
-position = Vector2(-64, -160)
-motion_scale = Vector2(0.15, 0.15)
-motion_offset = Vector2(800, 181)
-motion_mirroring = Vector2(960, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground2"]
-self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_ra6ai")
-flip_h = true
-
-[node name="Sprite2D2" type="Sprite2D" parent="Ground2"]
-self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_ra6ai")
-offset = Vector2(800, 0)
+scroll_base_offset = Vector2(0, 2048)
 
 [node name="Clouds" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.1, 0.1)
@@ -38,13 +20,23 @@ position = Vector2(480, 0)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_lipmm")
 
-[node name="Clouds2" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.175, 0.175)
-motion_mirroring = Vector2(864, 0)
+[node name="Ground2" type="ParallaxLayer" parent="."]
+position = Vector2(-64, -160)
+motion_scale = Vector2(0.15, 0.15)
+motion_offset = Vector2(800, 282.813)
+motion_mirroring = Vector2(960, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Clouds2"]
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("1_lipmm")
+[node name="Sprite2D" type="Sprite2D" parent="Ground2"]
+self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ra6ai")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="Ground2"]
+self_modulate = Color(0.784314, 0.784314, 0.784314, 1)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ra6ai")
+offset = Vector2(800, 0)
 
 [node name="Ground" type="ParallaxLayer" parent="."]
 modulate = Color(0.752941, 0.752941, 0.752941, 1)

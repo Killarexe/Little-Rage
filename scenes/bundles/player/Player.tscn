@@ -62,7 +62,6 @@ _data = {
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_fvwbd")
-GRAVITY = 15.0
 
 [node name="Collider" type="CollisionShape2D" parent="." node_paths=PackedStringArray("player", "death_component", "player_controller", "timer_component")]
 shape = SubResource("RectangleShape2D_h7ve1")
@@ -138,8 +137,9 @@ scale = Vector2(8, 8)
 texture_normal = ExtResource("13_fxv75")
 action = "pause"
 
-[node name="PlayerStatus" parent="Menus" node_paths=PackedStringArray("player", "timer") instance=ExtResource("14_arcat")]
+[node name="PlayerStatus" parent="Menus" node_paths=PackedStringArray("player", "player_skin", "timer") instance=ExtResource("14_arcat")]
 player = NodePath("../..")
+player_skin = NodePath("../../Skin")
 timer = NodePath("../../Timer")
 
 [node name="WinMenu" parent="Menus" node_paths=PackedStringArray("player") instance=ExtResource("15_86y6y")]
@@ -180,4 +180,4 @@ libraries = {
 "PlayerAnimations": ExtResource("22_pcsr0")
 }
 autoplay = "camera_enter"
-blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0]
+blend_times = [&"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0]

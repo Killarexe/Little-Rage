@@ -8,7 +8,7 @@ class_name PlayerControllerComponent
 @export var sound_effect_player: SoundEffectPlayer
 
 @export_category("Player movement settings")
-@export_range(200.0, 800.0) var JUMP_FORCE: float = 400.0
+@export_range(200.0, 800.0) var JUMP_FORCE: float = 440.0
 
 @export_category("Player time settings")
 @export_range(0.1, 0.5) var GROUND_TIME: float = 0.2

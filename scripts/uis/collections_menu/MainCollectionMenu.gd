@@ -1,12 +1,30 @@
 extends Control
 class_name MainCollectionMenu
 
+const UNLOCK_ALL_CHEAT_CODE: Array[String] = ["jump", "jump", "down", "down", "left", "right", "left", "right", "left_click", "right_click"]
+var cheat_code_index: int = 0
+
 @onready var animation_player: AnimationPlayer = $SelectButtons/AnimationPlayer
 @onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/PlayerDummy/PlayerViewer/AnimationPlayer"
 @onready var loot_box_menu: LootBoxMenu = $LootBoxMenu
 
 func _ready():
 	MusicManager.play_music("collections_menu")
+
+func _input(event: InputEvent):
+	if (event is InputEventKey || event is InputEventMouseButton) && !event.is_released():
+		if event.is_action_pressed(UNLOCK_ALL_CHEAT_CODE[cheat_code_index]):
+			if cheat_code_index >= UNLOCK_ALL_CHEAT_CODE.size() - 1:
+				cheat_code_index = 0
+				for skin in PlayerSkinManager.skins:
+					PlayerSkinManager.unlock_skin(skin.id)
+				for hat in PlayerHatManager.hats:
+					PlayerHatManager.unlock_hat(hat.id)
+				PopUpFrame.pop("Cheat Code: Unlock all!")
+			else:
+				cheat_code_index += 1
+		else: 
+			cheat_code_index = 0
 
 func _on_skins_button_pressed():
 	set_menu_to(0)

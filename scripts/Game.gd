@@ -31,7 +31,7 @@ func _ready():
 		AchievementManager.unlock_achievement("halloween_event")
 		current_event = Event.HALLOWEEN
 	elif day == 24 && month == 3:
-		#TODO: Add a special thing for later version idk...
+		PlayerSkinManager.unlock_skin("old_player")
 		current_event = Event.ANNIVERSARY
 
 func has_unlocked_unhiddens():
