@@ -1,5 +1,7 @@
 extends Control
+class_name SettingsMenu
 
+@export var jump_sound_effect: SoundEffectPlayer
 @onready var language_menu: OptionButton = $CanvasLayer/VBoxContainer/Language/MenuButton
 
 func _ready():
@@ -23,6 +25,7 @@ func _on_back_button_pressed():
 
 func _on_sfx_slider_value_changed(value: int):
 	MusicManager.sound_effect_volume = value
+	jump_sound_effect.set_sfx_volume(value)
 	SaveManager.save()
 
 func _on_volume_slider_value_changed(value: int):
@@ -47,3 +50,6 @@ func _on_option_button_item_selected(index: int):
 	WindowManager.window_size = index
 	WindowManager.update_window(index)
 	SaveManager.save()
+
+func _on_slider_drag_ended(value_changed: bool):
+	jump_sound_effect.playing = value_changed

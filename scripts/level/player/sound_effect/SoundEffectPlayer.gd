@@ -22,4 +22,4 @@ func play_sfx(sfx_id: String, pitch_range: float = 0.5):
 		stream = sfx
 		play()
 	else:
-		print("Failed to play sfx: '" + sfx_id + "'")
+		print_rich("[color=red][b]Failed to play sfx: '" + sfx_id + "'[/b][/color]")

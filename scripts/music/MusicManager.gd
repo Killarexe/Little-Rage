@@ -23,4 +23,4 @@ func play_music(music_id: String, from_position: float = 0.0):
 		stream = music
 		play(from_position)
 	else:
-		print("Failed to play music: '" + music_id + "'")
+		print_rich("[color=red][b]Failed to play music: '" + music_id + "'[/b][/color]")

@@ -345,7 +345,8 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
+offset_top = -70.0
+offset_bottom = -47.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_fjp12")
@@ -355,6 +356,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_5eid8")
 
+[node name="Button" type="Button" parent="CanvasLayer/Information"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 414.0
+offset_right = -414.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
 [connection signal="pressed" from="CanvasLayer/SplashText/Button" to="CanvasLayer/SplashText" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
@@ -362,3 +374,4 @@ script = ExtResource("10_5eid8")
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/MultiplayerButton" to="." method="_on_multiplayer_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/LevelEditorButton" to="." method="_on_level_editor_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Information/Button" to="CanvasLayer/Information" method="_on_button_pressed"]

@@ -7,9 +7,11 @@ var cheat_code_index: int = 0
 @onready var animation_player: AnimationPlayer = $SelectButtons/AnimationPlayer
 @onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/PlayerDummy/PlayerViewer/AnimationPlayer"
 @onready var loot_box_menu: LootBoxMenu = $LootBoxMenu
+@onready var jukebox_button: Button = $SelectButtons/JukeboxButton
 
 func _ready():
 	MusicManager.play_music("collections_menu")
+	jukebox_button.visible = PlayerSkinManager.has_unlocked_all() && PlayerHatManager.has_unlocked_all()
 
 func _input(event: InputEvent):
 	if (event is InputEventKey || event is InputEventMouseButton) && !event.is_released():
@@ -62,3 +64,6 @@ func _on_achievements_button_pressed():
 
 func _on_loot_box_button_pressed():
 	loot_box_menu.open()
+
+func _on_jukebox_button_pressed():
+	SceneManager.change_scene("res://scenes/uis/SoundTrackMenu.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2prkhp6tmh5f"]
+[gd_scene load_steps=11 format=3 uid="uid://d2prkhp6tmh5f"]
 
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/DefaultLevel.tscn" id="1_m3sge"]
 [ext_resource type="Animation" uid="uid://cx04at5pdf11i" path="res://assets/animations/camera_scroll.res" id="1_nbals"]
@@ -7,19 +7,22 @@
 [ext_resource type="LabelSettings" uid="uid://bf4264al524mo" path="res://assets/style/label_settings/shadow_big_label.tres" id="5_7dhlh"]
 [ext_resource type="LabelSettings" uid="uid://dfu1k8upq5eqm" path="res://assets/style/label_settings/shadow_medium_label.tres" id="6_70nof"]
 [ext_resource type="Script" path="res://scripts/uis/MobileVisiblity.gd" id="7_u0f2h"]
+[ext_resource type="AudioStream" uid="uid://02c5y1bkjsaw" path="res://assets/sound_effects/jump.ogg" id="8_ow78t"]
+[ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="9_hltoy"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0jn6v"]
 _data = {
 "camera_scroll": ExtResource("1_nbals")
 }
 
-[node name="Settings Menu" type="Control"]
+[node name="Settings Menu" type="Control" node_paths=PackedStringArray("jump_sound_effect")]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 script = ExtResource("1_y0ggs")
+jump_sound_effect = NodePath("AudioStreamPlayer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1252.35, 0)
@@ -205,8 +208,16 @@ grow_vertical = 0
 theme = ExtResource("4_tdetm")
 text = "button.settings.sound_track"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(640, 360)
+stream = ExtResource("8_ow78t")
+panning_strength = 0.0
+bus = &"Sound Effects"
+script = ExtResource("9_hltoy")
+
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
 [connection signal="value_changed" from="CanvasLayer/VBoxContainer/MusicVolume/Slider" to="." method="_on_volume_slider_value_changed"]
+[connection signal="drag_ended" from="CanvasLayer/VBoxContainer/SoundEffectVolume/Slider" to="." method="_on_slider_drag_ended"]
 [connection signal="value_changed" from="CanvasLayer/VBoxContainer/SoundEffectVolume/Slider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="item_selected" from="CanvasLayer/VBoxContainer/WindowSize/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="item_selected" from="CanvasLayer/VBoxContainer/Language/MenuButton" to="." method="_on_menu_button_item_selected"]

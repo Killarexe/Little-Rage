@@ -20,7 +20,7 @@ func unlock_achievement(achievement_id: String):
 			PopUpFrame.pop(TranslationServer.translate("popup.unlocked_achievement") % TranslationServer.translate("achievement." + achievement_id), achievement.icon)
 			SaveManager.save()
 			return
-	print("Failed to unlock achievement: %s" % achievement_id)
+	print_rich("[color=red][b]Failed to unlock achievement: %s[/b][/color]" % achievement_id)
 
 func has_unlocked_achievement(achievement_id: String) -> bool:
 	return unlocked_achievements.has(achievement_id)

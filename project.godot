@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Little Rage"
 config/description="Little Rage is a Solo platformer game based on speedrun and race. And you can make your own levels."
-config/version="0.5.1b"
+config/version="0.6b"
 config/tags=PackedStringArray("games")
 run/main_scene="res://scenes/uis/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
@@ -175,6 +175,10 @@ locale/test="en"
 2d_physics/layer_2="Door"
 2d_physics/layer_3="Danger"
 2d_physics/layer_4="Player"
+
+[physics]
+
+3d/run_on_separate_thread=true
 
 [rendering]
 

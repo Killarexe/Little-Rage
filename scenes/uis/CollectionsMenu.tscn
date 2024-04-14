@@ -536,7 +536,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 66.0
-offset_right = -761.0
+offset_right = -640.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.772549, 0.227451, 0.239216, 1)
@@ -634,6 +634,18 @@ libraries = {
 }
 autoplay = "zoom"
 
+[node name="JukeboxButton" type="Button" parent="CanvasLayer/MainMenu/SelectButtons"]
+layout_mode = 0
+offset_left = 812.0
+offset_top = 180.0
+offset_right = 1193.0
+offset_bottom = 240.0
+theme = ExtResource("1_q884x")
+text = "button.jukebox"
+icon = ExtResource("5_yo61c")
+icon_alignment = 2
+expand_icon = true
+
 [node name="BackButton" type="Button" parent="CanvasLayer/MainMenu/SelectButtons"]
 layout_mode = 0
 offset_left = 916.0
@@ -668,8 +680,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_right = 2560.0
+offset_bottom = 1440.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.176471, 0.176471, 0.176471, 0.501961)
@@ -880,6 +892,7 @@ libraries = {
 [connection signal="pressed" from="CanvasLayer/MainMenu/SelectButtons/Buttons/ParticlesButton" to="CanvasLayer/MainMenu" method="_on_particles_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/SelectButtons/AchievementsButton" to="CanvasLayer/MainMenu" method="_on_achievements_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/SelectButtons/LootBoxButton" to="CanvasLayer/MainMenu" method="_on_loot_box_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/SelectButtons/JukeboxButton" to="CanvasLayer/MainMenu" method="_on_jukebox_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/SelectButtons/BackButton" to="CanvasLayer/MainMenu" method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/LootBoxMenu/Buttons/BackButton" to="CanvasLayer/MainMenu/LootBoxMenu" method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/LootBoxMenu/Buttons/NextBoxButton" to="CanvasLayer/MainMenu/LootBoxMenu" method="_on_next_box_button_pressed"]

@@ -7,14 +7,21 @@ extends Control
 
 @onready var level_map: LevelPlayer = $"../../DefaultLevel"
 @onready var level_create_import_menu: LevelCreateImportMenu = $"../LevelCreateImportMenu"
+@onready var edit_button: Button = $EditButton
+@onready var delete_button: Button = $DeleteButton
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var selected_level: String = ""
 
 func _ready():
 	animation_player.play("entry")
+	difficulty_label.text = TranslationServer.translate("label.none")
+	edit_button.disabled = true
+	delete_button.disabled = true
 
 func _on_level_list_on_level_selected(level: Level):
+	edit_button.disabled = false
+	delete_button.disabled = false
 	difficulty_color.color = Level.difficulty_to_color(level.difficulty)
 	difficulty_label.text = Level.difficulty_to_str(level.difficulty)
 	level_description.text = level.description

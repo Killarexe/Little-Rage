@@ -28,7 +28,7 @@ func load_levels():
 func get_level_best_time_as_str(level_id: String) -> String:
 	var best_time: Array = get_level_best_time(level_id)
 	if best_time == [0, 0, 0]:
-		return "None"
+		return TranslationServer.translate("label.none")
 	return str(best_time[0]).pad_zeros(2) + ":" + str(best_time[1]).pad_zeros(2) + ":" + str(best_time[2]).pad_zeros(2)
 
 func get_level_best_time(level_id: String) -> Array:
@@ -67,11 +67,14 @@ func load_level(level_id: String):
 	get_tree().change_scene_to_packed(level.scene)
 
 func delete_level(level_id: String) -> bool:
-	print("Try Deleting '%s/%s.tres'" % [EXTERNAL_LEVELS_DIR, level_id])
+	print_rich("[b]Try Deleting '%s/%s.tres'[/b]" % [EXTERNAL_LEVELS_DIR, level_id])
 	var level_dir: DirAccess = DirAccess.open(EXTERNAL_LEVELS_DIR)
-	if level_dir.remove(level_id + ".tres") == OK:
+	var error: Error = level_dir.remove(level_id + ".tres")
+	if error == OK:
 		load_levels()
+		print_rich("[color=lightgree][i]\"%s\" succesfully deleted![/i][/color]" % level_id)
 		PopUpFrame.pop_translated("popup.delete_level.success")
 		return true
+	print_rich("[color=red][b]Failed to delete \"%s\":\n\t" + str(error))
 	PopUpFrame.pop(TranslationServer.translate("popup.delete_level.failed" % level_dir))
 	return false
