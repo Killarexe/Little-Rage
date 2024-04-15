@@ -23,8 +23,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	update_timers(delta)
-	check_input()
+
+func _physics_process(_delta: float) -> void:
 	handle_jump()
+	check_input()
 
 func update_timers(delta: float) -> void:
 	jump_timer -= delta

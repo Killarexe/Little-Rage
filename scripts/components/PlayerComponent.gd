@@ -20,7 +20,7 @@ signal on_death(death_count: int)
 func _ready():
 	set_up_direction(GRAVITY_DIRECTION)
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	motion.y += GRAVITY
 	if motion.y > MAX_FALL_SPEED:
 		motion.y = MAX_FALL_SPEED

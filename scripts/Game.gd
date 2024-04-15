@@ -8,7 +8,7 @@ enum Event {
 }
 
 const GAME_NAME: String = "Little Rage"
-var GAME_VERSION: GameVersion = GameVersion.from(0, 6, 0)
+var GAME_VERSION: GameVersion = GameVersion.from(0, 5, 2)
 
 var current_event: Event = Event.NONE
 var is_mobile: bool = false
