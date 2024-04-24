@@ -62,7 +62,7 @@ func _on_create_level_button_pressed():
 	level.description = level_creation_menu.description
 	level.y_limit = level_creation_menu.y_limit
 	level.difficulty = level_creation_menu.difficulty
-	level.scene = load("res://scenes/instances/level/DefaultLevel.tscn")
+	level.scene = load("res://scenes/bundles/DefaultLevel.tscn")
 	ResourceSaver.save(level, LevelManager.EXTERNAL_LEVELS_DIR + "/" + level_id + ".tres")
 	LevelManager.load_levels()
 	LevelManager.current_level = level_id

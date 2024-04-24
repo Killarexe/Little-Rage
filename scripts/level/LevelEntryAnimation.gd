@@ -9,6 +9,7 @@ extends Node2D
 var countdown_prefab: Resource = load("res://scenes/bundles/uis/countdown.tscn")
 
 func _ready():
+	await player_menus.ready
 	if LevelManager.current_level.is_empty():
 		enable_status()
 	else:
