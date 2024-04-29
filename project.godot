@@ -36,7 +36,6 @@ LootBoxesManager="*res://scripts/level/player/cosmetic/LootBoxesManager.gd"
 Overlay="*res://scenes/globals/Overlay.tscn"
 PopUpFrame="*res://scenes/globals/PopUpFrame.tscn"
 ExperiementalFrame="*res://scenes/globals/ExperiementalFrame.tscn"
-LocalMultiplayer="*res://scripts/multiplayer/local/LocalMultiplayer.gd"
 UpdateChecker="*res://scenes/globals/UpdateChecker.tscn"
 Game="*res://scripts/Game.gd"
 
