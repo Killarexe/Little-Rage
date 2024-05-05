@@ -1,6 +1,7 @@
 extends Control
 class_name SettingsMenu
 
+@export var unlock_all_button: Button
 @export var jump_sound_effect: SoundEffectPlayer
 @onready var language_menu: OptionButton = $CanvasLayer/VBoxContainer/Language/MenuButton
 
@@ -11,6 +12,9 @@ func _ready():
 	$CanvasLayer/VBoxContainer/SoundEffectVolume/Slider.set_value_no_signal(MusicManager.sound_effect_volume)
 	$CanvasLayer/VBoxContainer/WindowSize/OptionButton.select(WindowManager.window_size)
 	$CanvasLayer/SoundTrackButton.visible = randf() <= 0.05 || (Input.is_action_pressed("pause") && Input.is_action_pressed("down"))
+	
+	unlock_all_button.visible = OS.is_debug_build()
+	
 	for i in TranslationServer.get_loaded_locales().size():
 		var language: String = TranslationServer.get_loaded_locales()[i]
 		language_menu.add_icon_item(
@@ -53,3 +57,11 @@ func _on_option_button_item_selected(index: int):
 
 func _on_slider_drag_ended(value_changed: bool):
 	jump_sound_effect.playing = value_changed
+
+func _on_unlock_all_button_pressed():
+	for skin in PlayerSkinManager.skins:
+		PlayerSkinManager.unlock_skin(skin.id)
+	for hat in PlayerHatManager.hats:
+		PlayerHatManager.unlock_hat(hat.id)
+	for particle in PlayerParticleManager.particles:
+		PlayerParticleManager.unlock_particle(particle.id)

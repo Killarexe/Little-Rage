@@ -15,13 +15,14 @@ _data = {
 "camera_scroll": ExtResource("1_nbals")
 }
 
-[node name="Settings Menu" type="Control" node_paths=PackedStringArray("jump_sound_effect")]
+[node name="Settings Menu" type="Control" node_paths=PackedStringArray("unlock_all_button", "jump_sound_effect")]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 grow_vertical = 0
 script = ExtResource("1_y0ggs")
+unlock_all_button = NodePath("CanvasLayer/UnlockAllButton")
 jump_sound_effect = NodePath("AudioStreamPlayer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -192,6 +193,19 @@ grow_vertical = 0
 theme = ExtResource("4_tdetm")
 text = "button.back"
 
+[node name="UnlockAllButton" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(128, 48)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -216.0
+offset_right = 215.0
+offset_bottom = -168.0
+grow_vertical = 0
+theme = ExtResource("4_tdetm")
+text = "Unlock All"
+
 [node name="SoundTrackButton" type="Button" parent="CanvasLayer"]
 custom_minimum_size = Vector2(512, 72)
 anchors_preset = 3
@@ -223,4 +237,5 @@ script = ExtResource("9_hltoy")
 [connection signal="item_selected" from="CanvasLayer/VBoxContainer/Language/MenuButton" to="." method="_on_menu_button_item_selected"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/ResetButtton" to="." method="_on_reset_buttton_pressed"]
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UnlockAllButton" to="." method="_on_unlock_all_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SoundTrackButton" to="." method="_on_sound_track_button_pressed"]

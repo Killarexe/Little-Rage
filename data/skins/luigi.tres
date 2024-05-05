@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerSkin" load_steps=3 format=3 uid="uid://b6yve6cin60fx"]
+
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkin.gd" id="1_eo08q"]
+[ext_resource type="Texture2D" uid="uid://basbo6aakx7y4" path="res://assets/textures/player/skins/player_luigi.png" id="2_6q3l5"]
+
+[resource]
+script = ExtResource("1_eo08q")
+name = "skin.luigi"
+chance = 1
+is_hidden = false
+texture = ExtResource("2_6q3l5")

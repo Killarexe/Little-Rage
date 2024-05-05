@@ -25,6 +25,6 @@ hue_variation_max = 0.5
 script = ExtResource("1_q4x86")
 type = 0
 material = SubResource("3")
-name = "particle.red_jump"
+name = "particle.red_step"
 chance = 1
 is_hidden = false

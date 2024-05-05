@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerParticle" load_steps=5 format=3 uid="uid://cpn4sasfhrttc"]
 
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/particle/PlayerParticle.gd" id="1_ae2ro"]
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/particle/PlayerParticle.gd" id="1_4db4y"]
 
 [sub_resource type="Gradient" id="1"]
 offsets = PackedFloat32Array(0.572368, 1)
@@ -21,9 +21,9 @@ color = Color(1, 0, 0, 1)
 color_ramp = SubResource("2")
 
 [resource]
-script = ExtResource("1_ae2ro")
+script = ExtResource("1_4db4y")
 type = 1
 material = SubResource("3")
-name = "particle.test_jump"
+name = "particle.red_jump"
 chance = 1
 is_hidden = false
