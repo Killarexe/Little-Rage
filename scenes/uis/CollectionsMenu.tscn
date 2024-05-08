@@ -571,7 +571,6 @@ expand_icon = true
 [node name="ParticlesButton" type="Button" parent="CanvasLayer/MainMenu/SelectButtons/Buttons"]
 custom_minimum_size = Vector2(384, 192)
 layout_mode = 2
-disabled = true
 text = "button.particles"
 icon = ExtResource("5_thpgw")
 icon_alignment = 2

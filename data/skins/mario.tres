@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="PlayerSkin" load_steps=2 format=3 uid="uid://chspfhoxbdwgw"]
+[gd_resource type="Resource" script_class="PlayerSkin" load_steps=3 format=3 uid="uid://chspfhoxbdwgw"]
 
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkin.gd" id="1_8nuah"]
+[ext_resource type="Texture2D" uid="uid://cgide80m3bqoc" path="res://assets/textures/player/skins/player_mario.png" id="2_uc1a0"]
 
 [resource]
 script = ExtResource("1_8nuah")
-name = ""
+name = "skin.mario"
 chance = 1
 is_hidden = false
+texture = ExtResource("2_uc1a0")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsgmiptp8gmfy"]
+
+[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="1_4cs37"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j15r3"]
+atlas = ExtResource("1_4cs37")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dmnbk"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3eg7"]
+size = Vector2(18, 18)
+
+[node name="InteractionTile" type="StaticBody2D"]
+
+[node name="TileTexture" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_j15r3")
+
+[node name="TileCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dmnbk")
+
+[node name="TileArea" type="Area2D" parent="."]
+
+[node name="TileAreaCollision" type="CollisionShape2D" parent="TileArea"]
+shape = SubResource("RectangleShape2D_n3eg7")

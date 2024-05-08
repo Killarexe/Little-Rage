@@ -26,9 +26,9 @@ func unlock_skin(skin_id: String, special: bool = false):
 	if skin != null && !is_skin_unlocked(skin_id):
 		unlocked_skins.append(skin_id)
 		SaveManager.save()
-	if special:
-		PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))
-		PopUpFrame.pop(TranslationServer.translate("message.popup.unlocked_skin") % TranslationServer.translate(skin.name), skin.texture)
+		if special:
+			PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))
+			PopUpFrame.pop(TranslationServer.translate("message.popup.unlocked_skin") % TranslationServer.translate(skin.name), skin.texture)
 
 func is_skin_hidden(skin_id: String) -> bool:
 	return get_skin(skin_id).is_hidden
