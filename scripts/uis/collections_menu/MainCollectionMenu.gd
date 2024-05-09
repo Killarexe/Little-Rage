@@ -10,8 +10,12 @@ var cheat_code_index: int = 0
 @onready var jukebox_button: Button = $SelectButtons/JukeboxButton
 
 func _ready():
-	MusicManager.play_music("collections_menu")
-	jukebox_button.visible = PlayerSkinManager.has_unlocked_all() && PlayerHatManager.has_unlocked_all()
+	var has_unlocked_all: bool = PlayerSkinManager.has_unlocked_all() && PlayerHatManager.has_unlocked_all()
+	if has_unlocked_all:
+		MusicManager.play_music("collections_menu_easter")
+	else:
+		MusicManager.play_music("collections_menu")
+	jukebox_button.visible = has_unlocked_all
 
 func _input(event: InputEvent):
 	if (event is InputEventKey || event is InputEventMouseButton) && !event.is_released():

@@ -199,6 +199,12 @@ layout_mode = 2
 theme = ExtResource("2_gnpol")
 text = "button.next_level"
 
+[node name="ReplayButton" type="Button" parent="Singleplayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 88)
+layout_mode = 2
+theme = ExtResource("2_gnpol")
+text = "button.replay_level"
+
 [node name="Back To Menu" type="Button" parent="Singleplayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 88)
 layout_mode = 2
@@ -237,4 +243,5 @@ libraries = {
 }
 
 [connection signal="pressed" from="Singleplayer/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="Singleplayer/VBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
 [connection signal="pressed" from="Singleplayer/VBoxContainer/Back To Menu" to="." method="exit"]
