@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerHat" load_steps=3 format=3 uid="uid://k08r4fnwi8qb"]
+
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHat.gd" id="1_0fi3t"]
+[ext_resource type="Texture2D" uid="uid://bmdwe6bsoiv7d" path="res://assets/textures/player/hats/wario_hat.png" id="2_t76ji"]
+
+[resource]
+script = ExtResource("1_0fi3t")
+name = "skin.wario_hat"
+chance = 1
+is_hidden = false
+texture = ExtResource("2_t76ji")

@@ -4,6 +4,7 @@ class_name PlayerControllerComponent
 @export_category("Component requirement")
 @export var player: PlayerComponent
 @export var skin: PlayerSkinSprite
+@export var hat: PlayerHatSprite
 @export var animation: AnimationPlayer
 @export var sound_effect_player: SoundEffectPlayer
 
@@ -35,9 +36,11 @@ func update_timers(delta: float) -> void:
 func check_input() -> void:
 	if Input.is_action_pressed("left"):
 		skin.flip_h = true
+		hat.flip_h = true
 		player.motion.x -= player.ACCEL
 	elif Input.is_action_pressed("right"):
 		skin.flip_h = false
+		hat.flip_h = false
 		player.motion.x += player.ACCEL
 	else:
 		player.motion.x = lerpf(player.motion.x, 0.0, 0.2)

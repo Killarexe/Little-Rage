@@ -10,7 +10,7 @@ var cheat_code_index: int = 0
 @onready var jukebox_button: Button = $SelectButtons/JukeboxButton
 
 func _ready():
-	var has_unlocked_all: bool = PlayerSkinManager.has_unlocked_all() && PlayerHatManager.has_unlocked_all()
+	var has_unlocked_all: bool = Game.has_unlocked_unhiddens()
 	if has_unlocked_all:
 		MusicManager.play_music("collections_menu_easter")
 	else:

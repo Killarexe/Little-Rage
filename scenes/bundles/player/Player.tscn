@@ -156,10 +156,11 @@ wait_time = 0.05
 autostart = true
 script = ExtResource("18_ms4pk")
 
-[node name="PlayerControllerComponent" type="Node" parent="." node_paths=PackedStringArray("player", "skin", "animation", "sound_effect_player")]
+[node name="PlayerControllerComponent" type="Node" parent="." node_paths=PackedStringArray("player", "skin", "hat", "animation", "sound_effect_player")]
 script = ExtResource("19_d4lqc")
 player = NodePath("..")
 skin = NodePath("../Skin")
+hat = NodePath("../Skin/PlayerHatSprite")
 animation = NodePath("../AnimationPlayer")
 sound_effect_player = NodePath("../SoundEffectPlayer")
 

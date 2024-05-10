@@ -30,7 +30,7 @@ func _ready():
 		RenderingServer.set_default_clear_color(Color.hex(0x1b1c28FF))
 		AchievementManager.unlock_achievement("halloween_event")
 		current_event = Event.HALLOWEEN
-	elif day == 24 && month == 3 || true:
+	elif day == 24 && month == 3:
 		PlayerSkinManager.unlock_skin("old_player", true)
 		print_rich("[wave amp=50.0 freq=5.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8]Happy Birthday Little Rage![/rainbow][/wave]")
 		current_event = Event.ANNIVERSARY

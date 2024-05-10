@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerHat" load_steps=3 format=3 uid="uid://ctk3mtky8twsf"]
+
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHat.gd" id="1_usogy"]
+[ext_resource type="Texture2D" uid="uid://c44fgkbgb0qjm" path="res://assets/textures/player/hats/waluigi_hat.png" id="2_pbnsy"]
+
+[resource]
+script = ExtResource("1_usogy")
+name = "skin.waluigi_hat"
+chance = 1
+is_hidden = false
+texture = ExtResource("2_pbnsy")
