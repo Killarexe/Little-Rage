@@ -80,7 +80,10 @@ func spawn_particle(parent: Node, particle_position: Vector2, type: PlayerPartic
 				prefab_path = "res://scenes/bundles/particles/StepParticle.tscn"
 		
 		var particle: GPUParticles2D = load(prefab_path).instantiate()
-		particle.process_material = get_particle(id).material
+		var particle_data: PlayerParticle = get_particle(id)
+		if particle_data.texture.get_width() > 0:
+			particle.texture = particle_data.texture
+		particle.process_material = particle_data.material
 		particle.global_position = particle_position
 		parent.add_child(particle)
 		return particle

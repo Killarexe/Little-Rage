@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="PlayerParticle" load_steps=6 format=3 uid="uid://dch50ih0dk431"]
+
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/particle/PlayerParticle.gd" id="1_njoda"]
+[ext_resource type="Texture2D" uid="uid://cpp685fj7uh2f" path="res://assets/textures/player/particles/dirt.png" id="2_ah2dy"]
+
+[sub_resource type="Gradient" id="1"]
+offsets = PackedFloat32Array(0.572368, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="2"]
+gradient = SubResource("1")
+
+[sub_resource type="ParticleProcessMaterial" id="3"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(3, 1, 1)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, -10, 0)
+scale_min = 0.25
+scale_max = 0.5
+color_ramp = SubResource("2")
+
+[resource]
+script = ExtResource("1_njoda")
+type = 0
+material = SubResource("3")
+name = "particle.dirt_step"
+chance = 1
+is_hidden = false
+texture = ExtResource("2_ah2dy")

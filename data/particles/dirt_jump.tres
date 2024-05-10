@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="PlayerParticle" load_steps=5 format=3 uid="uid://h6laguc76jd5"]
+[gd_resource type="Resource" script_class="PlayerParticle" load_steps=6 format=3 uid="uid://bra1nagigj2am"]
 
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/particle/PlayerParticle.gd" id="1_1b8ii"]
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/particle/PlayerParticle.gd" id="1_sih6x"]
+[ext_resource type="Texture2D" uid="uid://cpp685fj7uh2f" path="res://assets/textures/player/particles/dirt.png" id="2_mqtte"]
 
 [sub_resource type="Gradient" id="1"]
 offsets = PackedFloat32Array(0.572368, 1)
@@ -16,12 +17,15 @@ emission_box_extents = Vector3(10, 1, 1)
 spread = 180.0
 flatness = 1.0
 gravity = Vector3(0, -1, 0)
+scale_min = 0.25
+scale_max = 0.5
 color_ramp = SubResource("2")
 
 [resource]
-script = ExtResource("1_1b8ii")
+script = ExtResource("1_sih6x")
 type = 1
 material = SubResource("3")
-name = "particle.default_jump"
+name = "particle.dirt_jump"
 chance = 1
 is_hidden = false
+texture = ExtResource("2_mqtte")

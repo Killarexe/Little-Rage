@@ -16,7 +16,6 @@ emission_box_extents = Vector3(10, 1, 1)
 spread = 180.0
 flatness = 1.0
 gravity = Vector3(0, -1, 0)
-scale_max = 10.0
 color = Color(1, 0, 0, 1)
 color_ramp = SubResource("2")
 

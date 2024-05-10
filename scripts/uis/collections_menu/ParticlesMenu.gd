@@ -1,42 +1,41 @@
 extends Control
 
-@onready var death_list: ItemList = $Particles/DeathTab/List
-@onready var jump_list: ItemList = $Particles/JumpTab/List
-@onready var run_list: ItemList = $Particles/RunTab/List
+const GENERATED_TEXTURE_SIZE: int = 8
 
-@onready var main_menu: MainCollectionMenu = $"../MainMenu"
-@onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/PlayerDummy/PlayerViewer/AnimationPlayer"
+@export var jump_list: ItemList
+@export var run_list: ItemList
+
+@export var main_menu: MainCollectionMenu
+@export var camera_animation_player: AnimationPlayer
 @export var player: PlayerDummyComponent
 
-var death_particle_ids: Array[String] = []
 var jump_particle_ids: Array[String] = []
 var run_particle_ids: Array[String] = []
 
 func _ready():
-	death_list.item_selected.connect(_on_death_list_selected)
 	jump_list.item_selected.connect(_on_jump_list_selected)
 	run_list.item_selected.connect(_on_run_particle_list_selected)
 	for particle in PlayerParticleManager.particles:
 		if PlayerParticleManager.is_particle_unlocked(particle.id):
 			match particle.type:
-				PlayerParticle.Type.DEATH:
-					death_list.add_item(particle.id, particle.texture)
-					if particle.id == PlayerParticleManager.current_death_particle:
-						death_list.select(death_particle_ids.size())
-					death_particle_ids.append(particle.id)
 				PlayerParticle.Type.JUMP:
-					jump_list.add_item(particle.id, particle.texture)
+					add_to_list(jump_list, particle)
 					if particle.id == PlayerParticleManager.current_jump_particle:
 						jump_list.select(jump_particle_ids.size())
 					jump_particle_ids.append(particle.id)
 				PlayerParticle.Type.STEP:
-					run_list.add_item(particle.id, particle.texture)
+					add_to_list(run_list, particle)
 					if particle.id == PlayerParticleManager.current_step_particle:
 						run_list.select(run_particle_ids.size())
 					run_particle_ids.append(particle.id)
 
-func _on_death_list_selected(index: int):
-	PlayerParticleManager.current_death_particle = death_particle_ids[index]
+func add_to_list(list: ItemList, particle: PlayerParticle):
+	var texture: Texture2D = particle.texture
+	if texture == null || texture.get_width() == 0 || texture.get_height() == 0:
+		var color_image: Image = Image.create(GENERATED_TEXTURE_SIZE, GENERATED_TEXTURE_SIZE, false, Image.FORMAT_RGBA8)
+		color_image.fill(particle.material.color)
+		texture = ImageTexture.create_from_image(color_image)
+	list.add_item(particle.name, texture)
 
 func _on_jump_list_selected(index: int):
 	player.jump_timer = player.JUMP_TIME
