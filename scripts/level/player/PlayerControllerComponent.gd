@@ -47,7 +47,7 @@ func check_input() -> void:
 	
 	if Input.is_action_pressed("jump"):
 		jump_timer = JUMP_TIME
-		
+	
 	if jump_timer > 0 && !Input.is_action_pressed("jump"):
 		jump_timer = 0
 		if(player.motion.y < 0):
