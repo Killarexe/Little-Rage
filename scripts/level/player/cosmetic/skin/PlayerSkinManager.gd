@@ -55,11 +55,13 @@ func pick_random() -> String:
 	return "default"
 
 func has_unlocked_unhiddens() -> bool:
-	var hidden_skins: int = 0
-	for skin in skins:
-		if skin.is_hidden:
-			hidden_skins += 1
-	return unlocked_skins.size() >= skins.size() - hidden_skins
+	var unhidden_skins: int = skins\
+		.filter(func(skin): return !skin.is_hidden)\
+		.size()
+	var unlocked_unhidden_skins: int = unlocked_skins\
+		.filter(func(id): return !is_skin_hidden(id))\
+		.size()
+	return unhidden_skins <= unlocked_unhidden_skins
 
 func has_unlocked_all() -> bool:
 	return unlocked_skins.size() >= skins.size()

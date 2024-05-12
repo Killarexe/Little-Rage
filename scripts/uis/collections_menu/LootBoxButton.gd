@@ -7,7 +7,7 @@ func _ready():
 	update_button()
 
 func update_button():
-	var all_unhiddens_unlocked: bool = PlayerHatManager.has_unlocked_unhiddens() && PlayerSkinManager.has_unlocked_unhiddens()
+	var all_unhiddens_unlocked: bool = Game.has_unlocked_unhiddens()
 	disabled = !LootBoxesManager.has_loot_box() || all_unhiddens_unlocked
 	circle.visible = LootBoxesManager.has_loot_box()
 	if LootBoxesManager.loot_box_count < 100:

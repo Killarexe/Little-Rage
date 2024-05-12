@@ -36,7 +36,7 @@ func _ready():
 		current_event = Event.ANNIVERSARY
 
 func has_unlocked_unhiddens():
-	return PlayerHatManager.has_unlocked_unhiddens() && PlayerSkinManager.has_unlocked_unhiddens()
+	return PlayerHatManager.has_unlocked_unhiddens() && PlayerSkinManager.has_unlocked_unhiddens() && PlayerParticleManager.has_unlocked_unhiddens()
 
 func instanceNodeAtPos(node: Object, parent: Object, pos: Vector2) -> Object:
 	var nodeInstance = instanceNode(node, parent)
@@ -49,4 +49,4 @@ func instanceNode(node: Object, parent: Object) -> Object:
 	return nodeInstance
 
 func _exit_tree():
-	GAME_VERSION.free()
+	GAME_VERSION.free() #NOTE: is to fix a bug a think...

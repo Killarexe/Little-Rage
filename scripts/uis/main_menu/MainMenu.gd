@@ -8,8 +8,8 @@ extends Control
 func _ready():
 	get_tree().paused = false
 	var easter_title_screen: bool = Game.has_unlocked_unhiddens()
-	var music: String = "title_screen"
 	var animation: String = "start_menu"
+	var music: String = "title_screen"
 	
 	if Game.current_event == Game.Event.CHRISTMAS:
 		music = "title_screen_christmas_special"
@@ -40,7 +40,7 @@ func _on_play_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 
 func _on_multiplayer_button_pressed():
-	SceneManager.change_scene("res://scenes/uis/MultiplayerSelection.tscn")
+	PopUpFrame.pop("Haha nice try =)")
 
 func _on_shop_button_pressed():
 	SceneManager.change_scene("res://scenes/uis/CollectionsMenu.tscn")

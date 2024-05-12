@@ -22,10 +22,15 @@ func use_loot_box() -> CosmeticElement:
 	if !has_loot_box():
 		return null
 	loot_box_count -= 1
-	if randf() > 0.5:
+	var cosmetic_type: int = randi_range(0, 2)
+	if cosmetic_type == 0:
 		var skin_id: String = PlayerSkinManager.pick_random()
 		PlayerSkinManager.unlock_skin(skin_id)
 		return PlayerSkinManager.get_skin(skin_id)
-	var hat_id: String = PlayerHatManager.pick_random()
-	PlayerHatManager.unlock_hat(hat_id)
-	return PlayerHatManager.get_hat(hat_id)
+	elif cosmetic_type == 1:
+		var hat_id: String = PlayerHatManager.pick_random()
+		PlayerHatManager.unlock_hat(hat_id)
+		return PlayerHatManager.get_hat(hat_id)
+	var particle_id: String = PlayerParticleManager.pick_random()
+	PlayerParticleManager.unlock_particle(particle_id)
+	return PlayerParticleManager.get_particle(particle_id)

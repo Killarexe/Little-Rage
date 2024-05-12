@@ -19,23 +19,15 @@ func _ready():
 		if PlayerParticleManager.is_particle_unlocked(particle.id):
 			match particle.type:
 				PlayerParticle.Type.JUMP:
-					add_to_list(jump_list, particle)
+					jump_list.add_item(particle.name, particle.get_texture_or_default())
 					if particle.id == PlayerParticleManager.current_jump_particle:
 						jump_list.select(jump_particle_ids.size())
 					jump_particle_ids.append(particle.id)
 				PlayerParticle.Type.STEP:
-					add_to_list(run_list, particle)
+					run_list.add_item(particle.name, particle.get_texture_or_default())
 					if particle.id == PlayerParticleManager.current_step_particle:
 						run_list.select(run_particle_ids.size())
 					run_particle_ids.append(particle.id)
-
-func add_to_list(list: ItemList, particle: PlayerParticle):
-	var texture: Texture2D = particle.texture
-	if texture == null || texture.get_width() == 0 || texture.get_height() == 0:
-		var color_image: Image = Image.create(GENERATED_TEXTURE_SIZE, GENERATED_TEXTURE_SIZE, false, Image.FORMAT_RGBA8)
-		color_image.fill(particle.material.color)
-		texture = ImageTexture.create_from_image(color_image)
-	list.add_item(particle.name, texture)
 
 func _on_jump_list_selected(index: int):
 	player.jump_timer = player.JUMP_TIME

@@ -58,11 +58,13 @@ func pick_random() -> String:
 	return "no_hat"
 
 func has_unlocked_unhiddens() -> bool:
-	var hidden_hats: int = 0
-	for hat in hats:
-		if hat.is_hidden:
-			hidden_hats += 1
-	return unlocked_hats.size() >= hats.size() - hidden_hats
+	var unhidden_hats: int = hats\
+		.filter(func(hat): return !hat.is_hidden)\
+		.size()
+	var unlocked_unhidden_hats: int = unlocked_hats\
+		.filter(func(id): return !is_hat_hidden(id))\
+		.size()
+	return unhidden_hats <= unlocked_unhidden_hats
 
 func has_unlocked_all() -> bool:
 	return unlocked_hats.size() >= hats.size()

@@ -67,6 +67,15 @@ func pick_random() -> String:
 func has_unlocked_all() -> bool:
 	return unlocked_particles.size() >= particles.size()
 
+func has_unlocked_unhiddens() -> bool:
+	var unhidden_particles: int = particles\
+		.filter(func(particle): return !particle.is_hidden)\
+		.size()
+	var unlocked_unhidden_particles: int = unlocked_particles\
+		.filter(func(id): return !is_particle_hidden(id))\
+		.size()
+	return unhidden_particles <= unlocked_unhidden_particles
+
 func spawn_particle(parent: Node, particle_position: Vector2, type: PlayerParticle.Type) -> Object:
 	var id: String = get_current_particle_id(type)
 	if !id.is_empty():

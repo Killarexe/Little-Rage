@@ -14,7 +14,7 @@ func open():
 
 func update_texture():
 	var cosmetic: CosmeticElement = LootBoxesManager.use_loot_box()
-	cosmetic_texture.texture = cosmetic.texture
+	cosmetic_texture.texture = cosmetic.get_texture_or_default()
 	skin_list.set_item_skins()
 	hat_list.set_hat_items()
 

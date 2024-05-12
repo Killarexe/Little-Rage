@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="PlayerParticle" load_steps=4 format=3 uid="uid://ysywptsoao6u"]
+
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/particle/PlayerParticle.gd" id="1_6u7o1"]
+[ext_resource type="Texture2D" uid="uid://d4f0uylhmx2da" path="res://assets/textures/player/particles/cloud.png" id="2_lqaa6"]
+
+[sub_resource type="ParticleProcessMaterial" id="3"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(10, 1, 1)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, -1, 0)
+scale_min = 0.25
+scale_max = 0.5
+color = Color(1, 1, 1, 0.501961)
+
+[resource]
+script = ExtResource("1_6u7o1")
+type = 1
+material = SubResource("3")
+name = "particle.cloud_jump"
+chance = 1
+is_hidden = false
+texture = ExtResource("2_lqaa6")

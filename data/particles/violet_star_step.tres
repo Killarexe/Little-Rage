@@ -8,8 +8,11 @@ lifetime_randomness = 1.0
 emission_shape = 3
 emission_box_extents = Vector3(3, 1, 1)
 angle_max = 90.0
+direction = Vector3(0.125, 0, 0)
 spread = 180.0
+radial_velocity_max = 90.0
 gravity = Vector3(0, -10, 0)
+radial_accel_max = 90.0
 scale_min = 0.13
 scale_max = 0.25
 
