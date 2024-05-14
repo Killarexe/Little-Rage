@@ -143,3 +143,6 @@ button.credits_scene,Credits Scene,Scène des Crédits
 achievement.christmas_event,Christmas!,Noël!
 achievement.christmas_event.desc,Play the game during Christmas period.,Jouer au jeu durant la periode de Noël!
 label.none,None,Rien
+popup.screenshot,Screenshot saved!,Screenshot sauvegardé!
+popup.delete_level.failed,Failed to delete level…,Suppression echoué…
+popup.delete_level.success,Level deleted!,Suppression effectué!

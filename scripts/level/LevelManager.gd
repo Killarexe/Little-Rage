@@ -73,8 +73,8 @@ func delete_level(level_id: String) -> bool:
 	if error == OK:
 		load_levels()
 		print_rich("[color=lightgree][i]\"%s\" succesfully deleted![/i][/color]" % level_id)
-		PopUpFrame.pop_translated("popup.delete_level.success")
+		PopUpFrame.pop_translated("popup.delete_level.success", load("res://assets/textures/ui/icons/ok.png"))
 		return true
 	print_rich("[color=red][b]Failed to delete \"%s\":\n\t" + str(error))
-	PopUpFrame.pop(TranslationServer.translate("popup.delete_level.failed" % level_dir))
+	PopUpFrame.pop(TranslationServer.translate("popup.delete_level.failed" % level_dir), load("res://assets/textures/ui/icons/quit.png"))
 	return false

@@ -18,7 +18,7 @@ func _unhandled_input(event: InputEvent):
 			if save_error:
 				print_rich(("[color=red][b]Failed to create screenshot file '%s'.\n\tError code: " % file_path) + str(save_error))
 				return
-			PopUpFrame.pop_translated("popup.screenshot")
+			PopUpFrame.pop_translated("popup.screenshot", load("res://assets/textures/ui/icons/save.png"))
 			#TODO: add clipbord itegration(wait for Godot 4.3)
 			#DisplayServer.clipboard_set("file://" + OS.get_user_data_dir() + "/screenshots/" + date_string + ".png")
 			print_rich("[color=lightgreen][b]Successfuly created a screenshot. '%s'![/b][/color]" % file_path)

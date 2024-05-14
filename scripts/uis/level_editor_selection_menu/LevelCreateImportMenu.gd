@@ -25,6 +25,7 @@ func _on_file_dialog_file_selected(path: String):
 	var file: FileAccess = FileAccess.open(path, FileAccess.READ)
 	var file_error: Error = FileAccess.get_open_error()
 	var error_icon: Texture2D = load("res://assets/textures/ui/icons/quit.png")
+	var ok_icon: Texture2D = load("res://assets/textures/ui/icons/ok.png")
 	if file_error != OK:
 		PopUpFrame.pop(TranslationServer.translate("popup.failed_load_level.read_file") % file_error, error_icon)
 		return
@@ -53,7 +54,7 @@ func _on_file_dialog_file_selected(path: String):
 	
 	new_file.store_string(file_contents)
 	LevelManager.load_levels()
-	PopUpFrame.pop(TranslationServer.translate("popup.load_level_success") % level_id, error_icon)
+	PopUpFrame.pop(TranslationServer.translate("popup.load_level_success") % level_id, ok_icon)
 
 func _on_create_level_button_pressed():
 	var level: Level = Level.new()
