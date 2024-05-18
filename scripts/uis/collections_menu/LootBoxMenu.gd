@@ -7,6 +7,7 @@ class_name LootBoxMenu
 
 @export var skin_list: SkinList
 @export var hat_list: HatList
+@export var particle_menu: ParticlesMenu
 
 func open():
 	animation_player.play("entry")
@@ -17,6 +18,7 @@ func update_texture():
 	cosmetic_texture.texture = cosmetic.get_texture_or_default()
 	skin_list.set_item_skins()
 	hat_list.set_hat_items()
+	particle_menu.load_particles()
 
 func update_buttons():
 	next_button.visible = LootBoxesManager.has_loot_box()

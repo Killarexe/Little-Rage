@@ -10,6 +10,7 @@ func _ready():
 
 func set_item_skins():
 	clear()
+	skin_ids.clear()
 	max_columns = PlayerSkinManager.skins.size() + 1
 	for skin in PlayerSkinManager.skins:
 		if PlayerSkinManager.is_skin_unlocked(skin.id):

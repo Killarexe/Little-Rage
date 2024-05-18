@@ -1,4 +1,5 @@
 extends Control
+class_name ParticlesMenu
 
 const GENERATED_TEXTURE_SIZE: int = 8
 
@@ -15,6 +16,13 @@ var run_particle_ids: Array[String] = []
 func _ready():
 	jump_list.item_selected.connect(_on_jump_list_selected)
 	run_list.item_selected.connect(_on_run_particle_list_selected)
+	load_particles()
+
+func load_particles():
+	jump_list.clear()
+	run_list.clear()
+	jump_particle_ids.clear()
+	run_particle_ids.clear()
 	for particle in PlayerParticleManager.particles:
 		if PlayerParticleManager.is_particle_unlocked(particle.id):
 			match particle.type:

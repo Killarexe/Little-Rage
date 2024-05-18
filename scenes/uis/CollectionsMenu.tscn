@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://wcpkho1r3os3"]
+[gd_scene load_steps=39 format=3 uid="uid://wcpkho1r3os3"]
 
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_q884x"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/MainCollectionMenu.gd" id="2_e00sk"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b5mfjkd164e3g" path="res://assets/textures/player/hats/test_hat.png" id="4_n7by3"]
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/DefaultLevel.tscn" id="4_oxrq8"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/SkinsMenu.gd" id="4_qs3l5"]
-[ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/icons/quit.png" id="5_thpgw"]
+[ext_resource type="Texture2D" uid="uid://cevvrpksqi5gm" path="res://assets/textures/player/particles/violet_star.png" id="5_r5nos"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/skins_menu/SkinList.gd" id="5_v2mtl"]
 [ext_resource type="Texture2D" uid="uid://c7mwfhdfqw7dp" path="res://assets/textures/ui/icons/icon.png" id="5_y5klq"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/HatsMenu.gd" id="5_ya7cv"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://ckml4862knfib" path="res://assets/textures/ui/icons/chest.png" id="6_w1d50"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/ParticlesMenu.gd" id="6_y5t24"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/hats_menu/HatList.gd" id="7_5na8b"]
+[ext_resource type="Texture2D" uid="uid://bf7j2smrgc7mg" path="res://assets/textures/ui/icons/disc.png" id="10_65766"]
 [ext_resource type="Script" path="res://scripts/uis/collections_menu/LootBoxMenu.gd" id="13_86pp1"]
 [ext_resource type="LabelSettings" uid="uid://b35bwhibubxgx" path="res://assets/style/label_settings/small_medium_label.tres" id="17_8gk2a"]
 [ext_resource type="PackedScene" uid="uid://bf6u6lge7vm8i" path="res://scenes/bundles/player/PlayerDummy.tscn" id="19_h3c7l"]
@@ -537,7 +538,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 66.0
-offset_right = -640.0
+offset_right = -710.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.772549, 0.227451, 0.239216, 1)
@@ -573,7 +575,7 @@ expand_icon = true
 custom_minimum_size = Vector2(384, 192)
 layout_mode = 2
 text = "button.particles"
-icon = ExtResource("5_thpgw")
+icon = ExtResource("5_r5nos")
 icon_alignment = 2
 expand_icon = true
 
@@ -642,7 +644,7 @@ offset_right = 1193.0
 offset_bottom = 240.0
 theme = ExtResource("1_q884x")
 text = "button.jukebox"
-icon = ExtResource("5_yo61c")
+icon = ExtResource("10_65766")
 icon_alignment = 2
 expand_icon = true
 
@@ -661,7 +663,7 @@ libraries = {
 }
 autoplay = "enter"
 
-[node name="LootBoxMenu" type="Control" parent="CanvasLayer/MainMenu" node_paths=PackedStringArray("skin_list", "hat_list")]
+[node name="LootBoxMenu" type="Control" parent="CanvasLayer/MainMenu" node_paths=PackedStringArray("skin_list", "hat_list", "particle_menu")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -673,6 +675,7 @@ mouse_filter = 2
 script = ExtResource("13_86pp1")
 skin_list = NodePath("../../SkinsMenu/SkinList")
 hat_list = NodePath("../../HatsMenu/HatList")
+particle_menu = NodePath("../../ParticlesMenu")
 
 [node name="Background" type="ColorRect" parent="CanvasLayer/MainMenu/LootBoxMenu"]
 visible = false
@@ -680,8 +683,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2560.0
-offset_bottom = 1440.0
+offset_right = 3840.0
+offset_bottom = 2160.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.176471, 0.176471, 0.176471, 0.501961)

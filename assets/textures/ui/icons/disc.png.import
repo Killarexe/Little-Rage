@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8kxkf324k7v"
-path="res://.godot/imported/suface_blur.png-85a48e5b349e9323b6cc771b877b5e3e.ctex"
+uid="uid://bf7j2smrgc7mg"
+path="res://.godot/imported/disc.png-047114283366bdc6daf3f3a2137a7102.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/level_backgrounds/suface_blur.png"
-dest_files=["res://.godot/imported/suface_blur.png-85a48e5b349e9323b6cc771b877b5e3e.ctex"]
+source_file="res://assets/textures/ui/icons/disc.png"
+dest_files=["res://.godot/imported/disc.png-047114283366bdc6daf3f3a2137a7102.ctex"]
 
 [params]
 

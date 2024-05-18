@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://bsur5hi4bipwn"]
 
-[ext_resource type="Texture2D" uid="uid://dqwr6dqsywk6s" path="res://assets/textures/player/skins/player_default.png" id="1_p8fsx"]
+[ext_resource type="Texture2D" uid="uid://bsryh88uja4vg" path="res://assets/textures/achievement_icons/halloween_event.png" id="1_i70tv"]
 [ext_resource type="Script" path="res://scripts/achievement/Achievement.gd" id="2_d5qd5"]
 
 [resource]
 script = ExtResource("2_d5qd5")
-icon = ExtResource("1_p8fsx")
+icon = ExtResource("1_i70tv")
 type = 2
 hidden = true

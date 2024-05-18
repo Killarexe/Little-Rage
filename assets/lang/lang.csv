@@ -146,3 +146,6 @@ label.none,None,Rien
 popup.screenshot,Screenshot saved!,Screenshot sauvegardé!
 popup.delete_level.failed,Failed to delete level…,Suppression echoué…
 popup.delete_level.success,Level deleted!,Suppression effectué!
+button.jukebox,Jukebox,Musiques
+achievement.halloween_event,Halloween!,Halloween!
+achievement.halloween_event.desc,Play the game during Halloween period.,Jouer au jeu le jour d’Halloween

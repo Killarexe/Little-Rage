@@ -10,6 +10,7 @@ func _ready():
 
 func set_hat_items():
 	clear()
+	hats_ids.clear()
 	max_columns = PlayerHatManager.hats.size() + 1
 	for hat in PlayerHatManager.hats:
 		if PlayerHatManager.is_hat_unlocked(hat.id):

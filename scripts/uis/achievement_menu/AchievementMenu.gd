@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@export var animation_player: AnimationPlayer
 
 func _ready():
 	MusicManager.play_music("achievement_menu")

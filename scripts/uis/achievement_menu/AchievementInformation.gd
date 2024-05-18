@@ -1,9 +1,9 @@
 extends Control
 
-@onready var icon: TextureRect = $AchievementIcon
-@onready var achievement_label: Label = $AchievementName
-@onready var description: RichTextLabel = $ColorRect/AchievementDescription
-@onready var animation_player: AnimationPlayer = $"../AnimationPlayer"
+@export var icon: TextureRect
+@export var achievement_label: Label
+@export var description: RichTextLabel
+@export var animation_player: AnimationPlayer
 
 var selected_achievement: Achievement = null
 
