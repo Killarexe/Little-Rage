@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerHat" load_steps=3 format=3 uid="uid://djqecrvpdou46"]
+
+[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHat.gd" id="1_wy4gq"]
+[ext_resource type="Texture2D" uid="uid://dbfn8mcb5gikg" path="res://assets/textures/player/hats/netherite_helmet.png" id="2_tkjg6"]
+
+[resource]
+script = ExtResource("1_wy4gq")
+name = "hat.netherite_helmet"
+chance = 1
+is_hidden = false
+texture = ExtResource("2_tkjg6")

@@ -371,6 +371,7 @@ theme = ExtResource("1_fjp12")
 text = "button.collections"
 
 [node name="Circle" type="TextureRect" parent="CanvasLayer/VBoxContainer/ShopButton" node_paths=PackedStringArray("count_label")]
+layout_mode = 0
 offset_left = -16.0
 offset_top = -15.0
 offset_right = 24.0

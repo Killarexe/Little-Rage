@@ -27,12 +27,12 @@ func load_particles():
 		if PlayerParticleManager.is_particle_unlocked(particle.id):
 			match particle.type:
 				PlayerParticle.Type.JUMP:
-					jump_list.add_item(particle.name, particle.get_texture_or_default())
+					jump_list.add_item(TranslationServer.translate(particle.name), particle.get_texture_or_default())
 					if particle.id == PlayerParticleManager.current_jump_particle:
 						jump_list.select(jump_particle_ids.size())
 					jump_particle_ids.append(particle.id)
 				PlayerParticle.Type.STEP:
-					run_list.add_item(particle.name, particle.get_texture_or_default())
+					run_list.add_item(TranslationServer.translate(particle.name), particle.get_texture_or_default())
 					if particle.id == PlayerParticleManager.current_step_particle:
 						run_list.select(run_particle_ids.size())
 					run_particle_ids.append(particle.id)

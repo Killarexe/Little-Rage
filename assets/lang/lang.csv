@@ -149,3 +149,19 @@ popup.delete_level.success,Level deleted!,Suppression effectué!
 button.jukebox,Jukebox,Musiques
 achievement.halloween_event,Halloween!,Halloween!
 achievement.halloween_event.desc,Play the game during Halloween period.,Jouer au jeu le jour d’Halloween
+label.jump_particles,Jump Particles,Particules de saut
+label.step_particles,Step Particles,Particules de marche
+particle.default_jump,Default Jump,Saut Simple
+particle.default_step,Default Step,Marche Simple
+particle.cloud_jump,Cloud Jump,Saut en Nuages
+particle.cloud_step,Cloud Step,Marche en Nuages
+particle.dirt_jump,Dirt Jump,Saut en Terre
+particle.dirt_step,Dirt Step,Marche en Terre
+particle.rainbow_jump,Rainbow Jump,Saut multi-color
+particle.rainbow_step,Rainbow Step,Marche multi-color
+particle.red_jump,Red Jump,Saut Rouge
+particle.red_step,Red Step,Marche Rouge
+particle.stone_jump,Stone Jump,Saut en Pierre
+particle.stone_step,Stone Step,Marche en Pierre
+particle.violet_star_jump,Violet Star Jump,Saut en Etoiles Violettes
+particle.violet_star_step,Violet Star Step,Marche en Etoiles Violettes

@@ -836,13 +836,14 @@ label_settings = ExtResource("17_8gk2a")
 
 [node name="StepLabel" type="Label" parent="CanvasLayer/ParticlesMenu"]
 layout_mode = 0
-offset_left = 934.0
-offset_top = 20.0
-offset_right = 1270.0
-offset_bottom = 44.0
+offset_left = 795.0
+offset_top = 26.0
+offset_right = 1275.0
+offset_bottom = 50.0
 theme = ExtResource("1_q884x")
 text = "label.step_particles"
 label_settings = ExtResource("17_8gk2a")
+horizontal_alignment = 2
 
 [node name="JumpList" type="ItemList" parent="CanvasLayer/ParticlesMenu"]
 layout_mode = 2
