@@ -3,7 +3,7 @@ extends HTTPRequest
 signal on_update_checked(flag: GameVersion.GameVersionFlag)
 
 func _ready():
-	request_completed.connect(on_receive)	
+	request_completed.connect(on_receive)
 	request("https://api.github.com/repos/Killarexe/Little-Rage/releases/latest")
 
 func on_receive(result: int, response_code: int, _headers, body):
@@ -17,7 +17,8 @@ func on_receive(result: int, response_code: int, _headers, body):
 			PopUpFrame.pop_translated("message.update", load("res://assets/textures/ui/icons/update.png"))
 		elif version_flag == GameVersion.GameVersionFlag.LOWER:
 			AchievementManager.unlock_achievement("beta_tester")
+		on_update_checked.emit(version_flag)
 	else:
-		print_rich("[color=red][b]Failed to get latest version:\n\tResponse code: " + str(response_code) + "\n\tResult: " + str(result))
+		print_rich("[color=red][b]Failed to get latest version:\n\tResponse code: " + str(response_code) + "\n\tResult: " + str(result) + "[/b][/color]")
 	request_completed.disconnect(on_receive)
 	queue_free()

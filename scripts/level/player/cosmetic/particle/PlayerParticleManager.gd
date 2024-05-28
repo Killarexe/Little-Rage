@@ -90,8 +90,9 @@ func spawn_particle(parent: Node, particle_position: Vector2, type: PlayerPartic
 		
 		var particle: GPUParticles2D = load(prefab_path).instantiate()
 		var particle_data: PlayerParticle = get_particle(id)
-		if particle_data.texture.get_width() > 0:
-			particle.texture = particle_data.texture
+		if particle_data.texture != null:
+			if particle_data.texture.get_width() > 0:
+				particle.texture = particle_data.texture
 		particle.process_material = particle_data.material
 		particle.global_position = particle_position
 		parent.add_child(particle)
