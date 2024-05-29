@@ -20,11 +20,17 @@ jobs:
           cache: true
           relative_export_path: ./
           verbose: true
-      - name: Upload Windows Artifact
+      - name: Upload Windows x86_64 Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: windows-build
-          path: /home/runner/work/LittleRage/LittleRage/Windows.zip
+          name: windows-x86_64-build
+          path: /home/runner/work/LittleRage/LittleRage/WindowsX86_64.zip
+          retention-days: 5
+      - name: Upload Windows arm64 Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-arm64-build
+          path: /home/runner/work/LittleRage/LittleRage/WindowsArm64.zip
           retention-days: 5
       - name: Upload Linux x86_64 Artifact
         uses: actions/upload-artifact@v4
