@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_0fi3t")
-name = "skin.wario_hat"
+name = "hat.wario_hat"
 chance = 1
 is_hidden = false
 texture = ExtResource("2_t76ji")

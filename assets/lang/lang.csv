@@ -1,160 +1,152 @@
 keys,en,fr
-label.title,Little Rage,Little Rage
-button.singleplayer,Singleplayer,Solo
-button.multiplayer,Multiplayer,Multijoueur
-label.level_selection,Level Seclection,Sélection de niveau
-label.pause,Pause,Pause
-button.back_to_game,Back to Game,Retour au Jeu
-button.quit,Quit,Quitter
-button.settings,Settings,Paramètres
-button.collections,Collections,Collections
-button.skins,Skins,Skins
-button.hats,Hats,Chapeaux
-label.settings.music_volume,Music Volume,Volume de Musique
-label.settings.sound_effect_volume,Sound Effect Volume,Volume d’éffect de son
-button.reset_save,Reset Save,Effacer la Sauvegarde
-label.default_splash_text,Splash Text,Texte
-button.play,Play,Jouer
-button.level_editor,Level Editor,Editeur de Niveau
-button.save_level,Save Level,Sauvegarder le Niveau
-button.load_level,Load Level,Charger un Niveau
-button.close,Close,Fermer
-button.back,Back,Retour
-label.level.name,Level Name,Nom du Niveau
-label.level.difficulty,Level Difficulty,Difficulté
-label.level.description,Level Description,Description du Niveau
-label.level.difficulty.beginer_friendly,Beginer Friendly,Débutant
-label.level.difficulty.easy,Easy,Facile
-label.level.difficulty.normal,Normal,Normale
-label.level.difficulty.hard,Hard,Dur
-label.level.difficulty.extreme,EXTREME,EXTREME
-button.back_to_menu,Back To Menu,Retour au Menu
-label.level_complete,Level Complete,Niveau Terminée
-label.level.win,You Win,Tu as gagnée
-label.level.loose,You Loose,Perdu
-label.settings.language,Language,Language
-label.settings.discord_rpc,Discord Itegration,Itegration Discord
-button.dont_save,Don’t Save,Ne pas Enregistrer
-button.save,Save,Enregistrer
-message.update,A new update is avaliable!,Une nouvelle mise à jour est disponible!
-message.level_editor.save_option,Do you want to save before ?,Voulez vous enregistrer avant ?
-message.editor.saved,Saved into file: ‘%s’ ,Enregistrer sous le fichier: ‘%s’
-message.editor.loaded,Loaded level: ‘%s’,Chargée le niveau: ‘%s’
-message.editor.failed_load,Failed to load level from path: ‘%s’,Échec de chargement de niveau: ’%s’
-button.settings.sound_track,Soundtacks,Sons Du Jeu
-message.settings.reset_save.confirm,"""Are you sure?\nAll your progression will be deleted…""","""Êtes-vous sure?\nToute votre progression va être supprimée…"""
-label.time,Time,Temps
-label.deaths,Deaths,Morts
-label.best_time,Best Time,Temps Record
-message.popup.new_loot_box,You recived a new Loot Box!,Vous avez reçu une nouvelle Loot Box !
-message.shop.open_loot_box,Open Loot Box : %s left,Ouvrir une Loot Box : %s restant
-button.create_level,New Level,Nouveau Niveau
-button.edit_level,Edit,Editer
-hat.none,None,Rien
-hat.fez,Fez,Fez
-hat.simple,Simple Hat,Simple Chapeau
-skin.default,Default,Default
-skin.game_boy,Game Boy,Game Boy
-skin.negative,Negate Default,Default Inversée
-skin.rgb,RGB,RGB
-skin.steve,Steve,Steve
-skin.killarexe,Killar.exe,Killar.exe
-skin.niark,Niark,Niark
-skin.old_player,Old Player,Ancien Joueur
-message.popup.unlocked_cosmetic,You’ve unlocked a cosmetic: ’%s’,Tu as débloqué un cosmétique: ’%s’
-label.level.y_limit,Y Limit:,Limite Y:
-hat.jojo,Jojo's Hat,Chapeau de Jojo
-hat.banana,Banana Hat,Banane
-hat.crown,Crown,Couronne
-hat.mexican,Mexican Hat,Sombrero
-hat.player,Player Hat,Chapeau Joueur
-hat.slime,Slime Hat,Chapeau Slime
-skin.mexican_player,Mexican Player,Joueur Mexicain
-skin.skeleton,Skeletion,Squelette
-label.settings.window_size,Window Size,Taille de la Fenêtre
-label.fullscreen,Fullscreen,Plein écran
-message.popup.not_on_mobile,This feature is not available on mobile…,Cette fonctionnalité n’est pas disponible sur mobile…
-message.popup.unlocked_skin,You’ve unlocked a skin: ’%s’,Tu as débloquée un skin: ’%s’
-message.popup.unlocked_hat,You’ve unlocked a hat: ’%s’,Tu as débloquée un chapeau: ’%s’
-button.next_level,Next Level,Prochain Niveau
-button.editor.place,Place,Placer
-button.editor.erase,Erase,Effacer
-button.editor.move,Move,Bouger
-button.wardrobe,Wardrobe,Armoire
-message.level.description.level_one,The first simple Level,Le premier niveau très simple…
-message.level.description.level_two,A Jumping level…,Un niveau basée sur le saut.
-message.level.description.level_three,Ooooh spikes... =),Ohhh des piques… =)
-message.level.description.level_four,A level witch show a new features for the noobies…,Un niveau qui ajoute du changement pour les noobs…
-message.level.description.level_five,Color things + jumps + Color spikes,Truc de couleurs + Sauts + Piques de couleurs
-message.level.description.level_six,The evaluation level…,Le niveau d’évaluation…
-label.yes,Yes,Oui
-label.no,No,Non
-message.experimental_frame.desc,This feature is an experimental. It can produce bugs. Are you sure to continue ?,Cette fonctionnalité est expérimental. Ceci peut produire des bugs. Etes-vous sur de continuer ?
-button.back_to_center,Back to Center,Retour au Centre
-button.replay_level,Replay Level,Rejouer le niveau
-button.ragequit,RAGEQUIT,RAGEQUIT
-button.default_levels,Default Levels,Niveaux Intégrée
-button.custom_levels,Custom Levels,Niveaux Externes
-button.weekly_level,Weekly Level,Niveau de la Semaine
-button.local_multiplayer,Local Multiplayer,Multijoueur Local
-button.online_multiplayer,Online Multiplayer,Multijoueur en Ligne
-button.particles,Particles,Particules
-button.achievements,Achievements,Progrès
-button.loot_boxes,Loot Boxes,Loot Boxes
-button.delete_level,Delete Level,Supprimer le Niveau
-button.create_import_level,Create/Import Level,Créer/Importer Niveau
-button.import_level,Import Level,Importer Niveau
-popup.failed_load_level.read_file,Failed to read file. Code: %s,Échec de la lecture du ficher. Code: %s
-popup.failed_load_level.invalid_file,Invalid level file…,Ficher niveau invalide…
-popup.failed_load_level.invaild_id,Failed to load level. Invalid id.,Échec de la lecture du ficher. Id invalide.
-popup.failed_load_level.sheared_id,Failed to load level. It's sharing the same id '%s'.,Échec de la lecture du ficher. Id déjà présent ‘%s’.
-popup.failed_load_level.copy_file,Failed to copy level into 'levels' folder. Code: %s,Echec de la copie du ficher dans le dossier ‘levels’. Code: %s
-popup.load_level_success,Succesfuly load level '%s'.,Niveau ‘%s’ chargée avec succès!
-button.next_box,Next Box,Prochaine Box
-button.quit_level,Quit Level,Quitter le niveau
-popup.unlocked_achievement,Achievement unlocked!\n%s.,Progrès obtenu!\n%s!
-popup.resource_element_confict,%s id conflict: %s,L’id de %s conflit avec %s.
-achievement.first_death,First Death,1ère Mort
-achievement.invincible,Invincible!,Invincible!
-achievement.making_my_own,Making my own,Je fais le mien
-achievement.new_record,New record!,Nouveau record!
-achievement.rage_quit,RAGEQUIT,RAGEQUIT
-achievement.start_the_game,Start the game,Commencez le jeu
-achievement.yeepee,YEEPEE,YEEPEE
 achievement.beta_tester,Beta Tester,Beta Testeur
-achievement.first_death.desc,Your first and uinque death…,Ton premier et unique mort…
-achievement.invincible.desc,Finish a level with more than 25 deaths.,Fini un niveau avec plus de 25 morts.
-achievement.making_my_own.desc,Create your own level.,Créer ton propre niveau.
-achievement.new_record.desc,Make a new time record.,Faire un nouveau temps record.
-achievement.rage_quit.desc,Click «RAGEQUIT» button…,Appuyer sur le boutton «RAGEQUIT» …
-achievement.start_the_game.desc,Start playing the game…,Commencez a jouer le jeu…
-achievement.yeepee.desc,HYYYAAYHOOO,HYYYAAYHOOO
 achievement.beta_tester.desc,Beta Test my game!,Beta Test mon jeu!
-achievement.collector,Collector,Collecteur
-achievement.collector.desc,Collect all unlockable cosmetics from loot boxes,Collecte tout les cosmétiques depuis les Loot Boxes
-achievement.ultimate_collector,Collector,Collecteur
-achievement.ultimate_collector.desc,Collect all unlockable cosmetics from the game,Collecte tout les cosmétiques du jeu
-label.skip,Press [ESC] to skip…,Echap pour passer…
-button.skip,Skip,Passer
-message.level.description.level_seven,A cave with magnificent red and blue crystals…,Une magnifique cave avec des crystaux rouges et blues…
-message.level.description.level_eight,Short but hard…,Court mais dur…
-message.level.description.level_nine,Short but hard… Harder…,Court mais encore plus dur…
-button.credits_scene,Credits Scene,Scène des Crédits
 achievement.christmas_event,Christmas!,Noël!
 achievement.christmas_event.desc,Play the game during Christmas period.,Jouer au jeu durant la periode de Noël!
-label.none,None,Rien
-popup.screenshot,Screenshot saved!,Screenshot sauvegardé!
-popup.delete_level.failed,Failed to delete level…,Suppression echoué…
-popup.delete_level.success,Level deleted!,Suppression effectué!
-button.jukebox,Jukebox,Musiques
+achievement.collector,Collector,Collecteur
+achievement.collector.desc,Collect all unlockable cosmetics from loot boxes,Collecte tout les cosmétiques depuis les Loot Boxes
+achievement.first_death,First Death,1ère Mort
+achievement.first_death.desc,Your first and uinque death…,Ton premier et unique mort…
 achievement.halloween_event,Halloween!,Halloween!
 achievement.halloween_event.desc,Play the game during Halloween period.,Jouer au jeu le jour d’Halloween
+achievement.invincible,Invincible!,Invincible!
+achievement.invincible.desc,Finish a level with more than 25 deaths.,Fini un niveau avec plus de 25 morts.
+achievement.making_my_own,Making my own,Je fais le mien
+achievement.making_my_own.desc,Create your own level.,Créer ton propre niveau.
+achievement.new_record,New record!,Nouveau record!
+achievement.new_record.desc,Make a new time record.,Faire un nouveau temps record.
+achievement.rage_quit,RAGEQUIT,RAGEQUIT
+achievement.rage_quit.desc,Click «RAGEQUIT» button…,Appuyer sur le boutton «RAGEQUIT» …
+achievement.start_the_game,Start the game,Commencez le jeu
+achievement.start_the_game.desc,Start playing the game…,Commencez a jouer le jeu…
+achievement.ultimate_collector,Collector,Collecteur
+achievement.ultimate_collector.desc,Collect all unlockable cosmetics from the game,Collecte tout les cosmétiques du jeu
+achievement.yeepee,YEEPEE,YEEPEE
+achievement.yeepee.desc,HYYYAAYHOOO,HYYYAAYHOOO
+button.achievements,Achievements,Progrès
+button.back,Back,Retour
+button.back_to_center,Back to Center,Retour au Centre
+button.back_to_game,Back to Game,Retour au Jeu
+button.back_to_menu,Back To Menu,Retour au Menu
+button.close,Close,Fermer
+button.collections,Collections,Collections
+button.create_import_level,Create/Import Level,Créer/Importer Niveau
+button.create_level,New Level,Nouveau Niveau
+button.credits_scene,Credits Scene,Scène des Crédits
+button.custom_levels,Custom Levels,Niveaux Externes
+button.default_levels,Default Levels,Niveaux Intégrée
+button.delete_level,Delete Level,Supprimer le Niveau
+button.dont_save,Don’t Save,Ne pas Enregistrer
+button.edit_level,Edit,Editer
+button.editor.erase,Erase,Effacer
+button.editor.move,Move,Bouger
+button.editor.place,Place,Placer
+button.hats,Hats,Chapeaux
+button.import_level,Import Level,Importer Niveau
+button.jukebox,Jukebox,Musiques
+button.level_editor,Level Editor,Editeur de Niveau
+button.load_level,Load Level,Charger un Niveau
+button.local_multiplayer,Local Multiplayer,Multijoueur Local
+button.loot_boxes,Loot Boxes,Loot Boxes
+button.multiplayer,Multiplayer,Multijoueur
+button.next_box,Next Box,Prochaine Box
+button.next_level,Next Level,Prochain Niveau
+button.online_multiplayer,Online Multiplayer,Multijoueur en Ligne
+button.particles,Particles,Particules
+button.play,Play,Jouer
+button.quit,Quit,Quitter
+button.quit_level,Quit Level,Quitter le niveau
+button.ragequit,RAGEQUIT,RAGEQUIT
+button.replay_level,Replay Level,Rejouer le niveau
+button.reset_save,Reset Save,Effacer la Sauvegarde
+button.save,Save,Enregistrer
+button.save_level,Save Level,Sauvegarder le Niveau
+button.settings,Settings,Paramètres
+button.settings.sound_track,Soundtacks,Sons Du Jeu
+button.singleplayer,Singleplayer,Solo
+button.skins,Skins,Skins
+button.skip,Skip,Passer
+button.wardrobe,Wardrobe,Armoire
+button.weekly_level,Weekly Level,Niveau de la Semaine
+hat.banana,Banana Hat,Banane
+hat.chainmail_helmet,Chainmail Helmet,Casque en Maille
+hat.crown,Crown,Couronne
+hat.diamond_helmet,Diamond Helmet,Casque en Diamant
+hat.emertyst_helmet,Emertyst Helmet,Casque en Emertyst
+hat.fez,Fez,Fez
+hat.gold_helmet,Gold Helmet,Casque en Or
+hat.iron_helmet,Iron Helmet,Casque en Fer
+hat.jojo,Jojo's Hat,Chapeau de Jojo
+hat.leather_helmet,Leather Helmet,Casque en Cuire
+hat.luigi_hat,Luigi’s Hat,Chapeau de Luigi
+hat.mario_hat,Mario’s Hat,Chapeau de Mario
+hat.mexican,Mexican Hat,Sombrero
+hat.netherite_helmet,Netherite Helmet,Casque en Netherite
+hat.none,None,Rien
+hat.player,Player Hat,Chapeau Joueur
+hat.santa_hat,Santa’s Hat,Chapeau de Noël
+hat.simple,Simple Hat,Simple Chapeau
+hat.slime,Slime Hat,Chapeau Slime
+hat.waluigi_hat,Waluigi’s Hat,Chapeau de Waluigi
+hat.wario_hat,Wario’s Hat,Chapeau de Wario
+label.best_time,Best Time,Temps Record
+label.deaths,Deaths,Morts
+label.default_splash_text,Splash Text,Texte
+label.fullscreen,Fullscreen,Plein écran
 label.jump_particles,Jump Particles,Particules de saut
+label.level_complete,Level Complete,Niveau Terminée
+label.level_selection,Level Seclection,Sélection de niveau
+label.level.description,Level Description,Description du Niveau
+label.level.difficulty,Level Difficulty,Difficulté
+label.level.difficulty.beginer_friendly,Beginer Friendly,Débutant
+label.level.difficulty.easy,Easy,Facile
+label.level.difficulty.extreme,EXTREME,EXTREME
+label.level.difficulty.hard,Hard,Dur
+label.level.difficulty.normal,Normal,Normale
+label.level.loose,You Loose,Perdu
+label.level.name,Level Name,Nom du Niveau
+label.level.win,You Win,Tu as gagnée
+label.level.y_limit,Y Limit:,Limite Y:
+label.no,No,Non
+label.none,None,Rien
+label.pause,Pause,Pause
+label.settings.discord_rpc,Discord Itegration,Itegration Discord
+label.settings.language,Language,Language
+label.settings.music_volume,Music Volume,Volume de Musique
+label.settings.sound_effect_volume,Sound Effect Volume,Volume d’éffect de son
+label.settings.window_size,Window Size,Taille de la Fenêtre
+label.skip,Press [ESC] to skip…,Echap pour passer…
 label.step_particles,Step Particles,Particules de marche
-particle.default_jump,Default Jump,Saut Simple
-particle.default_step,Default Step,Marche Simple
+label.time,Time,Temps
+label.title,Little Rage,Little Rage
+label.unlocked_cosmetic,Unlock cosmetic:,Cosmetique débloquée:
+label.yes,Yes,Oui
+message.editor.failed_load,Failed to load level from path: ‘%s’,Échec de chargement de niveau: ’%s’
+message.editor.loaded,Loaded level: ‘%s’,Chargée le niveau: ‘%s’
+message.editor.saved,Saved into file: ‘%s’ ,Enregistrer sous le fichier: ‘%s’
+message.experimental_frame.desc,This feature is an experimental. It can produce bugs. Are you sure to continue ?,Cette fonctionnalité est expérimental. Ceci peut produire des bugs. Etes-vous sur de continuer ?
+message.level_editor.save_option,Do you want to save before ?,Voulez vous enregistrer avant ?
+message.level.description.level_eight,Short but hard…,Court mais dur…
+message.level.description.level_five,Color things + jumps + Color spikes,Truc de couleurs + Sauts + Piques de couleurs
+message.level.description.level_four,A level witch show a new features for the noobies…,Un niveau qui ajoute du changement pour les noobs…
+message.level.description.level_nine,Short but hard… Harder…,Court mais encore plus dur…
+message.level.description.level_one,The first simple Level,Le premier niveau très simple…
+message.level.description.level_seven,A cave with magnificent red and blue crystals…,Une magnifique cave avec des crystaux rouges et blues…
+message.level.description.level_six,The evaluation level…,Le niveau d’évaluation…
+message.level.description.level_three,Ooooh spikes... =),Ohhh des piques… =)
+message.level.description.level_two,A Jumping level…,Un niveau basée sur le saut.
+message.popup.new_loot_box,You recived a new Loot Box!,Vous avez reçu une nouvelle Loot Box !
+message.popup.not_on_mobile,This feature is not available on mobile…,Cette fonctionnalité n’est pas disponible sur mobile…
+message.popup.unlocked_cosmetic,You’ve unlocked a cosmetic: ’%s’,Tu as débloqué un cosmétique: ’%s’
+message.popup.unlocked_hat,You’ve unlocked a hat: ’%s’,Tu as débloquée un chapeau: ’%s’
+message.popup.unlocked_skin,You’ve unlocked a skin: ’%s’,Tu as débloquée un skin: ’%s’
+message.settings.reset_save.confirm,"""Are you sure?\nAll your progression will be deleted…""","""Êtes-vous sure?\nToute votre progression va être supprimée…"""
+message.shop.open_loot_box,Open Loot Box : %s left,Ouvrir une Loot Box : %s restant
+message.update,A new update is avaliable!,Une nouvelle mise à jour est disponible!
 particle.cloud_jump,Cloud Jump,Saut en Nuages
 particle.cloud_step,Cloud Step,Marche en Nuages
+particle.default_jump,Default Jump,Saut Simple
+particle.default_step,Default Step,Marche Simple
 particle.dirt_jump,Dirt Jump,Saut en Terre
 particle.dirt_step,Dirt Step,Marche en Terre
 particle.rainbow_jump,Rainbow Jump,Saut multi-color
@@ -165,3 +157,32 @@ particle.stone_jump,Stone Jump,Saut en Pierre
 particle.stone_step,Stone Step,Marche en Pierre
 particle.violet_star_jump,Violet Star Jump,Saut en Etoiles Violettes
 particle.violet_star_step,Violet Star Step,Marche en Etoiles Violettes
+popup.delete_level.failed,Failed to delete level…,Suppression echoué…
+popup.delete_level.success,Level deleted!,Suppression effectué!
+popup.failed_load_level.copy_file,Failed to copy level into 'levels' folder. Code: %s,Echec de la copie du ficher dans le dossier ‘levels’. Code: %s
+popup.failed_load_level.invaild_id,Failed to load level. Invalid id.,Échec de la lecture du ficher. Id invalide.
+popup.failed_load_level.invalid_file,Invalid level file…,Ficher niveau invalide…
+popup.failed_load_level.read_file,Failed to read file. Code: %s,Échec de la lecture du ficher. Code: %s
+popup.failed_load_level.sheared_id,Failed to load level. It's sharing the same id '%s'.,Échec de la lecture du ficher. Id déjà présent ‘%s’.
+popup.load_level_success,Succesfuly load level '%s'.,Niveau ‘%s’ chargée avec succès!
+popup.resource_element_confict,%s id conflict: %s,L’id de %s conflit avec %s.
+popup.screenshot,Screenshot saved!,Screenshot sauvegardé!
+popup.unlocked_achievement,Achievement unlocked!\n%s.,Progrès obtenu!\n%s!
+skin.default,Default,Default
+skin.game_boy,Game Boy,Game Boy
+skin.injured_player,Injured Player,Joueur Blessée
+skin.killarexe,Killar,Killar
+skin.luigi,Luigi,Luigi
+skin.mario,Mario,Mario
+skin.mexican_player,Mexican Player,Joueur Mexicain
+skin.negative,Negate Default,Default Inversée
+skin.niark,Niark,Niark
+skin.old_player,Old Player,Ancien Joueur
+skin.plok,Plok,Plok
+skin.rainer,Rainer,Rainer
+skin.rgb,RGB,RGB
+skin.santa,Santa,Santa
+skin.skeleton,Skeleton,Squelette
+skin.steve,Steve,Steve
+skin.waluigi,Waluigi,Waluigi
+skin.wario,Wario,Wario

@@ -65,6 +65,7 @@ func _on_create_level_button_pressed():
 	level.difficulty = level_creation_menu.difficulty
 	level.scene = load("res://scenes/bundles/DefaultLevel.tscn")
 	ResourceSaver.save(level, LevelManager.EXTERNAL_LEVELS_DIR + "/" + level_id + ".tres")
+	AchievementManager.unlock_achievement("making_my_own")
 	LevelManager.load_levels()
 	LevelManager.current_level = level_id
 	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")

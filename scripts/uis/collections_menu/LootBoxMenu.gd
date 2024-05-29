@@ -1,9 +1,10 @@
 extends Control
 class_name LootBoxMenu
 
-@onready var cosmetic_texture: TextureRect = $CosmeticTexture
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var next_button: Button = $Buttons/NextBoxButton
+@export var cosmetic_texture: TextureRect
+@export var cosmetic_label: Label
+@export var animation_player: AnimationPlayer
+@export var next_button: Button
 
 @export var skin_list: SkinList
 @export var hat_list: HatList
@@ -20,6 +21,7 @@ func update_texture():
 		skin_list.set_item_skins()
 		hat_list.set_hat_items()
 		particle_menu.load_particles()
+		cosmetic_label.text = TranslationServer.translate("label.unlocked_cosmetic") + ": " + TranslationServer.translate(cosmetic.name)
 
 func update_buttons():
 	next_button.visible = LootBoxesManager.has_loot_box()
