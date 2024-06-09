@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Remove Android export preset
-        run: grep -v -U -e "(?s)\[preset\.6\].*" export_presets.cfg > export_presets.cfg
+        run: grep -v -U -e "(?s)\[preset\.6\].*" export_presets.cfg > new_export_presets.cfg && mv -f new_export_presets.cfg export_presets.cfg
       - uses: actions/checkout@v3
       - name: Godot Export
         uses: firebelley/godot-export@v5.2.1
