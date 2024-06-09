@@ -9,9 +9,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
     steps:
       - name: Remove Android export preset
-        run: x=$(cat /home/runner/work/LittleRage/LittleRage/export_presets.cfg); echo $x | grep -v -U -e "(?s)\[preset\.6\].*" > /home/runner/work/LittleRage/LittleRage/export_presets.cfg
+        run: x=$(cat export_presets.cfg); echo $x | grep -v -U -e "(?s)\[preset\.6\].*" > export_presets.cfg
       - uses: actions/checkout@v3
       - name: Godot Export
         uses: firebelley/godot-export@v5.2.1
