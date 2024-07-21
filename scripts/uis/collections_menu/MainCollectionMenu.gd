@@ -20,12 +20,14 @@ func _ready():
 func _input(event: InputEvent):
 	if (event is InputEventKey || event is InputEventMouseButton) && !event.is_released():
 		if event.is_action_pressed(UNLOCK_ALL_CHEAT_CODE[cheat_code_index]):
-			if cheat_code_index >= UNLOCK_ALL_CHEAT_CODE.size() - 1:
+			if cheat_code_index >= UNLOCK_ALL_CHEAT_CODE.size() - 1 && !Game.has_unlocked_all():
 				cheat_code_index = 0
 				for skin in PlayerSkinManager.skins:
 					PlayerSkinManager.unlock_skin(skin.id)
 				for hat in PlayerHatManager.hats:
 					PlayerHatManager.unlock_hat(hat.id)
+				for particle in PlayerParticleManager.particles:
+					PlayerParticleManager.unlock_particle(particle.id)
 				PopUpFrame.pop("Cheat Code: Unlock all!")
 			else:
 				cheat_code_index += 1
