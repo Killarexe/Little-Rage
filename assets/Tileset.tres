@@ -1,6 +1,10 @@
-[gd_resource type="TileSet" load_steps=32 format=3 uid="uid://dcovkjpnowgl0"]
+[gd_resource type="TileSet" load_steps=34 format=3 uid="uid://dcovkjpnowgl0"]
 
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="1_3ut7y"]
+[ext_resource type="PackedScene" uid="uid://dfamu2vvdstal" path="res://scenes/bundles/levels/tiles/CheckpointTile.tscn" id="1_ax33w"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u2aof"]
+scenes/1/scene = ExtResource("1_ax33w")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wfcrf"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -574,3 +578,4 @@ terrain_set_0/terrain_4/color = Color(1, 1, 1, 1)
 custom_data_layer_0/name = "type"
 custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_ddag5")
+sources/0 = SubResource("TileSetScenesCollectionSource_u2aof")

@@ -3,12 +3,20 @@
 [ext_resource type="TileSet" uid="uid://dcovkjpnowgl0" path="res://assets/Tileset.tres" id="1_ae557"]
 [ext_resource type="Script" path="res://scripts/level/LevelPlayer.gd" id="2_ukgah"]
 
-[node name="DefaultLevel" type="TileMap"]
-tile_set = ExtResource("1_ae557")
-format = 2
-layer_0/name = "Ground"
-layer_1/name = "Background"
-layer_1/modulate = Color(0.501961, 0.501961, 0.501961, 1)
-layer_1/z_index = -2
-layer_1/tile_data = PackedInt32Array()
+[node name="DefaultLevel" type="Node2D" node_paths=PackedStringArray("ground", "background")]
 script = ExtResource("2_ukgah")
+ground = NodePath("Ground")
+background = NodePath("Background")
+mode = null
+start_pos = null
+
+[node name="Ground" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = ExtResource("1_ae557")
+
+[node name="Background" type="TileMapLayer" parent="."]
+modulate = Color(0.501961, 0.501961, 0.501961, 1)
+z_index = -2
+use_parent_material = true
+tile_set = ExtResource("1_ae557")
+collision_enabled = false

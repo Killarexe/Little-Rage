@@ -247,6 +247,7 @@ libraries = {
 }
 
 [node name="TitleScreenLevel" parent="." instance=ExtResource("3_gaxhl")]
+start_pos = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

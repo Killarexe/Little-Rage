@@ -97,7 +97,6 @@ func _on_save_button_pressed():
 	level.name = level_name
 	level.is_hidden = false
 	level.scene = packed_scene
-	level.mode = Level.Mode.RACE
 	level.y_limit = level_settings.y_limit
 	level.level_theme = Level.LevelTheme.PLAINS
 	level.difficulty = level_settings.difficulty

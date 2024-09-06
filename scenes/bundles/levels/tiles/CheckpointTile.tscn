@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dfamu2vvdstal"]
+
+[ext_resource type="Script" path="res://scripts/level/tiles/CheckpointTile.gd" id="1_en437"]
+[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="2_3mybj"]
+[ext_resource type="PackedScene" uid="uid://ci0p37ottv00" path="res://scenes/bundles/particles/DefaultCheckpointParticle.tscn" id="2_k1qwm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a1jv"]
+atlas = ExtResource("2_3mybj")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkckm"]
+atlas = ExtResource("2_3mybj")
+region = Rect2(64, 48, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_os5gs"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epn34"]
+size = Vector2(18, 18)
+
+[node name="CheckpointTile" type="StaticBody2D" node_paths=PackedStringArray("tile_off_texture", "interatcion_area")]
+collision_mask = 8
+script = ExtResource("1_en437")
+tile_off_texture = NodePath("TileOff")
+checkpoint_particle = ExtResource("2_k1qwm")
+interatcion_area = NodePath("InteractionArea")
+
+[node name="TileOn" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_0a1jv")
+
+[node name="TileOff" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_bkckm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_os5gs")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_epn34")
