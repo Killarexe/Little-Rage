@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://bkwmpwrjnhece"]
 
-[ext_resource type="Script" path="res://scripts/components/PlayerComponent.gd" id="1_fvwbd"]
+[ext_resource type="Script" path="res://scripts/level/player/PlayerComponent.gd" id="1_fvwbd"]
 [ext_resource type="Script" path="res://scripts/level/player/PlayerCollider.gd" id="2_imbgx"]
 [ext_resource type="PackedScene" uid="uid://ci0p37ottv00" path="res://scenes/bundles/particles/DefaultCheckpointParticle.tscn" id="3_phvfs"]
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="4_433oa"]
@@ -19,7 +19,7 @@
 [ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="17_ob0nn"]
 [ext_resource type="Script" path="res://scripts/level/player/PlayerTimer.gd" id="18_ms4pk"]
 [ext_resource type="Script" path="res://scripts/level/player/PlayerControllerComponent.gd" id="19_d4lqc"]
-[ext_resource type="Script" path="res://scripts/components/DeathComponent.gd" id="20_xjlge"]
+[ext_resource type="Script" path="res://scripts/level/player/DeathComponent.gd" id="20_xjlge"]
 [ext_resource type="Script" path="res://scripts/level/player/SkinDistortion.gd" id="21_c2ukq"]
 [ext_resource type="AnimationLibrary" uid="uid://lq7ufb3fx0yh" path="res://assets/animations/PlayerAnimations.res" id="22_pcsr0"]
 
@@ -58,7 +58,7 @@ _data = {
 "RESET": SubResource("Animation_10f12")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player", "player"]]
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_fvwbd")

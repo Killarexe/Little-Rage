@@ -1,9 +1,9 @@
 [gd_scene load_steps=13 format=3 uid="uid://bf6u6lge7vm8i"]
 
-[ext_resource type="Script" path="res://scripts/components/PlayerDummyComponent.gd" id="1_rhxy3"]
+[ext_resource type="Script" path="res://scripts/level/player/PlayerDummyComponent.gd" id="1_rhxy3"]
 [ext_resource type="Script" path="res://scripts/level/player/PlayerCollider.gd" id="2_4vnr8"]
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="3_0rkse"]
-[ext_resource type="Script" path="res://scripts/components/DeathComponent.gd" id="3_cbkx3"]
+[ext_resource type="Script" path="res://scripts/level/player/DeathComponent.gd" id="3_cbkx3"]
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="4_6fqh6"]
 [ext_resource type="Script" path="res://scripts/level/player/SkinDistortion.gd" id="6_2u6px"]
 [ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="7_nca7a"]

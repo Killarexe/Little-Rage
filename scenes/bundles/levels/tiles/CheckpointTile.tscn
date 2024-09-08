@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfamu2vvdstal"]
+[gd_scene load_steps=9 format=3 uid="uid://dfamu2vvdstal"]
 
-[ext_resource type="Script" path="res://scripts/level/tiles/CheckpointTile.gd" id="1_en437"]
+[ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_fprxg"]
+[ext_resource type="Script" path="res://scripts/level/tiles/CheckpointTileComponent.gd" id="2_1p80s"]
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="2_3mybj"]
 [ext_resource type="PackedScene" uid="uid://ci0p37ottv00" path="res://scenes/bundles/particles/DefaultCheckpointParticle.tscn" id="2_k1qwm"]
 
@@ -18,12 +19,16 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epn34"]
 size = Vector2(18, 18)
 
-[node name="CheckpointTile" type="StaticBody2D" node_paths=PackedStringArray("tile_off_texture", "interatcion_area")]
+[node name="CheckpointTile" type="StaticBody2D" node_paths=PackedStringArray("interatcion_area")]
 collision_mask = 8
-script = ExtResource("1_en437")
-tile_off_texture = NodePath("TileOff")
-checkpoint_particle = ExtResource("2_k1qwm")
+script = ExtResource("1_fprxg")
 interatcion_area = NodePath("InteractionArea")
+
+[node name="CheckpointTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile", "tile_off_texture") groups=["CheckpointTiles"]]
+script = ExtResource("2_1p80s")
+interactive_tile = NodePath("..")
+tile_off_texture = NodePath("../TileOff")
+checkpoint_particle = ExtResource("2_k1qwm")
 
 [node name="TileOn" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_0a1jv")
@@ -39,3 +44,5 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("RectangleShape2D_epn34")
+
+[connection signal="on_body_entered" from="." to="CheckpointTileComponent" method="_on_checkpoint_tile_on_body_entered"]

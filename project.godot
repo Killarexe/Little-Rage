@@ -80,6 +80,12 @@ folder_colors={
 "res://scripts/": "purple"
 }
 
+[global_group]
+
+Player="Is the player"
+Level="This is the level"
+CheckpointTiles="All checkpoint tiles"
+
 [importer_defaults]
 
 csv_translation={

@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dcovkjpnowgl0" path="res://assets/Tileset.tres" id="1_ae557"]
 [ext_resource type="Script" path="res://scripts/level/LevelPlayer.gd" id="2_ukgah"]
 
-[node name="DefaultLevel" type="Node2D" node_paths=PackedStringArray("ground", "background")]
+[node name="DefaultLevel" type="Node" node_paths=PackedStringArray("ground", "background") groups=["Level"]]
 script = ExtResource("2_ukgah")
 ground = NodePath("Ground")
 background = NodePath("Background")
