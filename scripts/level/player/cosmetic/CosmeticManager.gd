@@ -6,7 +6,7 @@ var unlocked_cosmetics: Array[String] = []
 var cosmetics: Array[CosmeticElement] = []
 var overall_chance: int = 0
 
-func _ready():
+func _ready() -> void:
 	current_cosmetic = get_default_cosmetic()
 	unlocked_cosmetics.append(get_default_cosmetic())
 	load_cosmetics()

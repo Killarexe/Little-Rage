@@ -6,7 +6,7 @@ var current_hat: String = "no_hat"
 var unlocked_hats: Array = ["no_hat"]
 var hats: Array[PlayerHat]
 
-func _ready():
+func _ready() -> void:
 	var resources: Array[ResourceElement] = DataLoader.new().load_data_in_dir(HATS_DIR_PATH, "hat")
 	for resource in resources:
 		if resource is PlayerHat:
@@ -21,7 +21,7 @@ func get_hat(hat_id: String) -> PlayerHat:
 			return hat
 	return null
 
-func unlock_hat(hat_id: String, special: bool = false):
+func unlock_hat(hat_id: String, special: bool = false) -> void:
 	var hat: PlayerHat = get_hat(hat_id)
 	if hat != null && !is_hat_unlocked(hat_id):
 		unlocked_hats.append(hat_id)

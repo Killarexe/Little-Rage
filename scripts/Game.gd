@@ -15,7 +15,7 @@ var is_mobile: bool = false
 var can_pause: bool = true
 var starting: bool = true
 
-func _ready():
+func _ready() -> void:
 	is_mobile = OS.get_name() == "Android" || OS.get_name() == "iOS"
 	var date = Time.get_datetime_dict_from_system()
 	var day: int = date["day"]
@@ -35,7 +35,7 @@ func _ready():
 		print_rich("[wave amp=50.0 freq=5.0 connected=1][rainbow freq=1.0 sat=0.8 val=0.8]Happy Birthday Little Rage![/rainbow][/wave]")
 		current_event = Event.ANNIVERSARY
 
-func has_unlocked_unhiddens():
+func has_unlocked_unhiddens() -> bool:
 	return PlayerHatManager.has_unlocked_unhiddens() && PlayerSkinManager.has_unlocked_unhiddens() && PlayerParticleManager.has_unlocked_unhiddens()
 
 func instanceNodeAtPos(node: Object, parent: Object, pos: Vector2) -> Object:
@@ -48,5 +48,5 @@ func instanceNode(node: Object, parent: Object) -> Object:
 	parent.add_child(nodeInstance)
 	return nodeInstance
 
-func _exit_tree():
+func _exit_tree() -> void:
 	GAME_VERSION.free() #NOTE: is to fix a bug a think...

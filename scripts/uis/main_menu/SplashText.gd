@@ -3,7 +3,7 @@ extends Label
 @export var texts: Array[String] = []
 var index: int = 0
 
-func _ready():
+func _ready() -> void:
 	$AnimationPlayer.play("zoom")
 	if texts.size() <= 0:
 		text = "MISSINGNO."
@@ -14,7 +14,7 @@ func _ready():
 		index = randi_range(0, texts.size() - 1)
 		text = texts[index]
 
-func _on_button_pressed():
+func _on_button_pressed() -> void:
 	match index:
 		51:
 			PlayerSkinManager.unlock_skin("steve", true)

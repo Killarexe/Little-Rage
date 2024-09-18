@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bf6u6lge7vm8i"]
+[gd_scene load_steps=12 format=3 uid="uid://bf6u6lge7vm8i"]
 
 [ext_resource type="Script" path="res://scripts/level/player/PlayerDummyComponent.gd" id="1_rhxy3"]
-[ext_resource type="Script" path="res://scripts/level/player/PlayerCollider.gd" id="2_4vnr8"]
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="3_0rkse"]
 [ext_resource type="Script" path="res://scripts/level/player/DeathComponent.gd" id="3_cbkx3"]
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="4_6fqh6"]
@@ -52,11 +51,8 @@ player_hat = NodePath("Skin/PlayerHatSprite")
 animation = NodePath("AnimationPlayer")
 sound_effect_player = NodePath("SoundEffectPlayer")
 
-[node name="PlayerCollider" type="CollisionShape2D" parent="." node_paths=PackedStringArray("player", "death_component")]
+[node name="PlayerCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qru1a")
-script = ExtResource("2_4vnr8")
-player = NodePath("..")
-death_component = NodePath("../DeathComponent")
 
 [node name="Skin" type="Sprite2D" parent="."]
 script = ExtResource("3_0rkse")
@@ -92,6 +88,6 @@ libraries = {
 "PlayerAnimations": ExtResource("8_ukl5h")
 }
 autoplay = "camera_enter"
-blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]
+blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("9_fdwyx")]

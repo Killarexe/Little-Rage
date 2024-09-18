@@ -6,5 +6,5 @@ class_name CosmeticElement
 @export var is_hidden: bool = false
 @export var texture: CompressedTexture2D = CompressedTexture2D.new()
 
-func get_texture_or_default():
+func get_texture_or_default() -> Texture2D:
 	return texture

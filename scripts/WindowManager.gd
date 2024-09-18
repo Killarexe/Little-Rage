@@ -11,10 +11,10 @@ const WINDOW_SIZES: Array[Vector2] = [
 
 var window_size: int = 5
 
-func _ready():
+func _ready() -> void:
 	update_window(window_size)
 
-func update_window(size: int):
+func update_window(size: int) -> void:
 	if size < WINDOW_SIZES.size():
 		var window_size: Vector2 = WINDOW_SIZES[size]
 		var current_screen: int = DisplayServer.window_get_current_screen()
@@ -27,14 +27,14 @@ func update_window(size: int):
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
-func _input(event: InputEvent):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fullscreen"):
 		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
-func _notification(what: int):
+func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST || what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		SaveManager.save()
 		get_tree().quit()

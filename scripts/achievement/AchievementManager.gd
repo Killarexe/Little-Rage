@@ -5,13 +5,13 @@ const ACHIEVEMENT_DIR: String = "res://data/achievements"
 var achievements: Array[Achievement] = []
 var unlocked_achievements: Array = []
 
-func _ready():
+func _ready() -> void:
 	var resources: Array[ResourceElement] = DataLoader.new().load_data_in_dir(ACHIEVEMENT_DIR, "achievement")
 	for resource in resources:
 		if resource is Achievement:
 			achievements.append(resource)
 
-func unlock_achievement(achievement_id: String):
+func unlock_achievement(achievement_id: String) -> void:
 	if unlocked_achievements.has(achievement_id):
 		return
 	for achievement in achievements:

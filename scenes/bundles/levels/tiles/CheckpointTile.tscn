@@ -44,5 +44,3 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("RectangleShape2D_epn34")
-
-[connection signal="on_body_entered" from="." to="CheckpointTileComponent" method="_on_checkpoint_tile_on_body_entered"]

@@ -10,11 +10,11 @@ class_name LootBoxMenu
 @export var hat_list: HatList
 @export var particle_menu: ParticlesMenu
 
-func open():
+func open() -> void:
 	animation_player.play("entry")
 	animation_player.queue("show")
 
-func update_texture():
+func update_texture() -> void:
 	var cosmetic: CosmeticElement = LootBoxesManager.use_loot_box()
 	if cosmetic != null:
 		cosmetic_texture.texture = cosmetic.get_texture_or_default()
@@ -23,16 +23,16 @@ func update_texture():
 		particle_menu.load_particles()
 		cosmetic_label.text = TranslationServer.translate("label.unlocked_cosmetic") + ": " + TranslationServer.translate(cosmetic.name)
 
-func update_buttons():
+func update_buttons() -> void:
 	next_button.visible = LootBoxesManager.has_loot_box()
 
-func spawn_particles():
+func spawn_particles() -> void:
 	Game.instanceNodeAtPos(load("res://scenes/bundles/particles/BigPartyParticle.tscn"), self, Vector2(1280.0 / 2.0, 720.0 / 2.0))
 
-func _on_next_box_button_pressed():
+func _on_next_box_button_pressed() -> void:
 	if !animation_player.is_playing():
 		animation_player.play("show")
 
-func _on_back_button_pressed():
+func _on_back_button_pressed() -> void:
 	if !animation_player.is_playing():
 		animation_player.play("back")

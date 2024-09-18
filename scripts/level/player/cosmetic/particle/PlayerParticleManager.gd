@@ -9,7 +9,7 @@ var current_step_particle: String = "default_step"
 var unlocked_particles: Array = ["default"]
 var particles: Array[PlayerParticle]
 
-func _ready():
+func _ready() -> void:
 	var resources: Array[ResourceElement] = DataLoader.new().load_data_in_dir(PARTICLES_DIR_PATH, "particles")
 	for resource in resources:
 		if resource is PlayerParticle:
@@ -31,7 +31,7 @@ func get_particle(particle_id: String) -> PlayerParticle:
 			return particle
 	return null
 
-func unlock_particle(particle_id: String, special: bool = false):
+func unlock_particle(particle_id: String, special: bool = false) -> void:
 	var particle: PlayerParticle = get_particle(particle_id)
 	if particle != null && !is_particle_unlocked(particle_id):
 		unlocked_particles.append(particle_id)

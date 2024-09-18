@@ -6,7 +6,7 @@ var current_skin: String = "default"
 var unlocked_skins: Array = ["default"]
 var skins: Array[PlayerSkin]
 
-func _ready():
+func _ready() -> void:
 	var resources: Array[ResourceElement] = DataLoader.new().load_data_in_dir(SKINS_DIR_PATH, "skin")
 	for resource in resources:
 		if resource is PlayerSkin:
@@ -21,7 +21,7 @@ func get_skin(skin_id: String) -> PlayerSkin:
 			return skin
 	return null
 
-func unlock_skin(skin_id: String, special: bool = false):
+func unlock_skin(skin_id: String, special: bool = false) -> void:
 	var skin: PlayerSkin = get_skin(skin_id)
 	if skin != null && !is_skin_unlocked(skin_id):
 		unlocked_skins.append(skin_id)

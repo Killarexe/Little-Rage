@@ -15,7 +15,7 @@ enum Mode {
 
 var player_prefab: Resource = load("res://scenes/bundles/player/Player.tscn")
 
-func _ready():
+func _ready() -> void:
 	if Game.current_event == Game.Event.CHRISTMAS:
 		var texture = load("res://assets/textures/tilesets/plains_christmas.png")
 		ground.tile_set.get_source(1).texture = texture
@@ -23,14 +23,14 @@ func _ready():
 	if mode == Mode.PLAY:
 		spawn_player()
 
-func finish_level(player: PlayerComponent, death: DeathComponent, time: PlayerTimer):
+func finish_level(player: PlayerComponent, death: DeathComponent, time: PlayerTimer) -> void:
 	var parent: Node = get_parent()
 	if parent is LevelEditor:
 		parent.switch_edit_mode()
 	else:
 		player.on_win.emit(time.get_time(), death.death_count)
 
-func spawn_player():
+func spawn_player() -> void:
 	var player = Game.instanceNodeAtPos(player_prefab, self, start_pos)
 
 func filter_used_grass_cells() -> Array[Vector2i]:
@@ -41,7 +41,7 @@ func filter_used_grass_cells() -> Array[Vector2i]:
 			used_grass_cells.append(cell)
 	return used_grass_cells
 
-func set_mode(new_mode: Mode):
+func set_mode(new_mode: Mode) -> void:
 	mode = new_mode
 	if mode == Mode.PLAY:
 		spawn_player()

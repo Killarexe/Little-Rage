@@ -6,7 +6,7 @@ class_name DefaultLevelSelectionMenu
 @onready var level_list: LevelList = $LevelList
 @onready var camera_animation_player: AnimationPlayer = $"../../DefaultLevel/PlayerDummy/PlayerCamera/AnimationPlayer"
 
-func _on_play_button_pressed():
+func _on_play_button_pressed() -> void:
 	if level_list.levels.is_empty():
 		return
 	animation_player.play_backwards("enter")
@@ -17,7 +17,7 @@ func _on_play_button_pressed():
 	LevelManager.current_level = selected_level.id
 	SceneManager.change_packed(selected_level.scene, 1, false, 1, true)
 
-func _on_back_button_pressed():
+func _on_back_button_pressed() -> void:
 	animation_player.play_backwards("enter")
 	await animation_player.animation_finished
 	visible = false

@@ -1,7 +1,7 @@
 extends Sprite2D
 class_name PlayerSkinSprite
 
-func update_skin(override_skin_id: String = ""):
+func update_skin(override_skin_id: String = "") -> void:
 	var override_skin: PlayerSkin = PlayerSkinManager.get_skin(override_skin_id)
 	if override_skin == null:
 		if !override_skin_id.is_empty():
@@ -10,5 +10,5 @@ func update_skin(override_skin_id: String = ""):
 	else:
 		texture = override_skin.texture
 
-func _ready():
+func _ready() -> void:
 	update_skin()

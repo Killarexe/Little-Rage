@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmdian5sdbbt7"]
+
+[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="1_gbq5v"]
+[ext_resource type="Script" path="res://scripts/level/tiles/ColorTileComponent.gd" id="2_hnthn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p01wy"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0go8"]
+atlas = ExtResource("1_gbq5v")
+region = Rect2(16, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3o1q"]
+atlas = ExtResource("1_gbq5v")
+region = Rect2(16, 112, 16, 16)
+
+[node name="BlueTile" type="StaticBody2D"]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p01wy")
+
+[node name="OnTexture" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_h0go8")
+
+[node name="OffTexture" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_y3o1q")
+
+[node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("off_texture", "tile_collision_shape")]
+script = ExtResource("2_hnthn")
+disable_tile_collision = true
+off_texture = NodePath("../OffTexture")
+tile_collision_shape = NodePath("../CollisionShape2D")

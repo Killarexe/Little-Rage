@@ -6,6 +6,10 @@ class_name CheckpointTileComponent
 @export var tile_off_texture: Sprite2D
 @export var checkpoint_particle: PackedScene
 
+func _ready() -> void:
+	add_to_group("CheckpointTiles")
+	interactive_tile.on_body_entered.connect(_on_checkpoint_tile_on_body_entered)
+
 func switch_off() -> void:
 	tile_off_texture.visible = true
 

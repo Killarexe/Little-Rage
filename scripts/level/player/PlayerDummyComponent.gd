@@ -19,7 +19,7 @@ class_name PlayerDummyComponent
 @export_range(0.1, 0.5) var GROUND_TIME: float = 0.2
 @export_range(0.1, 0.5) var JUMP_TIME: float = 0.2
 
-func _ready():
+func _ready() -> void:
 	player_skin.update_skin(override_skin_id)
 	player_hat.update_hat(override_hat_id)
 
@@ -53,8 +53,8 @@ func handle_jump() -> void:
 		jump_timer = 0
 		ground_timer = 0
 
-func flip_sprite():
+func flip_sprite() -> void:
 	player_skin.flip_h = !player_skin.flip_h
 
-func jump_player():
+func jump_player() -> void:
 	jump_timer = JUMP_TIME

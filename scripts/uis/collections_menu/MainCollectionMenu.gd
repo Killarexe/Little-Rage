@@ -9,7 +9,7 @@ var cheat_code_index: int = 0
 @onready var loot_box_menu: LootBoxMenu = $LootBoxMenu
 @onready var jukebox_button: Button = $SelectButtons/JukeboxButton
 
-func _ready():
+func _ready() -> void:
 	var has_unlocked_all: bool = Game.has_unlocked_unhiddens()
 	if has_unlocked_all:
 		MusicManager.play_music("collections_menu_easter")
@@ -17,7 +17,7 @@ func _ready():
 		MusicManager.play_music("collections_menu")
 	jukebox_button.visible = has_unlocked_all
 
-func _input(event: InputEvent):
+func _input(event: InputEvent) -> void:
 	if (event is InputEventKey || event is InputEventMouseButton) && !event.is_released():
 		if event.is_action_pressed(UNLOCK_ALL_CHEAT_CODE[cheat_code_index]):
 			if cheat_code_index >= UNLOCK_ALL_CHEAT_CODE.size() - 1 && !Game.has_unlocked_all():
@@ -34,16 +34,16 @@ func _input(event: InputEvent):
 		else: 
 			cheat_code_index = 0
 
-func _on_skins_button_pressed():
+func _on_skins_button_pressed() -> void:
 	set_menu_to(0)
 
-func _on_hats_button_pressed():
+func _on_hats_button_pressed() -> void:
 	set_menu_to(1)
 
-func _on_particles_button_pressed():
+func _on_particles_button_pressed() -> void:
 	set_menu_to(2)
 
-func set_menu_to(menu: int):
+func set_menu_to(menu: int) -> void:
 	animation_player.play_backwards("enter")
 	await animation_player.animation_finished
 	visible = false
@@ -58,18 +58,18 @@ func set_menu_to(menu: int):
 			camera_animation_player.play("zoom_particles")
 			$"../ParticlesMenu".visible = true
 
-func _on_back_button_pressed():
+func _on_back_button_pressed() -> void:
 	animation_player.play_backwards("enter")
 	await animation_player.animation_finished
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")
 
-func _on_achievements_button_pressed():
+func _on_achievements_button_pressed() -> void:
 	animation_player.play_backwards("enter")
 	await animation_player.animation_finished
 	SceneManager.change_scene("res://scenes/uis/AchievementMenu.tscn")
 
-func _on_loot_box_button_pressed():
+func _on_loot_box_button_pressed() -> void:
 	loot_box_menu.open()
 
-func _on_jukebox_button_pressed():
+func _on_jukebox_button_pressed() -> void:
 	SceneManager.change_scene("res://scenes/uis/SoundTrackMenu.tscn")

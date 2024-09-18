@@ -3,7 +3,7 @@ extends Node
 var loot_box_count: int = 0
 
 #chance: 0 - 1
-func add_loot_box(chance: float, always: bool = false):
+func add_loot_box(chance: float, always: bool = false) -> void:
 	var random: float = randf()
 	if random <= chance || always:
 		loot_box_count += 1

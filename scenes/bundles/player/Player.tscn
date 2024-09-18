@@ -1,8 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://bkwmpwrjnhece"]
+[gd_scene load_steps=24 format=3 uid="uid://bkwmpwrjnhece"]
 
 [ext_resource type="Script" path="res://scripts/level/player/PlayerComponent.gd" id="1_fvwbd"]
-[ext_resource type="Script" path="res://scripts/level/player/PlayerCollider.gd" id="2_imbgx"]
-[ext_resource type="PackedScene" uid="uid://ci0p37ottv00" path="res://scenes/bundles/particles/DefaultCheckpointParticle.tscn" id="3_phvfs"]
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="4_433oa"]
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="5_nuugr"]
 [ext_resource type="Script" path="res://scripts/level/player/CameraController.gd" id="6_bc5q0"]
@@ -63,14 +61,8 @@ collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_fvwbd")
 
-[node name="Collider" type="CollisionShape2D" parent="." node_paths=PackedStringArray("player", "death_component", "player_controller", "timer_component")]
+[node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h7ve1")
-script = ExtResource("2_imbgx")
-player = NodePath("..")
-death_component = NodePath("../DeathComponent")
-player_controller = NodePath("../PlayerControllerComponent")
-timer_component = NodePath("../Timer")
-checkpoint_particle = ExtResource("3_phvfs")
 
 [node name="Skin" type="Sprite2D" parent="."]
 script = ExtResource("4_433oa")

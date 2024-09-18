@@ -5,9 +5,9 @@ class_name SkinDistortionComponent
 @export var player: PlayerComponent
 @export var controller: PlayerControllerComponent
 
-const DOWN_DISTORTION: float = 0.25 #TODO: set to 0.25 but at 0.75 it's kinda fun to watch :joy:
+const DOWN_DISTORTION: float = 0.25 #Set to 0.25 but at 0.75 it's kinda fun to watch :joy:
 
-func _process(delta: float):
+func _process(delta: float) -> void:
 	skin.global_skew = lerpf(skin.global_skew, player.velocity.x / 1000, 0.2)
 	if controller:
 		if Input.is_action_pressed("down") && controller.ground_timer > controller.GROUND_TIME - 0.1:

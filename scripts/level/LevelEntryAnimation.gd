@@ -8,14 +8,14 @@ extends Node2D
 
 var countdown_prefab: Resource = load("res://scenes/bundles/uis/countdown.tscn")
 
-func _ready():
+func _ready() -> void:
 	await player_menus.ready
 	if LevelManager.current_level.is_empty():
 		enable_status()
 	else:
 		play_animation()
 
-func play_animation():
+func play_animation() -> void:
 	await player.ready
 	player_menus.player_status.visible = false
 	player_menus.mobile_control.visible = false
@@ -36,6 +36,6 @@ func play_animation():
 	Game.instanceNode(countdown_prefab, player)
 	queue_free()
 
-func enable_status():
+func enable_status() -> void:
 	player_menus.player_status.visible = !LevelManager.current_level.is_empty()
 	player_menus.mobile_control.visible = Game.is_mobile

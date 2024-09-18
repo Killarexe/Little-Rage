@@ -5,7 +5,7 @@ extends CanvasLayer
 
 var music_ids: Array[String] = []
 
-func _ready():
+func _ready() -> void:
 	MusicManager.stop()
 	var music_dir: DirAccess = DirAccess.open(MusicManager.MUSIC_DIR_PATH)
 	for file_name in music_dir.get_files():
@@ -14,8 +14,8 @@ func _ready():
 			music_ids.append(music_id)
 			music_list.add_item(music_id.replace("_", " "))
 
-func _on_music_list_item_selected(index: int):
+func _on_music_list_item_selected(index: int) -> void:
 	MusicManager.play_music(music_ids[index])
 
-func _on_button_pressed():
+func _on_button_pressed() -> void:
 	SceneManager.change_scene("res://scenes/uis/MainMenu.tscn")

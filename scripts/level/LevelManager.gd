@@ -8,10 +8,10 @@ var current_level: String = ""
 var levels_best_times: Dictionary = {}
 var default_levels: Array[String] = []
 
-func _ready():
+func _ready() -> void:
 	load_levels()
 
-func load_levels():
+func load_levels() -> void:
 	levels.clear()
 	var resources: Array[ResourceElement] = DataLoader.new().load_data_in_dir(LEVEL_DIR_PATH, "level")
 	for resource in resources:
@@ -46,7 +46,7 @@ func is_best_time(current_time: Array[int]) -> bool:
 		return true
 	return false
 
-func set_level_best_time(time: Array[int]):
+func set_level_best_time(time: Array[int]) -> void:
 	levels_best_times[current_level] = time
 	SaveManager.save()
 
@@ -62,7 +62,7 @@ func get_level(level_id: String) -> Level:
 			return level
 	return null
 
-func load_level(level_id: String):
+func load_level(level_id: String) -> void:
 	var level: Level = get_level(level_id)
 	get_tree().change_scene_to_packed(level.scene)
 

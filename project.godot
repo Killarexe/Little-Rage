@@ -85,6 +85,7 @@ folder_colors={
 Player="Is the player"
 Level="This is the level"
 CheckpointTiles="All checkpoint tiles"
+ColorTiles="All color switch tiles"
 
 [importer_defaults]
 

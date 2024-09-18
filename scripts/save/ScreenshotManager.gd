@@ -2,8 +2,10 @@ extends Node
 
 const SCREENSHOT_DIR: String = "user://screenshots/"
 
-func _unhandled_input(event: InputEvent):
-	if event is InputEventKey && OS.get_name() != "Web":
+func _unhandled_input(event: InputEvent) -> void:
+	if OS.get_name() == "Web":
+		return
+	if event is InputEventKey:
 		if event.is_action_pressed("screenshot"):
 			var image: Image = get_viewport().get_texture().get_image()
 			if !DirAccess.dir_exists_absolute(SCREENSHOT_DIR):

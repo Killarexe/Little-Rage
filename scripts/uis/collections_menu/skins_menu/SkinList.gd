@@ -5,10 +5,10 @@ class_name SkinList
 
 var skin_ids: Array[String] = []
 
-func _ready():
+func _ready() -> void:
 	set_item_skins()
 
-func set_item_skins():
+func set_item_skins() -> void:
 	clear()
 	skin_ids.clear()
 	max_columns = PlayerSkinManager.skins.size() + 1
@@ -17,7 +17,7 @@ func set_item_skins():
 			add_icon_item(skin.texture)
 			skin_ids.append(skin.id)
 
-func _on_item_selected(index: int):
+func _on_item_selected(index: int) -> void:
 	PlayerSkinManager.current_skin = skin_ids[index]
 	player.player_skin.update_skin()
 	SaveManager.save()

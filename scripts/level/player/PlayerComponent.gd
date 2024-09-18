@@ -17,7 +17,7 @@ signal on_death(death_count: int)
 
 @export var motion: Vector2 = Vector2()
 
-func _ready():
+func _ready() -> void:
 	set_up_direction(GRAVITY_DIRECTION)
 
 func _physics_process(_delta: float) -> void:

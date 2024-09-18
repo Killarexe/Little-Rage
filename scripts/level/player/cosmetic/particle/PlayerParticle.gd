@@ -12,7 +12,7 @@ enum Type{
 @export var type: Type = Type.STEP
 @export var material: ParticleProcessMaterial = ParticleProcessMaterial.new()
 
-func get_texture_or_default():
+func get_texture_or_default() -> Texture2D:
 	if texture != null:
 		if texture.get_width() != 0:
 			return texture

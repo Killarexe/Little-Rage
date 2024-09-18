@@ -9,10 +9,10 @@ var current_index: int = 0
 
 signal on_level_selected(level: Level)
 
-func _ready():
+func _ready() -> void:
 	load_level_list()
 
-func load_level_list():
+func load_level_list() -> void:
 	clear()
 	levels = []
 	current_index = 0
@@ -24,7 +24,7 @@ func load_level_list():
 	if !levels.is_empty():
 		_on_item_selected.call_deferred(0)
 
-func _on_item_selected(index: int):
+func _on_item_selected(index: int) -> void:
 	current_index = index
 	on_level_selected.emit(LevelManager.get_level(levels[index]))
 

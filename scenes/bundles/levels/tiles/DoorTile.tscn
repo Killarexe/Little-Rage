@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsn6gnphd4yo4"]
+
+[ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_8o83y"]
+[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="2_go0br"]
+[ext_resource type="Script" path="res://scripts/level/tiles/FinishTileComponent.gd" id="3_s8jw5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvac1"]
+atlas = ExtResource("2_go0br")
+region = Rect2(32, 96, 16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgg1u"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v32ki"]
+size = Vector2(18, 34)
+
+[node name="DoorTile" type="StaticBody2D" node_paths=PackedStringArray("interatcion_area")]
+position = Vector2(0, -8)
+collision_mask = 8
+script = ExtResource("1_8o83y")
+interatcion_area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_pvac1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wgg1u")
+
+[node name="FinishTileComponent" type="Node" parent="." node_paths=PackedStringArray("interaction_tile")]
+script = ExtResource("3_s8jw5")
+interaction_tile = NodePath("..")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_v32ki")

@@ -3,12 +3,12 @@ extends CanvasLayer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var texture_rect: ColorRect = $Texture
 
-func prepare():
+func prepare() -> void:
 	texture_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	texture_rect.modulate = Color.WHITE
 	texture_rect.visible = true
 
-func end():
+func end() -> void:
 	texture_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	texture_rect.visible = false
 	texture_rect.position = Vector2(0, 0)

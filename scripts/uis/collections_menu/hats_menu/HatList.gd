@@ -5,10 +5,10 @@ class_name HatList
 
 var hats_ids: Array[String] = []
 
-func _ready():
+func _ready() -> void:
 	set_hat_items()
 
-func set_hat_items():
+func set_hat_items() -> void:
 	clear()
 	hats_ids.clear()
 	max_columns = PlayerHatManager.hats.size() + 1
@@ -20,7 +20,7 @@ func set_hat_items():
 				add_icon_item(load("res://assets/textures/ui/icons/no_hat.png"))
 			hats_ids.append(hat.id)
 
-func _on_item_selected(index: int):
+func _on_item_selected(index: int) -> void:
 	PlayerHatManager.current_hat = hats_ids[index]
 	player.player_hat.update_hat()
 	SaveManager.save()

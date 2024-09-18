@@ -5,7 +5,7 @@ extends Control
 @onready var logo: TextureRect = $CanvasLayer/Logo
 @onready var spash_text = $CanvasLayer/SplashText
 
-func _ready():
+func _ready() -> void:
 	get_tree().paused = false
 	var easter_title_screen: bool = Game.has_unlocked_unhiddens()
 	var animation: String = "start_menu"
@@ -33,21 +33,21 @@ func _ready():
 	logo_animation.play("logo_move")
 	AchievementManager.unlock_achievement("start_the_game")
 
-func _on_settings_button_pressed():
+func _on_settings_button_pressed() -> void:
 	SceneManager.change_scene("res://scenes/uis/SettingsMenu.tscn")
 
-func _on_play_button_pressed():
+func _on_play_button_pressed() -> void:
 	SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 
-func _on_multiplayer_button_pressed():
+func _on_multiplayer_button_pressed() -> void:
 	PopUpFrame.pop("Haha nice try =)")
 
-func _on_shop_button_pressed():
+func _on_shop_button_pressed() -> void:
 	SceneManager.change_scene("res://scenes/uis/CollectionsMenu.tscn")
 
-func _on_level_editor_button_pressed():
+func _on_level_editor_button_pressed() -> void:
 	SceneManager.change_scene("res://scenes/uis/LevelEditorSelectionMenu.tscn")
 
-func _on_quit_button_pressed():
+func _on_quit_button_pressed() -> void:
 	SaveManager.save()
 	get_tree().quit()

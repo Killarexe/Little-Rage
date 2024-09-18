@@ -2,7 +2,7 @@ extends TextureRect
 
 @export var count_label: Label
 
-func _ready():
+func _ready() -> void:
 	var loot_box_count: int = LootBoxesManager.loot_box_count
 	visible = loot_box_count > 0 && !Game.has_unlocked_unhiddens()
 	if loot_box_count > 99:

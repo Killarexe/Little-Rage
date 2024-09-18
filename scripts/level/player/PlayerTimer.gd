@@ -5,10 +5,10 @@ var milliseconds: int = 0
 var secondes: int = 0
 var minutes: int = 0
 
-func _ready():
+func _ready() -> void:
 	connect("timeout", on_timeout)
 
-func on_timeout():
+func on_timeout() -> void:
 	milliseconds += 5
 	if milliseconds >= 100:
 		secondes += 1

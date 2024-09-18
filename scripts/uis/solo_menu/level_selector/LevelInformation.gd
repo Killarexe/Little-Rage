@@ -6,7 +6,7 @@ class_name LevelDescription
 @export var difficulty_label: Label
 @export var difficulty_color: ColorRect
 
-func _on_level_list_on_level_selected(level: Level):
+func _on_level_list_on_level_selected(level: Level) -> void:
 	if LevelManager.is_default_level(level.id):
 		description.text = TranslationServer.translate(level.description)
 	else:

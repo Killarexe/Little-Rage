@@ -7,11 +7,11 @@ extends Control
 
 var selected_achievement: Achievement = null
 
-func _on_achievement_list_on_selected(achievement: Achievement):
+func _on_achievement_list_on_selected(achievement: Achievement) -> void:
 	selected_achievement = achievement
 	animation_player.queue("change_information")
 
-func update_achievement_description():
+func update_achievement_description() -> void:
 	if selected_achievement != null:
 		if AchievementManager.unlocked_achievements.has(selected_achievement.id):
 			icon.texture = selected_achievement.icon

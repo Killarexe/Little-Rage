@@ -19,10 +19,10 @@ const DEFAULT_SAVE: Dictionary = {
 	"lang": "en"
 }
 
-func _ready():
+func _ready() -> void:
 	load_save()
 
-func save():
+func save() -> void:
 	if !FileAccess.file_exists(SAVE_FILE):
 		create_save()
 	var save_file: FileAccess = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
@@ -46,15 +46,15 @@ func save():
 	save_file.store_string(JSON.stringify(data))
 	save_file.close()
 
-func create_save():
+func create_save() -> void:
 	var save_file: FileAccess = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
 	save_file.store_string(JSON.stringify(DEFAULT_SAVE))
 	save_file.close()
 
-func get_or_default(data: Dictionary, index: String):
+func get_or_default(data: Dictionary, index: String) -> Variant:
 	return data.get(index, DEFAULT_SAVE[index])
 
-func load_save():
+func load_save() -> void:
 	if !FileAccess.file_exists(SAVE_FILE):
 		create_save()
 	var save_file: FileAccess = FileAccess.open(SAVE_FILE, FileAccess.READ)
