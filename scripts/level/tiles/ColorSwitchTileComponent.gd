@@ -9,4 +9,5 @@ func _ready() -> void:
 
 func on_interact(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		print("Ohh")
 		get_tree().call_group("ColorTiles", "switch_texture")

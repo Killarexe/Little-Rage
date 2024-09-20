@@ -1,12 +1,24 @@
-[gd_resource type="TileSet" load_steps=35 format=3 uid="uid://dcovkjpnowgl0"]
+[gd_resource type="TileSet" load_steps=41 format=3 uid="uid://dcovkjpnowgl0"]
 
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="1_3ut7y"]
 [ext_resource type="PackedScene" uid="uid://dfamu2vvdstal" path="res://scenes/bundles/levels/tiles/CheckpointTile.tscn" id="1_ax33w"]
 [ext_resource type="PackedScene" uid="uid://bsn6gnphd4yo4" path="res://scenes/bundles/levels/tiles/DoorTile.tscn" id="2_cy7yi"]
+[ext_resource type="PackedScene" uid="uid://c65qajnxie4mn" path="res://scenes/bundles/levels/tiles/BlueSpike.tscn" id="3_epaqs"]
+[ext_resource type="PackedScene" uid="uid://dmdian5sdbbt7" path="res://scenes/bundles/levels/tiles/BlueTile.tscn" id="4_xigca"]
+[ext_resource type="PackedScene" uid="uid://netao5cw804d" path="res://scenes/bundles/levels/tiles/ColorSwitchTile.tscn" id="5_31dmm"]
+[ext_resource type="PackedScene" uid="uid://b8b8vj3ltcvyc" path="res://scenes/bundles/levels/tiles/RedSpike.tscn" id="6_8wkf1"]
+[ext_resource type="PackedScene" uid="uid://0tpr3cxow7yb" path="res://scenes/bundles/levels/tiles/RedTile.tscn" id="7_asfgj"]
+[ext_resource type="PackedScene" uid="uid://bnxaybr275ttl" path="res://scenes/bundles/levels/tiles/Spike.tscn" id="8_5sn7t"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u2aof"]
 scenes/1/scene = ExtResource("1_ax33w")
 scenes/2/scene = ExtResource("2_cy7yi")
+scenes/3/scene = ExtResource("3_epaqs")
+scenes/4/scene = ExtResource("4_xigca")
+scenes/5/scene = ExtResource("5_31dmm")
+scenes/6/scene = ExtResource("6_8wkf1")
+scenes/7/scene = ExtResource("7_asfgj")
+scenes/8/scene = ExtResource("8_5sn7t")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wfcrf"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)

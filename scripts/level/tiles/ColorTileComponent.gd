@@ -42,7 +42,7 @@ func _get_property_list() -> Array[Dictionary]:
 		})
 	return properties
 
-func _init() -> void:
+func _ready() -> void:
 	add_to_group("ColorTiles")
 
 func switch_texture() -> void:

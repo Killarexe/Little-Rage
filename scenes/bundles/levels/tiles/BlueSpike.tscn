@@ -1,23 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8b8vj3ltcvyc"]
+[gd_scene load_steps=8 format=3 uid="uid://c65qajnxie4mn"]
 
-[ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_iuax2"]
-[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="2_fn0ge"]
-[ext_resource type="Script" path="res://scripts/level/tiles/ColorTileComponent.gd" id="3_jisq8"]
-[ext_resource type="Script" path="res://scripts/level/tiles/DeathTileComponent.gd" id="4_4d7ir"]
+[ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_q1djb"]
+[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="2_ibpw5"]
+[ext_resource type="Script" path="res://scripts/level/tiles/ColorTileComponent.gd" id="3_drwib"]
+[ext_resource type="Script" path="res://scripts/level/tiles/DeathTileComponent.gd" id="4_ny7r4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bw55b"]
-atlas = ExtResource("2_fn0ge")
-region = Rect2(128, 144, 16, 16)
+atlas = ExtResource("2_ibpw5")
+region = Rect2(64, 144, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yx3h0"]
-atlas = ExtResource("2_fn0ge")
-region = Rect2(96, 144, 16, 16)
+atlas = ExtResource("2_ibpw5")
+region = Rect2(32, 144, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38jdk"]
 size = Vector2(12, 5)
 
 [node name="RedSpikeUp" type="StaticBody2D" node_paths=PackedStringArray("interatcion_area")]
-script = ExtResource("1_iuax2")
+script = ExtResource("1_q1djb")
 interatcion_area = NodePath("Area2D")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
@@ -27,7 +27,7 @@ texture = SubResource("AtlasTexture_bw55b")
 texture = SubResource("AtlasTexture_yx3h0")
 
 [node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("off_texture", "tile_collision_shape", "area_collision_shape")]
-script = ExtResource("3_jisq8")
+script = ExtResource("3_drwib")
 use_polygone_shape = true
 disable_tile_collision = true
 disable_area_collision = true
@@ -36,7 +36,7 @@ tile_collision_shape = NodePath("../CollisionPolygon2D")
 area_collision_shape = NodePath("../Area2D/CollisionShape2D")
 
 [node name="DeathTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile")]
-script = ExtResource("4_4d7ir")
+script = ExtResource("4_ny7r4")
 interactive_tile = NodePath("..")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
