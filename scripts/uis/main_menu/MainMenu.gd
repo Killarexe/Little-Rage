@@ -39,9 +39,6 @@ func _on_settings_button_pressed() -> void:
 func _on_play_button_pressed() -> void:
 	SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")
 
-func _on_multiplayer_button_pressed() -> void:
-	PopUpFrame.pop("Haha nice try =)")
-
 func _on_shop_button_pressed() -> void:
 	SceneManager.change_scene("res://scenes/uis/CollectionsMenu.tscn")
 

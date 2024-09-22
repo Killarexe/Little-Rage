@@ -16,13 +16,13 @@ func _ready() -> void:
 
 func update_window(size: int) -> void:
 	if size < WINDOW_SIZES.size():
-		var window_size: Vector2 = WINDOW_SIZES[size]
+		var new_window_size: Vector2 = WINDOW_SIZES[size]
 		var current_screen: int = DisplayServer.window_get_current_screen()
 		var screen_size: Vector2 = DisplayServer.screen_get_size(current_screen)
 		var screen_position: Vector2 = DisplayServer.screen_get_position(current_screen)
-		var window_position: Vector2 = screen_size / 2 + screen_position - window_size / 2
+		var window_position: Vector2 = screen_size / 2 + screen_position - new_window_size / 2
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		DisplayServer.window_set_size(window_size)
+		DisplayServer.window_set_size(new_window_size)
 		DisplayServer.window_set_position(window_position)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

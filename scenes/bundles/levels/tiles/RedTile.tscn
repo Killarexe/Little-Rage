@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://0tpr3cxow7yb"]
+[gd_scene load_steps=7 format=3 uid="uid://0tpr3cxow7yb"]
 
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="1_4xkk7"]
-[ext_resource type="Script" path="res://scripts/level/tiles/ColorTileComponent.gd" id="2_qa7wn"]
+[ext_resource type="Script" path="res://scripts/level/tiles/ColorSpriteTile.gd" id="2_qa7wn"]
+[ext_resource type="Script" path="res://scripts/level/tiles/ColorCollisionTile.gd" id="3_g001g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p01wy"]
 size = Vector2(16, 16)
@@ -19,17 +20,19 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_p01wy")
-disabled = true
 
 [node name="OffTexture" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_y3o1q")
 
 [node name="OnTexture" type="Sprite2D" parent="."]
-visible = false
 texture = SubResource("AtlasTexture_h0go8")
 
-[node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("off_texture", "tile_collision_shape")]
+[node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("on_red_texture", "on_blue_texture")]
 script = ExtResource("2_qa7wn")
-disable_tile_collision = true
-off_texture = NodePath("../OnTexture")
-tile_collision_shape = NodePath("../CollisionShape2D")
+on_red_texture = NodePath("../OnTexture")
+on_blue_texture = NodePath("../OffTexture")
+
+[node name="ColorCollisionTile" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("3_g001g")
+body = NodePath("..")
+inverse_collision = true

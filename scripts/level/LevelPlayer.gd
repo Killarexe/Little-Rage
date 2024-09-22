@@ -31,7 +31,7 @@ func finish_level(player: PlayerComponent, death: DeathComponent, time: PlayerTi
 		player.on_win.emit(time.get_time(), death.death_count)
 
 func spawn_player() -> void:
-	var player = Game.instanceNodeAtPos(player_prefab, self, start_pos)
+	Game.instanceNodeAtPos(player_prefab, self, start_pos)
 
 func filter_used_grass_cells() -> Array[Vector2i]:
 	var used_grass_cells: Array[Vector2i] = [];

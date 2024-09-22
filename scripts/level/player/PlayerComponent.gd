@@ -1,8 +1,6 @@
 extends CharacterBody2D
 class_name PlayerComponent
 
-signal on_setting_spawnpoint(pos: Vector2)
-signal on_switch_color(color: bool)
 signal on_win(time: Array[int], death_count: int)
 signal on_death(death_count: int)
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_vc1g0"]
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="2_6powy"]
 [ext_resource type="Script" path="res://scripts/level/tiles/ColorSwitchTileComponent.gd" id="3_kulow"]
-[ext_resource type="Script" path="res://scripts/level/tiles/ColorTileComponent.gd" id="4_3xcof"]
+[ext_resource type="Script" path="res://scripts/level/tiles/ColorSpriteTile.gd" id="4_3xcof"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_difeg"]
 atlas = ExtResource("2_6powy")
@@ -44,6 +44,7 @@ script = ExtResource("3_kulow")
 interactive_tile = NodePath("..")
 off_texture = NodePath("../Sprite2D")
 
-[node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("off_texture")]
+[node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("on_red_texture", "on_blue_texture")]
 script = ExtResource("4_3xcof")
-off_texture = NodePath("../Sprite2D")
+on_red_texture = NodePath("../Sprite2D2")
+on_blue_texture = NodePath("../Sprite2D")
