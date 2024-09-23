@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="5_nuugr"]
 [ext_resource type="Script" path="res://scripts/level/player/CameraController.gd" id="6_bc5q0"]
 [ext_resource type="PackedScene" uid="uid://dhxkop4hjnx1p" path="res://scenes/bundles/LevelEntryAnimation.tscn" id="7_2geyv"]
-[ext_resource type="PackedScene" uid="uid://dhqud11vg5pq4" path="res://scenes/bundles/ParallaxBackground.tscn" id="8_nd3ki"]
+[ext_resource type="PackedScene" uid="uid://dhqud11vg5pq4" path="res://scenes/bundles/player/ParallaxBackground.tscn" id="8_nd3ki"]
 [ext_resource type="Script" path="res://scripts/uis/player/PlayerMenus.gd" id="9_maer3"]
 [ext_resource type="Texture2D" uid="uid://dxd7u5xffvp21" path="res://assets/textures/ui/mobile_player_interface/left.png" id="10_lrdbt"]
 [ext_resource type="Texture2D" uid="uid://bcvu2cbuyoknu" path="res://assets/textures/ui/mobile_player_interface/right.png" id="11_l1qwt"]
@@ -56,10 +56,13 @@ _data = {
 "RESET": SubResource("Animation_10f12")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["Player", "player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("controller", "death_component", "timer") groups=["Player", "player"]]
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_fvwbd")
+controller = NodePath("PlayerControllerComponent")
+death_component = NodePath("DeathComponent")
+timer = NodePath("Timer")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h7ve1")
@@ -148,11 +151,11 @@ wait_time = 0.05
 autostart = true
 script = ExtResource("18_ms4pk")
 
-[node name="PlayerControllerComponent" type="Node" parent="." node_paths=PackedStringArray("player", "skin", "hat", "animation", "sound_effect_player")]
+[node name="PlayerControllerComponent" type="Node" parent="." node_paths=PackedStringArray("skin", "hat", "player", "animation", "sound_effect_player")]
 script = ExtResource("19_d4lqc")
-player = NodePath("..")
 skin = NodePath("../Skin")
 hat = NodePath("../Skin/PlayerHatSprite")
+player = NodePath("..")
 animation = NodePath("../AnimationPlayer")
 sound_effect_player = NodePath("../SoundEffectPlayer")
 

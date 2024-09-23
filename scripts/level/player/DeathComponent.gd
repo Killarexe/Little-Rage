@@ -2,7 +2,7 @@ extends Node
 class_name DeathComponent
 
 @export_category("Component requirements")
-@export var player: PlayerComponent
+@export var player: CharacterBody2D
 @export var sound_effects: SoundEffectPlayer
 
 var death_count: int = 0

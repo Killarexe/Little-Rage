@@ -2,8 +2,8 @@ extends Node
 class_name SkinDistortionComponent
 
 @export var skin: PlayerSkinSprite
-@export var player: PlayerComponent
-@export var controller: PlayerControllerComponent
+@export var player: CharacterBody2D
+@export var controller: PlayerDummyMovement
 
 const DOWN_DISTORTION: float = 0.25 #Set to 0.25 but at 0.75 it's kinda fun to watch :joy:
 
@@ -16,4 +16,4 @@ func _process(delta: float) -> void:
 			return
 	player.scale.y = lerpf(player.scale.y, 1, 10 * delta)
 	player.scale.x = lerpf(player.scale.x, 1, 10 * delta)
-	skin.scale.y = lerpf(skin.scale.y, abs(player.motion.y) / player.MAX_FALL_SPEED / 4 + 1, 0.2)
+	skin.scale.y = lerpf(skin.scale.y, abs(player.velocity.y) / controller.MAX_FALL_SPEED / 4 + 1, 0.2)

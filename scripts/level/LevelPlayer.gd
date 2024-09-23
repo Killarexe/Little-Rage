@@ -16,6 +16,7 @@ enum Mode {
 var player_prefab: Resource = load("res://scenes/bundles/player/Player.tscn")
 
 func _ready() -> void:
+	add_to_group("Level")
 	if Game.current_event == Game.Event.CHRISTMAS:
 		var texture = load("res://assets/textures/tilesets/plains_christmas.png")
 		ground.tile_set.get_source(1).texture = texture
@@ -23,12 +24,12 @@ func _ready() -> void:
 	if mode == Mode.PLAY:
 		spawn_player()
 
-func finish_level(player: PlayerComponent, death: DeathComponent, time: PlayerTimer) -> void:
+func finish_level(player: PlayerComponent) -> void:
 	var parent: Node = get_parent()
 	if parent is LevelEditor:
 		parent.switch_edit_mode()
 	else:
-		player.on_win.emit(time.get_time(), death.death_count)
+		player.on_win.emit(player.timer.get_time(), player.death_component.death_count)
 
 func spawn_player() -> void:
 	Game.instanceNodeAtPos(player_prefab, self, start_pos)

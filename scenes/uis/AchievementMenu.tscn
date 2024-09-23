@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/uis/achievement_menu/AchievementList.gd" id="3_dff4b"]
 [ext_resource type="Script" path="res://scripts/uis/achievement_menu/AchievementInformation.gd" id="4_ql82p"]
 [ext_resource type="LabelSettings" uid="uid://dfu1k8upq5eqm" path="res://assets/style/label_settings/shadow_medium_label.tres" id="5_wawtv"]
-[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/DefaultLevel.tscn" id="6_0phuo"]
+[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/levels/DefaultLevel.tscn" id="6_0phuo"]
 
 [sub_resource type="Animation" id="Animation_un7id"]
 length = 0.001

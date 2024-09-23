@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/uis/level_editor_selection_menu/LevelSelection.gd" id="2_e1beu"]
 [ext_resource type="PackedScene" uid="uid://o458ah6nqt0b" path="res://scenes/uis/LevelSettingsMenu.tscn" id="3_q4ji0"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor_selection_menu/LevelCreateImportMenu.gd" id="5_gk0c8"]
-[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/DefaultLevel.tscn" id="5_wlka4"]
+[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/levels/DefaultLevel.tscn" id="5_wlka4"]
 [ext_resource type="LabelSettings" uid="uid://6bd6ywcaci6c" path="res://assets/style/label_settings/big_label.tres" id="6_4ymxd"]
 
 [sub_resource type="Animation" id="Animation_8ne0l"]
