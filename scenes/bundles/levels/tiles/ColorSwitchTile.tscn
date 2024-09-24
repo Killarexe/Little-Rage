@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://netao5cw804d"]
+[gd_scene load_steps=10 format=3 uid="uid://netao5cw804d"]
 
 [ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_vc1g0"]
-[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="2_6powy"]
+[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="2_6powy"]
+[ext_resource type="Script" path="res://scripts/level/tiles/TileSprite.gd" id="3_2w2g5"]
 [ext_resource type="Script" path="res://scripts/level/tiles/ColorSwitchTileComponent.gd" id="3_kulow"]
 [ext_resource type="Script" path="res://scripts/level/tiles/ColorSpriteTile.gd" id="4_3xcof"]
 
@@ -26,9 +27,11 @@ interatcion_area = NodePath("Area2D")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_difeg")
+script = ExtResource("3_2w2g5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_nfxd8")
+script = ExtResource("3_2w2g5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_a1f6n")
@@ -42,9 +45,9 @@ shape = SubResource("RectangleShape2D_mwyoo")
 [node name="ColorSwitchTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile", "off_texture")]
 script = ExtResource("3_kulow")
 interactive_tile = NodePath("..")
-off_texture = NodePath("../Sprite2D")
+off_texture = NodePath("")
 
 [node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("on_red_texture", "on_blue_texture")]
 script = ExtResource("4_3xcof")
-on_red_texture = NodePath("../Sprite2D2")
-on_blue_texture = NodePath("../Sprite2D")
+on_red_texture = NodePath("")
+on_blue_texture = NodePath("")

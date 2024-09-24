@@ -17,10 +17,9 @@ var player_prefab: Resource = load("res://scenes/bundles/player/Player.tscn")
 
 func _ready() -> void:
 	add_to_group("Level")
-	if Game.current_event == Game.Event.CHRISTMAS:
-		var texture = load("res://assets/textures/tilesets/plains_christmas.png")
-		ground.tile_set.get_source(1).texture = texture
-		background.tile_set.get_source(1).texture = texture
+	var tilemap_texture: Texture2D = LevelManager.get_tilemap_texture()
+	ground.tile_set.get_source(1).texture = tilemap_texture
+	background.tile_set.get_source(1).texture = tilemap_texture
 	if mode == Mode.PLAY:
 		spawn_player()
 

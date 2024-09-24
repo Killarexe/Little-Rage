@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8b8vj3ltcvyc"]
+[gd_scene load_steps=10 format=3 uid="uid://b8b8vj3ltcvyc"]
 
 [ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_n1kxa"]
-[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="2_uj1me"]
+[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="2_uj1me"]
+[ext_resource type="Script" path="res://scripts/level/tiles/TileSprite.gd" id="3_0ly6f"]
 [ext_resource type="Script" path="res://scripts/level/tiles/ColorSpriteTile.gd" id="3_wdxkj"]
 [ext_resource type="Script" path="res://scripts/level/tiles/ColorCollisionTile.gd" id="3_ynr3k"]
 [ext_resource type="Script" path="res://scripts/level/tiles/DeathTileComponent.gd" id="4_rgwmr"]
@@ -23,9 +24,11 @@ interatcion_area = NodePath("Area2D")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_bw55b")
+script = ExtResource("3_0ly6f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_yx3h0")
+script = ExtResource("3_0ly6f")
 
 [node name="ColorCollisionTile" type="Node" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("3_ynr3k")
@@ -34,8 +37,8 @@ inverse_collision = true
 
 [node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("on_red_texture", "on_blue_texture")]
 script = ExtResource("3_wdxkj")
-on_red_texture = NodePath("../Sprite2D")
-on_blue_texture = NodePath("../Sprite2D2")
+on_red_texture = NodePath("")
+on_blue_texture = NodePath("")
 
 [node name="DeathTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile")]
 script = ExtResource("4_rgwmr")

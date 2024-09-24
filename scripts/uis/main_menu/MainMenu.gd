@@ -4,12 +4,16 @@ extends Control
 @onready var camera_animation: AnimationPlayer = $Camera2D/AnimationPlayer
 @onready var logo: TextureRect = $CanvasLayer/Logo
 @onready var spash_text = $CanvasLayer/SplashText
+@onready var level: LevelPlayer = $TitleScreenLevel
 
 func _ready() -> void:
 	get_tree().paused = false
 	var easter_title_screen: bool = Game.has_unlocked_unhiddens()
 	var animation: String = "start_menu"
 	var music: String = "title_screen"
+	var tilemap_texture: Texture2D = LevelManager.get_random_tilemap_texture()
+	level.ground.tile_set.get_source(1).texture = tilemap_texture
+	level.background.tile_set.get_source(1).texture = tilemap_texture
 	
 	if Game.current_event == Game.Event.CHRISTMAS:
 		music = "title_screen_christmas_special"

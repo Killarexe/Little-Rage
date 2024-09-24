@@ -2,6 +2,10 @@ extends Node
 
 const LEVEL_DIR_PATH: String = "res://data/levels"
 const EXTERNAL_LEVELS_DIR: String = "user://levels"
+const TILEMAP_TEXTURES_DIR: String = "res://assets/textures/tilesets/"
+const TILEMAP_TEXTURES_MAP: Array = [
+	["plains", "plains_old", "plains_christmas", "plains"]
+]
 
 var levels: Array[Level] = []
 var current_level: String = ""
@@ -65,6 +69,26 @@ func get_level(level_id: String) -> Level:
 func load_level(level_id: String) -> void:
 	var level: Level = get_level(level_id)
 	get_tree().change_scene_to_packed(level.scene)
+
+func get_tilemap_texture() -> Texture2D:
+	var level: Level = get_current_level()
+	var theme: Level.LevelTheme = Level.LevelTheme.PLAINS
+	if level != null:
+		theme = level.level_theme
+	var file_name: String = "plains"
+	if theme < TILEMAP_TEXTURES_MAP.size():
+		file_name = TILEMAP_TEXTURES_MAP[theme][Game.current_event]
+	var file_path: String = TILEMAP_TEXTURES_DIR + file_name + ".png"
+	if FileAccess.file_exists(file_path):
+		return load(file_path) as CompressedTexture2D
+	return load(TILEMAP_TEXTURES_DIR + "plains.png") as CompressedTexture2D
+
+func get_random_tilemap_texture() -> Texture2D:
+	var tilemaps: Array = TILEMAP_TEXTURES_MAP[randi_range(0, TILEMAP_TEXTURES_MAP.size() - 1)]
+	var file_path: String = TILEMAP_TEXTURES_DIR + tilemaps[0] + ".png"
+	if FileAccess.file_exists(file_path):
+		return load(file_path) as CompressedTexture2D
+	return load(TILEMAP_TEXTURES_DIR + "plains.png") as CompressedTexture2D
 
 func delete_level(level_id: String) -> bool:
 	print_rich("[b]Try Deleting '%s/%s.tres'[/b]" % [EXTERNAL_LEVELS_DIR, level_id])

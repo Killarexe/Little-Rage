@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnxaybr275ttl"]
+[gd_scene load_steps=7 format=3 uid="uid://bnxaybr275ttl"]
 
 [ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_nf1nt"]
-[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/tileset.png" id="2_72k6k"]
+[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="2_72k6k"]
+[ext_resource type="Script" path="res://scripts/level/tiles/TileSprite.gd" id="3_xxcvk"]
 [ext_resource type="Script" path="res://scripts/level/tiles/DeathTileComponent.gd" id="4_0hisf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yx3h0"]
@@ -11,12 +12,13 @@ region = Rect2(0, 64, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38jdk"]
 size = Vector2(12, 6)
 
-[node name="RedSpikeUp" type="StaticBody2D" node_paths=PackedStringArray("interatcion_area")]
+[node name="Spike" type="StaticBody2D" node_paths=PackedStringArray("interatcion_area")]
 script = ExtResource("1_nf1nt")
 interatcion_area = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_yx3h0")
+script = ExtResource("3_xxcvk")
 
 [node name="DeathTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile")]
 script = ExtResource("4_0hisf")

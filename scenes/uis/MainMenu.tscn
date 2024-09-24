@@ -246,7 +246,9 @@ libraries = {
 "": SubResource("AnimationLibrary_a6sbu")
 }
 
-[node name="TitleScreenLevel" parent="." instance=ExtResource("3_gaxhl")]
+[node name="TitleScreenLevel" parent="." node_paths=PackedStringArray("ground", "background") instance=ExtResource("3_gaxhl")]
+ground = NodePath("Ground")
+background = NodePath("Background")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -427,3 +429,5 @@ flat = true
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/LevelEditorButton" to="." method="_on_level_editor_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Information/Button" to="CanvasLayer/Information" method="_on_button_pressed"]
+
+[editable path="TitleScreenLevel"]
