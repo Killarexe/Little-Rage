@@ -27,8 +27,7 @@ func unlock_hat(hat_id: String, special: bool = false) -> void:
 		unlocked_hats.append(hat_id)
 		SaveManager.save()
 	if special:
-		PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))
-		PopUpFrame.pop(TranslationServer.translate("message.popup.unlocked_hat") % TranslationServer.translate(hat.name))
+		PopUpFrame.pop(TranslationServer.translate("message.popup.unlocked_hat") % TranslationServer.translate(hat.name), hat.get_texture_or_default(), func():SceneManager.change_scene("res://scenes/uis/CollectionsMenu.tscn"))
 
 func is_hat_hidden(hat_id: String) -> bool:
 	return get_hat(hat_id).is_hidden

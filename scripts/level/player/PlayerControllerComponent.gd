@@ -25,11 +25,11 @@ func check_input() -> void:
 	if Input.is_action_pressed("left"):
 		skin.flip_h = true
 		hat.flip_h = true
-		motion.x -= ACCEL
+		motion.x -= ACCEL * Input.get_action_strength("left")
 	elif Input.is_action_pressed("right"):
 		skin.flip_h = false
 		hat.flip_h = false
-		motion.x += ACCEL
+		motion.x += ACCEL * Input.get_action_strength("right")
 	else:
 		motion.x = lerpf(motion.x, 0.0, 0.2)
 	

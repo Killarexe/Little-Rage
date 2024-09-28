@@ -1,27 +1,26 @@
 extends CanvasLayer
 
-@onready var animation_player: AnimationPlayer = $Frame/AnimationPlayer
-@onready var sound_effect: AudioStreamPlayer = $Frame/SoundEffect
-@onready var icon: TextureRect = $Frame/Icon
-@onready var text: Label = $Frame/Text
+@export var spawn_pos: Node2D
 
-var on_pressed: Callable = func():pass
+var popup_scene: PackedScene = preload("res://scenes/bundles/uis/PopUp.tscn")
+var popups: Array[PopUp] = []
+var current_popup: PopUp
 
-func set_on_pressed(value: Callable) -> void:
-	on_pressed = value
-
-func pop_translated(message: String, icon_texture: Texture2D = null) -> void:
+func pop_translated(message: String, icon_texture: Texture2D = null, on_pressed: Callable = func():pass) -> void:
 	pop(TranslationServer.translate(message), icon_texture)
 
-func pop(message: String, icon_texture: Texture2D = null) -> void:
-	text.text = message
-	icon.texture = icon_texture
-	animation_player.play("pop")
+func pop(message: String, icon_texture: Texture2D = null, on_pressed: Callable = func():pass) -> void:
+	var popup: PopUp = popup_scene.instantiate()
+	popup.text.text = message
+	popup.icon.texture = icon_texture
+	popup.on_pressed = on_pressed
+	popups.append(popup)
+	spawn_popup()
 
-func _on_animation_player_animation_finished(_unused: String) -> void:
-	text.text = ""
-	icon.texture = null
-	on_pressed = func():pass
-
-func _on_button_pressed() -> void:
-	on_pressed.call()
+func spawn_popup():
+	if current_popup != null:
+		await current_popup.animation_player.animation_finished
+	current_popup = popups.pop_front()
+	spawn_pos.add_child(current_popup)
+	await current_popup.animation_player.animation_finished
+	current_popup = null

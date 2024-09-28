@@ -37,8 +37,7 @@ func unlock_particle(particle_id: String, special: bool = false) -> void:
 		unlocked_particles.append(particle_id)
 		SaveManager.save()
 	if special:
-		PopUpFrame.set_on_pressed(func():SceneManager.change_scene("res://scenes/uis/ShopMenu.tscn"))
-		PopUpFrame.pop(TranslationServer.translate("ui.popup.unlocked_particle") % TranslationServer.translate(particle.name))
+		PopUpFrame.pop(TranslationServer.translate("ui.popup.unlocked_particle") % TranslationServer.translate(particle.name), particle.get_texture_or_default(), func():SceneManager.change_scene("res://scenes/uis/CollectionsMenu.tscn"))
 
 func is_particle_hidden(particle_id: String) -> bool:
 	return get_particle(particle_id).is_hidden
