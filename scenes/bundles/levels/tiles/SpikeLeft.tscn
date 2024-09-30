@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://blu1x22v2f4dd"]
+
+[ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_m0god"]
+[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="2_ht27w"]
+[ext_resource type="Script" path="res://scripts/level/tiles/TileSprite.gd" id="3_erq2e"]
+[ext_resource type="Script" path="res://scripts/level/tiles/DeathTileComponent.gd" id="4_fahl5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx3h0"]
+atlas = ExtResource("2_ht27w")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38jdk"]
+size = Vector2(12, 6)
+
+[node name="SpikeLeft" type="StaticBody2D" node_paths=PackedStringArray("interatcion_area")]
+rotation = -1.5708
+script = ExtResource("1_m0god")
+interatcion_area = NodePath("Area2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_yx3h0")
+script = ExtResource("3_erq2e")
+
+[node name="DeathTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile")]
+script = ExtResource("4_fahl5")
+interactive_tile = NodePath("..")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 3.5)
+polygon = PackedVector2Array(-4, -4.5, -3, -4.5, -3, -3.5, -2, -3.5, -2, -1.5, -1, -1.5, -1, 0.5, 1, 0.5, 1, -1.5, 2, -1.5, 2, -3.5, 3, -3.5, 3, -4.5, 4, -4.5, 4, -3.5, 5, -3.5, 5, -1.5, 6, -1.5, 6, 0.5, 7, 0.5, 7, 2.5, 8, 2.5, 8, 4.5, -8, 4.5, -8, 2.5, -7, 2.5, -7, 0.5, -6, 0.5, -6, -1.5, -5, -1.5, -5, -3.5, -4, -3.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_38jdk")

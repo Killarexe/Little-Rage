@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccmvxxo8ac34l"]
+
+[ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_ch0y5"]
+[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="2_ebpl3"]
+[ext_resource type="Script" path="res://scripts/level/tiles/TileSprite.gd" id="3_kyj6g"]
+[ext_resource type="Script" path="res://scripts/level/tiles/ColorSpriteTile.gd" id="4_ub0wt"]
+[ext_resource type="Script" path="res://scripts/level/tiles/DeathTileComponent.gd" id="5_fe2of"]
+[ext_resource type="Script" path="res://scripts/level/tiles/ColorCollisionTile.gd" id="6_qbiw3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw55b"]
+atlas = ExtResource("2_ebpl3")
+region = Rect2(64, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx3h0"]
+atlas = ExtResource("2_ebpl3")
+region = Rect2(32, 144, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38jdk"]
+size = Vector2(12, 5)
+
+[node name="BlueSpikeDown" type="StaticBody2D" node_paths=PackedStringArray("interatcion_area")]
+rotation = 3.14159
+script = ExtResource("1_ch0y5")
+interatcion_area = NodePath("Area2D")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_bw55b")
+script = ExtResource("3_kyj6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_yx3h0")
+script = ExtResource("3_kyj6g")
+
+[node name="ColorTileComponent" type="Node" parent="."]
+script = ExtResource("4_ub0wt")
+
+[node name="DeathTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile")]
+script = ExtResource("5_fe2of")
+interactive_tile = NodePath("..")
+
+[node name="ColorCollisionTile" type="Node" parent="." node_paths=PackedStringArray("body")]
+script = ExtResource("6_qbiw3")
+body = NodePath("..")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 3.5)
+polygon = PackedVector2Array(-4, -4.5, -3, -4.5, -3, -3.5, -2, -3.5, -2, -1.5, -1, -1.5, -1, 0.5, 1, 0.5, 1, -1.5, 2, -1.5, 2, -3.5, 3, -3.5, 3, -4.5, 4, -4.5, 4, -3.5, 5, -3.5, 5, -1.5, 6, -1.5, 6, 0.5, 7, 0.5, 7, 2.5, 8, 2.5, 8, 4.5, -8, 4.5, -8, 2.5, -7, 2.5, -7, 0.5, -6, 0.5, -6, -1.5, -5, -1.5, -5, -3.5, -4, -3.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="ColorCollisionTile2" type="Node" parent="Area2D" node_paths=PackedStringArray("body")]
+script = ExtResource("6_qbiw3")
+body = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_38jdk")

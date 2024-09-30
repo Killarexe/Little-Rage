@@ -1,24 +1,42 @@
-[gd_resource type="TileSet" load_steps=41 format=3 uid="uid://dcovkjpnowgl0"]
+[gd_resource type="TileSet" load_steps=50 format=3 uid="uid://dcovkjpnowgl0"]
 
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="1_3ut7y"]
 [ext_resource type="PackedScene" uid="uid://dfamu2vvdstal" path="res://scenes/bundles/levels/tiles/CheckpointTile.tscn" id="1_ax33w"]
 [ext_resource type="PackedScene" uid="uid://bsn6gnphd4yo4" path="res://scenes/bundles/levels/tiles/DoorTile.tscn" id="2_cy7yi"]
-[ext_resource type="PackedScene" uid="uid://c65qajnxie4mn" path="res://scenes/bundles/levels/tiles/BlueSpike.tscn" id="3_epaqs"]
+[ext_resource type="PackedScene" uid="uid://bifap4lj4jq5h" path="res://scenes/bundles/levels/tiles/BlueSpikeLeft.tscn" id="2_kanhe"]
+[ext_resource type="PackedScene" uid="uid://cikhxo8nl47bq" path="res://scenes/bundles/levels/tiles/BlueSpikeRight.tscn" id="3_nuuje"]
+[ext_resource type="PackedScene" uid="uid://c65qajnxie4mn" path="res://scenes/bundles/levels/tiles/BlueSpikeUp.tscn" id="3_v4sug"]
+[ext_resource type="PackedScene" uid="uid://2nu6hvn5on0w" path="res://scenes/bundles/levels/tiles/RedSpikeDown.tscn" id="4_ndxe2"]
 [ext_resource type="PackedScene" uid="uid://dmdian5sdbbt7" path="res://scenes/bundles/levels/tiles/BlueTile.tscn" id="4_xigca"]
 [ext_resource type="PackedScene" uid="uid://netao5cw804d" path="res://scenes/bundles/levels/tiles/ColorSwitchTile.tscn" id="5_31dmm"]
-[ext_resource type="PackedScene" uid="uid://b8b8vj3ltcvyc" path="res://scenes/bundles/levels/tiles/RedSpike.tscn" id="6_8wkf1"]
+[ext_resource type="PackedScene" uid="uid://dsbmmv4biqnl1" path="res://scenes/bundles/levels/tiles/RedSpikeLeft.tscn" id="5_u1jru"]
+[ext_resource type="PackedScene" uid="uid://dq61youdmpykw" path="res://scenes/bundles/levels/tiles/RedSpikeRight.tscn" id="6_5qcit"]
+[ext_resource type="PackedScene" uid="uid://b8b8vj3ltcvyc" path="res://scenes/bundles/levels/tiles/RedSpikeUp.tscn" id="6_mvgxe"]
+[ext_resource type="PackedScene" uid="uid://bj5cu76ic7t06" path="res://scenes/bundles/levels/tiles/SpikeDown.tscn" id="7_8u7nd"]
 [ext_resource type="PackedScene" uid="uid://0tpr3cxow7yb" path="res://scenes/bundles/levels/tiles/RedTile.tscn" id="7_asfgj"]
-[ext_resource type="PackedScene" uid="uid://bnxaybr275ttl" path="res://scenes/bundles/levels/tiles/Spike.tscn" id="8_5sn7t"]
+[ext_resource type="PackedScene" uid="uid://bnxaybr275ttl" path="res://scenes/bundles/levels/tiles/SpikeUp.tscn" id="8_bn6d4"]
+[ext_resource type="PackedScene" uid="uid://blu1x22v2f4dd" path="res://scenes/bundles/levels/tiles/SpikeLeft.tscn" id="8_k1isd"]
+[ext_resource type="PackedScene" uid="uid://2b3d0w81iasx" path="res://scenes/bundles/levels/tiles/SpikeRight.tscn" id="9_owj5q"]
+[ext_resource type="PackedScene" uid="uid://ccmvxxo8ac34l" path="res://scenes/bundles/levels/tiles/BlueSpikeDown.tscn" id="17_w7my3"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u2aof"]
 scenes/1/scene = ExtResource("1_ax33w")
 scenes/2/scene = ExtResource("2_cy7yi")
-scenes/3/scene = ExtResource("3_epaqs")
+scenes/3/scene = ExtResource("3_v4sug")
 scenes/4/scene = ExtResource("4_xigca")
 scenes/5/scene = ExtResource("5_31dmm")
-scenes/6/scene = ExtResource("6_8wkf1")
+scenes/6/scene = ExtResource("6_mvgxe")
 scenes/7/scene = ExtResource("7_asfgj")
-scenes/8/scene = ExtResource("8_5sn7t")
+scenes/8/scene = ExtResource("8_bn6d4")
+scenes/9/scene = ExtResource("17_w7my3")
+scenes/10/scene = ExtResource("2_kanhe")
+scenes/11/scene = ExtResource("3_nuuje")
+scenes/12/scene = ExtResource("4_ndxe2")
+scenes/13/scene = ExtResource("5_u1jru")
+scenes/14/scene = ExtResource("6_5qcit")
+scenes/15/scene = ExtResource("7_8u7nd")
+scenes/16/scene = ExtResource("8_k1isd")
+scenes/17/scene = ExtResource("9_owj5q")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wfcrf"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
