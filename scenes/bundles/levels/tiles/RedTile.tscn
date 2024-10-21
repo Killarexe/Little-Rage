@@ -32,8 +32,8 @@ script = ExtResource("2_u7a46")
 
 [node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("on_red_texture", "on_blue_texture")]
 script = ExtResource("2_qa7wn")
-on_red_texture = NodePath("")
-on_blue_texture = NodePath("")
+on_red_texture = NodePath("../OnTexture")
+on_blue_texture = NodePath("../OffTexture")
 
 [node name="ColorCollisionTile" type="Node" parent="." node_paths=PackedStringArray("body")]
 script = ExtResource("3_g001g")

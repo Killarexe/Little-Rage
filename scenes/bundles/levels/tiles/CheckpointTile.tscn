@@ -28,7 +28,7 @@ interatcion_area = NodePath("InteractionArea")
 [node name="CheckpointTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile", "tile_off_texture") groups=["CheckpointTiles"]]
 script = ExtResource("2_1p80s")
 interactive_tile = NodePath("..")
-tile_off_texture = NodePath("")
+tile_off_texture = NodePath("../TileOff")
 checkpoint_particle = ExtResource("2_k1qwm")
 
 [node name="TileOn" type="Sprite2D" parent="."]

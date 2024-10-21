@@ -31,8 +31,10 @@ script = ExtResource("3_qhcm3")
 texture = SubResource("AtlasTexture_yx3h0")
 script = ExtResource("3_qhcm3")
 
-[node name="ColorTileComponent" type="Node" parent="."]
+[node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("on_red_texture", "on_blue_texture")]
 script = ExtResource("4_skv7u")
+on_red_texture = NodePath("../Sprite2D2")
+on_blue_texture = NodePath("../Sprite2D")
 
 [node name="DeathTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile")]
 script = ExtResource("5_5c7ii")

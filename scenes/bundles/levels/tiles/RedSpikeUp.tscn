@@ -37,8 +37,8 @@ inverse_collision = true
 
 [node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("on_red_texture", "on_blue_texture")]
 script = ExtResource("3_wdxkj")
-on_red_texture = NodePath("")
-on_blue_texture = NodePath("")
+on_red_texture = NodePath("../Sprite2D")
+on_blue_texture = NodePath("../Sprite2D2")
 
 [node name="DeathTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile")]
 script = ExtResource("4_rgwmr")

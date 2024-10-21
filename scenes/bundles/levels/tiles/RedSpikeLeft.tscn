@@ -36,8 +36,10 @@ script = ExtResource("4_m5awn")
 body = NodePath("..")
 inverse_collision = true
 
-[node name="ColorTileComponent" type="Node" parent="."]
+[node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("on_red_texture", "on_blue_texture")]
 script = ExtResource("5_2d6kr")
+on_red_texture = NodePath("../Sprite2D")
+on_blue_texture = NodePath("../Sprite2D2")
 
 [node name="DeathTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile")]
 script = ExtResource("6_piu3p")

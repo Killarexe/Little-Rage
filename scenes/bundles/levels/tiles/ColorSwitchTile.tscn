@@ -45,9 +45,9 @@ shape = SubResource("RectangleShape2D_mwyoo")
 [node name="ColorSwitchTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile", "off_texture")]
 script = ExtResource("3_kulow")
 interactive_tile = NodePath("..")
-off_texture = NodePath("")
+off_texture = NodePath("../Sprite2D")
 
 [node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("on_red_texture", "on_blue_texture")]
 script = ExtResource("4_3xcof")
-on_red_texture = NodePath("")
-on_blue_texture = NodePath("")
+on_red_texture = NodePath("../Sprite2D2")
+on_blue_texture = NodePath("../Sprite2D")
