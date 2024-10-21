@@ -6,7 +6,7 @@ const WINDOW_SIZES: Array[Vector2] = [
 	Vector2(896, 504),
 	Vector2(1024, 576),
 	Vector2(1152, 648),
-	Vector2(1280, 720),
+	Vector2(1280, 720)
 ]
 
 var window_size: int = 5

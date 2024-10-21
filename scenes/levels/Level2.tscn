@@ -3,8 +3,10 @@
 [ext_resource type="TileSet" uid="uid://dcovkjpnowgl0" path="res://assets/Tileset.tres" id="1_obfrq"]
 [ext_resource type="Script" path="res://scripts/level/LevelPlayer.gd" id="2_l5ter"]
 
-[node name="DefaultLevel" type="Node" groups=["Level"]]
+[node name="DefaultLevel" type="Node" node_paths=PackedStringArray("ground", "background") groups=["Level"]]
 script = ExtResource("2_l5ter")
+ground = NodePath("Ground")
+background = NodePath("Background")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 use_parent_material = true
