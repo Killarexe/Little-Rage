@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cr20uo2pstjq" path="res://assets/sound_effects/counter.ogg" id="3_5kxys"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k7oub"]
-font_size = 512
+font_size = 256
 
 [sub_resource type="Animation" id="Animation_4a60o"]
 length = 0.001

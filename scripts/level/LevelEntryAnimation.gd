@@ -15,6 +15,12 @@ func _ready() -> void:
 	else:
 		play_animation()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") && animation_player.is_playing():
+		animation_player.stop()
+		MusicManager.stop()
+		animation_player.animation_finished.emit()
+
 func play_animation() -> void:
 	await player.ready
 	player_menus.player_status.visible = false
@@ -30,7 +36,7 @@ func play_animation() -> void:
 	elif PlayerHatManager.has_unlocked_unhiddens() && PlayerSkinManager.has_unlocked_unhiddens():
 		music_id = "start_level_var2"
 	MusicManager.play_music(music_id)
-	await MusicManager.finished
+	await animation_player.animation_finished
 	player_camera.enabled = true
 	animation_camera.enabled = false
 	Game.instanceNode(countdown_prefab, player)
