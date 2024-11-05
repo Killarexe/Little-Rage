@@ -17,11 +17,21 @@ var player_prefab: Resource = load("res://scenes/bundles/player/Player.tscn")
 
 func _ready() -> void:
 	add_to_group("Level")
-	var tilemap_texture: Texture2D = LevelManager.get_tilemap_texture()
-	ground.tile_set.get_source(1).texture = tilemap_texture
-	background.tile_set.get_source(1).texture = tilemap_texture
+	var level: Level = LevelManager.get_current_level()
+	if level != null:
+		set_level_theme(level.level_theme)
 	if mode == Mode.PLAY:
 		spawn_player()
+
+func set_random_level_theme() -> void:
+	set_level_theme(randi_range(0, LevelManager.TILEMAP_TEXTURES_MAP.size() - 1))
+
+func set_level_theme(level_theme: Level.LevelTheme) -> void:
+	var tilemaps: Array = LevelManager.TILEMAP_TEXTURES_MAP[level_theme]
+	var tilemap_texture: CompressedTexture2D = load(LevelManager.TILEMAP_TEXTURES_DIR + tilemaps[Game.current_event] + ".png")
+	ground.tile_set.get_source(1).texture = tilemap_texture
+	background.tile_set.get_source(1).texture = tilemap_texture
+	RenderingServer.set_default_clear_color(Level.get_level_theme_color(level_theme))
 
 func finish_level(player: PlayerComponent) -> void:
 	var parent: Node = get_parent()

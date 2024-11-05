@@ -7,6 +7,7 @@ func prepare() -> void:
 	texture_rect.mouse_filter = Control.MOUSE_FILTER_STOP
 	texture_rect.modulate = Color.WHITE
 	texture_rect.visible = true
+	texture_rect.color = RenderingServer.get_default_clear_color()
 
 func end() -> void:
 	texture_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE

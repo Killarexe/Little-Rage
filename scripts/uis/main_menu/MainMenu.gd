@@ -11,9 +11,8 @@ func _ready() -> void:
 	var easter_title_screen: bool = Game.has_unlocked_unhiddens()
 	var animation: String = "start_menu"
 	var music: String = "title_screen"
-	var tilemap_texture: Texture2D = LevelManager.get_random_tilemap_texture()
-	level.ground.tile_set.get_source(1).texture = tilemap_texture
-	level.background.tile_set.get_source(1).texture = tilemap_texture
+	
+	level.set_random_level_theme()
 	
 	if Game.current_event == Game.Event.CHRISTMAS:
 		music = "title_screen_christmas_special"
@@ -21,8 +20,6 @@ func _ready() -> void:
 		music = "title_screen_halloween_special"
 	elif easter_title_screen:
 		music = "title_screen_easter"
-	
-	if easter_title_screen:
 		logo.texture = load("res://assets/textures/ui/little_rage_logo_easter.png")
 		animation = "start_menu_easter"
 	MusicManager.play_music(music)

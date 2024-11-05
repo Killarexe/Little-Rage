@@ -1,22 +1,36 @@
 extends ResourceElement
 class_name Level
 
-enum LevelTheme{
+enum LevelTheme {
 	PLAINS,
 	CAVES,
-	HEAVEN,
 	VOLCANO,
-	DESERT,
-	ICE_DESERT
+	MOUNTAINS
 }
 
-enum Difficulty{
+enum Difficulty {
 	BEGINER_FRIENDLY,
 	EASY,
 	NORMAL,
 	HARD,
 	EXTREME
 }
+
+const DIFFICULTY_STRS: Array[String] = [
+	"label.level.difficulty.beginer_friendly",
+	"label.level.difficulty.easy",
+	"label.level.difficulty.normal",
+	"label.level.difficulty.hard",
+	"label.level.difficulty.extreme"
+]
+
+const DIFFICULTY_COLORS: Array[Color] = [
+	Color.LIME_GREEN,
+	Color.SEA_GREEN,
+	Color.GREEN_YELLOW,
+	Color.ORANGE_RED,
+	Color.RED
+]
 
 const DEFAULT_NAME: String = "MyLevel"
 const DEFAULT_Y_LIMIT: int = 512
@@ -31,30 +45,24 @@ const DEFAULT_DIFFICULTY: Difficulty = Difficulty.NORMAL
 @export var level_theme: LevelTheme = LevelTheme.PLAINS
 @export var difficulty: Difficulty = DEFAULT_DIFFICULTY
 
-static func difficulty_to_str(level_diffuculty: Difficulty) -> String:
-	match level_diffuculty:
-		Difficulty.BEGINER_FRIENDLY:
-			return "label.level.difficulty.beginer_friendly"
-		Difficulty.EASY:
-			return "label.level.difficulty.easy"
-		Difficulty.NORMAL:
-			return "label.level.difficulty.normal"
-		Difficulty.HARD:
-			return "label.level.difficulty.hard"
-		Difficulty.EXTREME:
-			return "label.level.difficulty.extreme"
+static func get_level_theme_color(level_theme: LevelTheme) -> Color:
+	match level_theme:
+		LevelTheme.PLAINS:
+			return Color.hex(0x3CBCFCFF)
+		LevelTheme.CAVES:
+			return Color.hex(0x1b1c28FF)
+		LevelTheme.VOLCANO:
+			return Color.hex(0x1b1c28FF)
+		LevelTheme.MOUNTAINS:
+			Color.hex(0x80cff7FF)
+	return Color.hex(0x3CBCFCFF)
+
+static func difficulty_to_str(level_difficulty: Difficulty) -> String:
+	if level_difficulty < DIFFICULTY_STRS.size():
+		return DIFFICULTY_STRS[level_difficulty]
 	return "label.unknown"
 
-static func difficulty_to_color(level_diffuculty: Level.Difficulty) -> Color:
-	match level_diffuculty:
-		Level.Difficulty.BEGINER_FRIENDLY:
-			return Color.LIME_GREEN
-		Level.Difficulty.EASY:
-			return Color.SEA_GREEN
-		Level.Difficulty.NORMAL:
-			return Color.GREEN_YELLOW
-		Level.Difficulty.HARD:
-			return Color.ORANGE_RED
-		Level.Difficulty.EXTREME:
-			return Color.RED
+static func difficulty_to_color(level_difficulty: Level.Difficulty) -> Color:
+	if level_difficulty < DIFFICULTY_COLORS.size():
+		return DIFFICULTY_COLORS[level_difficulty]
 	return Color.SEA_GREEN

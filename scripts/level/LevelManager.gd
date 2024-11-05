@@ -4,7 +4,9 @@ const LEVEL_DIR_PATH: String = "res://data/levels"
 const EXTERNAL_LEVELS_DIR: String = "user://levels"
 const TILEMAP_TEXTURES_DIR: String = "res://assets/textures/tilesets/"
 const TILEMAP_TEXTURES_MAP: Array = [
-	["plains", "plains_old", "plains_christmas", "plains"]
+	["plains", "plains_old", "plains_christmas", "plains"],
+	["caves", "caves", "caves", "caves"],
+	["volcano", "volcano", "volcano", "volcano"]
 ]
 
 var levels: Array[Level] = []
@@ -79,13 +81,6 @@ func get_tilemap_texture() -> Texture2D:
 	if theme < TILEMAP_TEXTURES_MAP.size():
 		file_name = TILEMAP_TEXTURES_MAP[theme][Game.current_event]
 	var file_path: String = TILEMAP_TEXTURES_DIR + file_name + ".png"
-	if FileAccess.file_exists(file_path):
-		return load(file_path) as CompressedTexture2D
-	return load(TILEMAP_TEXTURES_DIR + "plains.png") as CompressedTexture2D
-
-func get_random_tilemap_texture() -> Texture2D:
-	var tilemaps: Array = TILEMAP_TEXTURES_MAP[randi_range(0, TILEMAP_TEXTURES_MAP.size() - 1)]
-	var file_path: String = TILEMAP_TEXTURES_DIR + tilemaps[0] + ".png"
 	if FileAccess.file_exists(file_path):
 		return load(file_path) as CompressedTexture2D
 	return load(TILEMAP_TEXTURES_DIR + "plains.png") as CompressedTexture2D
