@@ -7,6 +7,7 @@ extends Control
 @onready var level: LevelPlayer = $TitleScreenLevel
 
 func _ready() -> void:
+	randomize()
 	get_tree().paused = false
 	var easter_title_screen: bool = Game.has_unlocked_unhiddens()
 	var animation: String = "start_menu"

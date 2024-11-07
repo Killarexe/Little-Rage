@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name PlayerStatus
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var ragequit_button: Button = $RageQuitButton

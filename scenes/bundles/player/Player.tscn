@@ -137,8 +137,9 @@ player = NodePath("../..")
 player_skin = NodePath("../../Skin")
 timer = NodePath("../../Timer")
 
-[node name="WinMenu" parent="Menus" node_paths=PackedStringArray("player") instance=ExtResource("15_86y6y")]
+[node name="WinMenu" parent="Menus" node_paths=PackedStringArray("player", "player_status_ui") instance=ExtResource("15_86y6y")]
 player = NodePath("../..")
+player_status_ui = NodePath("../PlayerStatus")
 
 [node name="PauseMenu" parent="Menus" instance=ExtResource("16_rp8rw")]
 
