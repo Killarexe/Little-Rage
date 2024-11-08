@@ -20,6 +20,7 @@ func _input(event: InputEvent) -> void:
 		animation_player.stop()
 		MusicManager.stop()
 		animation_player.animation_finished.emit()
+		enable_status()
 
 func play_animation() -> void:
 	await player.ready

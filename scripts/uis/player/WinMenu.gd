@@ -26,7 +26,6 @@ func open(time: Array[int], death_count: int):
 	var time_sum: int = 0
 	for i in time:
 		time_sum += i
-	#FIXME: Player status not showing again when replaying...
 	player_status_ui.visible = false
 	singleplayer.visible = true
 	var is_best_time: bool = LevelManager.is_best_time(time)
