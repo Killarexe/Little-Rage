@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=50 format=3 uid="uid://dcovkjpnowgl0"]
+[gd_resource type="TileSet" load_steps=52 format=3 uid="uid://dcovkjpnowgl0"]
 
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="1_3ut7y"]
 [ext_resource type="PackedScene" uid="uid://dfamu2vvdstal" path="res://scenes/bundles/levels/tiles/CheckpointTile.tscn" id="1_ax33w"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bnxaybr275ttl" path="res://scenes/bundles/levels/tiles/SpikeUp.tscn" id="8_bn6d4"]
 [ext_resource type="PackedScene" uid="uid://blu1x22v2f4dd" path="res://scenes/bundles/levels/tiles/SpikeLeft.tscn" id="8_k1isd"]
 [ext_resource type="PackedScene" uid="uid://2b3d0w81iasx" path="res://scenes/bundles/levels/tiles/SpikeRight.tscn" id="9_owj5q"]
+[ext_resource type="PackedScene" uid="uid://bkmfbqqcxwh4u" path="res://scenes/bundles/levels/tiles/JumpingTile.tscn" id="10_udnfr"]
+[ext_resource type="PackedScene" uid="uid://kvni5o8pll71" path="res://scenes/bundles/levels/tiles/AccelerationTile.tscn" id="11_0k1c5"]
 [ext_resource type="PackedScene" uid="uid://ccmvxxo8ac34l" path="res://scenes/bundles/levels/tiles/BlueSpikeDown.tscn" id="17_w7my3"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u2aof"]
@@ -37,6 +39,8 @@ scenes/14/scene = ExtResource("6_5qcit")
 scenes/15/scene = ExtResource("7_8u7nd")
 scenes/16/scene = ExtResource("8_k1isd")
 scenes/17/scene = ExtResource("9_owj5q")
+scenes/18/scene = ExtResource("10_udnfr")
+scenes/19/scene = ExtResource("11_0k1c5")
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wfcrf"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)

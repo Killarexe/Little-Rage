@@ -10,7 +10,7 @@ class_name PlayerStatus
 @export var timer: PlayerTimer
 
 func _ready() -> void:
-	player.on_death.connect(on_death)
+	player.death_component.on_death.connect(on_death)
 	timer.timeout.connect(on_timeout)
 	deaths_label.text = TranslationServer.translate("label.deaths") + ": 0"
 	time_label.text = TranslationServer.translate("label.time") + ": 00:00:00"

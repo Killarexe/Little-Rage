@@ -5,4 +5,5 @@ func _ready() -> void:
 	one_shot = true
 	emitting = true
 	await finished
-	queue_free()
+	if !Engine.is_editor_hint():
+		queue_free()

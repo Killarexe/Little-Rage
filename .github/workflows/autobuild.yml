@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [LinuxX86_64, LinuxArm64, WindowsX86_64, WindowsArm64, Web, macOS]
+        platform: [LinuxX86_64, LinuxArm64, WindowsX86_64, WindowsArm64]
     steps:
       - uses: actions/checkout@v4.1.4
         with:

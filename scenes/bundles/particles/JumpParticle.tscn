@@ -19,6 +19,7 @@ gravity = Vector3(0, -1, 0)
 color_ramp = SubResource("2")
 
 [node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
 amount = 32
 process_material = SubResource("3")
 one_shot = true

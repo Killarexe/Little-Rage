@@ -28,12 +28,13 @@ func open(time: Array[int], death_count: int):
 		time_sum += i
 	player_status_ui.visible = false
 	singleplayer.visible = true
+	
 	var is_best_time: bool = LevelManager.is_best_time(time)
-	#TODO: Implement different win musics depending from the level theme
+	var level_theme: Level.LevelTheme = LevelManager.get_current_level().level_theme
+	var music_id: String = "level_win_" + Level.level_theme_to_str(level_theme)
 	if is_best_time:
-		MusicManager.play_music("level_win_plains_variant")
-	else:
-		MusicManager.play_music("level_win_plains")
+		music_id += "_variant"
+	MusicManager.play_music(music_id)
 	
 	best_time_animation.play("intro")
 	time_label.start(time, death_count)

@@ -54,7 +54,7 @@ movie_writer/movie_file="/home/killarexe/Bureau/Projets/Godot/LittleRage/builds/
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/discord-rpc-gd/plugin.cfg")
+enabled=PackedStringArray()
 
 [file_customization]
 

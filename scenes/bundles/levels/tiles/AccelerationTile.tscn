@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://kvni5o8pll71"]
+
+[ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_x7225"]
+[ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="2_h5n4h"]
+[ext_resource type="Script" path="res://scripts/level/tiles/TileSprite.gd" id="3_rglto"]
+[ext_resource type="Script" path="res://scripts/level/tiles/AccelerationTileComponent.gd" id="4_fep2k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a1jv"]
+atlas = ExtResource("2_h5n4h")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_os5gs"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epn34"]
+size = Vector2(18, 18)
+
+[node name="AccelerationTile" type="StaticBody2D" node_paths=PackedStringArray("interatcion_area")]
+collision_mask = 8
+script = ExtResource("1_x7225")
+interatcion_area = NodePath("InteractionArea")
+
+[node name="TileSprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_0a1jv")
+script = ExtResource("3_rglto")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_os5gs")
+
+[node name="AccelerationTileComponent" type="Node" parent="." node_paths=PackedStringArray("interative_tile")]
+script = ExtResource("4_fep2k")
+interative_tile = NodePath("..")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_epn34")

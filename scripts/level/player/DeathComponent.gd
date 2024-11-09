@@ -1,6 +1,8 @@
 extends Node
 class_name DeathComponent
 
+signal on_death(death_count: int)
+
 @export_category("Component requirements")
 @export var player: CharacterBody2D
 @export var sound_effects: SoundEffectPlayer
@@ -22,5 +24,5 @@ func _physics_process(_delta: float) -> void:
 func die() -> void:
 	sound_effects.play_sfx("die")
 	death_count += 1
-	player.on_death.emit(death_count)
+	on_death.emit(death_count)
 	player.global_position = spawn_point

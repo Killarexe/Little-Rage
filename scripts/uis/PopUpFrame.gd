@@ -7,7 +7,7 @@ var popups: Array[PopUp] = []
 var current_popup: PopUp
 
 func pop_translated(message: String, icon_texture: Texture2D = null, on_pressed: Callable = func():pass) -> void:
-	pop(TranslationServer.translate(message), icon_texture)
+	pop(TranslationServer.translate(message), icon_texture, on_pressed)
 
 func pop(message: String, icon_texture: Texture2D = null, on_pressed: Callable = func():pass) -> void:
 	var popup: PopUp = popup_scene.instantiate()

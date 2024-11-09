@@ -1,6 +1,9 @@
 extends Node
 class_name PlayerDummyMovement
 
+signal on_land()
+signal on_jump()
+
 @export_category("Component requirement")
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
@@ -51,6 +54,7 @@ func handle_jump() -> void:
 			PlayerParticleManager.spawn_particle(player.get_parent(), player.global_position + Vector2(0, 16), PlayerParticle.Type.JUMP)
 			animation.stop()
 			animation.play("PlayerAnimations/land")
+			on_land.emit()
 		if abs(player.velocity.x) >= MAX_SPEED * 0.75:
 			PlayerParticleManager.spawn_particle(player.get_parent(), player.global_position + Vector2(0, 16), PlayerParticle.Type.STEP)
 		ground_timer = GROUND_TIME
@@ -61,3 +65,4 @@ func handle_jump() -> void:
 		motion.y = -JUMP_FORCE
 		jump_timer = 0
 		ground_timer = 0
+		on_jump.emit()

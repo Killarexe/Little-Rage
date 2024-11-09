@@ -8,6 +8,13 @@ enum LevelTheme {
 	MOUNTAINS
 }
 
+const LEVEL_THEME_STRS: PackedStringArray = [
+	"plains",
+	"caves",
+	"volcano",
+	"mountains"
+] 
+
 enum Difficulty {
 	BEGINER_FRIENDLY,
 	EASY,
@@ -16,7 +23,7 @@ enum Difficulty {
 	EXTREME
 }
 
-const DIFFICULTY_STRS: Array[String] = [
+const DIFFICULTY_STRS: PackedStringArray = [
 	"label.level.difficulty.beginer_friendly",
 	"label.level.difficulty.easy",
 	"label.level.difficulty.normal",
@@ -45,8 +52,14 @@ const DEFAULT_DIFFICULTY: Difficulty = Difficulty.NORMAL
 @export var level_theme: LevelTheme = LevelTheme.PLAINS
 @export var difficulty: Difficulty = DEFAULT_DIFFICULTY
 
-static func get_level_theme_color(level_theme: LevelTheme) -> Color:
-	match level_theme:
+static func level_theme_to_translation_str(theme: LevelTheme) -> String:
+	return "label.level.theme." + LEVEL_THEME_STRS[theme]
+
+static func level_theme_to_str(theme: LevelTheme) -> String:
+	return LEVEL_THEME_STRS[theme]
+
+static func get_level_theme_color(theme: LevelTheme) -> Color:
+	match theme:
 		LevelTheme.PLAINS:
 			return Color.hex(0x3CBCFCFF)
 		LevelTheme.CAVES:

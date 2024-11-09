@@ -40,11 +40,11 @@ func _on_settings_button_pressed():
 
 func _on_level_description_text_changed():
 	description = level_description_edit.text
-	emit_signal("on_settings_changed")
+	on_settings_changed.emit()
 
 func _on_level_name_text_changed(new_text):
 	level_name = new_text
-	emit_signal("on_settings_changed")
+	on_settings_changed.emit()
 
 func _on_level_difficulty_item_selected(index: int):
 	match index:
@@ -58,11 +58,11 @@ func _on_level_difficulty_item_selected(index: int):
 			difficulty = Level.Difficulty.HARD
 		4:
 			difficulty = Level.Difficulty.EXTREME
-	emit_signal("on_settings_changed")
+	on_settings_changed.emit()
 
 func _on_slider_value_changed(value: int):
 	y_limit = value
-	emit_signal("on_settings_changed")
+	on_settings_changed.emit()
 
 func _on_back_button_pressed():
 	visible = false
