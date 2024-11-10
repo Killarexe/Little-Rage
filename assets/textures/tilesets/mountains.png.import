@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coktjmhkt70ki"
-path="res://.godot/imported/plains_christmas.png-1337648a558642b758ac64befe6fd323.ctex"
+uid="uid://cr2dnnd27sq2g"
+path="res://.godot/imported/mountains.png-7a13871d36bf7591d18c27864197370b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/tilesets/plains_christmas.png"
-dest_files=["res://.godot/imported/plains_christmas.png-1337648a558642b758ac64befe6fd323.ctex"]
+source_file="res://assets/textures/tilesets/mountains.png"
+dest_files=["res://.godot/imported/mountains.png-7a13871d36bf7591d18c27864197370b.ctex"]
 
 [params]
 

@@ -12,4 +12,6 @@ func _ready() -> void:
 func end() -> void:
 	get_tree().paused = false
 	Game.can_pause = true
-	MusicManager.play_music("level_plains")
+	var level: Level = LevelManager.get_current_level()
+	if level != null:
+		MusicManager.play_music("level_" + Level.level_theme_to_str(level.level_theme))

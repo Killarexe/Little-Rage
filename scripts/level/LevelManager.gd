@@ -6,7 +6,8 @@ const TILEMAP_TEXTURES_DIR: String = "res://assets/textures/tilesets/"
 const TILEMAP_TEXTURES_MAP: Array = [
 	["plains", "plains_old", "plains_christmas", "plains"],
 	["caves", "caves", "caves", "caves"],
-	["volcano", "volcano", "volcano", "volcano"]
+	["volcano", "volcano", "volcano", "volcano"],
+	["mountains", "mountains", "mountains", "mountains"]
 ]
 
 var levels: Array[Level] = []

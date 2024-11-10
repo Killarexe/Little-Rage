@@ -63,11 +63,11 @@ static func get_level_theme_color(theme: LevelTheme) -> Color:
 		LevelTheme.PLAINS:
 			return Color.hex(0x3CBCFCFF)
 		LevelTheme.CAVES:
-			return Color.hex(0x1b1c28FF)
+			return Color.hex(0x2C302CFF)
 		LevelTheme.VOLCANO:
-			return Color.hex(0x1b1c28FF)
+			return Color.hex(0x1B1C28FF)
 		LevelTheme.MOUNTAINS:
-			Color.hex(0x80cff7FF)
+			Color.hex(0x80CFF7FF)
 	return Color.hex(0x3CBCFCFF)
 
 static func difficulty_to_str(level_difficulty: Difficulty) -> String:

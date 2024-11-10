@@ -75,7 +75,6 @@ func _on_next_level_pressed():
 		var current_level: String = "level_" + str(current_level_number + 1)
 		var level: Level = LevelManager.get_level(current_level)
 		LevelManager.current_level = current_level
-		MusicManager.play_music("level_plains")
 		SceneManager.change_packed(level.scene)
 
 func _on_replay_button_pressed():
