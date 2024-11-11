@@ -34,11 +34,7 @@ func set_level_theme(level_theme: Level.LevelTheme) -> void:
 	RenderingServer.set_default_clear_color(Level.get_level_theme_color(level_theme))
 
 func finish_level(player: PlayerComponent) -> void:
-	var parent: Node = get_parent()
-	if parent is LevelEditor:
-		parent.switch_edit_mode()
-	else:
-		player.on_win.emit(player.timer.get_time(), player.death_component.death_count)
+	player.on_win.emit(player.timer.get_time(), player.death_component.death_count)
 
 func spawn_player() -> void:
 	Game.instanceNodeAtPos(player_prefab, self, start_pos)

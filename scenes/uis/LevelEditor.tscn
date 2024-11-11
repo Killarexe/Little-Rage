@@ -1,158 +1,31 @@
-[gd_scene load_steps=14 format=3 uid="uid://btth5y287sdm0"]
+[gd_scene load_steps=6 format=3 uid="uid://dcjl70toseb36"]
 
-[ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditor.gd" id="1_7o0qm"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/EditorCameraControler.gd" id="2_pc8il"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/tiles/TilesList.gd" id="3_l4vqr"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/DisableEditingCursor.gd" id="4_qa1hv"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/SaveConfirmationDialog.gd" id="5_i2jn6"]
-[ext_resource type="Texture2D" uid="uid://buw3bxnswai6i" path="res://assets/textures/ui/mobile_player_interface/pause.png" id="6_p6w8g"]
-[ext_resource type="Script" path="res://scripts/uis/MobileVisiblity.gd" id="7_lfx71"]
-[ext_resource type="Texture2D" uid="uid://k4siyrr0ptjm" path="res://assets/textures/ui/icons/save.png" id="8_la3tb"]
-[ext_resource type="PackedScene" uid="uid://ewvi8u3crj0y" path="res://scenes/uis/LevelEditorTools.tscn" id="8_ldi2f"]
-[ext_resource type="Texture2D" uid="uid://dknlajug6w68u" path="res://assets/textures/ui/icons/settings.png" id="10_ik0m7"]
-[ext_resource type="PackedScene" uid="uid://o458ah6nqt0b" path="res://scenes/uis/LevelSettingsMenu.tscn" id="11_ftb0d"]
-[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/levels/DefaultLevel.tscn" id="12_33otr"]
-[ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="13_nxxam"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditorCamera.gd" id="1_a2bpn"]
+[ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/levels/DefaultLevel.tscn" id="1_qymvn"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/BrushComponent.gd" id="2_ixtcu"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/GridDrawer.gd" id="2_nnwtm"]
+[ext_resource type="Resource" uid="uid://os51hi6qtijs" path="res://data/tiles/grass.tres" id="3_62fuo"]
 
-[node name="LevelEditor" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_7o0qm")
+[node name="LevelEditor" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
-script = ExtResource("2_pc8il")
-can_zoom = true
-can_pan = true
 
-[node name="DefaultLevel" parent="." instance=ExtResource("12_33otr")]
+[node name="LevelEditorCamera" type="Node" parent="Camera2D" node_paths=PackedStringArray("camera", "bush")]
+script = ExtResource("1_a2bpn")
+camera = NodePath("..")
+bush = NodePath("../BrushComponent")
+
+[node name="BrushComponent" type="Node" parent="Camera2D" node_paths=PackedStringArray("level")]
+script = ExtResource("2_ixtcu")
+level = NodePath("../../DefaultLevel")
+selected_tile = ExtResource("3_62fuo")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="GridDrawer" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("2_nnwtm")
+camera = NodePath("../Camera2D")
+offset = 0
+
+[node name="DefaultLevel" parent="." instance=ExtResource("1_qymvn")]
 mode = 1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Tiles" type="ItemList" parent="CanvasLayer"]
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 160.0
-grow_vertical = 2
-theme = ExtResource("13_nxxam")
-icon_mode = 0
-icon_scale = 4.0
-fixed_icon_size = Vector2i(24, 24)
-script = ExtResource("3_l4vqr")
-
-[node name="DisableEditingCursor" type="Control" parent="CanvasLayer/Tiles" node_paths=PackedStringArray("editor")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("4_qa1hv")
-editor = NodePath("../../..")
-
-[node name="SaveConfirmationDialog" type="ConfirmationDialog" parent="CanvasLayer"]
-title = "ui.save_level"
-size = Vector2i(320, 192)
-ok_button_text = "button.save"
-dialog_text = "message.level_editor.save_option"
-cancel_button_text = "button.dont_save"
-script = ExtResource("5_i2jn6")
-
-[node name="PlayButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -80.0
-offset_bottom = 80.0
-grow_horizontal = 0
-texture_normal = ExtResource("6_p6w8g")
-stretch_mode = 0
-script = ExtResource("4_qa1hv")
-editor = NodePath("../..")
-
-[node name="MobileButtons" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("7_lfx71")
-
-[node name="LevelEditorTools" parent="CanvasLayer/MobileButtons" instance=ExtResource("8_ldi2f")]
-layout_mode = 1
-mouse_filter = 2
-
-[node name="SaveButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -325.0
-offset_top = -716.0
-offset_right = -245.0
-offset_bottom = -636.0
-grow_horizontal = 0
-grow_vertical = 0
-texture_normal = ExtResource("8_la3tb")
-stretch_mode = 0
-script = ExtResource("4_qa1hv")
-editor = NodePath("../..")
-
-[node name="QuitButton" type="Button" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -271.0
-offset_top = -92.0
-offset_right = -28.0
-offset_bottom = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource("13_nxxam")
-text = "button.quit"
-script = ExtResource("4_qa1hv")
-editor = NodePath("../..")
-
-[node name="SettingsButton" type="TextureButton" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
-offset_left = 1074.0
-offset_right = 1164.0
-offset_bottom = 90.0
-texture_normal = ExtResource("10_ik0m7")
-stretch_mode = 0
-script = ExtResource("4_qa1hv")
-editor = NodePath("../..")
-
-[node name="BackToCenterButton" type="Button" parent="CanvasLayer" node_paths=PackedStringArray("editor")]
-offset_left = 248.0
-offset_top = 4.0
-offset_right = 535.0
-offset_bottom = 45.0
-theme = ExtResource("13_nxxam")
-theme_override_font_sizes/font_size = 16
-text = "button.back_to_center"
-script = ExtResource("4_qa1hv")
-editor = NodePath("../..")
-
-[node name="LevelSettingsMenu" parent="CanvasLayer" instance=ExtResource("11_ftb0d")]
-
-[connection signal="on_clicked" from="Camera2D" to="." method="_on_camera_2d_on_clicked"]
-[connection signal="empty_clicked" from="CanvasLayer/Tiles" to="." method="_on_tiles_empty_clicked"]
-[connection signal="item_selected" from="CanvasLayer/Tiles" to="." method="_on_tiles_item_selected"]
-[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="on_tool_set" from="CanvasLayer/MobileButtons/LevelEditorTools" to="Camera2D" method="_on_level_editor_tools_on_tool_set"]
-[connection signal="pressed" from="CanvasLayer/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/SettingsButton" to="CanvasLayer/LevelSettingsMenu" method="_on_settings_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/BackToCenterButton" to="." method="_on_back_to_center_button_pressed"]
-[connection signal="on_settings_changed" from="CanvasLayer/LevelSettingsMenu" to="." method="_on_level_settings_menu_on_settings_changed"]

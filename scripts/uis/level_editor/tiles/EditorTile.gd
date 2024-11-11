@@ -7,7 +7,6 @@ class_name EditorTile
 func new(tiles: Dictionary):
 	self.tile_dictionary = tiles
 
-func on_place(_level_map: LevelPlayer, _tile_pos: Vector2i):
-	#for position in tile_dictionary.keys():
-	#	level_map.change_tile_and_update(tile_pos + position, tile_dictionary.get(position))
-	pass
+func place(level_map: LevelPlayer, tile_pos: Vector2i):
+	for position in tile_dictionary.keys():
+		level_map.ground.set_cell(position + tile_pos, 1, tile_dictionary.get(position))

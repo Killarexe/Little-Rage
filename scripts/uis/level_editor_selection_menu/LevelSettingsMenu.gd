@@ -1,4 +1,4 @@
-extends DisableEditingCursor
+extends Control
 class_name LevelSettingsMenu
 
 signal on_settings_changed
