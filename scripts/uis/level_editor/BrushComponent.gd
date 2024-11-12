@@ -20,4 +20,7 @@ enum BrushTypes {
 func brush(start_position: Vector2, end_position: Vector2 = Vector2.ZERO):
 	if !enable:
 		return
-	selected_tile.place(level, start_position / 16)
+	if erase:
+		level.ground.set_cell(start_position / 16, 1)
+	else:
+		selected_tile.place(level, start_position / 16)
