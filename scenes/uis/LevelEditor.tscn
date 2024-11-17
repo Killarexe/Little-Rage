@@ -1,10 +1,75 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcjl70toseb36"]
+[gd_scene load_steps=12 format=3 uid="uid://dcjl70toseb36"]
 
 [ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditorCamera.gd" id="1_a2bpn"]
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/levels/DefaultLevel.tscn" id="1_qymvn"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/BrushComponent.gd" id="2_ixtcu"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/GridDrawer.gd" id="2_nnwtm"]
 [ext_resource type="Resource" uid="uid://os51hi6qtijs" path="res://data/tiles/grass.tres" id="3_62fuo"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/tiles/TilesList.gd" id="4_uccun"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditorUIElement.gd" id="5_3edqr"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/TilesButton.gd" id="6_edb0f"]
+
+[sub_resource type="Animation" id="Animation_uanjl"]
+resource_name = "appear"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TilesList:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.6),
+"transitions": PackedFloat32Array(3.14, 0.318471, 1),
+"update": 0,
+"values": [Vector2(0, -360), Vector2(0, -180), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TilesList:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_7gndj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TilesList:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TilesList:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ov31"]
+_data = {
+"RESET": SubResource("Animation_7gndj"),
+"appear": SubResource("Animation_uanjl")
+}
 
 [node name="LevelEditor" type="Node"]
 
@@ -15,12 +80,55 @@ script = ExtResource("1_a2bpn")
 camera = NodePath("..")
 bush = NodePath("../BrushComponent")
 
-[node name="BrushComponent" type="Node" parent="Camera2D" node_paths=PackedStringArray("level")]
+[node name="BrushComponent" type="Node" parent="Camera2D" node_paths=PackedStringArray("tiles_list", "level")]
 script = ExtResource("2_ixtcu")
+tiles_list = NodePath("../../GUI/TilesList")
 level = NodePath("../../DefaultLevel")
 selected_tile = ExtResource("3_62fuo")
 
 [node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="TilesList" type="ItemList" parent="GUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+auto_height = true
+max_columns = 16
+same_column_width = true
+icon_mode = 0
+icon_scale = 4.0
+script = ExtResource("4_uccun")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/TilesList"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_5ov31")
+}
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/TilesList" node_paths=PackedStringArray("control", "brush")]
+script = ExtResource("5_3edqr")
+control = NodePath("..")
+brush = NodePath("../../../Camera2D/BrushComponent")
+
+[node name="TilesButton" type="Button" parent="GUI" node_paths=PackedStringArray("tiles_list", "animation_player", "level")]
+offset_left = 34.0
+offset_top = 587.0
+offset_right = 140.0
+offset_bottom = 691.0
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("6_edb0f")
+tiles_list = NodePath("../TilesList")
+animation_player = NodePath("../TilesList/AnimationPlayer")
+level = NodePath("../../DefaultLevel")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/TilesButton" node_paths=PackedStringArray("control", "brush")]
+script = ExtResource("5_3edqr")
+control = NodePath("..")
+brush = NodePath("../../../Camera2D/BrushComponent")
 
 [node name="GridDrawer" type="Node2D" parent="." node_paths=PackedStringArray("camera")]
 script = ExtResource("2_nnwtm")

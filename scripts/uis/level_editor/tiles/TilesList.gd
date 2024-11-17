@@ -1,5 +1,8 @@
 extends ItemList
 class_name TilesList
+
+signal on_selected(tile: EditorTile)
+
 const TILES_DIR: String = "res://data/tiles/"
 
 var editor_tiles: Array[EditorTile]
@@ -8,6 +11,8 @@ func _ready():
 	for element in DataLoader.new().load_data_in_dir(TILES_DIR, "EditorTile"):
 		if element is EditorTile:
 			editor_tiles.append(element)
+	item_selected.connect(func(index: int): on_selected.emit(editor_tiles[index]))
+	on_selected.emit(editor_tiles[0])
 
 func create_list(atlas: CompressedTexture2D):
 	for tile in editor_tiles:
