@@ -8,6 +8,7 @@ enum BrushTypes {
 }
 
 @export_category("Dependencies")
+@export var camera: Camera2D
 @export var tile_sprite: Sprite2D
 @export var tiles_list: TilesList
 @export var level: LevelPlayer
@@ -19,11 +20,9 @@ enum BrushTypes {
 @export var brush_type: BrushTypes = BrushTypes.PEN
 
 func _ready() -> void:
-	await tiles_list.ready
-	tiles_list.create_list(load("res://assets/textures/tilesets/plains.png"))
-	tiles_list.on_selected.connect(func(new_tile: EditorTile): selected_tile = new_tile)
+	tiles_list.on_selected.connect(set_selected_tile)
 
-func brush(start_position: Vector2, end_position: Vector2 = Vector2.ZERO):
+func brush(start_position: Vector2, end_position: Vector2 = Vector2.ZERO) -> void:
 	if !enable:
 		return
 	
@@ -45,3 +44,12 @@ func brush(start_position: Vector2, end_position: Vector2 = Vector2.ZERO):
 			for x in range(last_tile_position.x, first_tile_position.x):
 				for y in range(last_tile_position.y, first_tile_position.y):
 					selected_tile.place(level, Vector2i(x, y))
+
+func _process(delta: float) -> void:
+	tile_sprite.visible = enable && !erase
+	if tile_sprite.visible:
+		tile_sprite.position = (camera.get_global_mouse_position() / 16.0).floor() * 16 + selected_tile.get_size() / 2
+
+func set_selected_tile(new_tile: EditorTile) -> void:
+	selected_tile = new_tile
+	tile_sprite.texture = new_tile.get_icon(level)

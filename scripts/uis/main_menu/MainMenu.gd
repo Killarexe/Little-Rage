@@ -45,7 +45,7 @@ func _on_shop_button_pressed() -> void:
 	SceneManager.change_scene("res://scenes/uis/CollectionsMenu.tscn")
 
 func _on_level_editor_button_pressed() -> void:
-	SceneManager.change_scene("res://scenes/uis/LevelEditorSelectionMenu.tscn")
+	SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")
 
 func _on_quit_button_pressed() -> void:
 	SaveManager.save()
