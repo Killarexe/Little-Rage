@@ -35,7 +35,6 @@ PlayerParticleManager="*res://scripts/level/player/cosmetic/particle/PlayerParti
 LootBoxesManager="*res://scripts/level/player/LootBoxesManager.gd"
 Overlay="*res://scenes/globals/Overlay.tscn"
 PopUpFrame="*res://scenes/globals/PopUpFrame.tscn"
-ExperiementalFrame="*res://scenes/globals/ExperiementalFrame.tscn"
 UpdateChecker="*res://scenes/globals/UpdateChecker.tscn"
 Game="*res://scripts/Game.gd"
 

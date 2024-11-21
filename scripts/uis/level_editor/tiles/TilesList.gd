@@ -15,6 +15,7 @@ func _ready():
 	on_selected.emit(editor_tiles[0])
 
 func create_list(atlas: CompressedTexture2D):
+	clear()
 	for tile in editor_tiles:
 		for tile_position in tile.tile_dictionary.keys():
 				var tile_id: Vector2i = tile.tile_dictionary.get(tile_position)
