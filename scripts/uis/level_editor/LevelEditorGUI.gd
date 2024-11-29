@@ -4,6 +4,7 @@ class_name LevelEditorGUI
 @export_category("Required Components")
 @export var level: LevelPlayer
 @export var camera: Camera2D
+@export var grid: GridDrawer
 
 @export_category("Menu UIs")
 @export var menu: LevelEditorMenu

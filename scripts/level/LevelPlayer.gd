@@ -34,7 +34,10 @@ func set_level_theme(level_theme: Level.LevelTheme) -> void:
 	RenderingServer.set_default_clear_color(Level.get_level_theme_color(level_theme))
 
 func finish_level(player: PlayerComponent) -> void:
-	player.on_win.emit(player.timer.get_time(), player.death_component.death_count)
+	if LevelManager.get_current_level() != null:
+		player.on_win.emit(player.timer.get_time(), player.death_component.death_count)
+	else:
+		get_parent().on_play_button_pressed()
 
 func spawn_player() -> void:
 	Game.instanceNodeAtPos(player_prefab, self, start_pos)
@@ -53,4 +56,5 @@ func set_mode(new_mode: Mode) -> void:
 		spawn_player()
 	else:
 		for child in get_children():
-			child.queue_free()
+			if child is not TileMapLayer:
+				child.queue_free.call_deferred()

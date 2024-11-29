@@ -341,7 +341,7 @@ custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 theme = ExtResource("1_fjp12")
 theme_override_font_sizes/font_size = 19
-text = "button.singleplayer"
+text = "button.play"
 
 [node name="ShopButton" type="Button" parent="CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)

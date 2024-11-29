@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dcjl70toseb36"]
+[gd_scene load_steps=35 format=3 uid="uid://dcjl70toseb36"]
 
 [ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditor.gd" id="1_6j8q1"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditorCamera.gd" id="1_a2bpn"]
@@ -21,6 +21,39 @@
 [ext_resource type="PackedScene" uid="uid://o458ah6nqt0b" path="res://scenes/uis/LevelSettingsMenu.tscn" id="16_cwana"]
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="18_bvqml"]
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="19_7fci2"]
+[ext_resource type="Texture2D" uid="uid://dxd7u5xffvp21" path="res://assets/textures/ui/mobile_player_interface/left.png" id="22_dgyj2"]
+
+[sub_resource type="Animation" id="Animation_f4ms0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FileDialog:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FileDialog:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5qdqv"]
+_data = {
+"RESET": SubResource("Animation_f4ms0")
+}
 
 [sub_resource type="Animation" id="Animation_uquiq"]
 resource_name = "show"
@@ -51,9 +84,39 @@ tracks/1/keys = {
 "values": [false, true, true]
 }
 
+[sub_resource type="Animation" id="Animation_ibxwl"]
+resource_name = "show_load_dialog"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FileDialog:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 3.14, 0.318471, 1),
+"update": 0,
+"values": [Vector2i(-1280, 0), Vector2i(-1280, 0), Vector2i(-640, 0), Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FileDialog:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_afge7"]
 _data = {
-"show": SubResource("Animation_uquiq")
+"show": SubResource("Animation_uquiq"),
+"show_load_dialog": SubResource("Animation_ibxwl")
 }
 
 [sub_resource type="Animation" id="Animation_c1733"]
@@ -185,11 +248,14 @@ _data = {
 "show": SubResource("Animation_uquq7")
 }
 
-[node name="LevelEditor" type="Node" node_paths=PackedStringArray("level_map", "tiles_list", "level_settings")]
+[node name="LevelEditor" type="Node" node_paths=PackedStringArray("level_map", "level_gui", "level_settings", "brush", "tiles_button", "player_sprite")]
 script = ExtResource("1_6j8q1")
 level_map = NodePath("DefaultLevel")
-tiles_list = NodePath("GUI/TilesList")
+level_gui = NodePath("GUI")
 level_settings = NodePath("GUI/LevelSettingsMenu")
+brush = NodePath("Camera2D/BrushComponent")
+tiles_button = NodePath("GUI/TilesButton")
+player_sprite = NodePath("PlayerSkinSprite")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -207,10 +273,11 @@ tiles_list = NodePath("../../GUI/TilesList")
 level = NodePath("../../DefaultLevel")
 selected_tile = ExtResource("3_62fuo")
 
-[node name="GUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("level", "camera", "menu", "menu_button", "menu_animation_player", "tiles_button", "tiles_list", "tiles_list_animation_player", "center_button")]
+[node name="GUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("level", "camera", "grid", "menu", "menu_button", "menu_animation_player", "tiles_button", "tiles_list", "tiles_list_animation_player", "center_button")]
 script = ExtResource("4_tb82e")
 level = NodePath("../DefaultLevel")
 camera = NodePath("../Camera2D")
+grid = NodePath("../GridDrawer")
 menu = NodePath("Menu")
 menu_button = NodePath("MenuButton")
 menu_animation_player = NodePath("Menu/AnimationPlayer")
@@ -235,7 +302,7 @@ script = ExtResource("5_3edqr")
 control = NodePath("..")
 brush = NodePath("../../../Camera2D/BrushComponent")
 
-[node name="Menu" type="Control" parent="GUI" node_paths=PackedStringArray("level_editor", "brush", "level_settings_animation_player", "quit_button", "save_button", "load_button", "settings_button", "animation_player")]
+[node name="Menu" type="Control" parent="GUI" node_paths=PackedStringArray("level_editor", "brush", "level_settings_animation_player", "quit_button", "save_button", "load_button", "settings_button", "file_dialog", "animation_player")]
 visible = false
 layout_mode = 3
 anchors_preset = 9
@@ -250,10 +317,12 @@ quit_button = NodePath("Buttons/ExitButton")
 save_button = NodePath("Buttons/SaveButton")
 load_button = NodePath("Buttons/LoadButton")
 settings_button = NodePath("Buttons/LevelSettings")
+file_dialog = NodePath("FileDialog")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Menu"]
 libraries = {
+"": SubResource("AnimationLibrary_5qdqv"),
 "Menu": SubResource("AnimationLibrary_afge7")
 }
 
@@ -337,6 +406,17 @@ script = ExtResource("5_3edqr")
 control = NodePath("../ColorRect")
 brush = NodePath("../../../Camera2D/BrushComponent")
 
+[node name="FileDialog" type="FileDialog" parent="GUI/Menu"]
+title = "Load level"
+size = Vector2i(1280, 720)
+visible = true
+borderless = true
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+option_count = 1
+option_0/name = "*.tres ;Godot's Resource Files"
+
 [node name="MenuButton" type="Button" parent="GUI"]
 offset_left = 32.0
 offset_top = 32.0
@@ -398,6 +478,55 @@ visible = false
 offset_left = -1280.0
 offset_right = -1280.0
 
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/HBoxContainer/LeftElements/LevelName" index="0" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../../../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/HBoxContainer/LeftElements/LevelDescription" index="5" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../../../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/HBoxContainer/RightElements/LevelThemes/PlainsButton" index="0" node_paths=PackedStringArray("control", "brush")]
+script = ExtResource("5_3edqr")
+control = NodePath("..")
+brush = NodePath("../../../../../../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/HBoxContainer/RightElements/LevelThemes/CavesButton" index="0" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../../../../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/HBoxContainer/RightElements/LevelThemes/VolcanoButton" index="0" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../../../../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/HBoxContainer/RightElements/LevelThemes/MountainsButton" index="0" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../../../../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/HBoxContainer/RightElements/LevelDifficulties/Beginer" index="0" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../../../../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/HBoxContainer/RightElements/LevelDifficulties/Easy" index="0" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../../../../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/HBoxContainer/RightElements/LevelDifficulties/Normal" index="0" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../../../../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/HBoxContainer/RightElements/LevelDifficulties/Hard" index="0" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../../../../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/HBoxContainer/RightElements/LevelDifficulties/Extreme" index="0" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../../../../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/LevelSettingsMenu/BackButton" index="0" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../../Camera2D/BrushComponent")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/LevelSettingsMenu"]
 libraries = {
 "": SubResource("AnimationLibrary_8tomp"),
@@ -411,6 +540,7 @@ offset = 0
 
 [node name="DefaultLevel" parent="." instance=ExtResource("1_qymvn")]
 mode = 1
+start_pos = Vector2(0, 0)
 
 [node name="TileSprite" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.501961)
@@ -421,3 +551,23 @@ script = ExtResource("18_bvqml")
 [node name="PlayerHatSprite" type="Sprite2D" parent="PlayerSkinSprite"]
 position = Vector2(0, -24)
 script = ExtResource("19_7fci2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayButton" type="Button" parent="CanvasLayer"]
+custom_minimum_size = Vector2(100, 100)
+offset_left = 1148.0
+offset_top = 32.0
+offset_right = 1248.0
+offset_bottom = 132.0
+icon = ExtResource("22_dgyj2")
+icon_alignment = 1
+expand_icon = true
+
+[node name="LevelEditorUIElement" type="Node" parent="CanvasLayer/PlayButton" node_paths=PackedStringArray("brush")]
+script = ExtResource("5_3edqr")
+brush = NodePath("../../../Camera2D/BrushComponent")
+
+[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="on_play_button_pressed"]
+
+[editable path="GUI/LevelSettingsMenu"]
