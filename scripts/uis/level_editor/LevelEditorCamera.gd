@@ -20,6 +20,7 @@ var start_angle: float = 0.0
 
 var is_panning: bool = false
 var is_drag: bool = false
+var can_move: bool = true
 
 func _unhandled_input(event):
 	if !(Game.is_mobile || debug_mode):
@@ -90,7 +91,7 @@ func handle_mouse_pan(event: InputEventMouseMotion):
 		camera.position -= event.relative.rotated(camera.rotation) * pan_speed  / camera.zoom.x
 
 func _process(delta: float):
-	if !(Game.is_mobile || debug_mode):
+	if !(Game.is_mobile || debug_mode) && can_move:
 		is_panning = Input.is_action_pressed("middle_click")
 		if Input.is_action_pressed("left_click"):
 			bush.erase = false

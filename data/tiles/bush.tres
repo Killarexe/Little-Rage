@@ -13,4 +13,6 @@ Vector2i(1, -1): Vector2i(7, 4),
 Vector2i(1, 0): Vector2i(7, 5)
 }
 icon_region = Rect2i(80, 64, 48, 32)
+center_tile = Vector2i(-1, -1)
 terrain = -1
+scene_tile_id = -1

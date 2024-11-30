@@ -7,4 +7,7 @@ script = ExtResource("1_rr3xj")
 tile_dictionary = {
 Vector2i(0, 0): Vector2i(0, 6)
 }
-id = "off"
+icon_region = Rect2i(-1, -1, -1, -1)
+center_tile = Vector2i(0, 0)
+terrain = -1
+scene_tile_id = 5

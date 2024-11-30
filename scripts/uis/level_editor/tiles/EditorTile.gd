@@ -1,9 +1,13 @@
 extends ResourceElement
 class_name EditorTile
 
+@export_category("Static Tiles propeties")
 @export var tile_dictionary: Dictionary = {}
 @export var icon_region: Rect2i = Rect2i(-1, -1, -1, -1)
+@export var center_tile: Vector2i = Vector2i.ZERO
 @export var terrain: int = -1
+@export_category("Scene Tiles properties")
+@export var scene_tile_id: int = -1
 
 func new(tiles: Dictionary) -> void:
 	self.tile_dictionary = tiles
@@ -27,6 +31,9 @@ func place(level_map: LevelPlayer, tile_pos: Vector2i, place_background: bool = 
 	var layer: TileMapLayer = level_map.ground
 	if place_background:
 		layer = level_map.background
+	if scene_tile_id >= 0:
+		layer.set_cell(tile_pos, 0, Vector2i.ZERO, scene_tile_id)
+		return
 	for position in tile_dictionary.keys():
 		layer.set_cell(position + tile_pos, 1, tile_dictionary.get(position))
 		if terrain >= 0:

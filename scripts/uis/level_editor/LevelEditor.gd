@@ -2,6 +2,7 @@ extends Node
 class_name LevelEditor
 
 @export var level_map: LevelPlayer
+@export var level_editor_camera: LevelEditorCamera
 @export var level_gui: LevelEditorGUI
 @export var level_settings: LevelSettingsMenu
 @export var brush: BrushComponent
@@ -51,6 +52,7 @@ func on_play_button_pressed() -> void:
 	level_gui.camera.enabled = is_playing
 	level_gui.grid.visible = is_playing
 	player_sprite.visible = is_playing
+	level_editor_camera.can_move = is_playing
 	if is_playing:
 		level_map.set_mode(LevelPlayer.Mode.EDIT)
 	else:
@@ -76,9 +78,6 @@ func load_level(path: String) -> void:
 	var level_id: String = file_name.replace(".tres", "")
 	if level_id.is_empty():
 		PopUpFrame.pop_translated("popup.failed_load_level.invaild_id")
-		return
-	if LevelManager.get_level(level_id) != null:
-		PopUpFrame.pop(TranslationServer.translate("popup.failed_load_level.sheared_id") % level_id, error_icon)
 		return
 	if LevelManager.get_level(level_id) == null:
 		var new_file: FileAccess = FileAccess.open(LevelManager.EXTERNAL_LEVELS_DIR + "/" + file_name, FileAccess.WRITE_READ)

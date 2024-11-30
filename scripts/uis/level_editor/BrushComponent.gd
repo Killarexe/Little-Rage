@@ -53,3 +53,4 @@ func _process(delta: float) -> void:
 func set_selected_tile(new_tile: EditorTile) -> void:
 	selected_tile = new_tile
 	tile_sprite.texture = new_tile.get_icon(level)
+	tile_sprite.offset = new_tile.center_tile * 16

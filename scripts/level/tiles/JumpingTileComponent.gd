@@ -11,8 +11,7 @@ func _ready() -> void:
 func on_body_entered(body: Node2D) -> void:
 	if body is PlayerComponent && !is_player_entered:
 		is_player_entered = true
-		var original_jump_force: float = body.controller.JUMP_FORCE
 		body.controller.JUMP_FORCE *= 1.25
 		await body.controller.on_jump
-		body.controller.JUMP_FORCE = original_jump_force
+		body.controller.JUMP_FORCE /= 1.25
 		is_player_entered = false

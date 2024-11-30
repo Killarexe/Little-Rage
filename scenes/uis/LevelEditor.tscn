@@ -248,9 +248,10 @@ _data = {
 "show": SubResource("Animation_uquq7")
 }
 
-[node name="LevelEditor" type="Node" node_paths=PackedStringArray("level_map", "level_gui", "level_settings", "brush", "tiles_button", "player_sprite")]
+[node name="LevelEditor" type="Node" node_paths=PackedStringArray("level_map", "level_editor_camera", "level_gui", "level_settings", "brush", "tiles_button", "player_sprite")]
 script = ExtResource("1_6j8q1")
 level_map = NodePath("DefaultLevel")
+level_editor_camera = NodePath("Camera2D/LevelEditorCamera")
 level_gui = NodePath("GUI")
 level_settings = NodePath("GUI/LevelSettingsMenu")
 brush = NodePath("Camera2D/BrushComponent")
@@ -407,7 +408,7 @@ control = NodePath("../ColorRect")
 brush = NodePath("../../../Camera2D/BrushComponent")
 
 [node name="FileDialog" type="FileDialog" parent="GUI/Menu"]
-title = "Load level"
+title = "Open a File"
 size = Vector2i(1280, 720)
 visible = true
 borderless = true
