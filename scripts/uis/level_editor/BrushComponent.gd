@@ -46,7 +46,7 @@ func brush(start_position: Vector2, end_position: Vector2 = Vector2.ZERO) -> voi
 					selected_tile.place(level, Vector2i(x, y))
 
 func _process(delta: float) -> void:
-	tile_sprite.visible = enable && !erase
+	tile_sprite.visible = enable && !erase && level.mode == LevelPlayer.Mode.EDIT
 	if tile_sprite.visible:
 		tile_sprite.position = (camera.get_global_mouse_position() / 16.0).floor() * 16 + selected_tile.get_size() / 2
 

@@ -13,6 +13,8 @@ func _ready() -> void:
 	if !level_settings.is_node_ready():
 		await level_settings.ready
 	level_settings.on_settings_changed.connect(on_settings_changed)
+	Game.can_pause = false
+	MusicManager.play_music("level_editor") #TODO: Depends on the level theme
 
 func on_settings_changed() -> void:
 	level_map.set_level_theme(level_settings.level_theme)
