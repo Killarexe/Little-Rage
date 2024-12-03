@@ -14,6 +14,10 @@ Made with the [Godot Engine](https://godotengine.org) by [Killarexe](https://git
 
 You can find versions on the [release page](https://github.com/Killarexe/Little-Rage/releases) and the [itch website](https://killarexe.itch.io/little-rage).
 
+## Test *dev version*
+
+You can download the versions in development (*if you want*) via the actions part.
+
 # Edit / Export 
 
 If you want to edit/export the game. **Download** the repo and [**Install the lastest Godot Version *(4.3)***](https://godotengine.org/)

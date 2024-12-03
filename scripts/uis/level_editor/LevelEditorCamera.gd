@@ -93,12 +93,26 @@ func handle_mouse_pan(event: InputEventMouseMotion):
 func _process(delta: float):
 	if !(Game.is_mobile || debug_mode) && can_move:
 		is_panning = Input.is_action_pressed("middle_click")
-		if Input.is_action_pressed("left_click"):
-			bush.erase = false
-			bush.brush(camera.get_global_mouse_position())
-		elif Input.is_action_pressed("right_click"):
-			bush.erase = true
-			bush.brush(camera.get_global_mouse_position())
+		var is_rect_tool: bool = Input.is_action_pressed("shift")
+		if is_rect_tool:
+			bush.brush_type = BrushComponent.BrushTypes.RECTANGLE
+			if Input.is_action_just_pressed("left_click"):
+				bush.erase = false
+				touch_points[0] = camera.get_global_mouse_position()
+			elif Input.is_action_pressed("right_click"):
+				bush.erase = true
+				touch_points[0] = camera.get_global_mouse_position()
+			if touch_points.values().size() != 0 && (Input.is_action_just_released("left_click") || Input.is_action_just_released("right_click")):
+				bush.brush(touch_points[0], camera.get_global_mouse_position())
+				touch_points.clear()
+		else:
+			bush.brush_type = BrushComponent.BrushTypes.PEN
+			if Input.is_action_pressed("left_click"):
+				bush.erase = false
+				bush.brush(camera.get_global_mouse_position())
+			elif Input.is_action_pressed("right_click"):
+				bush.erase = true
+				bush.brush(camera.get_global_mouse_position())
 		
 		if Input.is_action_pressed("left"):
 			camera.position.x -= 400 / camera.zoom.x * delta
