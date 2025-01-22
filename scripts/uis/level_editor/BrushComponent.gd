@@ -22,40 +22,45 @@ enum BrushTypes {
 func _ready() -> void:
 	tiles_list.on_selected.connect(set_selected_tile)
 
+func brush_pen(tile_position: Vector2i) -> void:
+	if erase:
+		level.ground.set_cell(tile_position, 1)
+	else:
+		selected_tile.place(level, tile_position)
+
+func brush_rectangle(start_tile_position: Vector2i, end_tile_position: Vector2i) -> void:
+	var first_tile_position: Vector2i = start_tile_position
+	var last_tile_position: Vector2i = end_tile_position
+	if start_tile_position < end_tile_position:
+		first_tile_position = end_tile_position
+		last_tile_position = start_tile_position
+	for x in range(last_tile_position.x, first_tile_position.x + 1):
+		for y in range(last_tile_position.y, first_tile_position.y + 1):
+			brush_pen(Vector2i(x, y))
+
+func brush_circle(start_tile_position: Vector2i, end_tile_position: Vector2i) -> void:
+	var radius: int = start_tile_position.distance_squared_to(end_tile_position)
+	var first_tile_position: Vector2i = start_tile_position + Vector2i(radius, radius)
+	var last_tile_position: Vector2i = start_tile_position - Vector2i(radius, radius)
+	for x in range(last_tile_position.x, first_tile_position.x):
+		for y in range(last_tile_position.y, first_tile_position.y):
+			var tile_position: Vector2i = Vector2i(x, y)
+			if start_tile_position.distance_squared_to(tile_position) <= radius:
+				brush_pen(tile_position)
+
 func brush(start_position: Vector2, end_position: Vector2 = Vector2.ZERO) -> void:
 	if !enable:
 		return
-	
 	var start_tile_position: Vector2i = (start_position / 16.0).floor()
-	var end_tile_position: Vector2i = (end_position / 16.0).round()
+	var end_tile_position: Vector2i = (end_position / 16.0).floor()
 	
-	if erase:
-		match brush_type:
-			BrushTypes.PEN:
-				level.ground.set_cell(start_tile_position, 1)
-			BrushTypes.RECTANGLE:
-				var first_tile_position: Vector2i = start_tile_position
-				var last_tile_position: Vector2i = end_tile_position
-				if start_tile_position < end_tile_position:
-					first_tile_position = end_tile_position
-					last_tile_position = start_tile_position
-				for x in range(last_tile_position.x, first_tile_position.x):
-					for y in range(last_tile_position.y, first_tile_position.y):
-						level.ground.set_cell(Vector2i(x, y), 1)
-
-		return
 	match brush_type:
 		BrushTypes.PEN:
-			selected_tile.place(level, start_tile_position)
+			brush_pen(start_tile_position)
 		BrushTypes.RECTANGLE:
-			var first_tile_position: Vector2i = start_tile_position
-			var last_tile_position: Vector2i = end_tile_position
-			if start_tile_position < end_tile_position:
-				first_tile_position = end_tile_position
-				last_tile_position = start_tile_position
-			for x in range(last_tile_position.x, first_tile_position.x):
-				for y in range(last_tile_position.y, first_tile_position.y):
-					selected_tile.place(level, Vector2i(x, y))
+			brush_rectangle(start_tile_position, end_tile_position)
+		BrushTypes.CIRCLE:
+			brush_circle(start_tile_position, end_tile_position)
 
 func _process(delta: float) -> void:
 	tile_sprite.visible = enable && !erase && level.mode == LevelPlayer.Mode.EDIT

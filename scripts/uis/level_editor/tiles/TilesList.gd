@@ -5,6 +5,8 @@ signal on_selected(tile: EditorTile)
 
 const TILES_DIR: String = "res://data/tiles/"
 
+@export var default_tile: EditorTile
+
 var editor_tiles: Array[EditorTile]
 
 func _ready():
@@ -12,7 +14,7 @@ func _ready():
 		if element is EditorTile:
 			editor_tiles.append(element)
 	item_selected.connect(func(index: int): on_selected.emit(editor_tiles[index]))
-	on_selected.emit(editor_tiles[0])
+	on_selected.emit(default_tile)
 
 func create_list(atlas: CompressedTexture2D):
 	clear()

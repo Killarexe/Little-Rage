@@ -433,12 +433,10 @@ control = NodePath("..")
 brush = NodePath("../../../Camera2D/BrushComponent")
 
 [node name="TilesList" type="ItemList" parent="GUI"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -360.0
-offset_bottom = -720.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 auto_height = true
@@ -447,6 +445,7 @@ same_column_width = true
 icon_mode = 0
 icon_scale = 4.0
 script = ExtResource("4_uccun")
+default_tile = ExtResource("3_62fuo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/TilesList"]
 root_node = NodePath("../..")
