@@ -5,6 +5,7 @@ class_name LevelEditorGUI
 @export var level: LevelPlayer
 @export var camera: Camera2D
 @export var grid: GridDrawer
+@export var brush: BrushComponent
 
 @export_category("Menu UIs")
 @export var menu: LevelEditorMenu
@@ -41,6 +42,7 @@ func on_tiles_button_pressed() -> void:
 		tiles_list_animation_player.play("TilesListAnimations/show")
 
 func on_menu_button_pressed() -> void:
+	brush.is_paused = !menu.visible
 	if menu.visible:
 		menu_animation_player.play_backwards("Menu/show")
 	else:

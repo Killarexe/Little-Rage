@@ -274,11 +274,12 @@ tiles_list = NodePath("../../GUI/TilesList")
 level = NodePath("../../DefaultLevel")
 selected_tile = ExtResource("3_62fuo")
 
-[node name="GUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("level", "camera", "grid", "menu", "menu_button", "menu_animation_player", "tiles_button", "tiles_list", "tiles_list_animation_player", "center_button")]
+[node name="GUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("level", "camera", "grid", "brush", "menu", "menu_button", "menu_animation_player", "tiles_button", "tiles_list", "tiles_list_animation_player", "center_button")]
 script = ExtResource("4_tb82e")
 level = NodePath("../DefaultLevel")
 camera = NodePath("../Camera2D")
 grid = NodePath("../GridDrawer")
+brush = NodePath("../Camera2D/BrushComponent")
 menu = NodePath("Menu")
 menu_button = NodePath("MenuButton")
 menu_animation_player = NodePath("Menu/AnimationPlayer")

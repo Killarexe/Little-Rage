@@ -19,6 +19,8 @@ enum BrushTypes {
 @export var erase: bool = false
 @export var brush_type: BrushTypes = BrushTypes.PEN
 
+var is_paused: bool = false
+
 func _ready() -> void:
 	tiles_list.on_selected.connect(set_selected_tile)
 
@@ -49,7 +51,7 @@ func brush_circle(start_tile_position: Vector2i, end_tile_position: Vector2i) ->
 				brush_pen(tile_position)
 
 func brush(start_position: Vector2, end_position: Vector2 = Vector2.ZERO) -> void:
-	if !enable:
+	if !enable || is_paused:
 		return
 	var start_tile_position: Vector2i = (start_position / 16.0).floor()
 	var end_tile_position: Vector2i = (end_position / 16.0).floor()
@@ -63,7 +65,7 @@ func brush(start_position: Vector2, end_position: Vector2 = Vector2.ZERO) -> voi
 			brush_circle(start_tile_position, end_tile_position)
 
 func _process(delta: float) -> void:
-	tile_sprite.visible = enable && !erase && level.mode == LevelPlayer.Mode.EDIT
+	tile_sprite.visible = enable && !erase && level.mode == LevelPlayer.Mode.EDIT && !is_paused
 	if tile_sprite.visible:
 		tile_sprite.position = (camera.get_global_mouse_position() / 16.0).floor() * 16 + selected_tile.get_size() / 2
 

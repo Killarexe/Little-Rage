@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bkwmpwrjnhece"]
+[gd_scene load_steps=25 format=3 uid="uid://bkwmpwrjnhece"]
 
 [ext_resource type="Script" path="res://scripts/level/player/PlayerComponent.gd" id="1_fvwbd"]
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="4_433oa"]
@@ -23,6 +23,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ve1"]
 size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ksqbl"]
+size = Vector2(1280, 720)
 
 [sub_resource type="Animation" id="Animation_10f12"]
 length = 0.001
@@ -142,6 +145,14 @@ player = NodePath("../..")
 player_status_ui = NodePath("../PlayerStatus")
 
 [node name="PauseMenu" parent="Menus" instance=ExtResource("16_rp8rw")]
+
+[node name="SkipControl" type="CanvasLayer" parent="Menus"]
+visible = false
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Menus/SkipControl"]
+position = Vector2(640, 360)
+shape = SubResource("RectangleShape2D_ksqbl")
+action = "pause"
 
 [node name="SoundEffectPlayer" type="AudioStreamPlayer2D" parent="."]
 bus = &"Sound Effects"

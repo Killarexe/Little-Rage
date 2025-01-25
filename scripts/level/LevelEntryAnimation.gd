@@ -3,6 +3,8 @@ extends Node2D
 @export var player: PlayerComponent
 @export var player_camera: Camera2D
 @export var player_menus: PlayerMenus
+@export var skip_control: CanvasLayer
+
 @onready var animation_camera: Camera2D = $Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -17,10 +19,15 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") && animation_player.is_playing():
-		animation_player.stop()
-		MusicManager.stop()
-		animation_player.animation_finished.emit()
-		enable_status()
+		skip()
+
+func skip():
+	if Game.is_mobile:
+		skip_control.visible = false
+	animation_player.stop()
+	MusicManager.stop()
+	animation_player.animation_finished.emit()
+	enable_status()
 
 func play_animation() -> void:
 	await player.ready
@@ -28,6 +35,8 @@ func play_animation() -> void:
 	player_menus.mobile_control.visible = false
 	animation_camera.enabled = true
 	player_camera.enabled = false
+	if Game.is_mobile:
+		skip_control.visible = true
 	Game.can_pause = false
 	get_tree().paused = true
 	animation_player.play("entry")

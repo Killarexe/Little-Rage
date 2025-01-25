@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://netao5cw804d"]
+[gd_scene load_steps=11 format=3 uid="uid://netao5cw804d"]
 
 [ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_vc1g0"]
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="2_6powy"]
 [ext_resource type="Script" path="res://scripts/level/tiles/TileSprite.gd" id="3_2w2g5"]
 [ext_resource type="Script" path="res://scripts/level/tiles/ColorSwitchTileComponent.gd" id="3_kulow"]
 [ext_resource type="Script" path="res://scripts/level/tiles/ColorSpriteTile.gd" id="4_3xcof"]
+[ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="6_e1y30"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_difeg"]
 atlas = ExtResource("2_6powy")
@@ -42,12 +43,17 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_mwyoo")
 
-[node name="ColorSwitchTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile", "off_texture")]
+[node name="ColorSwitchTileComponent" type="Node" parent="." node_paths=PackedStringArray("interactive_tile", "off_texture", "sound_effect_player")]
 script = ExtResource("3_kulow")
 interactive_tile = NodePath("..")
 off_texture = NodePath("../Sprite2D")
+sound_effect_player = NodePath("../SoundEffectPlayer")
 
 [node name="ColorTileComponent" type="Node" parent="." node_paths=PackedStringArray("on_red_texture", "on_blue_texture")]
 script = ExtResource("4_3xcof")
 on_red_texture = NodePath("../Sprite2D2")
 on_blue_texture = NodePath("../Sprite2D")
+
+[node name="SoundEffectPlayer" type="AudioStreamPlayer2D" parent="."]
+volume_db = 3.0
+script = ExtResource("6_e1y30")
