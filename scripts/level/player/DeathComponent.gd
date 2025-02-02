@@ -23,6 +23,8 @@ func _physics_process(_delta: float) -> void:
 
 func die() -> void:
 	sound_effects.play_sfx("die")
+	if !Input.get_connected_joypads().is_empty():
+		Input.start_joy_vibration(0, 1.0, 1.0, 0.25)
 	death_count += 1
 	on_death.emit(death_count)
 	player.global_position = spawn_point
