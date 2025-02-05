@@ -26,7 +26,7 @@ func play_animation(transition_type: int, inverse: bool) -> bool:
 
 func change_scene(path: String, in_anim_id: int = 2, is_in_anim_inv: bool = false, out_anim_id: int = 3, is_out_anim_inv: bool = false) -> void:
 	if animation_player.is_playing():
-		await animation_player.animation_finished
+		return
 	prepare()
 	if play_animation(in_anim_id, is_in_anim_inv):
 		await animation_player.animation_finished
@@ -37,7 +37,7 @@ func change_scene(path: String, in_anim_id: int = 2, is_in_anim_inv: bool = fals
 
 func change_packed(packed: PackedScene, in_anim_id: int = 2, is_in_anim_inv: bool = false, out_anim_id: int = 3, is_out_anim_inv: bool = false) -> void:
 	if animation_player.is_playing():
-		await animation_player.animation_finished
+		return
 	prepare()
 	if play_animation(in_anim_id, is_in_anim_inv):
 		await animation_player.animation_finished

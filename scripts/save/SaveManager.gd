@@ -16,7 +16,8 @@ const DEFAULT_SAVE: Dictionary = {
 	"sound_effects_volume": 25.0,
 	"loot_box_count": 0,
 	"window_size": 5,
-	"lang": "en"
+	"lang": "en",
+	"death_count": 0
 }
 
 func _ready() -> void:

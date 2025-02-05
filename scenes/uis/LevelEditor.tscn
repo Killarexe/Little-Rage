@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dcjl70toseb36"]
+[gd_scene load_steps=37 format=3 uid="uid://dcjl70toseb36"]
 
 [ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditor.gd" id="1_6j8q1"]
 [ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditorCamera.gd" id="1_a2bpn"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/icons/quit.png" id="7_x2onc"]
 [ext_resource type="Texture2D" uid="uid://bnq26jdctplio" path="res://assets/textures/ui/icons/open.png" id="8_ngjq6"]
 [ext_resource type="Texture2D" uid="uid://dknlajug6w68u" path="res://assets/textures/ui/icons/settings.png" id="9_0ub0d"]
+[ext_resource type="Texture2D" uid="uid://dvi2sgpxm0fu1" path="res://assets/textures/ui/icons/eraser.png" id="9_nnlbo"]
+[ext_resource type="Script" path="res://scripts/uis/level_editor/ToolsList.gd" id="11_d1r5d"]
 [ext_resource type="Texture2D" uid="uid://c3leilbjuyb5y" path="res://assets/textures/ui/icons/move.png" id="15_mgqjn"]
 [ext_resource type="PackedScene" uid="uid://o458ah6nqt0b" path="res://scenes/uis/LevelSettingsMenu.tscn" id="16_cwana"]
 [ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="18_bvqml"]
@@ -304,6 +306,33 @@ script = ExtResource("5_3edqr")
 control = NodePath("..")
 brush = NodePath("../../../Camera2D/BrushComponent")
 
+[node name="ToolsList" type="ItemList" parent="GUI" node_paths=PackedStringArray("brush")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -125.0
+offset_right = 176.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+item_count = 4
+max_columns = 4
+icon_scale = 5.0
+item_0/icon = ExtResource("9_nnlbo")
+item_1/icon = ExtResource("7_x2onc")
+item_2/icon = ExtResource("7_x2onc")
+item_3/icon = ExtResource("7_x2onc")
+script = ExtResource("11_d1r5d")
+brush = NodePath("../../Camera2D/BrushComponent")
+
+[node name="LevelEditorUIElement" type="Node" parent="GUI/ToolsList" node_paths=PackedStringArray("control", "brush")]
+script = ExtResource("5_3edqr")
+control = NodePath("..")
+brush = NodePath("../../../Camera2D/BrushComponent")
+
 [node name="Menu" type="Control" parent="GUI" node_paths=PackedStringArray("level_editor", "brush", "level_settings_animation_player", "quit_button", "save_button", "load_button", "settings_button", "file_dialog", "animation_player")]
 visible = false
 layout_mode = 3
@@ -434,10 +463,12 @@ control = NodePath("..")
 brush = NodePath("../../../Camera2D/BrushComponent")
 
 [node name="TilesList" type="ItemList" parent="GUI"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -360.0
+offset_top = -400.0
+offset_bottom = -760.0
 grow_horizontal = 2
 grow_vertical = 2
 auto_height = true

@@ -7,4 +7,4 @@
 script = ExtResource("2_eutbw")
 icon = ExtResource("1_rqr75")
 type = 1
-hidden = true
+hidden = false

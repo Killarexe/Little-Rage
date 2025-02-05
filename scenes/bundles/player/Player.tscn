@@ -147,7 +147,6 @@ player_status_ui = NodePath("../PlayerStatus")
 [node name="PauseMenu" parent="Menus" instance=ExtResource("16_rp8rw")]
 
 [node name="SkipControl" type="CanvasLayer" parent="Menus"]
-visible = false
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Menus/SkipControl"]
 position = Vector2(640, 360)

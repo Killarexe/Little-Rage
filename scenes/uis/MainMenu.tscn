@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://cto6ho6cpiuyw" path="res://assets/textures/ui/little_rage_logo.png" id="3_4yirm"]
 [ext_resource type="PackedScene" uid="uid://0sui0mov7cam" path="res://scenes/levels/TitleScreenLevel.tscn" id="3_gaxhl"]
 [ext_resource type="Animation" uid="uid://b52wj1p1e1ckf" path="res://assets/animations/logo_move.res" id="6_6jai1"]
-[ext_resource type="LabelSettings" uid="uid://deaqu53istr0t" path="res://assets/style/label_settings/small_label.tres" id="9_0et4q"]
 [ext_resource type="Animation" uid="uid://cx2cp7vkuhysr" path="res://assets/animations/splash_text_zoom.res" id="9_c25sm"]
 [ext_resource type="Texture2D" uid="uid://c5yejwo4hxfqa" path="res://assets/textures/ui/icons/red-circle.png" id="9_gumy7"]
 [ext_resource type="Script" path="res://scripts/uis/main_menu/SplashText.gd" id="9_uac2h"]
 [ext_resource type="Script" path="res://scripts/uis/main_menu/Information.gd" id="10_5eid8"]
 [ext_resource type="Script" path="res://scripts/uis/LootBoxCountNotifier.gd" id="10_5hwgr"]
+[ext_resource type="LabelSettings" uid="uid://dm7r1nxrodf5k" path="res://assets/style/label_settings/small_label_outlined.tres" id="11_5khbo"]
 
 [sub_resource type="Animation" id="Animation_u5ewi"]
 length = 0.001
@@ -408,13 +408,15 @@ offset_bottom = -47.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_fjp12")
-text = "Version Null. By Killar.exe"
-label_settings = ExtResource("9_0et4q")
+text = "Version Null, by Killar."
+label_settings = ExtResource("11_5khbo")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_5eid8")
 
 [node name="Button" type="Button" parent="CanvasLayer/Information"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
