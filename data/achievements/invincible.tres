@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://bnymqk1cumhf4"]
 
 [ext_resource type="Texture2D" uid="uid://ccxonb7svtht0" path="res://assets/textures/achievement_icons/invincible.png" id="1_rqr75"]
-[ext_resource type="Script" path="res://scripts/achievement/Achievement.gd" id="2_eutbw"]
+[ext_resource type="Script" uid="uid://cgblm7fgwq53y" path="res://scripts/achievement/Achievement.gd" id="2_eutbw"]
 
 [resource]
 script = ExtResource("2_eutbw")

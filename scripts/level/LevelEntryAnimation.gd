@@ -12,6 +12,7 @@ var countdown_prefab: Resource = load("res://scenes/bundles/uis/countdown.tscn")
 
 func _ready() -> void:
 	await player_menus.ready
+	print(LevelManager.current_level)
 	if LevelManager.current_level.is_empty():
 		enable_status()
 	else:

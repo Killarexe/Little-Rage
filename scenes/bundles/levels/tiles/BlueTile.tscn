@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://dmdian5sdbbt7"]
 
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="1_gbq5v"]
-[ext_resource type="Script" path="res://scripts/level/tiles/TileSprite.gd" id="2_6omyq"]
-[ext_resource type="Script" path="res://scripts/level/tiles/ColorSpriteTile.gd" id="2_hnthn"]
-[ext_resource type="Script" path="res://scripts/level/tiles/ColorCollisionTile.gd" id="3_q2ov7"]
+[ext_resource type="Script" uid="uid://bdr0kn6eo8ujh" path="res://scripts/level/tiles/TileSprite.gd" id="2_6omyq"]
+[ext_resource type="Script" uid="uid://cwjrdtl8ggkaa" path="res://scripts/level/tiles/ColorSpriteTile.gd" id="2_hnthn"]
+[ext_resource type="Script" uid="uid://v6rqmn4rvvr4" path="res://scripts/level/tiles/ColorCollisionTile.gd" id="3_q2ov7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p01wy"]
 size = Vector2(16, 16)

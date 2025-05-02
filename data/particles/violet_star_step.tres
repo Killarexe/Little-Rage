@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerParticle" load_steps=4 format=3 uid="uid://dicwrhwuhv61f"]
 
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/particle/PlayerParticle.gd" id="1_pcblo"]
+[ext_resource type="Script" uid="uid://dg7g47et30rh" path="res://scripts/level/player/cosmetic/particle/PlayerParticle.gd" id="1_pcblo"]
 [ext_resource type="Texture2D" uid="uid://cevvrpksqi5gm" path="res://assets/textures/player/particles/violet_star.png" id="2_k37ch"]
 
 [sub_resource type="ParticleProcessMaterial" id="3"]

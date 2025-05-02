@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://o458ah6nqt0b"]
 
-[ext_resource type="Script" path="res://scripts/uis/level_editor/LevelSettingsMenu.gd" id="1_w1w2a"]
+[ext_resource type="Script" uid="uid://d0cmvwdbjrw0d" path="res://scripts/uis/level_editor/LevelSettingsMenu.gd" id="1_w1w2a"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="2_63owt"]
 [ext_resource type="LabelSettings" uid="uid://cd8gvl774mr2v" path="res://assets/style/label_settings/medium_label.tres" id="3_7xple"]
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="3_8dnfc"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cr2dnnd27sq2g" path="res://assets/textures/tilesets/mountains.png" id="4_bl5vv"]
 [ext_resource type="Texture2D" uid="uid://c6j61lpa3u1bc" path="res://assets/textures/tilesets/caves.png" id="4_roww5"]
 [ext_resource type="Texture2D" uid="uid://qukl3jj38j8b" path="res://assets/textures/tilesets/volcano.png" id="5_upsi7"]
-[ext_resource type="Script" path="res://scripts/uis/ButtonList.gd" id="7_wewji"]
+[ext_resource type="Script" uid="uid://b46mrpwhqj1bn" path="res://scripts/uis/ButtonList.gd" id="7_wewji"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_spcv7"]
 atlas = ExtResource("3_8dnfc")

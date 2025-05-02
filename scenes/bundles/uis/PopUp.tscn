@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bv1adtupq1xbb"]
 
-[ext_resource type="Script" path="res://scripts/uis/PopUp.gd" id="1_168h5"]
+[ext_resource type="Script" uid="uid://bjcn8vfti2on1" path="res://scripts/uis/PopUp.gd" id="1_168h5"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="2_jsbix"]
 [ext_resource type="LabelSettings" uid="uid://deaqu53istr0t" path="res://assets/style/label_settings/small_label.tres" id="3_cm70x"]
 
@@ -23,7 +23,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cy7q1"]
 _data = {
-"pop": SubResource("Animation_vvido")
+&"pop": SubResource("Animation_vvido")
 }
 
 [node name="PopUp" type="ColorRect" node_paths=PackedStringArray("animation_player", "button", "icon", "text")]

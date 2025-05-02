@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://dfamu2vvdstal"]
 
-[ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_fprxg"]
-[ext_resource type="Script" path="res://scripts/level/tiles/CheckpointTileComponent.gd" id="2_1p80s"]
+[ext_resource type="Script" uid="uid://ewo6t0aq1g07" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_fprxg"]
+[ext_resource type="Script" uid="uid://dxamj24uy42yb" path="res://scripts/level/tiles/CheckpointTileComponent.gd" id="2_1p80s"]
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="2_3mybj"]
 [ext_resource type="PackedScene" uid="uid://ci0p37ottv00" path="res://scenes/bundles/particles/DefaultCheckpointParticle.tscn" id="2_k1qwm"]
-[ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="4_il7se"]
-[ext_resource type="Script" path="res://scripts/level/tiles/TileSprite.gd" id="5_fg4lf"]
+[ext_resource type="Script" uid="uid://der52b4bpslkb" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="4_il7se"]
+[ext_resource type="Script" uid="uid://bdr0kn6eo8ujh" path="res://scripts/level/tiles/TileSprite.gd" id="5_fg4lf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0a1jv"]
 atlas = ExtResource("2_3mybj")

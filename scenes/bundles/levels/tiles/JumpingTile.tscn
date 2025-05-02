@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bkmfbqqcxwh4u"]
 
-[ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_hd4bw"]
+[ext_resource type="Script" uid="uid://ewo6t0aq1g07" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_hd4bw"]
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="4_2cugo"]
-[ext_resource type="Script" path="res://scripts/level/tiles/JumpingTileComponent.gd" id="4_rgluw"]
-[ext_resource type="Script" path="res://scripts/level/tiles/TileSprite.gd" id="5_cc0la"]
+[ext_resource type="Script" uid="uid://b2rsfo2jhnnqg" path="res://scripts/level/tiles/JumpingTileComponent.gd" id="4_rgluw"]
+[ext_resource type="Script" uid="uid://bdr0kn6eo8ujh" path="res://scripts/level/tiles/TileSprite.gd" id="5_cc0la"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0a1jv"]
 atlas = ExtResource("4_2cugo")

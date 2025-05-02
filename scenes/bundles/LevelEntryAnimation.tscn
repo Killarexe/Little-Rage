@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dhxkop4hjnx1p"]
 
-[ext_resource type="Script" path="res://scripts/level/LevelEntryAnimation.gd" id="1_s4tn7"]
+[ext_resource type="Script" uid="uid://bq2gwv5qis88k" path="res://scripts/level/LevelEntryAnimation.gd" id="1_s4tn7"]
 
 [sub_resource type="Animation" id="Animation_hw0rh"]
 length = 0.001
@@ -49,8 +49,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_08ra1"]
 _data = {
-"RESET": SubResource("Animation_hw0rh"),
-"entry": SubResource("Animation_wjaiv")
+&"RESET": SubResource("Animation_hw0rh"),
+&"entry": SubResource("Animation_wjaiv")
 }
 
 [node name="LevelEntryAnimation" type="Node2D"]

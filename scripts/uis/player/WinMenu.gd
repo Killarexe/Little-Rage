@@ -63,6 +63,7 @@ func mexican_mode():
 	Game.instanceNodeAtPos(load("res://scenes/bundles/particles/tacosParticle.tscn"), self, Vector2(0, -100))
 
 func exit():
+	LevelManager.current_level = ""
 	Game.can_pause = true
 	SaveManager.save()
 	SceneManager.change_scene("res://scenes/uis/SoloMenu.tscn")

@@ -1,28 +1,31 @@
-[gd_scene load_steps=37 format=3 uid="uid://dcjl70toseb36"]
+[gd_scene load_steps=40 format=3 uid="uid://dcjl70toseb36"]
 
-[ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditor.gd" id="1_6j8q1"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditorCamera.gd" id="1_a2bpn"]
+[ext_resource type="Script" uid="uid://ds61718ohpxx" path="res://scripts/uis/level_editor/LevelEditor.gd" id="1_6j8q1"]
+[ext_resource type="Script" uid="uid://cjux56w633qdk" path="res://scripts/uis/level_editor/LevelEditorCamera.gd" id="1_a2bpn"]
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/levels/DefaultLevel.tscn" id="1_qymvn"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/BrushComponent.gd" id="2_ixtcu"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/GridDrawer.gd" id="2_nnwtm"]
+[ext_resource type="Script" uid="uid://d0ex3ejwvic3b" path="res://scripts/uis/level_editor/BrushComponent.gd" id="2_ixtcu"]
+[ext_resource type="Script" uid="uid://hc6dlddd0sro" path="res://scripts/uis/level_editor/GridDrawer.gd" id="2_nnwtm"]
 [ext_resource type="Resource" uid="uid://os51hi6qtijs" path="res://data/tiles/grass.tres" id="3_62fuo"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditorGUI.gd" id="4_tb82e"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/tiles/TilesList.gd" id="4_uccun"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditorUIElement.gd" id="5_3edqr"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/TilesButton.gd" id="5_x7p6s"]
+[ext_resource type="Script" uid="uid://dsuchq2rm36vf" path="res://scripts/uis/level_editor/LevelEditorGUI.gd" id="4_tb82e"]
+[ext_resource type="Script" uid="uid://x2b5oqu2r0h8" path="res://scripts/uis/level_editor/tiles/TilesList.gd" id="4_uccun"]
+[ext_resource type="Script" uid="uid://bsjtoa2w2utak" path="res://scripts/uis/level_editor/LevelEditorUIElement.gd" id="5_3edqr"]
+[ext_resource type="Script" uid="uid://sn1thr2losqk" path="res://scripts/uis/level_editor/TilesButton.gd" id="5_x7p6s"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="6_nx1db"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/LevelEditorMenu.gd" id="7_5fyhc"]
+[ext_resource type="Script" uid="uid://c5f701v8lhrfx" path="res://scripts/uis/level_editor/LevelEditorMenu.gd" id="7_5fyhc"]
 [ext_resource type="Texture2D" uid="uid://k4siyrr0ptjm" path="res://assets/textures/ui/icons/save.png" id="7_25qh6"]
 [ext_resource type="Texture2D" uid="uid://cp8qrd6ckdsfh" path="res://assets/textures/ui/icons/menu.png" id="7_p3ylo"]
 [ext_resource type="Texture2D" uid="uid://ksfev1r6k01h" path="res://assets/textures/ui/icons/quit.png" id="7_x2onc"]
 [ext_resource type="Texture2D" uid="uid://bnq26jdctplio" path="res://assets/textures/ui/icons/open.png" id="8_ngjq6"]
 [ext_resource type="Texture2D" uid="uid://dknlajug6w68u" path="res://assets/textures/ui/icons/settings.png" id="9_0ub0d"]
 [ext_resource type="Texture2D" uid="uid://dvi2sgpxm0fu1" path="res://assets/textures/ui/icons/eraser.png" id="9_nnlbo"]
-[ext_resource type="Script" path="res://scripts/uis/level_editor/ToolsList.gd" id="11_d1r5d"]
+[ext_resource type="Texture2D" uid="uid://c3rvm3m1lc88w" path="res://assets/textures/ui/icons/rectangle_tool.png" id="10_2rtut"]
+[ext_resource type="Texture2D" uid="uid://cg1id4j8wfxls" path="res://assets/textures/ui/icons/pen_tool.png" id="10_xl7do"]
+[ext_resource type="Script" uid="uid://dr3r4n03wqypf" path="res://scripts/uis/level_editor/ToolsList.gd" id="11_d1r5d"]
+[ext_resource type="Texture2D" uid="uid://wa2hjjm8cqjx" path="res://assets/textures/ui/icons/circle_tool.png" id="11_w7bqp"]
 [ext_resource type="Texture2D" uid="uid://c3leilbjuyb5y" path="res://assets/textures/ui/icons/move.png" id="15_mgqjn"]
 [ext_resource type="PackedScene" uid="uid://o458ah6nqt0b" path="res://scenes/uis/LevelSettingsMenu.tscn" id="16_cwana"]
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="18_bvqml"]
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="19_7fci2"]
+[ext_resource type="Script" uid="uid://bl11t1bqyd5kg" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="18_bvqml"]
+[ext_resource type="Script" uid="uid://dldjeb1xxffk6" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="19_7fci2"]
 [ext_resource type="Texture2D" uid="uid://dxd7u5xffvp21" path="res://assets/textures/ui/mobile_player_interface/left.png" id="22_dgyj2"]
 
 [sub_resource type="Animation" id="Animation_f4ms0"]
@@ -54,7 +57,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5qdqv"]
 _data = {
-"RESET": SubResource("Animation_f4ms0")
+&"RESET": SubResource("Animation_f4ms0")
 }
 
 [sub_resource type="Animation" id="Animation_uquiq"]
@@ -117,8 +120,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_afge7"]
 _data = {
-"show": SubResource("Animation_uquiq"),
-"show_load_dialog": SubResource("Animation_ibxwl")
+&"show": SubResource("Animation_uquiq"),
+&"show_load_dialog": SubResource("Animation_ibxwl")
 }
 
 [sub_resource type="Animation" id="Animation_c1733"]
@@ -181,8 +184,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ov31"]
 _data = {
-"hide": SubResource("Animation_c1733"),
-"show": SubResource("Animation_uanjl")
+&"hide": SubResource("Animation_c1733"),
+&"show": SubResource("Animation_uanjl")
 }
 
 [sub_resource type="Animation" id="Animation_aqflu"]
@@ -214,7 +217,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8tomp"]
 _data = {
-"RESET": SubResource("Animation_aqflu")
+&"RESET": SubResource("Animation_aqflu")
 }
 
 [sub_resource type="Animation" id="Animation_uquq7"]
@@ -247,7 +250,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8oh35"]
 _data = {
-"show": SubResource("Animation_uquq7")
+&"show": SubResource("Animation_uquq7")
 }
 
 [node name="LevelEditor" type="Node" node_paths=PackedStringArray("level_map", "level_editor_camera", "level_gui", "level_settings", "brush", "tiles_button", "player_sprite")]
@@ -263,10 +266,10 @@ player_sprite = NodePath("PlayerSkinSprite")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
-[node name="LevelEditorCamera" type="Node" parent="Camera2D" node_paths=PackedStringArray("camera", "bush")]
+[node name="LevelEditorCamera" type="Node" parent="Camera2D" node_paths=PackedStringArray("camera", "brush")]
 script = ExtResource("1_a2bpn")
 camera = NodePath("..")
-bush = NodePath("../BrushComponent")
+brush = NodePath("../BrushComponent")
 
 [node name="BrushComponent" type="Node" parent="Camera2D" node_paths=PackedStringArray("camera", "tile_sprite", "tiles_list", "level")]
 script = ExtResource("2_ixtcu")
@@ -318,13 +321,15 @@ offset_right = 176.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
+allow_reselect = true
+allow_search = false
 item_count = 4
 max_columns = 4
 icon_scale = 5.0
 item_0/icon = ExtResource("9_nnlbo")
-item_1/icon = ExtResource("7_x2onc")
-item_2/icon = ExtResource("7_x2onc")
-item_3/icon = ExtResource("7_x2onc")
+item_1/icon = ExtResource("10_xl7do")
+item_2/icon = ExtResource("10_2rtut")
+item_3/icon = ExtResource("11_w7bqp")
 script = ExtResource("11_d1r5d")
 brush = NodePath("../../Camera2D/BrushComponent")
 
@@ -353,8 +358,8 @@ animation_player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/Menu"]
 libraries = {
-"": SubResource("AnimationLibrary_5qdqv"),
-"Menu": SubResource("AnimationLibrary_afge7")
+&"": SubResource("AnimationLibrary_5qdqv"),
+&"Menu": SubResource("AnimationLibrary_afge7")
 }
 
 [node name="ColorRect" type="ColorRect" parent="GUI/Menu"]
@@ -482,7 +487,7 @@ default_tile = ExtResource("3_62fuo")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/TilesList"]
 root_node = NodePath("../..")
 libraries = {
-"TilesListAnimations": SubResource("AnimationLibrary_5ov31")
+&"TilesListAnimations": SubResource("AnimationLibrary_5ov31")
 }
 playback_default_blend_time = 0.1
 
@@ -561,8 +566,8 @@ brush = NodePath("../../../../Camera2D/BrushComponent")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GUI/LevelSettingsMenu"]
 libraries = {
-"": SubResource("AnimationLibrary_8tomp"),
-"LevelSettingsMenu": SubResource("AnimationLibrary_8oh35")
+&"": SubResource("AnimationLibrary_8tomp"),
+&"LevelSettingsMenu": SubResource("AnimationLibrary_8oh35")
 }
 
 [node name="GridDrawer" type="Node2D" parent="." node_paths=PackedStringArray("camera")]

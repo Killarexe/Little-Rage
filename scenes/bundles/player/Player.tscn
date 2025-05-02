@@ -1,12 +1,12 @@
 [gd_scene load_steps=25 format=3 uid="uid://bkwmpwrjnhece"]
 
-[ext_resource type="Script" path="res://scripts/level/player/PlayerComponent.gd" id="1_fvwbd"]
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="4_433oa"]
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="5_nuugr"]
-[ext_resource type="Script" path="res://scripts/level/player/CameraController.gd" id="6_bc5q0"]
+[ext_resource type="Script" uid="uid://bfs5k272tk1ct" path="res://scripts/level/player/PlayerComponent.gd" id="1_fvwbd"]
+[ext_resource type="Script" uid="uid://bl11t1bqyd5kg" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="4_433oa"]
+[ext_resource type="Script" uid="uid://dldjeb1xxffk6" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="5_nuugr"]
+[ext_resource type="Script" uid="uid://b6hyq2qhlhbkb" path="res://scripts/level/player/CameraController.gd" id="6_bc5q0"]
 [ext_resource type="PackedScene" uid="uid://dhxkop4hjnx1p" path="res://scenes/bundles/LevelEntryAnimation.tscn" id="7_2geyv"]
 [ext_resource type="PackedScene" uid="uid://dhqud11vg5pq4" path="res://scenes/bundles/player/ParallaxBackground.tscn" id="8_nd3ki"]
-[ext_resource type="Script" path="res://scripts/uis/player/PlayerMenus.gd" id="9_maer3"]
+[ext_resource type="Script" uid="uid://c5wfxr54lu0pv" path="res://scripts/uis/player/PlayerMenus.gd" id="9_maer3"]
 [ext_resource type="Texture2D" uid="uid://dxd7u5xffvp21" path="res://assets/textures/ui/mobile_player_interface/left.png" id="10_lrdbt"]
 [ext_resource type="Texture2D" uid="uid://bcvu2cbuyoknu" path="res://assets/textures/ui/mobile_player_interface/right.png" id="11_l1qwt"]
 [ext_resource type="Texture2D" uid="uid://cv22lwoysa8ap" path="res://assets/textures/ui/mobile_player_interface/jump.png" id="12_27o0f"]
@@ -14,11 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://t7l5lywub7jg" path="res://scenes/bundles/uis/PlayerStatus.tscn" id="14_arcat"]
 [ext_resource type="PackedScene" uid="uid://c027b4usebimx" path="res://scenes/uis/WinMenu.tscn" id="15_86y6y"]
 [ext_resource type="PackedScene" uid="uid://bruwtum1c48go" path="res://scenes/uis/PauseMenu.tscn" id="16_rp8rw"]
-[ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="17_ob0nn"]
-[ext_resource type="Script" path="res://scripts/level/player/PlayerTimer.gd" id="18_ms4pk"]
-[ext_resource type="Script" path="res://scripts/level/player/PlayerControllerComponent.gd" id="19_d4lqc"]
-[ext_resource type="Script" path="res://scripts/level/player/DeathComponent.gd" id="20_xjlge"]
-[ext_resource type="Script" path="res://scripts/level/player/SkinDistortion.gd" id="21_c2ukq"]
+[ext_resource type="Script" uid="uid://der52b4bpslkb" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="17_ob0nn"]
+[ext_resource type="Script" uid="uid://dnby1n1m83bm" path="res://scripts/level/player/PlayerTimer.gd" id="18_ms4pk"]
+[ext_resource type="Script" uid="uid://rrrud3pfyy3w" path="res://scripts/level/player/PlayerControllerComponent.gd" id="19_d4lqc"]
+[ext_resource type="Script" uid="uid://cr2xsbg3n8221" path="res://scripts/level/player/DeathComponent.gd" id="20_xjlge"]
+[ext_resource type="Script" uid="uid://0tb13aba01bw" path="res://scripts/level/player/SkinDistortion.gd" id="21_c2ukq"]
 [ext_resource type="AnimationLibrary" uid="uid://lq7ufb3fx0yh" path="res://assets/animations/PlayerAnimations.res" id="22_pcsr0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ve1"]
@@ -56,7 +56,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pm6cf"]
 _data = {
-"RESET": SubResource("Animation_10f12")
+&"RESET": SubResource("Animation_10f12")
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("controller", "death_component", "timer") groups=["Player", "player"]]
@@ -92,10 +92,11 @@ position_smoothing_enabled = true
 script = ExtResource("6_bc5q0")
 player = NodePath("..")
 
-[node name="LevelEntryAnimation" parent="." node_paths=PackedStringArray("player", "player_camera", "player_menus") instance=ExtResource("7_2geyv")]
+[node name="LevelEntryAnimation" parent="." node_paths=PackedStringArray("player", "player_camera", "player_menus", "skip_control") instance=ExtResource("7_2geyv")]
 player = NodePath("..")
 player_camera = NodePath("../Camera2D")
 player_menus = NodePath("../Menus")
+skip_control = NodePath("../Menus/SkipControl")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("8_nd3ki")]
 
@@ -183,8 +184,8 @@ controller = NodePath("../PlayerControllerComponent")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_pm6cf"),
-"PlayerAnimations": ExtResource("22_pcsr0")
+&"": SubResource("AnimationLibrary_pm6cf"),
+&"PlayerAnimations": ExtResource("22_pcsr0")
 }
 autoplay = "camera_enter"
 blend_times = [&"PlayerAnimations/jump", &"PlayerAnimations/RESET", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/jump", 1.0, &"PlayerAnimations/jump", &"PlayerAnimations/land", 1.0, &"PlayerAnimations/land", &"PlayerAnimations/RESET", 1.0]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c2q47ldtp782l"]
 
-[ext_resource type="Script" path="res://scripts/uis/player/Countdown.gd" id="1_bp1h4"]
+[ext_resource type="Script" uid="uid://dgw7wsvhve7c2" path="res://scripts/uis/player/Countdown.gd" id="1_bp1h4"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_o7ci3"]
 [ext_resource type="AudioStream" uid="uid://cr20uo2pstjq" path="res://assets/sound_effects/counter.ogg" id="3_5kxys"]
 
@@ -102,8 +102,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6jeul"]
 _data = {
-"RESET": SubResource("Animation_4a60o"),
-"countdown": SubResource("Animation_mw4mr")
+&"RESET": SubResource("Animation_4a60o"),
+&"countdown": SubResource("Animation_mw4mr")
 }
 
 [node name="Countdown" type="CanvasLayer"]

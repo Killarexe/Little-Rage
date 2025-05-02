@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/levels/DefaultLevel.tscn" id="1_cys63"]
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_pxu12"]
-[ext_resource type="Script" path="res://scripts/uis/solo_menu/MainMenu.gd" id="2_dttf3"]
+[ext_resource type="Script" uid="uid://div3lbrefvdcg" path="res://scripts/uis/solo_menu/MainMenu.gd" id="2_dttf3"]
 [ext_resource type="Texture2D" uid="uid://bc081015vjirg" path="res://assets/textures/ui/icons/default_levels.png" id="3_pkov0"]
 [ext_resource type="Texture2D" uid="uid://bjssxpgxg40v0" path="res://assets/textures/ui/icons/custom_levels.png" id="4_npu0h"]
-[ext_resource type="Script" path="res://scripts/uis/solo_menu/DefaultLevelsSelectionMenu.gd" id="5_0r2vh"]
-[ext_resource type="Script" path="res://scripts/uis/solo_menu/level_selector/LevelsList.gd" id="5_yjyec"]
+[ext_resource type="Script" uid="uid://cir0y4dnt1qmh" path="res://scripts/uis/solo_menu/DefaultLevelsSelectionMenu.gd" id="5_0r2vh"]
+[ext_resource type="Script" uid="uid://dd5kcx81jrrcf" path="res://scripts/uis/solo_menu/level_selector/LevelsList.gd" id="5_yjyec"]
 [ext_resource type="LabelSettings" uid="uid://dfu1k8upq5eqm" path="res://assets/style/label_settings/shadow_medium_label.tres" id="6_1dg4k"]
 [ext_resource type="PackedScene" uid="uid://bavveoh64wx0w" path="res://scenes/uis/LevelDescription.tscn" id="7_paoa7"]
-[ext_resource type="Script" path="res://scripts/uis/solo_menu/CustomLevelsSelectionMenu.gd" id="8_lc2la"]
+[ext_resource type="Script" uid="uid://bbskfy3lmisl" path="res://scripts/uis/solo_menu/CustomLevelsSelectionMenu.gd" id="8_lc2la"]
 [ext_resource type="PackedScene" uid="uid://bf6u6lge7vm8i" path="res://scenes/bundles/player/PlayerDummy.tscn" id="12_wxev4"]
 
 [sub_resource type="Animation" id="Animation_kbvka"]
@@ -61,9 +61,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g8p7y"]
 _data = {
-"RESET": SubResource("Animation_kbvka"),
-"enter": SubResource("Animation_fvbdw"),
-"out": SubResource("Animation_pjayf")
+&"RESET": SubResource("Animation_kbvka"),
+&"enter": SubResource("Animation_fvbdw"),
+&"out": SubResource("Animation_pjayf")
 }
 
 [sub_resource type="Animation" id="Animation_j2bcb"]
@@ -115,9 +115,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v4aub"]
 _data = {
-"RESET": SubResource("Animation_j2bcb"),
-"enter": SubResource("Animation_vreh8"),
-"out": SubResource("Animation_ugi5u")
+&"RESET": SubResource("Animation_j2bcb"),
+&"enter": SubResource("Animation_vreh8"),
+&"out": SubResource("Animation_ugi5u")
 }
 
 [sub_resource type="Animation" id="Animation_xgwfs"]
@@ -151,7 +151,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mxgr3"]
 _data = {
-"walk": SubResource("Animation_xgwfs")
+&"walk": SubResource("Animation_xgwfs")
 }
 
 [sub_resource type="Animation" id="Animation_a7ddr"]
@@ -238,9 +238,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2t20v"]
 _data = {
-"RESET": SubResource("Animation_a7ddr"),
-"out_zoomed": SubResource("Animation_h3j2p"),
-"zoom": SubResource("Animation_m2g15")
+&"RESET": SubResource("Animation_a7ddr"),
+&"out_zoomed": SubResource("Animation_h3j2p"),
+&"zoom": SubResource("Animation_m2g15")
 }
 
 [node name="SoloMenu" type="Control"]

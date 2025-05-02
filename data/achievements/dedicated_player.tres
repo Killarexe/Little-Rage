@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://b4p3p38go3x8g"]
 
 [ext_resource type="Texture2D" uid="uid://dph8ufon3bhvc" path="res://assets/textures/achievement_icons/first_death.png" id="1_7p6po"]
-[ext_resource type="Script" path="res://scripts/achievement/Achievement.gd" id="2_eeg21"]
+[ext_resource type="Script" uid="uid://cgblm7fgwq53y" path="res://scripts/achievement/Achievement.gd" id="2_eeg21"]
 
 [resource]
 script = ExtResource("2_eeg21")

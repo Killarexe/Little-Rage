@@ -36,7 +36,7 @@ func get_level_best_time_as_str(level_id: String) -> String:
 	var best_time: Array = get_level_best_time(level_id)
 	if best_time == [0, 0, 0]:
 		return TranslationServer.translate("label.none")
-	return str(best_time[0]).pad_zeros(2) + ":" + str(best_time[1]).pad_zeros(2) + ":" + str(best_time[2]).pad_zeros(2)
+	return str(int(best_time[0])).pad_zeros(2) + ":" + str(int(best_time[1])).pad_zeros(2) + ":" + str(int(best_time[2])).pad_zeros(2)
 
 func get_level_best_time(level_id: String) -> Array:
 	return levels_best_times.get(level_id, [0, 0, 0])

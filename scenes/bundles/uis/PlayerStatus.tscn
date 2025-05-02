@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://t7l5lywub7jg"]
 
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_g2og8"]
-[ext_resource type="Script" path="res://scripts/uis/player/PlayerStatus.gd" id="1_hyxlm"]
+[ext_resource type="Script" uid="uid://bjdb5md3e1g8v" path="res://scripts/uis/player/PlayerStatus.gd" id="1_hyxlm"]
 [ext_resource type="LabelSettings" uid="uid://rp1sq4gf2r0l" path="res://assets/style/label_settings/shadow_small_medium_label.tres" id="3_h5jb3"]
 
 [sub_resource type="Animation" id="Animation_u2ldc"]
@@ -89,9 +89,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2qmqy"]
 _data = {
-"RESET": SubResource("Animation_u2ldc"),
-"pop_ragequit_button": SubResource("Animation_a7bil"),
-"update_death_counter": SubResource("Animation_8ew2b")
+&"RESET": SubResource("Animation_u2ldc"),
+&"pop_ragequit_button": SubResource("Animation_a7bil"),
+&"update_death_counter": SubResource("Animation_8ew2b")
 }
 
 [node name="PlayerStatus" type="CanvasLayer"]

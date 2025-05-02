@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerParticle" load_steps=6 format=3 uid="uid://bra1nagigj2am"]
 
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/particle/PlayerParticle.gd" id="1_sih6x"]
+[ext_resource type="Script" uid="uid://dg7g47et30rh" path="res://scripts/level/player/cosmetic/particle/PlayerParticle.gd" id="1_sih6x"]
 [ext_resource type="Texture2D" uid="uid://cpp685fj7uh2f" path="res://assets/textures/player/particles/dirt.png" id="2_mqtte"]
 
 [sub_resource type="Gradient" id="1"]

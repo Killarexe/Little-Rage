@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://75hf13y7om1u"]
 
-[ext_resource type="Script" path="res://scripts/uis/SceneManager.gd" id="1_gwd2n"]
+[ext_resource type="Script" uid="uid://541ccnlcb63w" path="res://scripts/uis/SceneManager.gd" id="1_gwd2n"]
 [ext_resource type="AnimationLibrary" uid="uid://db3jmjoj0bqxh" path="res://assets/animations/scene_transitions/Transitions.res" id="3_ra8ms"]
 
 [sub_resource type="Animation" id="Animation_f3xcs"]
@@ -32,7 +32,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8q1fy"]
 _data = {
-"RESET": SubResource("Animation_f3xcs")
+&"RESET": SubResource("Animation_f3xcs")
 }
 
 [node name="SceneManager" type="CanvasLayer"]

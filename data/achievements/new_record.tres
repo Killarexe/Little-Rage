@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://df47vq181dd82"]
 
 [ext_resource type="Texture2D" uid="uid://hbaurun2n8x5" path="res://assets/textures/achievement_icons/best_time.png" id="1_4gm3h"]
-[ext_resource type="Script" path="res://scripts/achievement/Achievement.gd" id="2_ylute"]
+[ext_resource type="Script" uid="uid://cgblm7fgwq53y" path="res://scripts/achievement/Achievement.gd" id="2_ylute"]
 
 [resource]
 script = ExtResource("2_ylute")

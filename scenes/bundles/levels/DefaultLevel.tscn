@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctda2nuhe5mvw"]
 
 [ext_resource type="TileSet" uid="uid://dcovkjpnowgl0" path="res://assets/Tileset.tres" id="1_ae557"]
-[ext_resource type="Script" path="res://scripts/level/LevelPlayer.gd" id="2_ukgah"]
+[ext_resource type="Script" uid="uid://b4m0ddohsvci8" path="res://scripts/level/LevelPlayer.gd" id="2_ukgah"]
 
 [node name="DefaultLevel" type="Node" node_paths=PackedStringArray("ground", "background") groups=["Level"]]
 script = ExtResource("2_ukgah")

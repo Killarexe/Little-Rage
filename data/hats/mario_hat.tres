@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerHat" load_steps=3 format=3 uid="uid://dxgbp0rl222ks"]
 
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHat.gd" id="1_q1ngr"]
+[ext_resource type="Script" uid="uid://cflgp3kuk8ttu" path="res://scripts/level/player/cosmetic/hat/PlayerHat.gd" id="1_q1ngr"]
 [ext_resource type="Texture2D" uid="uid://dxrmo3bwujka3" path="res://assets/textures/player/hats/mario_hat.png" id="2_cf0po"]
 
 [resource]

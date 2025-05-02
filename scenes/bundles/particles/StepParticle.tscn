@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://7xnk4wqi0n74"]
 
-[ext_resource type="Script" path="res://scripts/particle/SelfDestroyParticle.gd" id="1_g8t4x"]
+[ext_resource type="Script" uid="uid://c1su65slxj0ss" path="res://scripts/particle/SelfDestroyParticle.gd" id="1_g8t4x"]
 
 [sub_resource type="Gradient" id="1"]
 offsets = PackedFloat32Array(0.572368, 1)

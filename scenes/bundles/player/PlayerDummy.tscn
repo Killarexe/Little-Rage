@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://bf6u6lge7vm8i"]
 
-[ext_resource type="Script" path="res://scripts/level/player/PlayerDummyComponent.gd" id="1_rhxy3"]
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="3_0rkse"]
-[ext_resource type="Script" path="res://scripts/level/player/DeathComponent.gd" id="3_cbkx3"]
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="4_6fqh6"]
-[ext_resource type="Script" path="res://scripts/level/player/SkinDistortion.gd" id="6_2u6px"]
-[ext_resource type="Script" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="7_nca7a"]
+[ext_resource type="Script" uid="uid://ckfi5n66mb5tf" path="res://scripts/level/player/PlayerDummyComponent.gd" id="1_rhxy3"]
+[ext_resource type="Script" uid="uid://bl11t1bqyd5kg" path="res://scripts/level/player/cosmetic/skin/PlayerSkinSprite.gd" id="3_0rkse"]
+[ext_resource type="Script" uid="uid://cr2xsbg3n8221" path="res://scripts/level/player/DeathComponent.gd" id="3_cbkx3"]
+[ext_resource type="Script" uid="uid://dldjeb1xxffk6" path="res://scripts/level/player/cosmetic/hat/PlayerHatSprite.gd" id="4_6fqh6"]
+[ext_resource type="Script" uid="uid://0tb13aba01bw" path="res://scripts/level/player/SkinDistortion.gd" id="6_2u6px"]
+[ext_resource type="Script" uid="uid://der52b4bpslkb" path="res://scripts/level/player/sound_effect/SoundEffectPlayer.gd" id="7_nca7a"]
 [ext_resource type="AnimationLibrary" uid="uid://lq7ufb3fx0yh" path="res://assets/animations/PlayerAnimations.res" id="8_ukl5h"]
 [ext_resource type="PackedScene" uid="uid://dhqud11vg5pq4" path="res://scenes/bundles/player/ParallaxBackground.tscn" id="9_fdwyx"]
-[ext_resource type="Script" path="res://scripts/level/player/PlayerDummyMovement.gd" id="9_nqd2q"]
+[ext_resource type="Script" uid="uid://oot0xmhohytw" path="res://scripts/level/player/PlayerDummyMovement.gd" id="9_nqd2q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qru1a"]
 size = Vector2(16, 32)
@@ -42,7 +42,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pm6cf"]
 _data = {
-"RESET": SubResource("Animation_10f12")
+&"RESET": SubResource("Animation_10f12")
 }
 
 [node name="PlayerDummy" type="CharacterBody2D" node_paths=PackedStringArray("player_skin", "player_hat", "animation", "sound_effect_player", "movement")]

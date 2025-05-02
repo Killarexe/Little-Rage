@@ -1,14 +1,13 @@
 [gd_resource type="Resource" script_class="Level" load_steps=3 format=3 uid="uid://bwx0hsntoyvi4"]
 
 [ext_resource type="PackedScene" uid="uid://3qu8qqnmpowg" path="res://scenes/levels/Level5.tscn" id="1_wht21"]
-[ext_resource type="Script" path="res://scripts/level/Level.gd" id="2_ykwir"]
+[ext_resource type="Script" uid="uid://1n2usob71xj4" path="res://scripts/level/Level.gd" id="2_ykwir"]
 
 [resource]
 script = ExtResource("2_ykwir")
 name = "Level 5"
 is_hidden = false
 description = "message.level.description.level_five"
-mode = 0
 y_limit = 256
 scene = ExtResource("1_wht21")
 level_theme = 1

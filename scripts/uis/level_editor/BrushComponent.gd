@@ -7,6 +7,8 @@ enum BrushTypes {
 	CIRCLE
 }
 
+signal on_change_bush_type(type: BrushTypes)
+
 @export_category("Dependencies")
 @export var camera: Camera2D
 @export var tile_sprite: Sprite2D
@@ -17,7 +19,10 @@ enum BrushTypes {
 @export var selected_tile: EditorTile
 @export var enable: bool = true
 @export var erase: bool = false
-@export var brush_type: BrushTypes = BrushTypes.PEN
+@export var brush_type: BrushTypes = BrushTypes.PEN:
+	set(value):
+		on_change_bush_type.emit(value)
+		brush_type = value
 
 var is_paused: bool = false
 

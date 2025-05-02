@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Achievement" load_steps=3 format=3 uid="uid://c3hopqivr1mxa"]
 
 [ext_resource type="Texture2D" uid="uid://cwjl8rpydiu4m" path="res://assets/textures/achievement_icons/rage_quit.png" id="1_8hmwx"]
-[ext_resource type="Script" path="res://scripts/achievement/Achievement.gd" id="2_ljcmp"]
+[ext_resource type="Script" uid="uid://cgblm7fgwq53y" path="res://scripts/achievement/Achievement.gd" id="2_ljcmp"]
 
 [resource]
 script = ExtResource("2_ljcmp")

@@ -1,16 +1,16 @@
 [gd_scene load_steps=25 format=3 uid="uid://cals3vw0vj1j7"]
 
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_fjp12"]
-[ext_resource type="Script" path="res://scripts/uis/main_menu/MainMenu.gd" id="1_ucjxi"]
+[ext_resource type="Script" uid="uid://doi7hj643s4wc" path="res://scripts/uis/main_menu/MainMenu.gd" id="1_ucjxi"]
 [ext_resource type="Animation" uid="uid://cx04at5pdf11i" path="res://assets/animations/camera_scroll.res" id="2_rkel8"]
 [ext_resource type="Texture2D" uid="uid://cto6ho6cpiuyw" path="res://assets/textures/ui/little_rage_logo.png" id="3_4yirm"]
 [ext_resource type="PackedScene" uid="uid://0sui0mov7cam" path="res://scenes/levels/TitleScreenLevel.tscn" id="3_gaxhl"]
 [ext_resource type="Animation" uid="uid://b52wj1p1e1ckf" path="res://assets/animations/logo_move.res" id="6_6jai1"]
 [ext_resource type="Animation" uid="uid://cx2cp7vkuhysr" path="res://assets/animations/splash_text_zoom.res" id="9_c25sm"]
 [ext_resource type="Texture2D" uid="uid://c5yejwo4hxfqa" path="res://assets/textures/ui/icons/red-circle.png" id="9_gumy7"]
-[ext_resource type="Script" path="res://scripts/uis/main_menu/SplashText.gd" id="9_uac2h"]
-[ext_resource type="Script" path="res://scripts/uis/main_menu/Information.gd" id="10_5eid8"]
-[ext_resource type="Script" path="res://scripts/uis/LootBoxCountNotifier.gd" id="10_5hwgr"]
+[ext_resource type="Script" uid="uid://06fetukjayco" path="res://scripts/uis/main_menu/SplashText.gd" id="9_uac2h"]
+[ext_resource type="Script" uid="uid://cq573iqw6ch5l" path="res://scripts/uis/main_menu/Information.gd" id="10_5eid8"]
+[ext_resource type="Script" uid="uid://bsp0yvoxsam52" path="res://scripts/uis/LootBoxCountNotifier.gd" id="10_5hwgr"]
 [ext_resource type="LabelSettings" uid="uid://dm7r1nxrodf5k" path="res://assets/style/label_settings/small_label_outlined.tres" id="11_5khbo"]
 
 [sub_resource type="Animation" id="Animation_u5ewi"]
@@ -30,8 +30,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a6sbu"]
 _data = {
-"RESET": SubResource("Animation_u5ewi"),
-"scroll": ExtResource("2_rkel8")
+&"RESET": SubResource("Animation_u5ewi"),
+&"scroll": ExtResource("2_rkel8")
 }
 
 [sub_resource type="Animation" id="Animation_layq8"]
@@ -156,10 +156,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3umms"]
 _data = {
-"RESET": SubResource("Animation_layq8"),
-"logo_move": ExtResource("6_6jai1"),
-"start_menu": SubResource("Animation_c4w7r"),
-"start_menu_easter": SubResource("Animation_l7ody")
+&"RESET": SubResource("Animation_layq8"),
+&"logo_move": ExtResource("6_6jai1"),
+&"start_menu": SubResource("Animation_c4w7r"),
+&"start_menu_easter": SubResource("Animation_l7ody")
 }
 
 [sub_resource type="LabelSettings" id="LabelSettings_vn81g"]
@@ -185,8 +185,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2kdcr"]
 _data = {
-"RESET": SubResource("Animation_jhdw0"),
-"zoom": ExtResource("9_c25sm")
+&"RESET": SubResource("Animation_jhdw0"),
+&"zoom": ExtResource("9_c25sm")
 }
 
 [sub_resource type="Animation" id="Animation_0iwv6"]
@@ -223,8 +223,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pvj0d"]
 _data = {
-"RESET": SubResource("Animation_0iwv6"),
-"zoom": SubResource("Animation_lmfb0")
+&"RESET": SubResource("Animation_0iwv6"),
+&"zoom": SubResource("Animation_lmfb0")
 }
 
 [node name="MainMenu" type="Control"]
@@ -243,7 +243,7 @@ zoom = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
 libraries = {
-"": SubResource("AnimationLibrary_a6sbu")
+&"": SubResource("AnimationLibrary_a6sbu")
 }
 
 [node name="TitleScreenLevel" parent="." instance=ExtResource("3_gaxhl")]
@@ -264,7 +264,7 @@ stretch_mode = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Logo"]
 libraries = {
-"": SubResource("AnimationLibrary_3umms")
+&"": SubResource("AnimationLibrary_3umms")
 }
 
 [node name="SplashText" type="Label" parent="CanvasLayer"]
@@ -304,7 +304,7 @@ flat = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/SplashText"]
 reset_on_save = false
 libraries = {
-"": SubResource("AnimationLibrary_2kdcr")
+&"": SubResource("AnimationLibrary_2kdcr")
 }
 speed_scale = 0.5
 
@@ -380,7 +380,7 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/VBoxContainer/ShopButton/Circle"]
 libraries = {
-"": SubResource("AnimationLibrary_pvj0d")
+&"": SubResource("AnimationLibrary_pvj0d")
 }
 autoplay = "zoom"
 

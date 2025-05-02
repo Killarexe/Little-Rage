@@ -2,7 +2,7 @@ extends Node
 class_name LevelEditorCamera
 
 @export var camera: Camera2D
-@export var bush: BrushComponent
+@export var brush: BrushComponent
 
 @export var debug_mode: bool = false
 
@@ -12,7 +12,8 @@ class_name LevelEditorCamera
 
 var start_zoom: Vector2 = Vector2()
 
-var touch_points: Dictionary = {}
+var touch_points: Dictionary[int, Vector2] = {}
+var touch_start_positions: Dictionary[int, Vector2] = {}
 
 var start_distance: float = 0.0
 var current_angle: float = 0.0
@@ -21,6 +22,7 @@ var start_angle: float = 0.0
 var is_panning: bool = false
 var is_drag: bool = false
 var can_move: bool = true
+var is_drawing: bool = false
 
 func _unhandled_input(event):
 	if !(Game.is_mobile || debug_mode):
@@ -37,44 +39,60 @@ func _input(event):
 			is_drag = true
 			handle_drag(event)
 
+func screen_to_world(screen_position: Vector2) -> Vector2:
+	var viewport_size: Vector2 = get_viewport().get_visible_rect().size
+	var viewport_position = screen_position - viewport_size / 2.0
+	var world_position = viewport_position / camera.zoom + camera.position
+	return world_position
+
 func handle_touch(event: InputEventScreenTouch):
 	if event.pressed:
 		touch_points[event.index] = event.position
+		touch_start_positions[event.index] = event.position
+		
+		if touch_points.size() == 1 && event.index == 0:
+			is_drawing = true
+			brush.erase = false
+			if brush.brush_type == BrushComponent.BrushTypes.RECTANGLE:
+				var world_pos: Vector2 = screen_to_world(event.position)
+				touch_start_positions[event.index] = world_pos
+			else:
+				var world_pos: Vector2 = screen_to_world(event.position)
+				brush.brush(world_pos)
 	else:
+		if event.index == 0 && is_drawing:
+			if brush.brush_type == BrushComponent.BrushTypes.RECTANGLE && touch_start_positions.has(0):
+				var start_pos: Vector2 = touch_start_positions[0]
+				var end_pos: Vector2 = screen_to_world(event.position)
+				brush.brush(start_pos, end_pos)
+			is_drawing = false
+		
 		touch_points.erase(event.index)
-	if touch_points.size() > 0:
-		var viewport_size: Vector2 = Vector2(1280.0, 720.0)
-		var touch_position: Vector2 = touch_points.values()[0]
-		var touch_position_in_viewport: Vector2 = touch_position - viewport_size / 2.0
-		var touch_position_in_zoomed_viewport: Vector2 = touch_position_in_viewport / camera.zoom
-		var touch_position_in_world: Vector2 = touch_position_in_zoomed_viewport + camera.position
-		
-		print_debug("Touch pos: " + str(touch_position))
-		print_debug("Touch pos in view: " + str(touch_position_in_viewport))
-		print_debug("Touch pos in zoomed: " + str(touch_position_in_zoomed_viewport))
-		print_debug("Touch pos in world: " + str(touch_position_in_world))
-		print_debug("Erase: " + str(bush.erase))
-		
-		bush.brush(touch_position)
-	else:
-		if touch_points.size() == 2:
-			var touch_point_positions = touch_points.values()
-			start_distance = touch_point_positions[0].distance_to(touch_point_positions[1])
-			start_angle = get_angle(touch_point_positions[0], touch_point_positions[1])
-			start_zoom = camera.zoom
-		elif touch_points.size() < 2:
+		touch_start_positions.erase(event.index)
+		if touch_points.size() < 2:
 			start_distance = 0
 			is_drag = false
 
 func handle_drag(event: InputEventScreenDrag):
 	touch_points[event.index] = event.position
-	if touch_points.size() == 1:
+	is_drag = true
+	
+	if touch_points.size() == 1 && event.index == 0 && is_drawing:
+		if !brush.brush_type == BrushComponent.BrushTypes.RECTANGLE:
+			var world_pos = screen_to_world(event.position)
+			brush.brush(world_pos)
+	elif touch_points.size() == 1 && !is_drawing:
 		camera.position -= event.relative.rotated(camera.rotation) * pan_speed / camera.zoom.x
 	elif touch_points.size() == 2:
 		var touch_point_positions = touch_points.values()
 		var current_distance: float = touch_point_positions[0].distance_to(touch_point_positions[1])
-		var zoom_factor: float = start_distance / current_distance 
-		set_zoom_with_limit(start_zoom / zoom_factor)
+		
+		if start_distance == 0:
+			start_distance = current_distance
+			start_zoom = camera.zoom
+		else:
+			var zoom_factor: float = start_distance / current_distance 
+			set_zoom_with_limit(start_zoom / zoom_factor)
 
 func handle_mouse_zoom(event: InputEventMouseButton):
 	if event.is_pressed():
@@ -90,29 +108,46 @@ func handle_mouse_pan(event: InputEventMouseMotion):
 	if is_panning:
 		camera.position -= event.relative.rotated(camera.rotation) * pan_speed  / camera.zoom.x
 
+var long_press_timer: float = 0.0
+var long_press_threshold: float = 0.5
+var long_press_move_threshold: float = 20.0  # pixels
+var long_press_detected: bool = false
+
 func _process(delta: float):
+	if (Game.is_mobile || debug_mode) && touch_points.size() == 1 && touch_points.has(0) && !is_drag:
+		long_press_timer += delta
+		var distance = touch_points[0].distance_to(touch_start_positions[0])
+		if long_press_timer > long_press_threshold && distance < long_press_move_threshold && !long_press_detected:
+			brush.erase = true
+			long_press_detected = true
+			if OS.has_feature("vibrate"):
+				Input.vibrate_handheld(100)
+	elif (Game.is_mobile || debug_mode) && (touch_points.size() != 1 || !touch_points.has(0)):
+		long_press_timer = 0.0
+		long_press_detected = false
+	
 	if !(Game.is_mobile || debug_mode) && can_move:
 		is_panning = Input.is_action_pressed("middle_click")
 		var is_rect_tool: bool = Input.is_action_pressed("shift")
-		if is_rect_tool:
-			bush.brush_type = BrushComponent.BrushTypes.RECTANGLE
+		if is_rect_tool && brush.enable:
+			brush.brush_type = BrushComponent.BrushTypes.RECTANGLE
 			if Input.is_action_just_pressed("left_click"):
-				bush.erase = false
+				brush.erase = false
 				touch_points[0] = camera.get_global_mouse_position()
 			elif Input.is_action_pressed("right_click"):
-				bush.erase = true
+				brush.erase = true
 				touch_points[0] = camera.get_global_mouse_position()
 			if touch_points.values().size() != 0 && (Input.is_action_just_released("left_click") || Input.is_action_just_released("right_click")):
-				bush.brush(touch_points[0], camera.get_global_mouse_position())
+				brush.brush(touch_points[0], camera.get_global_mouse_position())
 				touch_points.clear()
-		else:
-			bush.brush_type = BrushComponent.BrushTypes.PEN
+		elif brush.enable:
+			brush.brush_type = BrushComponent.BrushTypes.PEN
 			if Input.is_action_pressed("left_click"):
-				bush.erase = false
-				bush.brush(camera.get_global_mouse_position())
+				brush.erase = false
+				brush.brush(camera.get_global_mouse_position())
 			elif Input.is_action_pressed("right_click"):
-				bush.erase = true
-				bush.brush(camera.get_global_mouse_position())
+				brush.erase = true
+				brush.brush(camera.get_global_mouse_position())
 		
 		if Input.is_action_pressed("left"):
 			camera.position.x -= 400 / camera.zoom.x * delta

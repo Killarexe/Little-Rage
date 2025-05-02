@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerSkin" load_steps=3 format=3 uid="uid://bjb1byu8ea26c"]
 
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/skin/PlayerSkin.gd" id="1_snvqm"]
+[ext_resource type="Script" uid="uid://yq5yyb6ewxo3" path="res://scripts/level/player/cosmetic/skin/PlayerSkin.gd" id="1_snvqm"]
 [ext_resource type="Texture2D" uid="uid://cdibwooidqk8l" path="res://assets/textures/player/skins/player_old.png" id="2_ay4mr"]
 
 [resource]

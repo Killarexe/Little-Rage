@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerHat" load_steps=3 format=3 uid="uid://dsvyv1rfo7tm4"]
 
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHat.gd" id="1_hq1xf"]
+[ext_resource type="Script" uid="uid://cflgp3kuk8ttu" path="res://scripts/level/player/cosmetic/hat/PlayerHat.gd" id="1_hq1xf"]
 [ext_resource type="Texture2D" uid="uid://kkd8gd75fxt7" path="res://assets/textures/player/hats/Jotaro_hat.png" id="2_evj1g"]
 
 [resource]

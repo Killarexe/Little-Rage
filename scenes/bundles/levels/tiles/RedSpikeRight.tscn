@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://dq61youdmpykw"]
 
-[ext_resource type="Script" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_30fap"]
+[ext_resource type="Script" uid="uid://ewo6t0aq1g07" path="res://scripts/level/tiles/InteractiveTile.gd" id="1_30fap"]
 [ext_resource type="Texture2D" uid="uid://b0b34lhgbuxy5" path="res://assets/textures/tilesets/plains.png" id="2_415k8"]
-[ext_resource type="Script" path="res://scripts/level/tiles/TileSprite.gd" id="3_xyx13"]
-[ext_resource type="Script" path="res://scripts/level/tiles/ColorCollisionTile.gd" id="4_u1cfp"]
-[ext_resource type="Script" path="res://scripts/level/tiles/ColorSpriteTile.gd" id="5_b13ow"]
-[ext_resource type="Script" path="res://scripts/level/tiles/DeathTileComponent.gd" id="6_2rtng"]
+[ext_resource type="Script" uid="uid://bdr0kn6eo8ujh" path="res://scripts/level/tiles/TileSprite.gd" id="3_xyx13"]
+[ext_resource type="Script" uid="uid://v6rqmn4rvvr4" path="res://scripts/level/tiles/ColorCollisionTile.gd" id="4_u1cfp"]
+[ext_resource type="Script" uid="uid://cwjrdtl8ggkaa" path="res://scripts/level/tiles/ColorSpriteTile.gd" id="5_b13ow"]
+[ext_resource type="Script" uid="uid://wgmas5kvk1vj" path="res://scripts/level/tiles/DeathTileComponent.gd" id="6_2rtng"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bw55b"]
 atlas = ExtResource("2_415k8")

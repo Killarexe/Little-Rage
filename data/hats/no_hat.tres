@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerHat" load_steps=3 format=3 uid="uid://d38cydo6b6yef"]
 
-[ext_resource type="Script" path="res://scripts/level/player/cosmetic/hat/PlayerHat.gd" id="1_6lw3o"]
+[ext_resource type="Script" uid="uid://cflgp3kuk8ttu" path="res://scripts/level/player/cosmetic/hat/PlayerHat.gd" id="1_6lw3o"]
 [ext_resource type="Texture2D" uid="uid://cg3qpsvda4k3k" path="res://assets/textures/player/hats/no_hat.png" id="2_ghxke"]
 
 [resource]

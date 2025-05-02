@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=4 uid="uid://c3ip8ifiyu8b2"]
 
 [ext_resource type="Theme" uid="uid://becgxgj56yfdh" path="res://assets/style/default_theme.tres" id="1_yu7n6"]
-[ext_resource type="Script" path="res://scripts/uis/achievement_menu/AchievementMenu.gd" id="2_efsre"]
-[ext_resource type="Script" path="res://scripts/uis/achievement_menu/AchievementList.gd" id="3_dff4b"]
-[ext_resource type="Script" path="res://scripts/uis/achievement_menu/AchievementInformation.gd" id="4_ql82p"]
+[ext_resource type="Script" uid="uid://2bfy4dm1upjh" path="res://scripts/uis/achievement_menu/AchievementMenu.gd" id="2_efsre"]
+[ext_resource type="Script" uid="uid://chbj7762vx06p" path="res://scripts/uis/achievement_menu/AchievementList.gd" id="3_dff4b"]
+[ext_resource type="Script" uid="uid://doiqqlcsws6tj" path="res://scripts/uis/achievement_menu/AchievementInformation.gd" id="4_ql82p"]
 [ext_resource type="LabelSettings" uid="uid://dfu1k8upq5eqm" path="res://assets/style/label_settings/shadow_medium_label.tres" id="5_wawtv"]
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/levels/DefaultLevel.tscn" id="6_0phuo"]
 
@@ -177,9 +177,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fxehi"]
 _data = {
-"RESET": SubResource("Animation_un7id"),
-"change_information": SubResource("Animation_wkq8t"),
-"entry": SubResource("Animation_7tivd")
+&"RESET": SubResource("Animation_un7id"),
+&"change_information": SubResource("Animation_wkq8t"),
+&"entry": SubResource("Animation_7tivd")
 }
 
 [sub_resource type="Animation" id="Animation_fw224"]
@@ -216,8 +216,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k4eib"]
 _data = {
-"RESET": SubResource("Animation_fw224"),
-"scroll": SubResource("Animation_c3asb")
+&"RESET": SubResource("Animation_fw224"),
+&"scroll": SubResource("Animation_c3asb")
 }
 
 [node name="AchievementMenu" type="Control"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=4 uid="uid://cklqc3yyyh1re"]
 
 [ext_resource type="PackedScene" uid="uid://ctda2nuhe5mvw" path="res://scenes/bundles/levels/DefaultLevel.tscn" id="1_66qy2"]
-[ext_resource type="Script" path="res://scripts/level/CreditsScene.gd" id="1_ju23v"]
+[ext_resource type="Script" uid="uid://2bcit8y6a00c" path="res://scripts/level/CreditsScene.gd" id="1_ju23v"]
 [ext_resource type="PackedScene" uid="uid://bf6u6lge7vm8i" path="res://scenes/bundles/player/PlayerDummy.tscn" id="2_atls6"]
 [ext_resource type="AudioStream" uid="uid://cd0y8lf6d30s3" path="res://assets/musics/credits.ogg" id="2_cb713"]
 [ext_resource type="Texture2D" uid="uid://cto6ho6cpiuyw" path="res://assets/textures/ui/little_rage_logo.png" id="3_6ign2"]
@@ -9,7 +9,7 @@
 [ext_resource type="LabelSettings" uid="uid://byhjcilthuooc" path="res://assets/style/label_settings/shadow_big_medium_label.tres" id="5_6ul8h"]
 [ext_resource type="LabelSettings" uid="uid://dfu1k8upq5eqm" path="res://assets/style/label_settings/shadow_medium_label.tres" id="6_omvcn"]
 [ext_resource type="FontFile" uid="uid://bxxfsfwp420vt" path="res://assets/style/fonts/default.ttf" id="9_ekm87"]
-[ext_resource type="Script" path="res://scripts/uis/MobileVisiblity.gd" id="10_bqj7j"]
+[ext_resource type="Script" uid="uid://c6xlbx3ocvfth" path="res://scripts/uis/MobileVisiblity.gd" id="10_bqj7j"]
 [ext_resource type="LabelSettings" uid="uid://deaqu53istr0t" path="res://assets/style/label_settings/small_label.tres" id="11_dqp30"]
 
 [sub_resource type="Animation" id="Animation_lt737"]
@@ -695,8 +695,8 @@ tracks/30/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ku68r"]
 _data = {
-"RESET": SubResource("Animation_lt737"),
-"credits": SubResource("Animation_cuw6i")
+&"RESET": SubResource("Animation_lt737"),
+&"credits": SubResource("Animation_cuw6i")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5hf7"]

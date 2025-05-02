@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EditorTile" load_steps=2 format=3 uid="uid://bams8n8ljaka8"]
 
-[ext_resource type="Script" path="res://scripts/uis/level_editor/tiles/EditorTile.gd" id="1_aan7s"]
+[ext_resource type="Script" uid="uid://2xaifdbol4hm" path="res://scripts/uis/level_editor/tiles/EditorTile.gd" id="1_aan7s"]
 
 [resource]
 script = ExtResource("1_aan7s")

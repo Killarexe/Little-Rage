@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://ci0p37ottv00"]
 
-[ext_resource type="Script" path="res://scripts/particle/SelfDestroyParticle.gd" id="1_kewwu"]
+[ext_resource type="Script" uid="uid://c1su65slxj0ss" path="res://scripts/particle/SelfDestroyParticle.gd" id="1_kewwu"]
 
 [sub_resource type="Curve" id="Curve_mdn0e"]
-max_value = 200.0
+_limits = [0.0, 200.0, 0.0, 1.0]
 _data = [Vector2(0, 200), 0.0, 0.0, 0, 0, Vector2(0.492537, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -23,11 +23,9 @@ lifetime_randomness = 0.5
 particle_flag_disable_z = true
 direction = Vector3(0, -4, 0)
 spread = 20.0
-gravity = Vector3(0, 98, 0)
 initial_velocity_min = 40.0
 initial_velocity_max = 80.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, 98, 0)
 scale_min = 2.0
 scale_max = 3.0
 color_ramp = SubResource("GradientTexture1D_ltv3s")
