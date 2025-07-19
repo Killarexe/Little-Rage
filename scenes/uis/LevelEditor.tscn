@@ -597,6 +597,7 @@ offset_left = 1148.0
 offset_top = 32.0
 offset_right = 1248.0
 offset_bottom = 132.0
+tooltip_text = "Play button"
 icon = ExtResource("22_dgyj2")
 icon_alignment = 1
 expand_icon = true
