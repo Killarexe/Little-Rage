@@ -48,5 +48,7 @@ func _on_level_editor_button_pressed() -> void:
   SceneManager.change_scene("res://scenes/uis/LevelEditor.tscn")
 
 func _on_quit_button_pressed() -> void:
-  SaveManager.save()
-  get_tree().quit()
+  if Game.is_mobile:
+    get_tree().get_root().propagate_notification(NOTIFICATION_WM_GO_BACK_REQUEST)
+  else:
+    get_tree().get_root().propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)

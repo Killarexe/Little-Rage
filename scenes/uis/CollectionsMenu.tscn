@@ -431,6 +431,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:limit_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-10000000]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:limit_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10000000]
+}
 
 [sub_resource type="Animation" id="Animation_1yp6g"]
 resource_name = "zoom_hat"
@@ -463,6 +487,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_qlnma"]
 resource_name = "zoom_particles"
 length = 0.5
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -485,7 +510,31 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.5),
 "transitions": PackedFloat32Array(1, 0.318471, 3.14),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-16, 0), Vector2(-32, 0)]
+"values": [Vector2(0, 0), Vector2(-16, -12), Vector2(-32, -24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:limit_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-10000000, -80]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:limit_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10000000, 80]
 }
 
 [sub_resource type="Animation" id="Animation_mqekw"]
@@ -634,7 +683,7 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MainMenu/SelectButtons/LootBoxButton/Circle"]
 libraries = {
-"": SubResource("AnimationLibrary_pvj0d")
+&"": SubResource("AnimationLibrary_pvj0d")
 }
 autoplay = "zoom"
 
@@ -661,7 +710,7 @@ text = "button.back"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MainMenu/SelectButtons"]
 libraries = {
-"": SubResource("AnimationLibrary_dnby0")
+&"": SubResource("AnimationLibrary_dnby0")
 }
 autoplay = "enter"
 
@@ -727,7 +776,7 @@ stretch_mode = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MainMenu/LootBoxMenu"]
 libraries = {
-"": SubResource("AnimationLibrary_sa12i")
+&"": SubResource("AnimationLibrary_sa12i")
 }
 
 [node name="Buttons" type="HBoxContainer" parent="CanvasLayer/MainMenu/LootBoxMenu"]
@@ -898,7 +947,7 @@ tile_map_data = PackedByteArray("AAC9ABkAAQABAAIAAAC9ABgAAQABAAEAAAC9ABcAAQABAAE
 
 [node name="PlayerAnimator" type="AnimationPlayer" parent="DefaultLevel/PlayerDummy"]
 libraries = {
-"": SubResource("AnimationLibrary_65662")
+&"": SubResource("AnimationLibrary_65662")
 }
 autoplay = "walk"
 
@@ -908,7 +957,7 @@ zoom = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DefaultLevel/PlayerDummy/PlayerViewer"]
 libraries = {
-"": SubResource("AnimationLibrary_un5mn")
+&"": SubResource("AnimationLibrary_un5mn")
 }
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/SelectButtons/Buttons/SkinsButton" to="CanvasLayer/MainMenu" method="_on_skins_button_pressed"]

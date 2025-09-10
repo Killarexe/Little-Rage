@@ -63,5 +63,5 @@ zoom = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_08ra1")
+&"": SubResource("AnimationLibrary_08ra1")
 }

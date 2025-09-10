@@ -96,7 +96,7 @@ player = NodePath("..")
 player = NodePath("..")
 player_camera = NodePath("../Camera2D")
 player_menus = NodePath("../Menus")
-skip_control = NodePath("../Menus/SkipControl")
+skip_control = NodePath("../Menus/SkipControl/TouchScreenButton")
 
 [node name="ParallaxBackground" parent="." instance=ExtResource("8_nd3ki")]
 

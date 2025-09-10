@@ -3,7 +3,7 @@ extends Node2D
 @export var player: PlayerComponent
 @export var player_camera: Camera2D
 @export var player_menus: PlayerMenus
-@export var skip_control: CanvasLayer
+@export var skip_control: TouchScreenButton
 
 @onready var animation_camera: Camera2D = $Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -12,7 +12,6 @@ var countdown_prefab: Resource = load("res://scenes/bundles/uis/countdown.tscn")
 
 func _ready() -> void:
   await player_menus.ready
-  print(LevelManager.current_level)
   if LevelManager.current_level.is_empty():
     enable_status()
   else:
@@ -23,8 +22,6 @@ func _input(event: InputEvent) -> void:
     skip()
 
 func skip():
-  if Game.is_mobile:
-    skip_control.visible = false
   animation_player.stop()
   MusicManager.stop()
   animation_player.animation_finished.emit()
@@ -36,8 +33,6 @@ func play_animation() -> void:
   player_menus.mobile_control.visible = false
   animation_camera.enabled = true
   player_camera.enabled = false
-  if Game.is_mobile:
-    skip_control.visible = true
   Game.can_pause = false
   get_tree().paused = true
   animation_player.play("entry")
@@ -54,5 +49,7 @@ func play_animation() -> void:
   queue_free()
 
 func enable_status() -> void:
+  if Game.is_mobile:
+    skip_control.queue_free()
   player_menus.player_status.visible = !LevelManager.current_level.is_empty()
   player_menus.mobile_control.visible = Game.is_mobile

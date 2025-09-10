@@ -192,6 +192,10 @@ locale/test="en"
 2d_physics/layer_3="Danger"
 2d_physics/layer_4="Player"
 
+[network]
+
+tls/enable_tls_v1.3=false
+
 [physics]
 
 3d/run_on_separate_thread=true

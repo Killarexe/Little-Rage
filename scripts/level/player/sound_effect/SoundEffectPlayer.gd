@@ -6,7 +6,7 @@ const SFX_DIR_PATH: String = "res://assets/sound_effects/"
 var sfx_volume: float = 50.0
 
 func _ready() -> void:
-  bus = "Sound Effect"
+  bus = "Sound Effects"
   process_mode = Node.PROCESS_MODE_ALWAYS
   set_sfx_volume(MusicManager.sound_effect_volume)
 
