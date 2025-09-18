@@ -2,9 +2,9 @@ extends ResourceElement
 class_name Achievement
 
 enum Type {
-	NORMAL,
-	RARE,
-	EPIC
+  NORMAL,
+  RARE,
+  EPIC
 }
 
 @export var icon: CompressedTexture2D = null

@@ -36,10 +36,6 @@ func open(time: Array[int], death_count: int):
     music_id += "_variant"
   MusicManager.play_music(music_id)
   
-  best_time_animation.play("intro")
-  time_label.start(time, death_count)
-  await best_time_animation.animation_finished
-  
   if LevelManager.is_default_level(LevelManager.current_level):
     var current_level_number: int = int(LevelManager.current_level.replace("level_", ""))
     if current_level_number == LevelManager.default_levels.size():
@@ -47,6 +43,10 @@ func open(time: Array[int], death_count: int):
     next_level_button.visible = true
   else:
     next_level_button.visible = false
+  
+  best_time_animation.play("intro")
+  time_label.start(time, death_count)
+  await best_time_animation.animation_finished
   
   if is_best_time:
     if LevelManager.get_level_best_time(LevelManager.current_level) != [0, 0, 0]:

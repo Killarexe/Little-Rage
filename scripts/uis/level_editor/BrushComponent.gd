@@ -69,7 +69,7 @@ func brush(start_position: Vector2, end_position: Vector2 = Vector2.ZERO) -> voi
     BrushTypes.CIRCLE:
       brush_circle(start_tile_position, end_tile_position)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
   tile_sprite.visible = enable && !erase && level.mode == LevelPlayer.Mode.EDIT && !is_paused
   if tile_sprite.visible:
     tile_sprite.position = (camera.get_global_mouse_position() / 16.0).floor() * 16 + selected_tile.get_size() / 2
