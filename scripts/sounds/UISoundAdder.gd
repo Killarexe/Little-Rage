@@ -9,6 +9,7 @@ func _enter_tree() -> void:
   var player: AudioStreamPlayer = AudioStreamPlayer.new()
   add_child(player)
   player.bus = "Sound Effects"
+  process_mode = Node.PROCESS_MODE_ALWAYS
   
   var stream: AudioStreamPolyphonic = AudioStreamPolyphonic.new()
   stream.polyphony = 64

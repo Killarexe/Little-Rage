@@ -44,7 +44,7 @@ func save() -> void:
   data["current_death_particle"] = PlayerParticleManager.current_death_particle
   data["current_jump_particle"] = PlayerParticleManager.current_jump_particle
   data["current_step_particle"] = PlayerParticleManager.current_step_particle
-  save_file.store_string(JSON.stringify(data))
+  save_file.store_string(JSON.stringify(data, "  "))
   save_file.close()
 
 func create_save() -> void:

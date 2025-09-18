@@ -339,15 +339,15 @@ vertical_alignment = 1
 position = Vector2(961, 260)
 emitting = false
 amount = 32
-process_material = SubResource("ParticleProcessMaterial_hl02j")
 lifetime = 5.0
 speed_scale = 2.0
 explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_hl02j")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Singleplayer"]
 root_node = NodePath("../BestTimeLabel")
 libraries = {
-"": SubResource("AnimationLibrary_gnhhu")
+&"": SubResource("AnimationLibrary_gnhhu")
 }
 
 [connection signal="pressed" from="Singleplayer/VBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]

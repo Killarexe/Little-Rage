@@ -3,7 +3,6 @@ extends Node2D
 @export var player: PlayerComponent
 @export var player_camera: Camera2D
 @export var player_menus: PlayerMenus
-@export var skip_control: TouchScreenButton
 
 @onready var animation_camera: Camera2D = $Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -20,6 +19,9 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
   if event.is_action_pressed("pause") && animation_player.is_playing():
     skip()
+  if event is InputEventScreenTouch && animation_player.is_playing():
+    if event.is_pressed():
+      skip()
 
 func skip():
   animation_player.stop()
@@ -49,7 +51,5 @@ func play_animation() -> void:
   queue_free()
 
 func enable_status() -> void:
-  if Game.is_mobile:
-    skip_control.queue_free()
   player_menus.player_status.visible = !LevelManager.current_level.is_empty()
   player_menus.mobile_control.visible = Game.is_mobile

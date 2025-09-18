@@ -18,14 +18,14 @@ func on_player_win(time: Array[int], death_count: int):
 
 func open(time: Array[int], death_count: int):
   MusicManager.stop()
+  
   Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-  if PlayerSkinManager.current_skin == "mexican_player" && PlayerHatManager.current_hat == "mexican_hat":
-    mexican_mode()
+  var mexican_mode: bool = PlayerSkinManager.current_skin == "mexican_player" && \
+    PlayerHatManager.current_hat == "mexican_hat"
+  
   get_tree().paused = true
   Game.can_pause = false
-  var time_sum: int = 0
-  for i in time:
-    time_sum += i
+  
   player_status_ui.visible = false
   singleplayer.visible = true
   
@@ -34,7 +34,11 @@ func open(time: Array[int], death_count: int):
   var music_id: String = "level_win_" + Level.level_theme_to_str(level_theme)
   if is_best_time:
     music_id += "_variant"
-  MusicManager.play_music(music_id)
+  if mexican_mode:
+    MusicManager.play_music("mexican_music")
+    Game.instanceNodeAtPos(load("res://scenes/bundles/particles/tacosParticle.tscn"), self, Vector2(0, -100))
+  else:
+    MusicManager.play_music(music_id)
   
   if LevelManager.is_default_level(LevelManager.current_level):
     var current_level_number: int = int(LevelManager.current_level.replace("level_", ""))
@@ -48,6 +52,10 @@ func open(time: Array[int], death_count: int):
   time_label.start(time, death_count)
   await best_time_animation.animation_finished
   
+  var time_sum: int = 0
+  for i in time:
+    time_sum += i
+  
   if is_best_time:
     if LevelManager.get_level_best_time(LevelManager.current_level) != [0, 0, 0]:
       LootBoxesManager.add_loot_box(0, true)
@@ -57,10 +65,6 @@ func open(time: Array[int], death_count: int):
     LevelManager.set_level_best_time(time)
   else:
     LootBoxesManager.add_loot_box((time_sum * time_sum) / pow(3 * 99, 2))
-
-func mexican_mode():
-  MusicManager.play_music("mexican_music")
-  Game.instanceNodeAtPos(load("res://scenes/bundles/particles/tacosParticle.tscn"), self, Vector2(0, -100))
 
 func exit():
   LevelManager.current_level = ""

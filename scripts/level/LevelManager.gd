@@ -42,13 +42,15 @@ func get_level_best_time(level_id: String) -> Array:
   return levels_best_times.get(level_id, [0, 0, 0])
 
 func time_to_int(time: Array) -> int:
-  return int(str(time[0]).pad_zeros(2) + str(time[1]).pad_zeros(2) + str(time[2]).pad_zeros(2))
+  return int(time[0]) * 10000 + int(time[1]) * 100 + int(time[2])
 
 func is_best_time(current_time: Array[int]) -> bool:
   var best_time: Array = get_level_best_time(current_level)
   if best_time == [0, 0, 0]:
     return true
-  if time_to_int(best_time) > time_to_int(current_time):
+  var best_time_num: int = time_to_int(best_time)
+  var current_time_num: int = time_to_int(current_time)
+  if best_time_num > current_time_num:
     AchievementManager.unlock_achievement("new_record")
     return true
   return false
