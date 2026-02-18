@@ -53,6 +53,6 @@ color = Color(0.235294, 0.737255, 0.988235, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_8q1fy"),
-"Transitions": ExtResource("3_ra8ms")
+&"": SubResource("AnimationLibrary_8q1fy"),
+&"Transitions": ExtResource("3_ra8ms")
 }

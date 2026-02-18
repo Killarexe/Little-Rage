@@ -20,4 +20,4 @@ You can download the versions in development (*if you want*) via the actions par
 
 # Edit / Export 
 
-If you want to edit/export the game. **Download** the repo and [**Install the lastest Godot Version *(4.3)***](https://godotengine.org/)
+If you want to edit/export the game. **Download** the repo and [**Install the lastest Godot Version *(4.6.1)***](https://godotengine.org/download)
